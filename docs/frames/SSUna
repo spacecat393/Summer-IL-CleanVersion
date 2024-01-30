@@ -1,0 +1,15 @@
+0 80 cafe idle
+81 231 cafe react
+232 263 cafe walk
+264 314 die
+315 350 panic
+351 431 idle
+432 469 call
+470 483 start attack
+484 499 loop attack
+500 513 end attack
+514 562 reload 1
+563 611 reload 2
+612 628 loop move
+629 659 end move
+660 690 normal idle

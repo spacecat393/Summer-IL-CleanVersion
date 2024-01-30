@@ -1,0 +1,21 @@
+0 80 cafe idle
+81 172 cafe react
+173 204 cafe walk
+205 305 cutin 0
+306 406 cutin 1
+407 487 wait
+488 504 moving !noused
+505 521 ?
+522 559 call
+560 576 attack start
+577 643 attacking
+644 660 attack end
+661 686 attack delay
+687 737 reload
+738 783 died
+784 834 skill
+835 860 panic
+861 931 hold
+932 948 moving
+949 999 end move
+should renew

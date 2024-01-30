@@ -1,0 +1,15 @@
+0 240 cafe idle
+241 357 cafe react
+358 491 cafe walk
+492 592 f-idle
+593 608 loop move
+609 646 end move
+647 687 n-idle
+688 704 start attack
+705 723 loop attack
+724 742 end attack
+743 788 reload
+789 889 skill
+890 942 die
+943 979 call
+980 1013 delay attack

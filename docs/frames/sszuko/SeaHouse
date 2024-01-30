@@ -1,0 +1,6 @@
+0 50 t-start 50
+51 128 spawn 77
+129 222 idle 93
+223 243 act 20
+244 269 end 25
+should renew

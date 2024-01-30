@@ -1,0 +1,9 @@
+0 222 cafe idle
+223 380 cafe react
+381 481 cafe walk
+482 532 t-start 50
+533 610 spawn 77
+611 704 idle 93
+705 725 act 20
+726 750 end 24
+should renew

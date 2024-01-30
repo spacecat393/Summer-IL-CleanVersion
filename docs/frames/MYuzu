@@ -1,0 +1,9 @@
+0 321 cafe idle
+322 478 cafe react
+479 512 cafe walk
+513 563 die
+564 597 normal idle
+598 613 loop move
+614 643 loop attack
+644 694 t-start
+695 770 call

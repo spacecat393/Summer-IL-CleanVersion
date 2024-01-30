@@ -1,0 +1,12 @@
+.gradle
+.vscode
+.idea
+libs
+bin
+build
+run
+defaultconfigs
+mods
+resourcepacks
+Results
+logs
