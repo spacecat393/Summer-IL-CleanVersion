@@ -9,3 +9,14 @@
 518 528 end attack
 529 584 reload
 585 622 call
+623 656 start ride 33
+657 707 loop ride-move 50
+708 724 start ride-attack 16
+725 758 loop ride-attack 33
+759 775 end ride-attack 16
+776 826 ride-reload 50
+827 877 ride-destroy 50
+878 919 end ride-move 41
+920 1162 skill
+1163 1213 ride-panic 50
+1214 1264 loop ride 50

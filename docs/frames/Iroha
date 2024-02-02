@@ -1,0 +1,24 @@
+0 50 cafe idle
+51 142 cafe react
+143 206 cafe walk
+207 257 t-start
+258 320 pop tank
+321 371 destroy
+372 422 n-idle
+423 473 loop move
+474 515 end move
+516 532 start attack
+533 566 loop attack
+567 583 end attack
+584 634 reload
+635 685 panic
+686 719 start ride 33
+720 770 loop ride 50
+771 787 start ride-attack 16
+788 821 loop ride-attack 33
+822 838 end ride-attack 16
+839 889 ride-reload 50
+890 940 ride-destroy 50
+941 982 end ride-move 41
+983 1033 ride-panic 50
+1034 1084 loop ride-move 50
