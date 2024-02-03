@@ -27,7 +27,7 @@ public class SummerYuzu extends SkinningEntities
     public static int eggSecondary = 0xfc6c78;
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[YuzuData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
-    public boolean server_how_attack;
+//    public boolean server_how_attack;
 
     static
     {

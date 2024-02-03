@@ -20,3 +20,5 @@
 920 1162 skill
 1163 1213 ride-panic 50
 1214 1264 loop ride 50
+1265 1281 loop move
+1282 1312 end move
