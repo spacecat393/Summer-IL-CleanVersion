@@ -26,6 +26,13 @@ public class SummerE22Locker extends SkinningEntities
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[E22LockerData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
+    public static int[][] FRAME_INT_2D_ARRAY = new int[][]
+    {
+        { 0, 297 },//react
+        { 298, 302 },//noact
+        { 303, 386 }//idle
+    };
+
     static
     {
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
@@ -94,17 +101,11 @@ public class SummerE22Locker extends SkinningEntities
     {
         this.server_skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
-        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, new int[][]
-        {
-            { 0, 297 },//react
-            { 298, 302 },//noact
-            { 303, 386 }//idle
-        });
-
+        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
         this.server_skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> this.server_skinningentitiesliveframe_array[0].setFLoopFree(0, this.skinningentitiesbytes.SIT(), this.server_skinningentities != null && this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1),
-            () -> this.server_skinningentitiesliveframe_array[0].setFLoop(2, this.server_skinningentities != null),
+            () -> this.server_skinningentities != null && this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(0, this.skinningentitiesbytes.SIT()),
+            () -> this.server_skinningentities != null && this.server_skinningentitiesliveframe_array[0].setFLoop(2),
             () -> this.server_skinningentitiesliveframe_array[0].setTLoop(1)
         };
     }

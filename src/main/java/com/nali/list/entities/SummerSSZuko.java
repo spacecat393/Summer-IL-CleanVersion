@@ -28,6 +28,29 @@ public class SummerSSZuko extends SkinningEntities
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSZukoData.MAX_FRAME + SeaHouseData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
+    public static int[][] SSZUKO_FRAME_INT_2D_ARRAY = new int[][]
+    {
+        { 0, 222 },
+        { 0, 222 },
+        { 381, 481 },
+        { 482, 532 },
+        { 223, 380 },
+        { 0, 222 },
+        { 533, 610 },//spawn
+        { 611, 704 },//idle
+        { 705, 725 },//act
+        { 726, 750 }//end
+    };
+    public static int[][] SEAHOUSE_FRAME_INT_2D_ARRAY = new int[][]
+    {
+        { 0, 50 },
+        { 0, 0 },
+        { 51, 128 },//spawn
+        { 129, 222 },//idle
+        { 223, 243 },//act
+        { 244, 269 }//end
+    };
+
     static
     {
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
@@ -182,62 +205,30 @@ public class SummerSSZuko extends SkinningEntities
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(20.0D);
     }
 
-    /**0-Die
-     * 1-Sit
-     * 2-Walk
-     * 3-Protect
-     * 4-HardReady
-     * 5-SoftReady
-     * 6-HardIdle
-     * 7-SoftIdle
-     * 8-ProtectSpawn
-     * 9-ProtectAct
-     * 10-ProtectEnd
-     * 11-ProtectIdle*/
     @Override
     public void createServer()
     {
         this.server_skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[2];
 
-        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, new int[][]
-        {
-            { 0, 222 },
-            { 0, 222 },
-            { 381, 481 },
-            { 482, 532 },
-            { 223, 380 },
-            { 0, 222 },
-            { 533, 610 },//spawn
-            { 611, 704 },//idle
-            { 705, 725 },//act
-            { 726, 750 }//end
-        });
+        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, SSZUKO_FRAME_INT_2D_ARRAY);
         this.server_skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(0, this.isZeroMove()),
+            () -> this.isZeroMove() && this.server_skinningentitiesliveframe_array[0].setTLoop(0),
             () -> this.server_skinningentitiesliveframe_array[0].setProtect(6, 7, 8, 9, this.skinningentitiesprotect),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(1, this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(2, this.moveForward != 0),
+            () -> this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(1),
+            () -> this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(2),
             //pat -> soft_ready
             //eat -> soft_ready
-            () -> this.server_skinningentitiesliveframe_array[0].setFLoopFree(3, this.skinningentitiesbytes.HARD_READY(), this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1),
-            () -> this.server_skinningentitiesliveframe_array[0].setFLoopFree(4, this.skinningentitiesbytes.SOFT_READY(), this.server_work_byte_array[this.skinningentitiesbytes.SOFT_READY()] == 1),
+            () -> this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(3, this.skinningentitiesbytes.HARD_READY()),
+            () -> this.server_work_byte_array[this.skinningentitiesbytes.SOFT_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(4, this.skinningentitiesbytes.SOFT_READY()),
             () -> this.server_skinningentitiesliveframe_array[0].setTLoop(5)
         };
 
-        this.server_skinningentitiesliveframe_array[1] = new SkinningEntitiesLiveFrame(this, 1, new int[][]
-        {
-            { 0, 50 },
-            { 0, 0 },
-            { 51, 128 },//spawn
-            { 129, 222 },//idle
-            { 223, 243 },//act
-            { 244, 269 }//end
-        });
+        this.server_skinningentitiesliveframe_array[1] = new SkinningEntitiesLiveFrame(this, 1, SEAHOUSE_FRAME_INT_2D_ARRAY);
         this.server_skinningentitiesliveframe_array[1].condition_boolean_supplier_array = new Supplier[]
         {
             () -> this.server_skinningentitiesliveframe_array[1].setProtect(2, 3, 4, 5, this.skinningentitiesprotect),
-            () -> this.server_skinningentitiesliveframe_array[1].setFLoopFree(0, this.skinningentitiesbytes.HARD_READY(), this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1),
+            () -> this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1 && this.server_skinningentitiesliveframe_array[1].setFLoopFree(0, this.skinningentitiesbytes.HARD_READY()),
             () -> this.server_skinningentitiesliveframe_array[1].setTLoop(1)
         };
     }

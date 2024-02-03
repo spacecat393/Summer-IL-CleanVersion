@@ -29,6 +29,32 @@ public class SummerYuzu extends SkinningEntities
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 //    public boolean server_how_attack;
 
+    public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
+    {
+        649,
+        650,
+        651
+    };
+    public static int[][] FRAME_INT_2D_ARRAY = new int[][]
+    {
+        { 717, 767 },
+        { 526, 592 },
+        { 627, 643 },
+        { 844, 859 },
+        { 860, 893 },
+        { 113, 143 },
+        { 806, 843 },
+        { 34, 112 },
+        { 593, 626 },
+        { 0, 33 },
+        { 644, 664 },
+        { 703, 716 },
+        { 768, 805 },
+        { 665, 702 },//delay attack
+        { 144, 441 },//locker react
+        { 442, 525 }//locker idle
+    };
+
     static
     {
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
@@ -108,19 +134,6 @@ public class SummerYuzu extends SkinningEntities
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
     }
 
-    /**0-Die
-     * 1-Sit
-     * 2-StartAttack
-     * 3-Run
-     * 4-EndRun
-     * 5-Walk
-     * 6-HardReady
-     * 7-SoftReady
-     * 8-HardIdle
-     * 9-SoftIdle
-     * 10-Attacking
-     * 11-EndAttack
-     * 12-Reload*/
     @Override
     public void createServer()
     {
@@ -128,41 +141,17 @@ public class SummerYuzu extends SkinningEntities
 
         this.server_skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
-        this.skinningentitiesattack.attack_frame_int_array = new int[]
-        {
-            649,
-            650,
-            651
-        };
+        this.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
         this.skinningentitiesattack.max_ammo = 4;
         this.skinningentitiesattack.minimum_distance = 10.0F;
 
-        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, new int[][]
-        {
-            { 717, 767 },
-            { 526, 592 },
-            { 627, 643 },
-            { 844, 859 },
-            { 860, 893 },
-            { 113, 143 },
-            { 806, 843 },
-            { 34, 112 },
-            { 593, 626 },
-            { 0, 33 },
-            { 644, 664 },
-            { 703, 716 },
-            { 768, 805 },
-            { 665, 702 },//delay attack
-            { 144, 441 },//locker react
-            { 442, 525 }//locker idle
-        });
-
+        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
         this.server_skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> this.server_skinningentitiesliveframe_array[0].setFLoop(0, this.isZeroMove()),
-            () -> this.server_skinningentitiesliveframe_array[0].setFLoop(14, this.skinningentitiesplaywith.should_play && this.skinningentitiesplaywith.playwith_skinningentities.server_work_byte_array[this.skinningentitiesplaywith.playwith_skinningentities.skinningentitiesbytes.SIT()] == 1),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(15, this.skinningentitiesplaywith.should_play),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(1, this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1),
+            () -> this.isZeroMove() && this.server_skinningentitiesliveframe_array[0].setFLoop(0),
+            () -> this.skinningentitiesplaywith.should_play && this.skinningentitiesplaywith.playwith_skinningentities.server_work_byte_array[this.skinningentitiesplaywith.playwith_skinningentities.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoop(14),
+            () -> this.skinningentitiesplaywith.should_play && this.server_skinningentitiesliveframe_array[0].setTLoop(15),
+            () -> this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(1),
             () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward == 0 && this.server_skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
 //            () ->
 //            {
@@ -197,13 +186,13 @@ public class SummerYuzu extends SkinningEntities
 //                return this.server_skinningentitiesliveframe_array[0].setShoot(2, id, 11, 12, false, this.skinningentitiesattack);
 //            },
             () -> this.server_skinningentitiesliveframe_array[0].setShoot(2, 10, 11, 12, false, this.skinningentitiesattack),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(3, this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward != 0),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(5, this.moveForward != 0),
+            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(3),
+            () -> this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(5),
             //pat -> soft_ready
             //eat -> soft_ready
-            () -> this.server_skinningentitiesliveframe_array[0].setFLoopFree(6, this.skinningentitiesbytes.HARD_READY(), this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1),
-            () -> this.server_skinningentitiesliveframe_array[0].setFLoopFree(7, this.skinningentitiesbytes.SOFT_READY(), this.server_work_byte_array[this.skinningentitiesbytes.SOFT_READY()] == 1),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(8, this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1),
+            () -> this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(6, this.skinningentitiesbytes.HARD_READY()),
+            () -> this.server_work_byte_array[this.skinningentitiesbytes.SOFT_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(7, this.skinningentitiesbytes.SOFT_READY()),
+            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(8),
             () -> this.server_skinningentitiesliveframe_array[0].setTLoop(9)
         };
     }
