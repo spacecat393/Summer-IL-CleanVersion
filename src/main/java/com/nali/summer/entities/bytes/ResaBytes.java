@@ -59,7 +59,7 @@ public class ResaBytes implements SkinningEntitiesBytes
     }
 
     @Override
-    public int REVIVE()
+    public int LOCATION()
     {
         return 7;
     }
@@ -68,6 +68,12 @@ public class ResaBytes implements SkinningEntitiesBytes
     public int FOLLOW()
     {
         return 8;
+    }
+
+    @Override
+    public int REVIVE()
+    {
+        return 9;
     }
 
     @Override
@@ -89,44 +95,50 @@ public class ResaBytes implements SkinningEntitiesBytes
     }
 
     @Override
-    public int ATTACK()
-    {
-        return 9;
-    }
-
-    @Override
-    public int MINE()
+    public int CARE_OWNER()
     {
         return 10;
     }
 
     @Override
-    public int PLANT()
+    public int ATTACK()
     {
         return 11;
     }
 
     @Override
-    public int FIND_ITEM()
+    public int MINE()
     {
         return 12;
     }
 
     @Override
-    public int RANDOM_WALK()
+    public int PLANT()
     {
         return 13;
     }
 
     @Override
-    public int RANDOM_LOOK()
+    public int FIND_ITEM()
     {
         return 14;
     }
 
     @Override
-    public int MAX_WORKS()
+    public int RANDOM_WALK()
     {
         return 15;
+    }
+
+    @Override
+    public int RANDOM_LOOK()
+    {
+        return 16;
+    }
+
+    @Override
+    public int MAX_WORKS()
+    {
+        return 17;
     }
 }

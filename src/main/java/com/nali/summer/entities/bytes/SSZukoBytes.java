@@ -52,18 +52,6 @@ public class SSZukoBytes implements SkinningEntitiesBytes
         return 3;
     }
 
-//    @Override
-//    public int ON_HEAL()
-//    {
-//        return -1;
-//    }
-//
-//    @Override
-//    public int ON_PROTECT()
-//    {
-//        return 6;
-//    }
-
     @Override
     public int SIT()
     {
@@ -71,7 +59,7 @@ public class SSZukoBytes implements SkinningEntitiesBytes
     }
 
     @Override
-    public int REVIVE()
+    public int LOCATION()
     {
         return 7;
     }
@@ -80,6 +68,12 @@ public class SSZukoBytes implements SkinningEntitiesBytes
     public int FOLLOW()
     {
         return 8;
+    }
+
+    @Override
+    public int REVIVE()
+    {
+        return 9;
     }
 
     @Override
@@ -97,7 +91,13 @@ public class SSZukoBytes implements SkinningEntitiesBytes
     @Override
     public int PROTECT()
     {
-        return 9;
+        return 10;
+    }
+
+    @Override
+    public int CARE_OWNER()
+    {
+        return 11;
     }
 
     @Override
@@ -109,36 +109,36 @@ public class SSZukoBytes implements SkinningEntitiesBytes
     @Override
     public int MINE()
     {
-        return 10;
+        return 12;
     }
 
     @Override
     public int PLANT()
     {
-        return 11;
+        return 13;
     }
 
     @Override
     public int FIND_ITEM()
     {
-        return 12;
+        return 14;
     }
 
     @Override
     public int RANDOM_WALK()
     {
-        return 13;
+        return 15;
     }
 
     @Override
     public int RANDOM_LOOK()
     {
-        return 14;
+        return 16;
     }
 
     @Override
     public int MAX_WORKS()
     {
-        return 15;
+        return 17;
     }
 }

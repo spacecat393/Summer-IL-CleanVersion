@@ -59,7 +59,7 @@ public class IbukiBytes implements SkinningEntitiesBytes
     }
 
     @Override
-    public int REVIVE()
+    public int LOCATION()
     {
         return 8;
     }
@@ -71,9 +71,15 @@ public class IbukiBytes implements SkinningEntitiesBytes
     }
 
     @Override
-    public int PLAY()
+    public int REVIVE()
     {
         return 10;
+    }
+
+    @Override
+    public int PLAY()
+    {
+        return 11;
     }
 
     @Override
@@ -89,44 +95,50 @@ public class IbukiBytes implements SkinningEntitiesBytes
     }
 
     @Override
-    public int ATTACK()
-    {
-        return 11;
-    }
-
-    @Override
-    public int MINE()
+    public int CARE_OWNER()
     {
         return 12;
     }
 
     @Override
-    public int PLANT()
+    public int ATTACK()
     {
         return 13;
     }
 
     @Override
-    public int FIND_ITEM()
+    public int MINE()
     {
         return 14;
     }
 
     @Override
-    public int RANDOM_WALK()
+    public int PLANT()
     {
         return 15;
     }
 
     @Override
-    public int RANDOM_LOOK()
+    public int FIND_ITEM()
     {
         return 16;
     }
 
     @Override
-    public int MAX_WORKS()
+    public int RANDOM_WALK()
     {
         return 17;
+    }
+
+    @Override
+    public int RANDOM_LOOK()
+    {
+        return 18;
+    }
+
+    @Override
+    public int MAX_WORKS()
+    {
+        return 19;
     }
 }

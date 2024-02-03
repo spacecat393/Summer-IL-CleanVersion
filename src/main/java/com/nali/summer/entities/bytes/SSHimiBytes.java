@@ -52,18 +52,6 @@ public class SSHimiBytes implements SkinningEntitiesBytes
         return 6;
     }
 
-//    @Override
-//    public int ON_HEAL()
-//    {
-//        return -1;
-//    }
-//
-//    @Override
-//    public int ON_PROTECT()
-//    {
-//        return -1;
-//    }
-
     @Override
     public int SIT()
     {
@@ -71,7 +59,7 @@ public class SSHimiBytes implements SkinningEntitiesBytes
     }
 
     @Override
-    public int REVIVE()
+    public int LOCATION()
     {
         return 8;
     }
@@ -80,6 +68,12 @@ public class SSHimiBytes implements SkinningEntitiesBytes
     public int FOLLOW()
     {
         return 9;
+    }
+
+    @Override
+    public int REVIVE()
+    {
+        return 10;
     }
 
     @Override
@@ -101,44 +95,50 @@ public class SSHimiBytes implements SkinningEntitiesBytes
     }
 
     @Override
-    public int ATTACK()
-    {
-        return 10;
-    }
-
-    @Override
-    public int MINE()
+    public int CARE_OWNER()
     {
         return 11;
     }
 
     @Override
-    public int PLANT()
+    public int ATTACK()
     {
         return 12;
     }
 
     @Override
-    public int FIND_ITEM()
+    public int MINE()
     {
         return 13;
     }
 
     @Override
-    public int RANDOM_WALK()
+    public int PLANT()
     {
         return 14;
     }
 
     @Override
-    public int RANDOM_LOOK()
+    public int FIND_ITEM()
     {
         return 15;
     }
 
     @Override
-    public int MAX_WORKS()
+    public int RANDOM_WALK()
     {
         return 16;
+    }
+
+    @Override
+    public int RANDOM_LOOK()
+    {
+        return 17;
+    }
+
+    @Override
+    public int MAX_WORKS()
+    {
+        return 18;
     }
 }

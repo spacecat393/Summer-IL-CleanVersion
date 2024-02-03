@@ -8,7 +8,6 @@ cook
 copy build
 open door
 get xp apply mending
-set location
 mine
 farm
 

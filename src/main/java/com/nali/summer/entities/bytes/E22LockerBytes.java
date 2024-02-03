@@ -59,13 +59,19 @@ public class E22LockerBytes implements SkinningEntitiesBytes
     }
 
     @Override
-    public int REVIVE()
+    public int LOCATION()
     {
         return -1;
     }
 
     @Override
     public int FOLLOW()
+    {
+        return -1;
+    }
+
+    @Override
+    public int REVIVE()
     {
         return -1;
     }
@@ -84,6 +90,12 @@ public class E22LockerBytes implements SkinningEntitiesBytes
 
     @Override
     public int PROTECT()
+    {
+        return -1;
+    }
+
+    @Override
+    public int CARE_OWNER()
     {
         return -1;
     }
