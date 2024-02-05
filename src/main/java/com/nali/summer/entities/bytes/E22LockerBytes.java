@@ -61,7 +61,7 @@ public class E22LockerBytes implements SkinningEntitiesBytes
     @Override
     public int LOCATION()
     {
-        return -1;
+        return 3;
     }
 
     @Override
@@ -121,7 +121,7 @@ public class E22LockerBytes implements SkinningEntitiesBytes
     @Override
     public int FIND_ITEM()
     {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -139,6 +139,6 @@ public class E22LockerBytes implements SkinningEntitiesBytes
     @Override
     public int MAX_WORKS()
     {
-        return 4;
+        return 5;
     }
 }
