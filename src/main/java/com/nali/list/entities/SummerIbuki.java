@@ -117,6 +117,17 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
+    public void initFakeFrame()
+    {
+        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        skinningrender.model_boolean_array[0] = false;
+        skinningrender.model_boolean_array[1] = false;
+        skinningrender.model_boolean_array[11] = false;
+        skinningrender.model_boolean_array[2] = true;
+        skinningrender.model_boolean_array[12] = true;
+    }
+
+    @Override
     public BothData createBothData()
     {
         return new IbukiData();

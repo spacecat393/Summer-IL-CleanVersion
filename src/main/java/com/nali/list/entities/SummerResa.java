@@ -110,6 +110,15 @@ public class SummerResa extends SkinningEntities
         skinningrender.model_boolean_array[4] = false;
     }
 
+    @Override
+    public void initFakeFrame()
+    {
+        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        skinningrender.model_boolean_array[0] = false;
+        skinningrender.model_boolean_array[9] = false;
+        skinningrender.model_boolean_array[6] = true;
+    }
+
 //    @Override
 //    public AxisAlignedBB getMouthAxisAlignedBB()
 //    {
