@@ -4,7 +4,7 @@ import com.nali.list.entities.SummerSSUna;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.render.SkinningRender;
-import com.nali.small.entities.skinning.SkinningEntitiesRender;
+import com.nali.small.entities.skinning.render.SkinningEntitiesRender;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;

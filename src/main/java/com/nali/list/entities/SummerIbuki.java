@@ -200,6 +200,20 @@ public class SummerIbuki extends SkinningEntities
     @Override
     public Object createClientObject()
     {
+        this.itementitiesrender.left_hand_i = 9;
+        this.itementitiesrender.left_hand_v = 2857;
+
+        this.itementitiesrender.right_hand_i = 9;
+        this.itementitiesrender.right_hand_v = 5910;
+
+//        this.itementitiesrender.left_hand_i = 4;
+//        this.itementitiesrender.left_hand_v = 0;
+
+        this.itementitiesrender.head_i = 4;
+        this.itementitiesrender.head_v = 250;
+
+        this.itementitiesrender.chest_i = 9;
+        this.itementitiesrender.chest_v = 411;
         return new IbukiRender(this.bothdata, RenderHelper.DATALOADER, this);
     }
 
