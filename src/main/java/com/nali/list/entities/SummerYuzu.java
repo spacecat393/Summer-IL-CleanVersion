@@ -9,17 +9,15 @@ import com.nali.summer.data.YuzuData;
 import com.nali.summer.entities.bytes.YuzuBytes;
 import com.nali.summer.render.YuzuRender;
 import com.nali.summer.render.RenderHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 
 import java.util.function.Supplier;
 
-import static com.nali.small.entities.EntitiesMathHelper.isTooClose;
+import static com.nali.small.entities.EntitiesMath.isTooClose;
 
 public class SummerYuzu extends SkinningEntities
 {
