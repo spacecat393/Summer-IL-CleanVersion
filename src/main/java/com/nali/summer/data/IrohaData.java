@@ -15,7 +15,7 @@ public class IrohaData implements BothData
     @Override
     public int StepModels()
     {
-        return 144;
+        return 150;
     }
 
     @Override

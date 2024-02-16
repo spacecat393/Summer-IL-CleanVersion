@@ -86,20 +86,20 @@ public class SummerIbuki extends SkinningEntities
 
         if (this.ticksExisted % 200 == 0)
         {
-            skinningrender.model_boolean_array[0] = false;
-            skinningrender.model_boolean_array[1] = false;
-            skinningrender.model_boolean_array[11] = false;
-            skinningrender.model_boolean_array[2] = true;
-            skinningrender.model_boolean_array[12] = true;
+            skinningrender.model_boolean_array[0 + 6] = false;
+            skinningrender.model_boolean_array[1 + 6] = false;
+            skinningrender.model_boolean_array[11 + 6] = false;
+            skinningrender.model_boolean_array[2 + 6] = true;
+            skinningrender.model_boolean_array[12 + 6] = true;
             this.client_eyes_tick = 20;
         }
         else if (--this.client_eyes_tick <= 0)
         {
-            skinningrender.model_boolean_array[0] = true;
-            skinningrender.model_boolean_array[1] = true;
-            skinningrender.model_boolean_array[11] = true;
-            skinningrender.model_boolean_array[2] = false;
-            skinningrender.model_boolean_array[12] = false;
+            skinningrender.model_boolean_array[0 + 6] = true;
+            skinningrender.model_boolean_array[1 + 6] = true;
+            skinningrender.model_boolean_array[11 + 6] = true;
+            skinningrender.model_boolean_array[2 + 6] = false;
+            skinningrender.model_boolean_array[12 + 6] = false;
         }
 
         float scale = skinningrender.scale;
@@ -120,11 +120,11 @@ public class SummerIbuki extends SkinningEntities
     public void initFakeFrame()
     {
         SkinningRender skinningrender = (SkinningRender)this.client_object;
-        skinningrender.model_boolean_array[0] = false;
-        skinningrender.model_boolean_array[1] = false;
-        skinningrender.model_boolean_array[11] = false;
-        skinningrender.model_boolean_array[2] = true;
-        skinningrender.model_boolean_array[12] = true;
+        skinningrender.model_boolean_array[0 + 6] = false;
+        skinningrender.model_boolean_array[1 + 6] = false;
+        skinningrender.model_boolean_array[11 + 6] = false;
+        skinningrender.model_boolean_array[2 + 6] = true;
+        skinningrender.model_boolean_array[12 + 6] = true;
     }
 
     @Override
@@ -200,41 +200,41 @@ public class SummerIbuki extends SkinningEntities
     @Override
     public Object createClientObject()
     {
-        this.itemlayerrender.hand_p = 67.8059367925672F;
-        this.itemlayerrender.legs_y = 84.03490369025576F / 2.0F + 180.0F;
-        this.itemlayerrender.legs_p = 6.773068689298493F;
-        this.itemlayerrender.feet_y = -17.22647259946362F / 2.0F;
-        this.itemlayerrender.feet_p = -174.64395393898405F;
+//        this.itemlayerrender.hand_p = 67.8059367925672F;
+//        this.itemlayerrender.legs_y = 84.03490369025576F / 2.0F + 180.0F;
+//        this.itemlayerrender.legs_p = 6.773068689298493F;
+//        this.itemlayerrender.feet_y = -17.22647259946362F / 2.0F;
+//        this.itemlayerrender.feet_p = -174.64395393898405F;
 
-        this.itemlayerrender.c_left_hand_i = 9;
-        this.itemlayerrender.c_left_hand_v = 2857;
-        this.itemlayerrender.t_left_hand_i = 9;
-        this.itemlayerrender.t_left_hand_v = 2856;
-
-        this.itemlayerrender.c_right_hand_i = 9;
-        this.itemlayerrender.c_right_hand_v = 5899;
-        this.itemlayerrender.t_right_hand_i = 9;
-        this.itemlayerrender.t_right_hand_v = 5898;
-
-        this.itemlayerrender.c_head_i = 4;
-        this.itemlayerrender.c_head_v = 280;
-        this.itemlayerrender.t_head_i = 4;
-        this.itemlayerrender.t_head_v = 276;
-
-        this.itemlayerrender.c_chest_i = 9;
-        this.itemlayerrender.c_chest_v = 411;
-        this.itemlayerrender.t_chest_i = 9;
-        this.itemlayerrender.t_chest_v = 235;
-
-        this.itemlayerrender.c_legs_i = 9;
-        this.itemlayerrender.c_legs_v = 13;//! pos
-        this.itemlayerrender.t_legs_i = 9;
-        this.itemlayerrender.t_legs_v = 10434;//!
-
-        this.itemlayerrender.c_feet_i = 9;
-        this.itemlayerrender.c_feet_v = 2196;//!
-        this.itemlayerrender.t_feet_i = 9;
-        this.itemlayerrender.t_feet_v = 527;//!
+//        this.itemlayerrender.c_left_hand_i = 9;
+//        this.itemlayerrender.c_left_hand_v = 2857;
+//        this.itemlayerrender.t_left_hand_i = 9;
+//        this.itemlayerrender.t_left_hand_v = 2856;
+//
+//        this.itemlayerrender.c_right_hand_i = 9;
+//        this.itemlayerrender.c_right_hand_v = 5899;
+//        this.itemlayerrender.t_right_hand_i = 9;
+//        this.itemlayerrender.t_right_hand_v = 5898;
+//
+//        this.itemlayerrender.c_head_i = 4;
+//        this.itemlayerrender.c_head_v = 280;
+//        this.itemlayerrender.t_head_i = 4;
+//        this.itemlayerrender.t_head_v = 276;
+//
+//        this.itemlayerrender.c_chest_i = 9;
+//        this.itemlayerrender.c_chest_v = 411;
+//        this.itemlayerrender.t_chest_i = 9;
+//        this.itemlayerrender.t_chest_v = 235;
+//
+//        this.itemlayerrender.c_legs_i = 9;
+//        this.itemlayerrender.c_legs_v = 13;//! pos
+//        this.itemlayerrender.t_legs_i = 9;
+//        this.itemlayerrender.t_legs_v = 10434;//!
+//
+//        this.itemlayerrender.c_feet_i = 9;
+//        this.itemlayerrender.c_feet_v = 2196;//!
+//        this.itemlayerrender.t_feet_i = 9;
+//        this.itemlayerrender.t_feet_v = 527;//!
         return new IbukiRender(this.bothdata, RenderHelper.DATALOADER, this);
     }
 
