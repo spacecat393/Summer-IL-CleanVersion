@@ -13,6 +13,13 @@ public class IbukiRender extends SkinningEntitiesRender
     public IbukiRender(BothData bothdata, DataLoader dataloader, Entity entity)
     {
         super(bothdata, dataloader, entity);
+        this.model_boolean_array[0] = false;
+        this.model_boolean_array[1] = false;
+        this.model_boolean_array[2] = false;
+        this.model_boolean_array[3] = false;
+        this.model_boolean_array[4] = false;
+        this.model_boolean_array[5] = false;
+
         this.texture_index_int_array[0] = 81;
         this.texture_index_int_array[1] = 81;
         this.texture_index_int_array[2] = 81;
