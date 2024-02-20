@@ -200,10 +200,12 @@ public class SummerIbuki extends SkinningEntities
     @Override
     public Object createClientObject()
     {
-//        this.itemlayerrender.left_hand_p = -4.3673964F;
-//        this.itemlayerrender.left_hand_y = -4.595605F;
-//        this.itemlayerrender.right_hand_p = -172.55743F;
-//        this.itemlayerrender.right_hand_y = -8.475135F;
+//        this.itemlayerrender.left_hand_y = -179.9285F;
+//        this.itemlayerrender.left_hand_p = -5.5769753F;
+//        this.itemlayerrender.right_hand_y = -5.5689473F;
+//        this.itemlayerrender.right_hand_p = -6.0838437F;
+//        this.itemlayerrender.head_y = -91.6525F;
+//        this.itemlayerrender.head_p = 4.104715F;
 //        this.itemlayerrender.legs_y = 84.03490369025576F / 2.0F + 180.0F;
 //        this.itemlayerrender.legs_p = 6.773068689298493F;
 //        this.itemlayerrender.feet_y = -17.22647259946362F / 2.0F;
@@ -224,10 +226,10 @@ public class SummerIbuki extends SkinningEntities
         this.itemlayerrender.t_head_i = 5;
         this.itemlayerrender.t_head_v = 0;
 //
-        this.itemlayerrender.c_chest_i = 4;
-//        this.itemlayerrender.c_chest_v = 411;
-        this.itemlayerrender.t_chest_i = 4;
-//        this.itemlayerrender.t_chest_v = 235;
+        this.itemlayerrender.chest_i = 4;
+        this.itemlayerrender.chest_cv = 6;
+        this.itemlayerrender.chest_tyv = 0;
+        this.itemlayerrender.chest_tpv = 0;
 //
         this.itemlayerrender.c_legs_i = 3;
 //        this.itemlayerrender.c_legs_v = 13;//! pos
