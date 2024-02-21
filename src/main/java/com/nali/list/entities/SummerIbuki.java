@@ -211,35 +211,26 @@ public class SummerIbuki extends SkinningEntities
 //        this.itemlayerrender.feet_y = -17.22647259946362F / 2.0F;
 //        this.itemlayerrender.feet_p = -174.64395393898405F;
 
-        this.itemlayerrender.c_left_hand_i = 0;
-        this.itemlayerrender.c_left_hand_v = 4;
-        this.itemlayerrender.t_left_hand_i = 0;
-        this.itemlayerrender.t_left_hand_v = 2;
-//
-        this.itemlayerrender.c_right_hand_i = 1;
-        this.itemlayerrender.c_right_hand_v = 5;
-        this.itemlayerrender.t_right_hand_i = 1;
-        this.itemlayerrender.t_right_hand_v = 1;
-//
-        this.itemlayerrender.c_head_i = 5;
-        this.itemlayerrender.c_head_v = 1;
-        this.itemlayerrender.t_head_i = 5;
-        this.itemlayerrender.t_head_v = 0;
-//
+        this.itemlayerrender.left_hand_i = 0;
+        this.itemlayerrender.left_hand_v = 4;
+
+        this.itemlayerrender.right_hand_i = 1;
+        this.itemlayerrender.right_hand_v = 5;
+
+        this.itemlayerrender.mouth_i = 20;
+        this.itemlayerrender.mouth_v = 0;
+
+        this.itemlayerrender.head_i = 5;
+        this.itemlayerrender.head_v = 1;
+
         this.itemlayerrender.chest_i = 4;
-        this.itemlayerrender.chest_cv = 6;
-        this.itemlayerrender.chest_tyv = 0;
-        this.itemlayerrender.chest_tpv = 0;
-//
-        this.itemlayerrender.c_legs_i = 3;
-//        this.itemlayerrender.c_legs_v = 13;//! pos
-        this.itemlayerrender.t_legs_i = 3;
-//        this.itemlayerrender.t_legs_v = 10434;//!
-//
-        this.itemlayerrender.c_feet_i = 2;
-//        this.itemlayerrender.c_feet_v = 2196;//!
-        this.itemlayerrender.t_feet_i = 2;
-//        this.itemlayerrender.t_feet_v = 527;//!
+        this.itemlayerrender.chest_v = 6;
+
+        this.itemlayerrender.legs_i = 3;
+        this.itemlayerrender.legs_v = 0;
+
+        this.itemlayerrender.feet_i = 2;
+        this.itemlayerrender.feet_v = 0;
         return new IbukiRender(this.bothdata, RenderHelper.DATALOADER, this);
     }
 
