@@ -4,6 +4,7 @@ import com.nali.list.entities.SummerSSHimi;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.render.SkinningRender;
+import com.nali.small.entities.memory.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.render.SkinningEntitiesRender;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -21,7 +22,8 @@ public class SummerSSHimiRender<T extends SummerSSHimi> extends SkinningEntities
     @Override
     public void multiplyAnimation(T entities)
     {
-        SkinningRender skinningrender = ((SkinningRender)entities.client_object);
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)entities.bothentitiesmemory;
+        SkinningRender skinningrender = ((SkinningRender)cliententitiesmemory.objectrender);
 
         float head_pitch = skinningrender.head_pitch;
         if (skinningrender.head_pitch > 1.04719755119659774615F)

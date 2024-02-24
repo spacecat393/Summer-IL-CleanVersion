@@ -2,7 +2,9 @@ package com.nali.list.entities;
 
 import com.nali.data.BothData;
 import com.nali.render.SkinningRender;
-import com.nali.small.entities.bytes.SkinningEntitiesBytes;
+import com.nali.small.entities.bytes.WorkBytes;
+import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.SSHimiData;
@@ -19,10 +21,8 @@ import java.util.function.Supplier;
 
 public class SummerSSHimi extends SkinningEntities
 {
-//    public static int ID;
     public static int eggPrimary = 0xBE9478;
     public static int eggSecondary = 0xFFF6AE;
-//    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSHimiBytes.MAX_WORK];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSHimiData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
@@ -50,11 +50,6 @@ public class SummerSSHimi extends SkinningEntities
 
     static
     {
-//        for (int i = 0; i < BYTE_DATAPARAMETER_ARRAY.length; ++i)
-//        {
-//            BYTE_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSHimi.class, DataSerializers.BYTE);
-//        }
-
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
         {
             INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSHimi.class, DataSerializers.VARINT);
@@ -74,7 +69,9 @@ public class SummerSSHimi extends SkinningEntities
     @Override
     public void updateClient()
     {
-        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+        BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 
         if (frame > 267 && frame < 284)
@@ -111,8 +108,8 @@ public class SummerSSHimi extends SkinningEntities
         }
         else
         {
-            this.width = this.bothdata.Width() * scale;
-            this.height = this.bothdata.Height() * scale;
+            this.width = bothdata.Width() * scale;
+            this.height = bothdata.Height() * scale;
             skinningrender.model_boolean_array[9] = false;
             skinningrender.model_boolean_array[10] = false;
             skinningrender.model_boolean_array[11] = false;
@@ -124,49 +121,9 @@ public class SummerSSHimi extends SkinningEntities
     @Override
     public void initFakeFrame()
     {
-        ((SkinningRender)this.client_object).frame_int_array[0] = 379;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        ((SkinningRender)cliententitiesmemory.objectrender).frame_int_array[0] = 379;
     }
-
-//    @Override
-//    public void initWriteEntityToNBT(NBTTagCompound nbttagcompound)
-//    {
-//        nbttagcompound.setInteger("int_0", 1);
-//        nbttagcompound.setInteger("int_1", 2);
-//        nbttagcompound.setInteger("int_2", 6);
-//        nbttagcompound.setInteger("int_3", 3);
-//        nbttagcompound.setInteger("int_4", 4);
-//        nbttagcompound.setInteger("int_5", 8);
-//        nbttagcompound.setInteger("int_6", 7);
-//        nbttagcompound.setInteger("int_7", 9);
-//        nbttagcompound.setInteger("int_8", 5);
-//        nbttagcompound.setInteger("int_9", 0);
-//        nbttagcompound.setInteger("int_10", 0);
-//        nbttagcompound.setInteger("int_11", 0);
-//        nbttagcompound.setInteger("int_12", 0);
-//
-//        nbttagcompound.setInteger("int_13", 379);
-//    }
-//
-//    @Override
-//    public void initReadEntityFromNBT()
-//    {
-//        EntityDataManager entitydatamanager = this.getDataManager();
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[0], 1);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[1], 2);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[2], 6);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[3], 3);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[4], 4);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[5], 8);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[6], 7);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[7], 9);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[8], 5);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[9], 0);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[10], 0);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[11], 0);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[12], 0);
-//
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[13], 379);
-//    }
 
     @Override
     public BothData createBothData()
@@ -175,7 +132,7 @@ public class SummerSSHimi extends SkinningEntities
     }
 
     @Override
-    public SkinningEntitiesBytes createBytes()
+    public WorkBytes createWorkBytes()
     {
         return new SSHimiBytes();
     }
@@ -189,61 +146,33 @@ public class SummerSSHimi extends SkinningEntities
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(40.0D);
     }
 
-//    @Override
-//    public void onUpdate()
-//    {
-////        if (!this.world.isRemote)
-////        {
-////            this.getDataManager().set(BYTE_DATAPARAMETER_ARRAY[4], (byte)1);
-//////            EntityDataManager entitydatamanager = this.getDataManager();
-//////            int max_part = this.getMaxPart();
-//////            int frame = entitydatamanager.get(INTEGER_DATAPARAMETER_ARRAY[max_part]);
-//////            if (frame < 540)
-//////            {
-//////                entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[max_part], frame + 1);
-//////            }
-//////            else
-//////            {
-//////                entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[max_part], 0);
-//////            }
-////        }
-//        super.onUpdate();
-//        this.rotationYaw += 1.0F;
-//        this.rotationYawHead = this.rotationYaw;
-//    }
-
     @Override
     public void createServer()
     {
-        this.server_skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
+        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+        WorkBytes workbytes = serverentitiesmemory.workbytes;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
-        this.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-        this.skinningentitiesattack.max_ammo = 1;
-        this.skinningentitiesattack.minimum_distance = 32.0F;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.max_ammo = 1;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.minimum_distance = 32.0F;
 
-        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
-        this.server_skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> this.isZeroMove() && this.server_skinningentitiesliveframe_array[0].setFLoop(0),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoopFB(1),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward == 0 && this.server_skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
-            () -> this.server_skinningentitiesliveframe_array[0].setShoot(2, 11, 12, 13, false, this.skinningentitiesattack),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(3),
-            () -> this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(5),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.ON_PAT()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(6, this.skinningentitiesbytes.ON_PAT()),
-            //eat -> pat
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(7, this.skinningentitiesbytes.HARD_READY()),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SOFT_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(8, this.skinningentitiesbytes.SOFT_READY()),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoop(9),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(10)
+            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoopFB(1),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setShoot(2, 11, 12, 13, false, serverentitiesmemory.entitiesaimemory.skinningentitiesattack),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
+            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.ON_PAT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(6, workbytes.ON_PAT()),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.HARD_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(7, workbytes.HARD_READY()),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SOFT_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(8, workbytes.SOFT_READY()),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(9),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(10)
         };
     }
-
-//    @Override
-//    public DataParameter<Byte>[] getByteDataParameterArray()
-//    {
-//        return BYTE_DATAPARAMETER_ARRAY;
-//    }
 
     @Override
     public DataParameter<Integer>[] getIntegerDataParameterArray()
@@ -258,8 +187,8 @@ public class SummerSSHimi extends SkinningEntities
     }
 
     @Override
-    public Object createClientObject()
+    public Object createObjectRender()
     {
-        return new SSHimiRender(this.bothdata, RenderHelper.DATALOADER, this);
+        return new SSHimiRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

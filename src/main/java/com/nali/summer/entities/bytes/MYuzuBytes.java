@@ -1,8 +1,8 @@
 package com.nali.summer.entities.bytes;
 
-import com.nali.small.entities.bytes.SkinningEntitiesBytes;
+import com.nali.small.entities.bytes.WorkBytes;
 
-public class MYuzuBytes implements SkinningEntitiesBytes
+public class MYuzuBytes implements WorkBytes
 {
     @Override
     public int LOCK_INVENTORY()

@@ -2,7 +2,9 @@ package com.nali.list.entities;
 
 import com.nali.data.BothData;
 import com.nali.render.SkinningRender;
-import com.nali.small.entities.bytes.SkinningEntitiesBytes;
+import com.nali.small.entities.bytes.WorkBytes;
+import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.SSZukoData;
@@ -72,7 +74,8 @@ public class SummerSSZuko extends SkinningEntities
     @Override
     public void updateClient()
     {
-        SSZukoRender sszukorender = (SSZukoRender)this.client_object;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        SSZukoRender sszukorender = (SSZukoRender)cliententitiesmemory.objectrender;
         int frame = sszukorender.frame_int_array[0];
 
         if (frame > 481 && frame < 533)
@@ -96,14 +99,16 @@ public class SummerSSZuko extends SkinningEntities
     @Override
     public void initFakeFrame()
     {
-        SSZukoRender sszukorender = (SSZukoRender)this.client_object;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        SSZukoRender sszukorender = (SSZukoRender)cliententitiesmemory.objectrender;
         Arrays.fill(sszukorender.seahouserender.model_boolean_array, false);
     }
 
     @Override
     public AxisAlignedBB getMouthAxisAlignedBB()
     {
-        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
         int frame = skinningrender.frame_int_array[0];
 
         if (frame > 532 && frame < 751)
@@ -122,65 +127,15 @@ public class SummerSSZuko extends SkinningEntities
         }
     }
 
-//    @Override
-//    public void initWriteEntityToNBT(NBTTagCompound nbttagcompound)
-//    {
-//        nbttagcompound.setInteger("int_0", 25);
-//        nbttagcompound.setInteger("int_1", 9);
-//        nbttagcompound.setInteger("int_2", 26);
-//        nbttagcompound.setInteger("int_3", 27);
-//        nbttagcompound.setInteger("int_4", 27);
-//        nbttagcompound.setInteger("int_5", 28);
-//        nbttagcompound.setInteger("int_6", 29);
-//        nbttagcompound.setInteger("int_7", 30);
-//        nbttagcompound.setInteger("int_8", 31);
-//        nbttagcompound.setInteger("int_9", 32);
-//        nbttagcompound.setInteger("int_10", 32);
-//        nbttagcompound.setInteger("int_11", 32);
-//        nbttagcompound.setInteger("int_12", 32);
-//        nbttagcompound.setInteger("int_13", 31);
-//
-//        nbttagcompound.setInteger("int_15", -1);
-//    }
-//
-//    @Override
-//    public void initReadEntityFromNBT()
-//    {
-//        EntityDataManager entitydatamanager = this.getDataManager();
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[0], 25);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[1], 9);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[2], 26);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[3], 27);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[4], 27);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[5], 28);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[6], 29);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[7], 30);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[8], 31);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[9], 32);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[10], 32);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[11], 32);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[12], 32);
-//        entitydatamanager.set(INTEGER_DATAPARAMETER_ARRAY[13], 31);
-//    }
-
     @Override
-    public void updateRendering(SkinningRender skinningrender, EntityDataManager entitydatamanager)
+    public void updateRendering(EntityDataManager entitydatamanager)
     {
-        SSZukoRender sszukorender = (SSZukoRender)skinningrender;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        SSZukoRender sszukorender = (SSZukoRender)cliententitiesmemory.objectrender;
 
         DataParameter<Integer>[] integer_dataparameter = this.getIntegerDataParameterArray();
-//        int i = 0;
-//        while (i < skinningrender.texture_index_int_array.length)
-//        {
-//            skinningrender.texture_index_int_array[i] = entitydatamanager.get(integer_dataparameter[i++]);
-//        }
-//
-//        for (int x = 0; i < skinningrender.texture_index_int_array.length + sszukorender.seahouserender.texture_index_int_array.length; ++x)
-//        {
-//            sszukorender.seahouserender.texture_index_int_array[x] = entitydatamanager.get(integer_dataparameter[i++]);
-//        }
 
-        skinningrender.frame_int_array[0] = entitydatamanager.get(integer_dataparameter[0]);
+        sszukorender.frame_int_array[0] = entitydatamanager.get(integer_dataparameter[0]);
         sszukorender.seahouserender.frame_int_array[0] = entitydatamanager.get(integer_dataparameter[1]);
     }
 
@@ -191,7 +146,7 @@ public class SummerSSZuko extends SkinningEntities
     }
 
     @Override
-    public SkinningEntitiesBytes createBytes()
+    public WorkBytes createWorkBytes()
     {
         return new SSZukoBytes();
     }
@@ -208,36 +163,30 @@ public class SummerSSZuko extends SkinningEntities
     @Override
     public void createServer()
     {
-        this.server_skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[2];
+        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+        WorkBytes workbytes = serverentitiesmemory.workbytes;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[2];
 
-        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, SSZUKO_FRAME_INT_2D_ARRAY);
-        this.server_skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, SSZUKO_FRAME_INT_2D_ARRAY);
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> this.isZeroMove() && this.server_skinningentitiesliveframe_array[0].setTLoop(0),
-            () -> this.server_skinningentitiesliveframe_array[0].setProtect(6, 7, 8, 9, this.skinningentitiesprotect),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(1),
-            () -> this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(2),
-            //pat -> soft_ready
-            //eat -> soft_ready
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(3, this.skinningentitiesbytes.HARD_READY()),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SOFT_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(4, this.skinningentitiesbytes.SOFT_READY()),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(5)
+            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(0),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setProtect(6, 7, 8, 9, serverentitiesmemory.entitiesaimemory.skinningentitiesprotect),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
+            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(2),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.HARD_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(3, workbytes.HARD_READY()),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SOFT_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(4, workbytes.SOFT_READY()),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5)
         };
 
-        this.server_skinningentitiesliveframe_array[1] = new SkinningEntitiesLiveFrame(this, 1, SEAHOUSE_FRAME_INT_2D_ARRAY);
-        this.server_skinningentitiesliveframe_array[1].condition_boolean_supplier_array = new Supplier[]
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1] = new SkinningEntitiesLiveFrame(this, 1, SEAHOUSE_FRAME_INT_2D_ARRAY);
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> this.server_skinningentitiesliveframe_array[1].setProtect(2, 3, 4, 5, this.skinningentitiesprotect),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1 && this.server_skinningentitiesliveframe_array[1].setFLoopFree(0, this.skinningentitiesbytes.HARD_READY()),
-            () -> this.server_skinningentitiesliveframe_array[1].setTLoop(1)
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setProtect(2, 3, 4, 5, serverentitiesmemory.entitiesaimemory.skinningentitiesprotect),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.HARD_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setFLoopFree(0, workbytes.HARD_READY()),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setTLoop(1)
         };
     }
-
-//    @Override
-//    public DataParameter<Byte>[] getByteDataParameterArray()
-//    {
-//        return BYTE_DATAPARAMETER_ARRAY;
-//    }
 
     @Override
     public DataParameter<Integer>[] getIntegerDataParameterArray()
@@ -252,8 +201,8 @@ public class SummerSSZuko extends SkinningEntities
     }
 
     @Override
-    public Object createClientObject()
+    public Object createObjectRender()
     {
-        return new SSZukoRender(this.bothdata, RenderHelper.DATALOADER, this);
+        return new SSZukoRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

@@ -2,13 +2,16 @@ package com.nali.list.entities;
 
 import com.nali.data.BothData;
 import com.nali.render.SkinningRender;
-import com.nali.small.entities.bytes.SkinningEntitiesBytes;
+import com.nali.small.entities.bytes.WorkBytes;
+import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.IbukiData;
 import com.nali.summer.entities.bytes.IbukiBytes;
-import com.nali.summer.render.RenderHelper;
+import com.nali.summer.entities.memory.client.ClientIbukiMemory;
 import com.nali.summer.render.IbukiRender;
+import com.nali.summer.render.RenderHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -58,8 +61,6 @@ public class SummerIbuki extends SkinningEntities
         { 776, 826 }// 22 ride-reload
     };
 
-    public int client_eyes_tick;
-
     static
     {
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
@@ -81,7 +82,9 @@ public class SummerIbuki extends SkinningEntities
     @Override
     public void updateClient()
     {
-        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        ClientIbukiMemory cliententitiesmemory = (ClientIbukiMemory)this.bothentitiesmemory;
+        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+        BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 
         if (this.ticksExisted % 200 == 0)
@@ -91,9 +94,9 @@ public class SummerIbuki extends SkinningEntities
             skinningrender.model_boolean_array[11 + 6] = false;
             skinningrender.model_boolean_array[2 + 6] = true;
             skinningrender.model_boolean_array[12 + 6] = true;
-            this.client_eyes_tick = 20;
+            cliententitiesmemory.client_eyes_tick = 20;
         }
-        else if (--this.client_eyes_tick <= 0)
+        else if (--cliententitiesmemory.client_eyes_tick <= 0)
         {
             skinningrender.model_boolean_array[0 + 6] = true;
             skinningrender.model_boolean_array[1 + 6] = true;
@@ -111,15 +114,16 @@ public class SummerIbuki extends SkinningEntities
         }
         else
         {
-            this.width = this.bothdata.Width() * scale;
-            this.height = this.bothdata.Height() * scale;
+            this.width = bothdata.Width() * scale;
+            this.height = bothdata.Height() * scale;
         }
     }
 
     @Override
     public void initFakeFrame()
     {
-        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
         skinningrender.model_boolean_array[0 + 6] = false;
         skinningrender.model_boolean_array[1 + 6] = false;
         skinningrender.model_boolean_array[11 + 6] = false;
@@ -134,7 +138,7 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
-    public SkinningEntitiesBytes createBytes()
+    public WorkBytes createWorkBytes()
     {
         return new IbukiBytes();
     }
@@ -151,37 +155,35 @@ public class SummerIbuki extends SkinningEntities
     @Override
     public void createServer()
     {
-        this.skinningentitiesplaywith.clasz = SummerIroha.class;
+        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+        WorkBytes workbytes = serverentitiesmemory.workbytes;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.clasz = SummerIroha.class;
 
-        this.server_skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
-        this.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-        this.skinningentitiesattack.max_ammo = 32;
-        this.skinningentitiesattack.minimum_distance = 17.0F;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.max_ammo = 32;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.minimum_distance = 17.0F;
 
-        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
-        this.server_skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
             () ->
             {
-                boolean result = this.skinningentitiesplaywith.should_play;
-                this.server_skinningentitiesliveframe_array[0].lock = result;
+                boolean result = serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.should_play;
+                serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].lock = result;
                 return result;
             },
-//            () -> this.server_skinningentitiesliveframe_array[0].setFLoop(13, this.skinningentitiesplaywith.should_play && this.skinningentitiesplaywith.playwith_skinningentities.server_work_byte_array[this.skinningentitiesplaywith.playwith_skinningentities.skinningentitiesbytes.SIT()] == 1),
-//            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(14, this.skinningentitiesplaywith.should_play),
-            () -> this.isZeroMove() && this.server_skinningentitiesliveframe_array[0].setFLoop(0),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(1),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward == 0 && this.server_skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
-            () -> this.server_skinningentitiesliveframe_array[0].setShoot(2, 10, 11, 12, false, this.skinningentitiesattack),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(3),
-            () -> this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(5),
-            //pat -> soft_ready
-            //eat -> soft_ready
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(6, this.skinningentitiesbytes.HARD_READY()),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SOFT_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(7, this.skinningentitiesbytes.SOFT_READY()),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(8),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(9)
+            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setShoot(2, 10, 11, 12, false, serverentitiesmemory.entitiesaimemory.skinningentitiesattack),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
+            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.HARD_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(6, workbytes.HARD_READY()),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SOFT_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(7, workbytes.SOFT_READY()),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(8),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(9)
         };
     }
 
@@ -198,49 +200,51 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
-    public Object createClientObject()
+    public Object createObjectRender()
     {
-//        this.itemlayerrender.left_hand_y = -179.9285F;
-//        this.itemlayerrender.left_hand_p = -5.5769753F;
-//        this.itemlayerrender.right_hand_y = -5.5689473F;
-//        this.itemlayerrender.right_hand_p = -6.0838437F;
-//        this.itemlayerrender.head_y = -91.6525F;
-//        this.itemlayerrender.head_p = 4.104715F;
-//        this.itemlayerrender.legs_y = 84.03490369025576F / 2.0F + 180.0F;
-//        this.itemlayerrender.legs_p = 6.773068689298493F;
-//        this.itemlayerrender.feet_y = -17.22647259946362F / 2.0F;
-//        this.itemlayerrender.feet_p = -174.64395393898405F;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+//        cliententitiesmemory.itemlayerrender.left_hand_y = -179.9285F;
+//        cliententitiesmemory.itemlayerrender.left_hand_p = -5.5769753F;
+//        cliententitiesmemory.itemlayerrender.right_hand_y = -5.5689473F;
+//        cliententitiesmemory.itemlayerrender.right_hand_p = -6.0838437F;
+//        cliententitiesmemory.itemlayerrender.head_y = -91.6525F;
+//        cliententitiesmemory.itemlayerrender.head_p = 4.104715F;
+//        cliententitiesmemory.itemlayerrender.legs_y = 84.03490369025576F / 2.0F + 180.0F;
+//        cliententitiesmemory.itemlayerrender.legs_p = 6.773068689298493F;
+//        cliententitiesmemory.itemlayerrender.feet_y = -17.22647259946362F / 2.0F;
+//        cliententitiesmemory.itemlayerrender.feet_p = -174.64395393898405F;
 
-        this.itemlayerrender.left_hand_i = 0;
-        this.itemlayerrender.left_hand_v = 4;
+        cliententitiesmemory.itemlayerrender.left_hand_i = 0;
+        cliententitiesmemory.itemlayerrender.left_hand_v = 4;
 
-        this.itemlayerrender.right_hand_i = 1;
-        this.itemlayerrender.right_hand_v = 5;
+        cliententitiesmemory.itemlayerrender.right_hand_i = 1;
+        cliententitiesmemory.itemlayerrender.right_hand_v = 5;
 
-        this.itemlayerrender.mouth_i = 20;
-        this.itemlayerrender.mouth_v = 0;
+        cliententitiesmemory.itemlayerrender.mouth_i = 20;
+        cliententitiesmemory.itemlayerrender.mouth_v = 0;
 
-        this.itemlayerrender.head_i = 5;
-        this.itemlayerrender.head_v = 1;
+        cliententitiesmemory.itemlayerrender.head_i = 5;
+        cliententitiesmemory.itemlayerrender.head_v = 1;
 
-        this.itemlayerrender.chest_i = 4;
-        this.itemlayerrender.chest_v = 6;
+        cliententitiesmemory.itemlayerrender.chest_i = 4;
+        cliententitiesmemory.itemlayerrender.chest_v = 6;
 
-        this.itemlayerrender.legs_i = 3;
-        this.itemlayerrender.legs_v = 0;
+        cliententitiesmemory.itemlayerrender.legs_i = 3;
+        cliententitiesmemory.itemlayerrender.legs_v = 0;
 
-        this.itemlayerrender.feet_i = 2;
-        this.itemlayerrender.feet_v = 0;
-        return new IbukiRender(this.bothdata, RenderHelper.DATALOADER, this);
+        cliententitiesmemory.itemlayerrender.feet_i = 2;
+        cliententitiesmemory.itemlayerrender.feet_v = 0;
+        return new IbukiRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 
     @Override
     public void onShouldPlayWith()
     {
+        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
         float scale = this.getDataManager().get(this.getFloatDataParameterArray()[0]);
         float height = 1.5F * scale;
 
-        SkinningEntities playwith_skinningentities = this.skinningentitiesplaywith.playwith_skinningentities;
+        SkinningEntities playwith_skinningentities = serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities;
         Vec3d view_vec3d = this.getVectorForRotation(0.0F, playwith_skinningentities.rotationYaw + 90.0F).scale(scale * 0.3F);
         Vec3d main_vec3d = this.getVectorForRotation(0.0F, playwith_skinningentities.rotationYaw).scale(scale * 0.2F);
         this.setPositionAndUpdate(playwith_skinningentities.posX + view_vec3d.x + main_vec3d.x, playwith_skinningentities.posY + height / 1.25F, playwith_skinningentities.posZ + view_vec3d.z + main_vec3d.z);
@@ -253,7 +257,7 @@ public class SummerIbuki extends SkinningEntities
     @Override
     public void collideWithNearbyEntities()
     {
-        if (this.skinningentitiesplaywith == null || !this.skinningentitiesplaywith.should_play)
+        if (this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith == null || !((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.should_play)
         {
             super.collideWithNearbyEntities();
         }
@@ -262,6 +266,12 @@ public class SummerIbuki extends SkinningEntities
     @Override
     public boolean canBePushed()
     {
-        return this.skinningentitiesplaywith == null || !this.skinningentitiesplaywith.should_play;
+        return this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith == null || !((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.should_play;
+    }
+
+    @Override
+    public ClientEntitiesMemory createClientEntitiesMemory(BothData bothdata, WorkBytes workbytes)
+    {
+        return new ClientIbukiMemory(bothdata, workbytes);
     }
 }

@@ -2,7 +2,9 @@ package com.nali.list.entities;
 
 import com.nali.data.BothData;
 import com.nali.render.SkinningRender;
-import com.nali.small.entities.bytes.SkinningEntitiesBytes;
+import com.nali.small.entities.bytes.WorkBytes;
+import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.MYuzuData;
@@ -63,13 +65,15 @@ public class SummerMYuzu extends SkinningEntities
     @Override
     public void updateClient()
     {
-        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+        BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 
         float scale = skinningrender.scale;
         if (frame < 513)
         {
-            this.width = this.bothdata.Width() * scale;
+            this.width = bothdata.Width() * scale;
             this.height = 0.65F * scale;
         }
         else if (/*frame > 512 && */frame < 564)
@@ -79,15 +83,16 @@ public class SummerMYuzu extends SkinningEntities
         }
         else
         {
-            this.width = this.bothdata.Width() * scale;
-            this.height = this.bothdata.Height() * scale;
+            this.width = bothdata.Width() * scale;
+            this.height = bothdata.Height() * scale;
         }
     }
 
     @Override
     public void initFakeFrame()
     {
-        ((SkinningRender)this.client_object).frame_int_array[0] = 110;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        ((SkinningRender)cliententitiesmemory.objectrender).frame_int_array[0] = 110;
     }
 
     @Override
@@ -97,7 +102,7 @@ public class SummerMYuzu extends SkinningEntities
     }
 
     @Override
-    public SkinningEntitiesBytes createBytes()
+    public WorkBytes createWorkBytes()
     {
         return new MYuzuBytes();
     }
@@ -114,39 +119,41 @@ public class SummerMYuzu extends SkinningEntities
     @Override
     public void createServer()
     {
-        this.server_skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
+        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+        WorkBytes workbytes = serverentitiesmemory.workbytes;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
-        this.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-//        this.skinningentitiesattack.max_ammo = 4;
-        this.skinningentitiesattack.minimum_distance = 10.0F;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
+//        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.max_ammo = 4;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.minimum_distance = 10.0F;
 
-        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
 
-        this.server_skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> this.isZeroMove() && this.server_skinningentitiesliveframe_array[0].setFLoop(0),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(1),
+            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
 
-            () -> !(this.skinningentitiesattack.state == 0 || this.skinningentitiesattack.state == 1) && this.server_skinningentitiesliveframe_array[0].setFLoopOffSet(2, 2) && this.skinningentitiesfindmove.endGoalT(),
+            () -> !(serverentitiesmemory.entitiesaimemory.skinningentitiesattack.state == 0 || serverentitiesmemory.entitiesaimemory.skinningentitiesattack.state == 1) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(2, 2) && serverentitiesmemory.entitiesaimemory.skinningentitiesfindmove.endGoalT(),
             () ->
             {
-                boolean result = this.skinningentitiesattack.state == 0 || this.skinningentitiesattack.state == 1;
+                boolean result = serverentitiesmemory.entitiesaimemory.skinningentitiesattack.state == 0 || serverentitiesmemory.entitiesaimemory.skinningentitiesattack.state == 1;
                 if (result)
                 {
-                    this.server_skinningentitiesliveframe_array[0].step = 1;
+                    serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].step = 1;
 
-                    if (this.server_frame_int_array[this.server_skinningentitiesliveframe_array[0].integer_index] < this.server_skinningentitiesliveframe_array[0].int_2d_array[2][0] || this.server_frame_int_array[this.server_skinningentitiesliveframe_array[0].integer_index] >= this.server_skinningentitiesliveframe_array[0].int_2d_array[2][1])
+                    if (serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] < serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].int_2d_array[2][0] || serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] >= serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].int_2d_array[2][1])
                     {
-                        this.server_frame_int_array[this.server_skinningentitiesliveframe_array[0].integer_index] = this.server_skinningentitiesliveframe_array[0].int_2d_array[2][0];
-                        this.server_skinningentitiesliveframe_array[0].step = 0;
+                        serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] = serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].int_2d_array[2][0];
+                        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].step = 0;
                         return true;
                     }
 
-                    for (int attack_frame : this.skinningentitiesattack.attack_frame_int_array)
+                    for (int attack_frame : serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array)
                     {
-                        if (this.server_frame_int_array[this.server_skinningentitiesliveframe_array[0].integer_index] == attack_frame)
+                        if (serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] == attack_frame)
                         {
-                            this.skinningentitiesattack.state = 1;
+                            serverentitiesmemory.entitiesaimemory.skinningentitiesattack.state = 1;
                             break;
                         }
                     }
@@ -155,14 +162,13 @@ public class SummerMYuzu extends SkinningEntities
                 return result;
             },
 
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(3),
-            () -> this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(4),
-            //eat -> pat
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.ON_PAT()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(9, this.skinningentitiesbytes.ON_PAT()),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(5, this.skinningentitiesbytes.HARD_READY()),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SOFT_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(6, this.skinningentitiesbytes.SOFT_READY()),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(7),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(8)
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
+            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(4),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.ON_PAT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(9, workbytes.ON_PAT()),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.HARD_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(5, workbytes.HARD_READY()),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SOFT_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(6, workbytes.SOFT_READY()),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(7),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(8)
         };
     }
 
@@ -179,8 +185,8 @@ public class SummerMYuzu extends SkinningEntities
     }
 
     @Override
-    public Object createClientObject()
+    public Object createObjectRender()
     {
-        return new MYuzuRender(this.bothdata, RenderHelper.DATALOADER, this);
+        return new MYuzuRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

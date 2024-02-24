@@ -1,14 +1,14 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.small.entities.bytes.SkinningEntitiesBytes;
+import com.nali.small.entities.bytes.WorkBytes;
+import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.E22LockerData;
 import com.nali.summer.entities.bytes.E22LockerBytes;
 import com.nali.summer.render.E22LockerRender;
 import com.nali.summer.render.RenderHelper;
-import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -58,7 +58,7 @@ public class SummerE22Locker extends SkinningEntities
     }
 
     @Override
-    public SkinningEntitiesBytes createBytes()
+    public WorkBytes createWorkBytes()
     {
         return new E22LockerBytes();
     }
@@ -85,28 +85,30 @@ public class SummerE22Locker extends SkinningEntities
     @Override
     public void updateServer()
     {
+        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
         super.updateServer();
 
-        if (this.server_skinningentities != null && ((WorldServer)this.world).getEntityFromUuid(this.server_skinningentities.getUniqueID()) == null)
+        if (serverentitiesmemory.skinningentities != null && ((WorldServer)this.world).getEntityFromUuid(serverentitiesmemory.skinningentities.getUniqueID()) == null)
         {
-            this.server_skinningentities = null;
+            serverentitiesmemory.skinningentities = null;
         }
 
-//        this.rotationYawHead = this.rotationYaw;
         this.renderYawOffset = this.rotationYaw;
     }
 
     @Override
     public void createServer()
     {
-        this.server_skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
+        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+        WorkBytes workbytes = serverentitiesmemory.workbytes;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
-        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
-        this.server_skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> this.server_skinningentities != null && this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(0, this.skinningentitiesbytes.SIT()),
-            () -> this.server_skinningentities != null && this.server_skinningentitiesliveframe_array[0].setFLoop(2),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(1)
+            () -> serverentitiesmemory.skinningentities != null && serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(0, workbytes.SIT()),
+            () -> serverentitiesmemory.skinningentities != null && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(2),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1)
         };
     }
 
@@ -121,12 +123,6 @@ public class SummerE22Locker extends SkinningEntities
     {
     }
 
-//    @Override
-//    public boolean canBeCollidedWith()
-//    {
-//        return false;
-//    }
-
     @Override
     public boolean canBePushed()
     {
@@ -136,9 +132,14 @@ public class SummerE22Locker extends SkinningEntities
     @Override
     public void heal(float value)
     {
-        if (this.server_skinningentities != null)
+        if (!this.world.isRemote)
         {
-            this.server_skinningentities.heal(value);
+            ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+
+            if (serverentitiesmemory.skinningentities != null)
+            {
+                serverentitiesmemory.skinningentities.heal(value);
+            }
         }
         else
         {
@@ -149,7 +150,7 @@ public class SummerE22Locker extends SkinningEntities
     @Override
     public boolean canEat()
     {
-        return this.world.isRemote || this.server_skinningentities != null;
+        return this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).skinningentities != null;
     }
 
     @Override
@@ -171,8 +172,8 @@ public class SummerE22Locker extends SkinningEntities
     }
 
     @Override
-    public Object createClientObject()
+    public Object createObjectRender()
     {
-        return new E22LockerRender(this.bothdata, RenderHelper.DATALOADER, this);
+        return new E22LockerRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

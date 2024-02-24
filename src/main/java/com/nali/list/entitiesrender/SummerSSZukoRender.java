@@ -3,7 +3,7 @@ package com.nali.list.entitiesrender;
 import com.nali.list.entities.SummerSSZuko;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
-import com.nali.render.SkinningRender;
+import com.nali.small.entities.memory.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.render.SkinningEntitiesRender;
 import com.nali.summer.render.SSZukoRender;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -28,7 +28,8 @@ public class SummerSSZukoRender<T extends SummerSSZuko> extends SkinningEntities
     @Override
     public void multiplyAnimation(T entities)
     {
-        SSZukoRender sszukorender = ((SSZukoRender)entities.client_object);
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)entities.bothentitiesmemory;
+        SSZukoRender sszukorender = ((SSZukoRender)cliententitiesmemory.objectrender);
 
         float head_pitch = sszukorender.head_pitch;
         if (sszukorender.head_pitch > 1.04719755119659774615F)
@@ -52,7 +53,8 @@ public class SummerSSZukoRender<T extends SummerSSZuko> extends SkinningEntities
     public void updateData(T entities, float partialTicks)
     {
         super.updateData(entities, partialTicks);
-        SSZukoRender sszukorender = ((SSZukoRender)entities.client_object);
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)entities.bothentitiesmemory;
+        SSZukoRender sszukorender = ((SSZukoRender)cliententitiesmemory.objectrender);
         sszukorender.seahouserender.objectworlddraw.renderWorld();
     }
 }

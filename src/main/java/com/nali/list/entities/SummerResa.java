@@ -2,13 +2,16 @@ package com.nali.list.entities;
 
 import com.nali.data.BothData;
 import com.nali.render.SkinningRender;
-import com.nali.small.entities.bytes.SkinningEntitiesBytes;
+import com.nali.small.entities.bytes.WorkBytes;
+import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.ResaData;
 import com.nali.summer.entities.bytes.ResaBytes;
-import com.nali.summer.render.ResaRender;
+import com.nali.summer.entities.memory.client.ClientResaMemory;
 import com.nali.summer.render.RenderHelper;
+import com.nali.summer.render.ResaRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -46,8 +49,6 @@ public class SummerResa extends SkinningEntities
         { 406, 457 }
     };
 
-    public int client_eyes_tick;
-
     static
     {
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
@@ -69,7 +70,9 @@ public class SummerResa extends SkinningEntities
     @Override
     public void updateClient()
     {
-        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        ClientResaMemory cliententitiesmemory = (ClientResaMemory)this.bothentitiesmemory;
+        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+        BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 
         if (this.ticksExisted % 200 == 0)
@@ -77,9 +80,9 @@ public class SummerResa extends SkinningEntities
             skinningrender.model_boolean_array[0] = false;
             skinningrender.model_boolean_array[9] = false;
             skinningrender.model_boolean_array[6] = true;
-            this.client_eyes_tick = 20;
+            cliententitiesmemory.client_eyes_tick = 20;
         }
-        else if (--this.client_eyes_tick <= 0)
+        else if (--cliententitiesmemory.client_eyes_tick <= 0)
         {
             skinningrender.model_boolean_array[0] = true;
             skinningrender.model_boolean_array[9] = true;
@@ -103,8 +106,8 @@ public class SummerResa extends SkinningEntities
         }
         else
         {
-            this.width = this.bothdata.Width() * scale;
-            this.height = this.bothdata.Height() * scale;
+            this.width = bothdata.Width() * scale;
+            this.height = bothdata.Height() * scale;
         }
 
         skinningrender.model_boolean_array[4] = false;
@@ -113,33 +116,12 @@ public class SummerResa extends SkinningEntities
     @Override
     public void initFakeFrame()
     {
-        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
         skinningrender.model_boolean_array[0] = false;
         skinningrender.model_boolean_array[9] = false;
         skinningrender.model_boolean_array[6] = true;
     }
-
-//    @Override
-//    public AxisAlignedBB getMouthAxisAlignedBB()
-//    {
-//        SkinningRender skinningrender = (SkinningRender)this.client_object;
-//        int frame = skinningrender.frame_int_array[0];
-//
-//        if (frame > 282 && frame < 477)
-//        {
-//            double hw = this.width / 2.0F;
-//            double hh = 0.5;
-//            Vec3d view_vec3d = this.getVectorForRotation(this.rotationPitch, this.rotationYaw + 90.0F).scale(0.5);
-//            double x = this.posX + view_vec3d.x;
-//            double y = this.posY + this.height / 2.0F + view_vec3d.y;
-//            double z = this.posZ + view_vec3d.z;
-//            return new AxisAlignedBB(x - hw, y, z - hw, x + hw, y + hh, z + hw);
-//        }
-//        else
-//        {
-//            return super.getMouthAxisAlignedBB();
-//        }
-//    }
 
     @Override
     public BothData createBothData()
@@ -148,7 +130,7 @@ public class SummerResa extends SkinningEntities
     }
 
     @Override
-    public SkinningEntitiesBytes createBytes()
+    public WorkBytes createWorkBytes()
     {
         return new ResaBytes();
     }
@@ -165,27 +147,27 @@ public class SummerResa extends SkinningEntities
     @Override
     public void createServer()
     {
-        this.server_skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
+        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+        WorkBytes workbytes = serverentitiesmemory.workbytes;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
-        this.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-        this.skinningentitiesattack.max_ammo = 4;
-        this.skinningentitiesattack.minimum_distance = 12.0F;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.max_ammo = 4;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.minimum_distance = 12.0F;
 
-        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
-        this.server_skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> this.isZeroMove() && this.server_skinningentitiesliveframe_array[0].setFLoop(0),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(1),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward == 0 && this.server_skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
-            () -> this.server_skinningentitiesliveframe_array[0].setShoot(2, 10, 11, 12, false, this.skinningentitiesattack),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(3),
-            () -> this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(5),
-            //pat -> soft_ready
-            //eat -> soft_ready
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(6, this.skinningentitiesbytes.HARD_READY()),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SOFT_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(7, this.skinningentitiesbytes.SOFT_READY()),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(8),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(9)
+            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setShoot(2, 10, 11, 12, false, serverentitiesmemory.entitiesaimemory.skinningentitiesattack),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
+            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.HARD_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(6, workbytes.HARD_READY()),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SOFT_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(7, workbytes.SOFT_READY()),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(8),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(9)
         };
     }
 
@@ -202,8 +184,14 @@ public class SummerResa extends SkinningEntities
     }
 
     @Override
-    public Object createClientObject()
+    public Object createObjectRender()
     {
-        return new ResaRender(this.bothdata, RenderHelper.DATALOADER, this);
+        return new ResaRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+    }
+
+    @Override
+    public ClientEntitiesMemory createClientEntitiesMemory(BothData bothdata, WorkBytes workbytes)
+    {
+        return new ClientResaMemory(bothdata, workbytes);
     }
 }

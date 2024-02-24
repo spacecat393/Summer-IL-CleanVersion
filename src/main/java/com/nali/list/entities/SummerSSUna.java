@@ -2,13 +2,16 @@ package com.nali.list.entities;
 
 import com.nali.data.BothData;
 import com.nali.render.SkinningRender;
-import com.nali.small.entities.bytes.SkinningEntitiesBytes;
+import com.nali.small.entities.bytes.WorkBytes;
+import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.SSUnaData;
 import com.nali.summer.entities.bytes.SSUnaBytes;
-import com.nali.summer.render.SSUnaRender;
+import com.nali.summer.entities.memory.server.ServerSSUnaMemory;
 import com.nali.summer.render.RenderHelper;
+import com.nali.summer.render.SSUnaRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -50,8 +53,6 @@ public class SummerSSUna extends SkinningEntities
         { 563, 611 }
     };
 
-    public boolean server_step_reload;
-
     static
     {
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
@@ -73,7 +74,9 @@ public class SummerSSUna extends SkinningEntities
     @Override
     public void updateClient()
     {
-        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+        BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 
         if (frame < 264 || (frame > 562 && frame < 612))
@@ -88,7 +91,7 @@ public class SummerSSUna extends SkinningEntities
         float scale = skinningrender.scale;
         if (frame > 314 && frame < 351)
         {
-            this.width = this.bothdata.Width() * scale;
+            this.width = bothdata.Width() * scale;
             this.height = 0.65F * scale;
         }
         else if (frame > 263 && frame < 315)
@@ -98,15 +101,16 @@ public class SummerSSUna extends SkinningEntities
         }
         else
         {
-            this.width = this.bothdata.Width() * scale;
-            this.height = this.bothdata.Height() * scale;
+            this.width = bothdata.Width() * scale;
+            this.height = bothdata.Height() * scale;
         }
     }
 
     @Override
     public AxisAlignedBB getMouthAxisAlignedBB()
     {
-        SkinningRender skinningrender = (SkinningRender)this.client_object;
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
         int frame = skinningrender.frame_int_array[0];
 
         if (frame > 314 && frame < 351)
@@ -132,7 +136,7 @@ public class SummerSSUna extends SkinningEntities
     }
 
     @Override
-    public SkinningEntitiesBytes createBytes()
+    public WorkBytes createWorkBytes()
     {
         return new SSUnaBytes();
     }
@@ -149,55 +153,46 @@ public class SummerSSUna extends SkinningEntities
     @Override
     public void createServer()
     {
-        this.server_skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
+        ServerSSUnaMemory serverentitiesmemory = (ServerSSUnaMemory)this.bothentitiesmemory;
+        WorkBytes workbytes = serverentitiesmemory.workbytes;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
-        this.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-        this.skinningentitiesattack.max_ammo = 8;
-        this.skinningentitiesattack.minimum_distance = 6.0F;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.max_ammo = 8;
+        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.minimum_distance = 6.0F;
 
-        this.server_skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
-        this.server_skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
+        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> this.isZeroMove() && this.server_skinningentitiesliveframe_array[0].setFLoop(0),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SIT()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoopFB(1),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward == 0 && this.server_skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
+            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoopFB(1),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
             () ->
             {
                 int id = 13;
-//                if (this.server_step_reload)
-                if (this.main_server_work_byte_array[this.skinningentitiesbytes.AMMO()] <= 0)
+                if (serverentitiesmemory.main_work_byte_array[workbytes.AMMO()] <= 0)
                 {
-                    if (this.server_step_reload)
+                    if (serverentitiesmemory.server_step_reload)
                     {
                         id = 12;
                     }
-//                    id = 12;
-//                    if (this.server_frame_int_array[this.server_skinningentitiesliveframe_array[0].integer_index] < this.server_skinningentitiesliveframe_array[0].int_2d_array[13][0] || this.server_frame_int_array[this.server_skinningentitiesliveframe_array[0].integer_index] > this.server_skinningentitiesliveframe_array[0].int_2d_array[13][1])
-//                    {
-//                    if (this.server_frame_int_array[this.server_skinningentitiesliveframe_array[0].integer_index] == this.server_skinningentitiesliveframe_array[0].int_2d_array[id][1])
-//                    {
-//                        this.server_step_reload = false;
-//                    }
-//                    }
                 }
                 else
                 {
                     if (this.ticksExisted % 50 == 0)
                     {
-                        this.server_step_reload = !this.server_step_reload;
+                        serverentitiesmemory.server_step_reload = !serverentitiesmemory.server_step_reload;
                     }
                 }
 
-                return this.server_skinningentitiesliveframe_array[0].setShoot(2, 10, 11, id, false, this.skinningentitiesattack);
+                return serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setShoot(2, 10, 11, id, false, serverentitiesmemory.entitiesaimemory.skinningentitiesattack);
             },
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(3),
-            () -> this.moveForward != 0 && this.server_skinningentitiesliveframe_array[0].setTLoop(5),
-            //pat -> soft_ready
-            //eat -> soft_ready
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.HARD_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(6, this.skinningentitiesbytes.HARD_READY()),
-            () -> this.server_work_byte_array[this.skinningentitiesbytes.SOFT_READY()] == 1 && this.server_skinningentitiesliveframe_array[0].setFLoopFree(7, this.skinningentitiesbytes.SOFT_READY()),
-            () -> this.main_server_work_byte_array[this.skinningentitiesbytes.ATTACK()] == 1 && this.server_skinningentitiesliveframe_array[0].setTLoop(8),
-            () -> this.server_skinningentitiesliveframe_array[0].setTLoop(9)
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
+            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.HARD_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(6, workbytes.HARD_READY()),
+            () -> serverentitiesmemory.current_work_byte_array[workbytes.SOFT_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(7, workbytes.SOFT_READY()),
+            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(8),
+            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(9)
         };
     }
 
@@ -214,8 +209,14 @@ public class SummerSSUna extends SkinningEntities
     }
 
     @Override
-    public Object createClientObject()
+    public Object createObjectRender()
     {
-        return new SSUnaRender(this.bothdata, RenderHelper.DATALOADER, this);
+        return new SSUnaRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+    }
+
+    @Override
+    public ServerEntitiesMemory createServerEntitiesMemory(BothData bothdata, WorkBytes workbytes)
+    {
+        return new ServerSSUnaMemory(bothdata, workbytes);
     }
 }
