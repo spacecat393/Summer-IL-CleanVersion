@@ -9,7 +9,7 @@ public class IbukiData implements BothData
     @Override
     public int MaxPart()
     {
-        return 21;
+        return 15;
     }
 
     @Override
