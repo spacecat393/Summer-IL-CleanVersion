@@ -2,6 +2,7 @@ package com.nali.list.entities;
 
 import com.nali.data.BothData;
 import com.nali.render.SkinningRender;
+import com.nali.small.Small;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -11,10 +12,12 @@ import com.nali.summer.data.IrohaData;
 import com.nali.summer.entities.bytes.IrohaBytes;
 import com.nali.summer.render.IrohaRender;
 import com.nali.summer.render.RenderHelper;
+import com.nali.system.opengl.memory.OpenGLSkinningMemory;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
@@ -58,6 +61,28 @@ public class SummerIroha extends SkinningEntities
         { 788, 821 },// 21 loop ride-attack
         { 822, 838 },// 22 end ride-attack
         { 839, 889 }// 23 ride-reload
+    };
+
+    public static int[] IV_INT_ARRAY = new int[]
+    {
+        9, 0,
+        9, 0,
+        4, 0,
+        9, 0,
+        9, 0,
+        14, 0
+    };
+    public static float[] ROTATION_FLOAT_ARRAY = new float[]
+    {
+        180.0F, -135.0F,
+        -180.0F, -135.0F
+    };
+    public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
+    {
+        0.0F, -0.55F, 0.0F,
+        0.0F, -1.0F, 0.09F,
+        0.025F, -1.3F, 0.11F,
+        0.025F, -1.25F, 0.11F
     };
 
     static
@@ -265,6 +290,26 @@ public class SummerIroha extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        cliententitiesmemory.itemlayerrender.iv_int_array = IV_INT_ARRAY;
+        cliententitiesmemory.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
+        cliententitiesmemory.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
+
+        OpenGLSkinningMemory openglskinningmemory = (OpenGLSkinningMemory)cliententitiesmemory.objectrender.memory_object_array[9];
+        for (int v = 0; v < openglskinningmemory.index_int_array.length; ++v)
+        {
+            int vi = openglskinningmemory.index_int_array[v] * 3;
+            float x = openglskinningmemory.vertices_float_array[vi];
+            float y = openglskinningmemory.vertices_float_array[vi + 1];
+            float z = openglskinningmemory.vertices_float_array[vi + 2];
+
+            Vec3d vec3d_a = new Vec3d(0.282253F, -0.01436F, 0.415507F);
+
+            if (vec3d_a.squareDistanceTo(x, y, z) < 0.0001F)
+            {
+                Small.LOGGER.info("V " + v);
+            }
+        }
         return new IrohaRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 

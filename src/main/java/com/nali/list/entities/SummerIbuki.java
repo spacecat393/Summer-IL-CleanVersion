@@ -79,8 +79,8 @@ public class SummerIbuki extends SkinningEntities
     {
         0.0F, -0.55F, 0.0F,
         0.0F, -1.0F, 0.09F,
-        0.0F, -1.3F, 0.11F,
-        0.0F, -1.25F, 0.11F
+        0.025F, -1.3F, 0.11F,
+        0.025F, -1.25F, 0.11F
     };
 
     static
