@@ -23,6 +23,7 @@ public class SummerSSHimi extends SkinningEntities
 {
     public static int eggPrimary = 0xBE9478;
     public static int eggSecondary = 0xFFF6AE;
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSHimiData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSHimiData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
@@ -50,6 +51,11 @@ public class SummerSSHimi extends SkinningEntities
 
     static
     {
+        for (int i = 0; i < BYTE_DATAPARAMETER_ARRAY.length; ++i)
+        {
+            BYTE_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSHimi.class, DataSerializers.BYTE);
+        }
+
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
         {
             INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSHimi.class, DataSerializers.VARINT);
@@ -172,6 +178,12 @@ public class SummerSSHimi extends SkinningEntities
             () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(9),
             () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(10)
         };
+    }
+
+    @Override
+    public DataParameter<Byte>[] getByteDataParameterArray()
+    {
+        return BYTE_DATAPARAMETER_ARRAY;
     }
 
     @Override

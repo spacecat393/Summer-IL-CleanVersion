@@ -26,6 +26,7 @@ public class SummerSaori extends SkinningEntities
 {
     public static int eggPrimary = 0x283756;
     public static int eggSecondary = 0x4a73bd;
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SaoriData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SaoriData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
@@ -59,6 +60,11 @@ public class SummerSaori extends SkinningEntities
 
     static
     {
+        for (int i = 0; i < BYTE_DATAPARAMETER_ARRAY.length; ++i)
+        {
+            BYTE_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSaori.class, DataSerializers.BYTE);
+        }
+
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
         {
             INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSaori.class, DataSerializers.VARINT);
@@ -190,6 +196,12 @@ public class SummerSaori extends SkinningEntities
             () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(8),
             () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(9)
         };
+    }
+
+    @Override
+    public DataParameter<Byte>[] getByteDataParameterArray()
+    {
+        return BYTE_DATAPARAMETER_ARRAY;
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.nali.data.BothData;
 public class NasuData implements BothData
 {
     public static int MAX_FRAME = 1;
+    public static int MAX_SYNC = 1;
 
     @Override
     public int MaxPart()
@@ -40,5 +41,11 @@ public class NasuData implements BothData
     public int MaxFrame()
     {
         return MAX_FRAME;
+    }
+
+    @Override
+    public int MaxSync()
+    {
+        return MAX_SYNC;
     }
 }

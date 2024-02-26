@@ -27,6 +27,7 @@ public class SummerSSZuko extends SkinningEntities
 {
     public static int eggPrimary = 0xfff0e2;
     public static int eggSecondary = 0x645353;
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSZukoData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSZukoData.MAX_FRAME + SeaHouseData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
@@ -55,6 +56,11 @@ public class SummerSSZuko extends SkinningEntities
 
     static
     {
+        for (int i = 0; i < BYTE_DATAPARAMETER_ARRAY.length; ++i)
+        {
+            BYTE_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSZuko.class, DataSerializers.BYTE);
+        }
+
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
         {
             INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSZuko.class, DataSerializers.VARINT);
@@ -186,6 +192,12 @@ public class SummerSSZuko extends SkinningEntities
             () -> serverentitiesmemory.current_work_byte_array[workbytes.HARD_READY()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setFLoopFree(0, workbytes.HARD_READY()),
             () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setTLoop(1)
         };
+    }
+
+    @Override
+    public DataParameter<Byte>[] getByteDataParameterArray()
+    {
+        return BYTE_DATAPARAMETER_ARRAY;
     }
 
     @Override

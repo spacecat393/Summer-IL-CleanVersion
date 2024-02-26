@@ -23,6 +23,7 @@ public class SummerE22Locker extends SkinningEntities
 {
     public static int eggPrimary = 0x1a69a7;
     public static int eggSecondary = 0xffffff;
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[E22LockerData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[E22LockerData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
@@ -35,6 +36,11 @@ public class SummerE22Locker extends SkinningEntities
 
     static
     {
+        for (int i = 0; i < BYTE_DATAPARAMETER_ARRAY.length; ++i)
+        {
+            BYTE_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerE22Locker.class, DataSerializers.BYTE);
+        }
+
         for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
         {
             INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerE22Locker.class, DataSerializers.VARINT);
@@ -110,6 +116,12 @@ public class SummerE22Locker extends SkinningEntities
             () -> serverentitiesmemory.skinningentities != null && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(2),
             () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1)
         };
+    }
+
+    @Override
+    public DataParameter<Byte>[] getByteDataParameterArray()
+    {
+        return BYTE_DATAPARAMETER_ARRAY;
     }
 
     @Override
