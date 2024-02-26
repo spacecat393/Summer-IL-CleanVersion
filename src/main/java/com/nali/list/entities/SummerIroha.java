@@ -66,24 +66,25 @@ public class SummerIroha extends SkinningEntities
 
     public static int[] IV_INT_ARRAY = new int[]
     {
-        8, 0,
-        8, 0,
-        3, 0,
-        8, 0,
-        8, 0,
-        10, 0
+        8, 837,
+        8, 2145,
+        8, 10171,
+        8, 6617,
+        8, 5653,
+        10, 39,
+        5, 23401
     };
     public static float[] ROTATION_FLOAT_ARRAY = new float[]
     {
-        180.0F, -135.0F,
-        -180.0F, -135.0F
+        0.0F, 0.0F,
+        0.0F, 0.0F
     };
     public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
     {
-        0.0F, -0.55F, 0.0F,
-        0.0F, -1.0F, 0.09F,
-        0.025F, -1.3F, 0.11F,
-        0.025F, -1.25F, 0.11F
+        0.0F, -0.55F * 0.5F, 0.0F,
+        0.0F, -1.0F * 0.5F, 0.09F * 0.5F,
+        0.0F, -1.3F * 0.5F, 0.11F * 0.5F,
+        0.0F, -1.25F * 0.5F, 0.11F * 0.5F
     };
 
     static
@@ -133,7 +134,7 @@ public class SummerIroha extends SkinningEntities
             skinningrender.model_boolean_array[5] = false;
         }
 
-        OpenGLSkinningMemory openglskinningmemory = (OpenGLSkinningMemory)cliententitiesmemory.objectrender.memory_object_array[8];
+        OpenGLSkinningMemory openglskinningmemory = (OpenGLSkinningMemory)cliententitiesmemory.objectrender.memory_object_array[5];
         for (int v = 0; v < openglskinningmemory.index_int_array.length; ++v)
         {
             int vi = openglskinningmemory.index_int_array[v] * 3;
@@ -141,7 +142,7 @@ public class SummerIroha extends SkinningEntities
             float y = openglskinningmemory.vertices_float_array[vi + 1];
             float z = openglskinningmemory.vertices_float_array[vi + 2];
 
-            Vec3d vec3d_a = new Vec3d(0.282253F, -0.01436F, 0.415507F);
+            Vec3d vec3d_a = new Vec3d(-0.48841F, -0.146545F, 1.44565F);
 
             if (vec3d_a.squareDistanceTo(x, y, z) < 0.0001F)
             {

@@ -2,6 +2,7 @@ package com.nali.summer.render;
 
 import com.nali.data.BothData;
 import com.nali.small.render.SkinningEntitiesRender;
+import com.nali.summer.data.IrohaData;
 import com.nali.system.DataLoader;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
@@ -10,6 +11,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class IbukiRender extends SkinningEntitiesRender
 {
+    public IrohaRender iroharender;
+
     public IbukiRender(BothData bothdata, DataLoader dataloader, Entity entity)
     {
         super(bothdata, dataloader, entity);
@@ -28,6 +31,7 @@ public class IbukiRender extends SkinningEntitiesRender
         this.texture_index_int_array[12] = 81;
         this.texture_index_int_array[13] = 83;
         this.texture_index_int_array[14] = 9;
+        this.iroharender = new IrohaRender(new IrohaData(), dataloader, entity);
     }
 
     @Override

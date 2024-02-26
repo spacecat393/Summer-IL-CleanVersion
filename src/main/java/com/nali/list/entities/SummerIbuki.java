@@ -8,6 +8,7 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.IbukiData;
+import com.nali.summer.data.IrohaData;
 import com.nali.summer.entities.bytes.IbukiBytes;
 import com.nali.summer.entities.memory.client.ClientIbukiMemory;
 import com.nali.summer.render.IbukiRender;
@@ -16,7 +17,6 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.function.Supplier;
@@ -26,7 +26,7 @@ public class SummerIbuki extends SkinningEntities
     public static int eggPrimary = 0xfef5cb;
     public static int eggSecondary = 0xab6402;
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[IbukiData.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[IbukiData.MAX_FRAME];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[IbukiData.MAX_FRAME + IrohaData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -78,10 +78,10 @@ public class SummerIbuki extends SkinningEntities
     };
     public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
     {
-        0.0F, -0.55F, 0.0F,
-        0.0F, -1.0F, 0.09F,
-        0.025F, -1.3F, 0.11F,
-        0.025F, -1.25F, 0.11F
+        0.0F, -0.55F * 0.5F, 0.0F,
+        0.0F, -1.0F * 0.5F, 0.09F * 0.5F,
+        0.025F * 0.5F, -1.3F * 0.5F, 0.11F * 0.5F,
+        0.025F * 0.5F, -1.25F * 0.5F, 0.11F * 0.5F
     };
 
     static
@@ -145,6 +145,15 @@ public class SummerIbuki extends SkinningEntities
             this.width = bothdata.Width() * scale;
             this.height = bothdata.Height() * scale;
         }
+    }
+
+    @Override
+    public void updateRendering(EntityDataManager entitydatamanager)
+    {
+        super.updateRendering(entitydatamanager);
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        IbukiRender ibukirender = (IbukiRender)cliententitiesmemory.objectrender;
+        ibukirender.iroharender.frame_int_array[0] = entitydatamanager.get(this.getIntegerDataParameterArray()[1]);
     }
 
     @Override
@@ -216,6 +225,19 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
+    public void updateServer()
+    {
+        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+        super.updateServer();
+
+        if (serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities == null && (serverentitiesmemory.sync_byte_array[0] & 128) == 128)
+        {
+            serverentitiesmemory.sync_byte_array[0] ^= (byte)128;
+            this.getDataManager().set(this.getByteDataParameterArray()[0], serverentitiesmemory.sync_byte_array[0]);
+        }
+    }
+
+    @Override
     public DataParameter<Byte>[] getByteDataParameterArray()
     {
         return BYTE_DATAPARAMETER_ARRAY;
@@ -246,18 +268,18 @@ public class SummerIbuki extends SkinningEntities
     @Override
     public void onShouldPlayWith()
     {
+        super.onShouldPlayWith();
         ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
-        float scale = this.getDataManager().get(this.getFloatDataParameterArray()[0]);
-        float height = 1.5F * scale;
-
         SkinningEntities playwith_skinningentities = serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities;
-        Vec3d view_vec3d = this.getVectorForRotation(0.0F, playwith_skinningentities.rotationYaw + 90.0F).scale(scale * 0.3F);
-        Vec3d main_vec3d = this.getVectorForRotation(0.0F, playwith_skinningentities.rotationYaw).scale(scale * 0.2F);
-        this.setPositionAndUpdate(playwith_skinningentities.posX + view_vec3d.x + main_vec3d.x, playwith_skinningentities.posY + height / 1.25F, playwith_skinningentities.posZ + view_vec3d.z + main_vec3d.z);
-        this.rotationYaw = playwith_skinningentities.rotationYaw;
-        this.rotationPitch = playwith_skinningentities.rotationPitch;
-        this.renderYawOffset = playwith_skinningentities.renderYawOffset;
-        this.fallDistance = 0;
+
+        DataParameter<Byte> byte_dataparameter = this.getByteDataParameterArray()[0];
+        serverentitiesmemory.sync_byte_array[0] = this.getDataManager().get(byte_dataparameter);
+        if ((serverentitiesmemory.sync_byte_array[0] & 128) == 0)
+        {
+            serverentitiesmemory.sync_byte_array[0] ^= (byte)128;
+            this.getDataManager().set(byte_dataparameter, serverentitiesmemory.sync_byte_array[0]);
+        }
+        this.getDataManager().set(this.getIntegerDataParameterArray()[1], playwith_skinningentities.getDataManager().get(playwith_skinningentities.getIntegerDataParameterArray()[0]));
     }
 
     @Override
