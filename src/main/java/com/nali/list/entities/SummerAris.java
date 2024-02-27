@@ -52,6 +52,28 @@ public class SummerAris extends SkinningEntities
         { 687, 737 }
     };
 
+    public static int[] IV_INT_ARRAY = new int[]
+    {
+        5, 8547,
+        5, 9270,
+        0, 2078,
+        5, 268,
+        5, 519,
+        8, 39
+    };
+    public static float[] ROTATION_FLOAT_ARRAY = new float[]
+    {
+        0.0F, 0.0F,
+        0.0F, 0.0F
+    };
+    public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
+    {
+        0.0F, -0.55F * 0.5F, 0.0F,
+        0.0F, -1.0F * 0.5F, 0.09F * 0.5F,
+        0.0F, -1.15F * 0.5F, 0.11F * 0.5F,
+        0.0F, -1.1F * 0.5F, 0.11F * 0.5F
+    };
+
     static
     {
         for (int i = 0; i < BYTE_DATAPARAMETER_ARRAY.length; ++i)
@@ -85,13 +107,13 @@ public class SummerAris extends SkinningEntities
 
         if (frame < 205)
         {
-            skinningrender.model_boolean_array[5] = false;
-            skinningrender.model_boolean_array[7] = false;
+            skinningrender.model_boolean_array[4] = false;
+            skinningrender.model_boolean_array[6] = false;
         }
         else
         {
-            skinningrender.model_boolean_array[5] = true;
-            skinningrender.model_boolean_array[7] = true;
+            skinningrender.model_boolean_array[4] = true;
+            skinningrender.model_boolean_array[6] = true;
         }
 
         float scale = skinningrender.entitiesrendermemory.scale;
@@ -205,6 +227,10 @@ public class SummerAris extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        cliententitiesmemory.itemlayerrender.iv_int_array = IV_INT_ARRAY;
+        cliententitiesmemory.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
+        cliententitiesmemory.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
         return new ArisRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

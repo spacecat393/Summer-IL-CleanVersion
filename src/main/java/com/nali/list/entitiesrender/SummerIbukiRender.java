@@ -9,6 +9,7 @@ import com.nali.small.entities.memory.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.render.SkinningEntitiesRender;
 import com.nali.summer.render.IbukiRender;
 import com.nali.system.opengl.memory.OpenGLCurrentMemory;
+import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -54,6 +55,23 @@ public class SummerIbukiRender<T extends SummerIbuki> extends SkinningEntitiesRe
         head_m4x4.multiply(skinningrender.skinning_float_array, 39*16);
 
         body_m4x4.multiply(skinningrender.skinning_float_array, 0);
+    }
+
+    @Override
+    public boolean shouldRender(T skinningentities, ICamera camera, double camX, double camY, double camZ)
+    {
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)skinningentities.bothentitiesmemory;
+        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+
+        if ((cliententitiesmemory.sync_byte_array[0] & 128) == 128)
+        {
+            skinningrender.entitiesrendermemory.should_render = true;
+            return skinningrender.entitiesrendermemory.should_render;
+        }
+        else
+        {
+            return super.shouldRender(skinningentities, camera, camX, camY, camZ);
+        }
     }
 
     @Override

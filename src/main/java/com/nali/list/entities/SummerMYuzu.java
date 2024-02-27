@@ -3,6 +3,7 @@ package com.nali.list.entities;
 import com.nali.data.BothData;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
+import com.nali.small.Small;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -12,10 +13,12 @@ import com.nali.summer.data.MYuzuData;
 import com.nali.summer.entities.bytes.MYuzuBytes;
 import com.nali.summer.render.MYuzuRender;
 import com.nali.summer.render.RenderHelper;
+import com.nali.system.opengl.memory.OpenGLSkinningMemory;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.function.Supplier;
@@ -44,6 +47,28 @@ public class SummerMYuzu extends SkinningEntities
         { 564, 597 },
         { 0, 321 },
         { 322, 478 }//pat
+    };
+
+    public static int[] IV_INT_ARRAY = new int[]
+    {
+        9, 2882,
+        9, 5893,
+        4, 290,
+        9, 969,
+        9, 624,
+        14, 38
+    };
+    public static float[] ROTATION_FLOAT_ARRAY = new float[]
+    {
+        180.0F, -135.0F,
+        -180.0F, -135.0F
+    };
+    public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
+    {
+        0.0F, -0.55F * 0.5F, 0.0F,
+        0.0F, -1.0F * 0.5F, 0.09F * 0.5F,
+        0.025F * 0.5F, -1.3F * 0.5F, 0.11F * 0.5F,
+        0.025F * 0.5F, -1.25F * 0.5F, 0.11F * 0.5F
     };
 
     static
@@ -92,6 +117,22 @@ public class SummerMYuzu extends SkinningEntities
         {
             this.width = bothdata.Width() * scale;
             this.height = bothdata.Height() * scale;
+        }
+
+        OpenGLSkinningMemory openglskinningmemory = (OpenGLSkinningMemory)cliententitiesmemory.objectrender.memory_object_array[4];
+        for (int v = 0; v < openglskinningmemory.index_int_array.length; ++v)
+        {
+            int vi = openglskinningmemory.index_int_array[v] * 3;
+            float x = openglskinningmemory.vertices_float_array[vi];
+            float y = openglskinningmemory.vertices_float_array[vi + 1];
+            float z = openglskinningmemory.vertices_float_array[vi + 2];
+
+            Vec3d vec3d_a = new Vec3d(-0.217065F, 0.164968F, 0.433754F);
+
+            if (vec3d_a.squareDistanceTo(x, y, z) < 0.0001F)
+            {
+                Small.LOGGER.info("V " + v);
+            }
         }
     }
 
@@ -200,6 +241,10 @@ public class SummerMYuzu extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        cliententitiesmemory.itemlayerrender.iv_int_array = IV_INT_ARRAY;
+        cliententitiesmemory.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
+        cliententitiesmemory.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
         return new MYuzuRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

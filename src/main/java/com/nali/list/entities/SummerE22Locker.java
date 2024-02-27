@@ -3,6 +3,7 @@ package com.nali.list.entities;
 import com.nali.data.BothData;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.entities.bytes.WorkBytes;
+import com.nali.small.entities.memory.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
@@ -33,6 +34,28 @@ public class SummerE22Locker extends SkinningEntities
         { 0, 297 },//react
         { 298, 302 },//noact
         { 303, 386 }//idle
+    };
+
+    public static int[] IV_INT_ARRAY = new int[]
+    {
+        5, 523,
+        5, 560,
+        5, 12,
+        5, 451,
+        5, 451,
+        4, 99
+    };
+    public static float[] ROTATION_FLOAT_ARRAY = new float[]
+    {
+        0.0F, 0.0F,
+        0.0F, 0.0F
+    };
+    public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
+    {
+        0.0F, -0.65F * 0.5F, 0.0F,
+        0.1F, -1.8F * 0.5F, 0.07F * 0.5F,
+        0.1F, -1.85F * 0.5F, 0.09F * 0.5F,
+        0.1F, -1.8F * 0.5F, 0.09F * 0.5F
     };
 
     static
@@ -187,6 +210,10 @@ public class SummerE22Locker extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+        cliententitiesmemory.itemlayerrender.iv_int_array = IV_INT_ARRAY;
+        cliententitiesmemory.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
+        cliententitiesmemory.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
         return new E22LockerRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

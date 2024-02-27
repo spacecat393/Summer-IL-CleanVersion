@@ -3,7 +3,6 @@ package com.nali.list.entities;
 import com.nali.data.BothData;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
-import com.nali.small.Small;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -13,12 +12,10 @@ import com.nali.summer.data.IrohaData;
 import com.nali.summer.entities.bytes.IrohaBytes;
 import com.nali.summer.render.IrohaRender;
 import com.nali.summer.render.RenderHelper;
-import com.nali.system.opengl.memory.OpenGLSkinningMemory;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
@@ -133,22 +130,6 @@ public class SummerIroha extends SkinningEntities
             this.height = bothdata.Height() * scale;
             skinningrender.model_boolean_array[4] = false;
             skinningrender.model_boolean_array[5] = false;
-        }
-
-        OpenGLSkinningMemory openglskinningmemory = (OpenGLSkinningMemory)cliententitiesmemory.objectrender.memory_object_array[5];
-        for (int v = 0; v < openglskinningmemory.index_int_array.length; ++v)
-        {
-            int vi = openglskinningmemory.index_int_array[v] * 3;
-            float x = openglskinningmemory.vertices_float_array[vi];
-            float y = openglskinningmemory.vertices_float_array[vi + 1];
-            float z = openglskinningmemory.vertices_float_array[vi + 2];
-
-            Vec3d vec3d_a = new Vec3d(-0.510689F, -0.127799F, 1.5521F);
-
-            if (vec3d_a.squareDistanceTo(x, y, z) < 0.0001F)
-            {
-                Small.LOGGER.info("V " + v);
-            }
         }
     }
 
