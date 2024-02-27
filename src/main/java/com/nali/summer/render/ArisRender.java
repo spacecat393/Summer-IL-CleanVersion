@@ -1,6 +1,7 @@
 package com.nali.summer.render;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.render.SkinningEntitiesRender;
 import com.nali.system.DataLoader;
 import net.minecraft.entity.Entity;
@@ -10,9 +11,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ArisRender extends SkinningEntitiesRender
 {
-    public ArisRender(BothData bothdata, DataLoader dataloader, Entity entity)
+    public ArisRender(EntitiesRenderMemory entitiesrendermemory, BothData bothdata, DataLoader dataloader, Entity entity)
     {
-        super(bothdata, dataloader, entity);
+        super(entitiesrendermemory, bothdata, dataloader, entity);
         this.texture_index_int_array[0] = 9;
         this.texture_index_int_array[1] = 19;
         this.texture_index_int_array[2] = 20;

@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
@@ -94,7 +95,7 @@ public class SummerSSUna extends SkinningEntities
             skinningrender.model_boolean_array[8] = false;
         }
 
-        float scale = skinningrender.scale;
+        float scale = skinningrender.entitiesrendermemory.scale;
         if (frame > 314 && frame < 351)
         {
             this.width = bothdata.Width() * scale;
@@ -223,7 +224,7 @@ public class SummerSSUna extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new SSUnaRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new SSUnaRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 
     @Override

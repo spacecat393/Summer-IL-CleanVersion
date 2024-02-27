@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
@@ -84,7 +85,7 @@ public class SummerYuzu extends SkinningEntities
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 
-        float scale = skinningrender.scale;
+        float scale = skinningrender.entitiesrendermemory.scale;
         if (frame > 195 && frame < 222)
         {
             skinningrender.texture_index_int_array[8] = 66;
@@ -191,6 +192,6 @@ public class SummerYuzu extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new YuzuRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new YuzuRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

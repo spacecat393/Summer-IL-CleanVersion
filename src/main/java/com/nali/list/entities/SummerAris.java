@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
@@ -93,7 +94,7 @@ public class SummerAris extends SkinningEntities
             skinningrender.model_boolean_array[7] = true;
         }
 
-        float scale = skinningrender.scale;
+        float scale = skinningrender.entitiesrendermemory.scale;
         if (frame > 834 && frame < 861)
         {
             this.width = bothdata.Width() * scale;
@@ -204,6 +205,6 @@ public class SummerAris extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new ArisRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new ArisRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

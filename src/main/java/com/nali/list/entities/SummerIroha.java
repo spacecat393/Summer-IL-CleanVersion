@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.Small;
 import com.nali.small.entities.bytes.WorkBytes;
@@ -72,7 +73,7 @@ public class SummerIroha extends SkinningEntities
         8, 6617,
         8, 5653,
         10, 39,
-        5, 23401
+        5, 26084
     };
     public static float[] ROTATION_FLOAT_ARRAY = new float[]
     {
@@ -118,7 +119,7 @@ public class SummerIroha extends SkinningEntities
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 
-        float scale = skinningrender.scale;
+        float scale = skinningrender.entitiesrendermemory.scale;
         if (frame > 257)
         {
             this.width = 1.7F * scale;
@@ -142,7 +143,7 @@ public class SummerIroha extends SkinningEntities
             float y = openglskinningmemory.vertices_float_array[vi + 1];
             float z = openglskinningmemory.vertices_float_array[vi + 2];
 
-            Vec3d vec3d_a = new Vec3d(-0.48841F, -0.146545F, 1.44565F);
+            Vec3d vec3d_a = new Vec3d(-0.510689F, -0.127799F, 1.5521F);
 
             if (vec3d_a.squareDistanceTo(x, y, z) < 0.0001F)
             {
@@ -323,7 +324,7 @@ public class SummerIroha extends SkinningEntities
         cliententitiesmemory.itemlayerrender.iv_int_array = IV_INT_ARRAY;
         cliententitiesmemory.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
         cliententitiesmemory.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
-        return new IrohaRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new IrohaRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 
     @Override

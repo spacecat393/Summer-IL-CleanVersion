@@ -1,6 +1,7 @@
 package com.nali.summer.render;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.render.SkinningEntitiesRender;
 import com.nali.summer.data.IrohaData;
 import com.nali.system.DataLoader;
@@ -13,9 +14,9 @@ public class IbukiRender extends SkinningEntitiesRender
 {
     public IrohaRender iroharender;
 
-    public IbukiRender(BothData bothdata, DataLoader dataloader, Entity entity)
+    public IbukiRender(EntitiesRenderMemory entitiesrendermemory, BothData bothdata, DataLoader dataloader, Entity entity)
     {
-        super(bothdata, dataloader, entity);
+        super(entitiesrendermemory, bothdata, dataloader, entity);
         this.texture_index_int_array[0] = 76;
         this.texture_index_int_array[1] = 77;
         this.texture_index_int_array[2] = 77;
@@ -31,7 +32,7 @@ public class IbukiRender extends SkinningEntitiesRender
         this.texture_index_int_array[12] = 81;
         this.texture_index_int_array[13] = 83;
         this.texture_index_int_array[14] = 9;
-        this.iroharender = new IrohaRender(new IrohaData(), dataloader, entity);
+        this.iroharender = new IrohaRender(entitiesrendermemory, new IrohaData(), dataloader, entity);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
@@ -215,6 +216,6 @@ public class SummerSSZuko extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new SSZukoRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new SSZukoRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

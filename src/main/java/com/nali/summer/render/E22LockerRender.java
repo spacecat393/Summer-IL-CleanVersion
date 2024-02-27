@@ -1,6 +1,7 @@
 package com.nali.summer.render;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.render.SkinningEntitiesRender;
 import com.nali.system.DataLoader;
 import net.minecraft.entity.Entity;
@@ -12,9 +13,9 @@ import java.util.Arrays;
 @SideOnly(Side.CLIENT)
 public class E22LockerRender extends SkinningEntitiesRender
 {
-    public E22LockerRender(BothData bothdata, DataLoader dataloader, Entity entity)
+    public E22LockerRender(EntitiesRenderMemory entitiesrendermemory, BothData bothdata, DataLoader dataloader, Entity entity)
     {
-        super(bothdata, dataloader, entity);
+        super(entitiesrendermemory, bothdata, dataloader, entity);
         Arrays.fill(this.texture_index_int_array, 61);
     }
 

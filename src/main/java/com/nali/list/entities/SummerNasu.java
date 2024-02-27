@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
@@ -102,7 +103,7 @@ public class SummerNasu extends SkinningEntities
         skinningrender.model_boolean_array[9] = (frame > 313 && frame < 338) || (frame > 341 && frame < 383) || (frame > 827 && frame < 850);
         skinningrender.model_boolean_array[10] = (frame > -1 && frame < 226) || (frame > 306 && frame < 388) || (frame > 868 && frame < 1029);
 
-        float scale = skinningrender.scale;
+        float scale = skinningrender.entitiesrendermemory.scale;
         if (frame > 765 && frame < 823)
         {
             this.width = 1.5F * scale;
@@ -186,6 +187,6 @@ public class SummerNasu extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new NasuRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new NasuRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

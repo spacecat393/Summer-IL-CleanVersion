@@ -1,6 +1,7 @@
 package com.nali.summer.render;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.render.SkinningEntitiesRender;
 import com.nali.summer.data.SeaHouseData;
 import com.nali.system.DataLoader;
@@ -14,9 +15,9 @@ public class SSZukoRender extends SkinningEntitiesRender
     public SeaHouseRender seahouserender;
     public static SeaHouseData SEAHOUSEDATA = new SeaHouseData();
 
-    public SSZukoRender(BothData bothdata, DataLoader dataloader, Entity entity)
+    public SSZukoRender(EntitiesRenderMemory entitiesrendermemory, BothData bothdata, DataLoader dataloader, Entity entity)
     {
-        super(bothdata, dataloader, entity);
+        super(entitiesrendermemory, bothdata, dataloader, entity);
         this.texture_index_int_array[0] = 25;
         this.texture_index_int_array[1] = 9;
         this.texture_index_int_array[2] = 26;
@@ -29,7 +30,7 @@ public class SSZukoRender extends SkinningEntitiesRender
         this.texture_index_int_array[9] = 32;
         this.texture_index_int_array[10] = 32;
         this.texture_index_int_array[11] = 31;
-        this.seahouserender = new SeaHouseRender(SEAHOUSEDATA, dataloader);
+        this.seahouserender = new SeaHouseRender(new EntitiesRenderMemory(), SEAHOUSEDATA, dataloader);
     }
 
     @Override
@@ -43,8 +44,8 @@ public class SSZukoRender extends SkinningEntitiesRender
     public void updateLightCoord()
     {
         super.updateLightCoord();
-        this.seahouserender.lig_b = this.lig_b;
-        this.seahouserender.lig_s = this.lig_s;
+        this.seahouserender.objectworlddraw.lig_b = this.objectworlddraw.lig_b;
+        this.seahouserender.objectworlddraw.lig_s = this.objectworlddraw.lig_s;
     }
 
     @Override

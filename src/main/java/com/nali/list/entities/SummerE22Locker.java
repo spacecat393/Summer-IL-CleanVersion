@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
@@ -186,6 +187,6 @@ public class SummerE22Locker extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new E22LockerRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new E22LockerRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 }

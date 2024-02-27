@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
@@ -27,7 +28,7 @@ public class SummerIbuki extends SkinningEntities
     public static int eggSecondary = 0xab6402;
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[IbukiData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[IbukiData.MAX_FRAME + IrohaData.MAX_FRAME];
-    public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+    public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[2];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
     {
@@ -133,7 +134,7 @@ public class SummerIbuki extends SkinningEntities
             skinningrender.model_boolean_array[12] = false;
         }
 
-        float scale = skinningrender.scale;
+        float scale = skinningrender.entitiesrendermemory.scale;
 
         if (frame > 296 && frame < 348)
         {
@@ -205,12 +206,6 @@ public class SummerIbuki extends SkinningEntities
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () ->
-            {
-                boolean result = serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.should_play;
-                serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].lock = result;
-                return result;
-            },
             () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
             () -> serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
             () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
@@ -230,8 +225,14 @@ public class SummerIbuki extends SkinningEntities
         ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
         super.updateServer();
 
-        if (serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities == null && (serverentitiesmemory.sync_byte_array[0] & 128) == 128)
+//        if (serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities != null && ((WorldServer)this.world).getEntityFromUuid(serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities.getUniqueID()) == null)
+//        {
+//            serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities = null;
+//        }
+
+        if (!serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.should_play && (serverentitiesmemory.sync_byte_array[0] & 128) == 128)
         {
+            serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].lock = false;
             serverentitiesmemory.sync_byte_array[0] ^= (byte)128;
             this.getDataManager().set(this.getByteDataParameterArray()[0], serverentitiesmemory.sync_byte_array[0]);
         }
@@ -262,7 +263,7 @@ public class SummerIbuki extends SkinningEntities
         cliententitiesmemory.itemlayerrender.iv_int_array = IV_INT_ARRAY;
         cliententitiesmemory.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
         cliententitiesmemory.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
-        return new IbukiRender(this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new IbukiRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 
     @Override
@@ -276,16 +277,18 @@ public class SummerIbuki extends SkinningEntities
         serverentitiesmemory.sync_byte_array[0] = this.getDataManager().get(byte_dataparameter);
         if ((serverentitiesmemory.sync_byte_array[0] & 128) == 0)
         {
+            serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].lock = true;
             serverentitiesmemory.sync_byte_array[0] ^= (byte)128;
             this.getDataManager().set(byte_dataparameter, serverentitiesmemory.sync_byte_array[0]);
         }
         this.getDataManager().set(this.getIntegerDataParameterArray()[1], playwith_skinningentities.getDataManager().get(playwith_skinningentities.getIntegerDataParameterArray()[0]));
+        this.getDataManager().set(this.getFloatDataParameterArray()[1], playwith_skinningentities.getDataManager().get(playwith_skinningentities.getFloatDataParameterArray()[0]));
     }
 
     @Override
     public void collideWithNearbyEntities()
     {
-        if (this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith == null || !((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.should_play)
+        if (this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities == null || !((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.should_play)
         {
             super.collideWithNearbyEntities();
         }
@@ -294,7 +297,7 @@ public class SummerIbuki extends SkinningEntities
     @Override
     public boolean canBePushed()
     {
-        return this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith == null || !((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.should_play;
+        return this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities == null || !((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.should_play;
     }
 
     @Override
