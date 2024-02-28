@@ -10,6 +10,7 @@ import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.ArisData;
 import com.nali.summer.entities.bytes.ArisBytes;
+import com.nali.summer.entities.memory.client.ClientArisMemory;
 import com.nali.summer.render.ArisRender;
 import com.nali.summer.render.RenderHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -50,28 +51,6 @@ public class SummerAris extends SkinningEntities
         { 577, 643 },
         { 644, 660 },
         { 687, 737 }
-    };
-
-    public static int[] IV_INT_ARRAY = new int[]
-    {
-        5, 8547,
-        5, 9270,
-        0, 2078,
-        5, 268,
-        5, 519,
-        8, 39
-    };
-    public static float[] ROTATION_FLOAT_ARRAY = new float[]
-    {
-        0.0F, 0.0F,
-        0.0F, 0.0F
-    };
-    public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
-    {
-        0.0F, -0.55F * 0.5F, 0.0F,
-        0.0F, -1.0F * 0.5F, 0.09F * 0.5F,
-        0.0F, -1.15F * 0.5F, 0.11F * 0.5F,
-        0.0F, -1.1F * 0.5F, 0.11F * 0.5F
     };
 
     static
@@ -227,10 +206,12 @@ public class SummerAris extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        cliententitiesmemory.itemlayerrender.iv_int_array = IV_INT_ARRAY;
-        cliententitiesmemory.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
-        cliententitiesmemory.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
         return new ArisRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+    }
+
+    @Override
+    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
+    {
+        new ClientArisMemory(skinningentities, bothdata, workbytes);
     }
 }

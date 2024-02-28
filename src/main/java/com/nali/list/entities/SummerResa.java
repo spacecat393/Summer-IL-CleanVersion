@@ -85,24 +85,24 @@ public class SummerResa extends SkinningEntities
         if (this.ticksExisted % 200 == 0)
         {
             skinningrender.model_boolean_array[0] = false;
-            skinningrender.model_boolean_array[9] = false;
-            skinningrender.model_boolean_array[6] = true;
+            skinningrender.model_boolean_array[8] = false;
+            skinningrender.model_boolean_array[5] = true;
             cliententitiesmemory.client_eyes_tick = 20;
         }
         else if (--cliententitiesmemory.client_eyes_tick <= 0)
         {
             skinningrender.model_boolean_array[0] = true;
-            skinningrender.model_boolean_array[9] = true;
-            skinningrender.model_boolean_array[6] = false;
+            skinningrender.model_boolean_array[8] = true;
+            skinningrender.model_boolean_array[5] = false;
         }
 
         if (frame > 125 && frame < 227)
         {
-            skinningrender.model_boolean_array[7] = true;
+            skinningrender.model_boolean_array[6] = true;
         }
         else
         {
-            skinningrender.model_boolean_array[7] = false;
+            skinningrender.model_boolean_array[6] = false;
         }
 
         float scale = skinningrender.entitiesrendermemory.scale;
@@ -117,7 +117,7 @@ public class SummerResa extends SkinningEntities
             this.height = bothdata.Height() * scale;
         }
 
-        skinningrender.model_boolean_array[4] = false;
+        skinningrender.model_boolean_array[3] = false;
     }
 
     @Override
@@ -126,8 +126,8 @@ public class SummerResa extends SkinningEntities
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
         SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
         skinningrender.model_boolean_array[0] = false;
-        skinningrender.model_boolean_array[9] = false;
-        skinningrender.model_boolean_array[6] = true;
+        skinningrender.model_boolean_array[8] = false;
+        skinningrender.model_boolean_array[5] = true;
     }
 
     @Override
@@ -203,8 +203,8 @@ public class SummerResa extends SkinningEntities
     }
 
     @Override
-    public ClientEntitiesMemory createClientEntitiesMemory(BothData bothdata, WorkBytes workbytes)
+    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        return new ClientResaMemory(bothdata, workbytes);
+        new ClientResaMemory(skinningentities, bothdata, workbytes);
     }
 }

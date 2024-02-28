@@ -15,23 +15,23 @@ public class NasuRender extends SkinningEntitiesRender
     {
         super(entitiesrendermemory, bothdata, dataloader, entity);
         this.texture_index_int_array[0] = 10;
-        this.texture_index_int_array[1] = 9;
-        this.texture_index_int_array[2] = 11;
+        this.texture_index_int_array[1] = 11;
+        this.texture_index_int_array[2] = 12;
         this.texture_index_int_array[3] = 12;
-        this.texture_index_int_array[4] = 12;
-        this.texture_index_int_array[5] = 13;
-        this.texture_index_int_array[6] = 14;
-        this.texture_index_int_array[7] = 18;
-        this.texture_index_int_array[8] = 16;
-        this.texture_index_int_array[9] = 11;
-        this.texture_index_int_array[10] = 17;
-        this.texture_index_int_array[11] = 15;
+        this.texture_index_int_array[4] = 13;
+        this.texture_index_int_array[5] = 14;
+        this.texture_index_int_array[6] = 18;
+        this.texture_index_int_array[7] = 16;
+        this.texture_index_int_array[8] = 11;
+        this.texture_index_int_array[9] = 17;
+        this.texture_index_int_array[10] = 15;
+        this.texture_index_int_array[11] = 9;
     }
 
     @Override
     public void setGlow()
     {
-        this.glow_boolean_array[7] = true;
+        this.glow_boolean_array[6] = true;
         super.setGlow();
     }
 }

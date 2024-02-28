@@ -10,6 +10,7 @@ import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.SSHimiData;
 import com.nali.summer.entities.bytes.SSHimiBytes;
+import com.nali.summer.entities.memory.client.ClientSSHimiMemory;
 import com.nali.summer.render.RenderHelper;
 import com.nali.summer.render.SSHimiRender;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -89,7 +90,7 @@ public class SummerSSHimi extends SkinningEntities
             skinningrender.model_boolean_array[3] = false;
             skinningrender.model_boolean_array[4] = false;
             skinningrender.model_boolean_array[6] = false;
-            skinningrender.model_boolean_array[7] = false;
+            skinningrender.model_boolean_array[11] = false;
             skinningrender.model_boolean_array[12] = false;
         }
         else
@@ -100,7 +101,7 @@ public class SummerSSHimi extends SkinningEntities
             skinningrender.model_boolean_array[3] = true;
             skinningrender.model_boolean_array[4] = true;
             skinningrender.model_boolean_array[6] = true;
-            skinningrender.model_boolean_array[7] = true;
+            skinningrender.model_boolean_array[11] = true;
             skinningrender.model_boolean_array[12] = true;
         }
 
@@ -109,17 +110,17 @@ public class SummerSSHimi extends SkinningEntities
         {
             this.width = 1.7F * scale;
             this.height = 1.5F * scale;
+            skinningrender.model_boolean_array[8] = true;
             skinningrender.model_boolean_array[9] = true;
             skinningrender.model_boolean_array[10] = true;
-            skinningrender.model_boolean_array[11] = true;
         }
         else
         {
             this.width = bothdata.Width() * scale;
             this.height = bothdata.Height() * scale;
+            skinningrender.model_boolean_array[8] = false;
             skinningrender.model_boolean_array[9] = false;
             skinningrender.model_boolean_array[10] = false;
-            skinningrender.model_boolean_array[11] = false;
         }
 
         skinningrender.model_boolean_array[5] = false;
@@ -203,5 +204,11 @@ public class SummerSSHimi extends SkinningEntities
     public Object createObjectRender()
     {
         return new SSHimiRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+    }
+
+    @Override
+    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
+    {
+        new ClientSSHimiMemory(skinningentities, bothdata, workbytes);
     }
 }

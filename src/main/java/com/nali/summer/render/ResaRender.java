@@ -17,20 +17,20 @@ public class ResaRender extends SkinningEntitiesRender
         this.texture_index_int_array[0] = 41;
         this.texture_index_int_array[1] = 40;
         this.texture_index_int_array[2] = 41;
-        this.texture_index_int_array[3] = 9;
-        this.texture_index_int_array[4] = 42;
-        this.texture_index_int_array[5] = 43;
-        this.texture_index_int_array[6] = 44;
-        this.texture_index_int_array[7] = 41;
-        this.texture_index_int_array[8] = 45;
-        this.texture_index_int_array[9] = 44;
-        this.texture_index_int_array[10] = 46;
+        this.texture_index_int_array[3] = 42;
+        this.texture_index_int_array[4] = 43;
+        this.texture_index_int_array[5] = 44;
+        this.texture_index_int_array[6] = 41;
+        this.texture_index_int_array[7] = 45;
+        this.texture_index_int_array[8] = 44;
+        this.texture_index_int_array[9] = 46;
+        this.texture_index_int_array[10] = 9;
     }
 
     @Override
     public void setGlow()
     {
-        this.glow_boolean_array[10] = true;
+        this.glow_boolean_array[9] = true;
         super.setGlow();
     }
 }

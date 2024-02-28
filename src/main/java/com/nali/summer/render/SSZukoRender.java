@@ -19,14 +19,14 @@ public class SSZukoRender extends SkinningEntitiesRender
     {
         super(entitiesrendermemory, bothdata, dataloader, entity);
         this.texture_index_int_array[0] = 25;
-        this.texture_index_int_array[1] = 9;
-        this.texture_index_int_array[2] = 26;
+        this.texture_index_int_array[1] = 26;
+        this.texture_index_int_array[2] = 27;
         this.texture_index_int_array[3] = 27;
-        this.texture_index_int_array[4] = 27;
-        this.texture_index_int_array[5] = 28;
-        this.texture_index_int_array[6] = 29;
-        this.texture_index_int_array[7] = 30;
-        this.texture_index_int_array[8] = 32;
+        this.texture_index_int_array[4] = 28;
+        this.texture_index_int_array[5] = 29;
+        this.texture_index_int_array[6] = 30;
+        this.texture_index_int_array[7] = 32;
+        this.texture_index_int_array[8] = 9;
         this.texture_index_int_array[9] = 32;
         this.texture_index_int_array[10] = 32;
         this.texture_index_int_array[11] = 31;
@@ -36,7 +36,7 @@ public class SSZukoRender extends SkinningEntitiesRender
     @Override
     public void setGlow()
     {
-        this.glow_boolean_array[7] = true;
+        this.glow_boolean_array[6] = true;
         super.setGlow();
     }
 

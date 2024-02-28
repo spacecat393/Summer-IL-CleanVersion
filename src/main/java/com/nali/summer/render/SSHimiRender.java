@@ -21,11 +21,11 @@ public class SSHimiRender extends SkinningEntitiesRender
         this.texture_index_int_array[4] = 4;
         this.texture_index_int_array[5] = 8;
         this.texture_index_int_array[6] = 7;
-        this.texture_index_int_array[7] = 9;
-        this.texture_index_int_array[8] = 5;
+        this.texture_index_int_array[7] = 5;
+        this.texture_index_int_array[8] = 0;
         this.texture_index_int_array[9] = 0;
         this.texture_index_int_array[10] = 0;
-        this.texture_index_int_array[11] = 0;
+        this.texture_index_int_array[11] = 9;
         this.texture_index_int_array[12] = 0;
     }
 

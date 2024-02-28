@@ -11,6 +11,7 @@ import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.SSZukoData;
 import com.nali.summer.data.SeaHouseData;
 import com.nali.summer.entities.bytes.SSZukoBytes;
+import com.nali.summer.entities.memory.client.ClientSSZukoMemory;
 import com.nali.summer.render.RenderHelper;
 import com.nali.summer.render.SSZukoRender;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -217,5 +218,11 @@ public class SummerSSZuko extends SkinningEntities
     public Object createObjectRender()
     {
         return new SSZukoRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+    }
+
+    @Override
+    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
+    {
+        new ClientSSZukoMemory(skinningentities, bothdata, workbytes);
     }
 }

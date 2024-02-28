@@ -16,8 +16,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
-import static com.nali.list.entities.SummerIroha.IV_INT_ARRAY;
 import static com.nali.list.entitiesrender.SummerIrohaRender.setAnimation;
+import static com.nali.summer.entities.memory.client.ClientIrohaMemory.IV_INT_ARRAY;
 
 @SideOnly(Side.CLIENT)
 public class SummerIbukiRender<T extends SummerIbuki> extends SkinningEntitiesRender<T>

@@ -5,11 +5,11 @@ import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
-import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.SSUnaData;
 import com.nali.summer.entities.bytes.SSUnaBytes;
+import com.nali.summer.entities.memory.client.ClientSSUnaMemory;
 import com.nali.summer.entities.memory.server.ServerSSUnaMemory;
 import com.nali.summer.render.RenderHelper;
 import com.nali.summer.render.SSUnaRender;
@@ -228,8 +228,14 @@ public class SummerSSUna extends SkinningEntities
     }
 
     @Override
-    public ServerEntitiesMemory createServerEntitiesMemory(BothData bothdata, WorkBytes workbytes)
+    public void createServerEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        return new ServerSSUnaMemory(bothdata, workbytes);
+        new ServerSSUnaMemory(skinningentities, bothdata, workbytes);
+    }
+
+    @Override
+    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
+    {
+        new ClientSSUnaMemory(skinningentities, bothdata, workbytes);
     }
 }

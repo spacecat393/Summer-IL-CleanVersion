@@ -10,6 +10,7 @@ import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.NasuData;
 import com.nali.summer.entities.bytes.NasuBytes;
+import com.nali.summer.entities.memory.client.ClientNasuMemory;
 import com.nali.summer.render.NasuRender;
 import com.nali.summer.render.RenderHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -92,16 +93,16 @@ public class SummerNasu extends SkinningEntities
         if (frame > 255)
         {
             skinningrender.model_boolean_array[0] = true;
-            skinningrender.model_boolean_array[11] = true;
+            skinningrender.model_boolean_array[10] = true;
         }
         else
         {
             skinningrender.model_boolean_array[0] = false;
-            skinningrender.model_boolean_array[11] = false;
+            skinningrender.model_boolean_array[10] = false;
         }
 
-        skinningrender.model_boolean_array[9] = (frame > 313 && frame < 338) || (frame > 341 && frame < 383) || (frame > 827 && frame < 850);
-        skinningrender.model_boolean_array[10] = (frame > -1 && frame < 226) || (frame > 306 && frame < 388) || (frame > 868 && frame < 1029);
+        skinningrender.model_boolean_array[8] = (frame > 313 && frame < 338) || (frame > 341 && frame < 383) || (frame > 827 && frame < 850);
+        skinningrender.model_boolean_array[9] = (frame > -1 && frame < 226) || (frame > 306 && frame < 388) || (frame > 868 && frame < 1029);
 
         float scale = skinningrender.entitiesrendermemory.scale;
         if (frame > 765 && frame < 823)
@@ -188,5 +189,11 @@ public class SummerNasu extends SkinningEntities
     public Object createObjectRender()
     {
         return new NasuRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+    }
+
+    @Override
+    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
+    {
+        new ClientNasuMemory(skinningentities, bothdata, workbytes);
     }
 }

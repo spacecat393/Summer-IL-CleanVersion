@@ -63,28 +63,6 @@ public class SummerIbuki extends SkinningEntities
         { 776, 826 }// 22 ride-reload
     };
 
-    public static int[] IV_INT_ARRAY = new int[]
-    {
-        9, 2882,
-        9, 5893,
-        4, 290,
-        9, 969,
-        9, 624,
-        14, 38
-    };
-    public static float[] ROTATION_FLOAT_ARRAY = new float[]
-    {
-        180.0F, -135.0F,
-        -180.0F, -135.0F
-    };
-    public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
-    {
-        0.0F, -0.55F * 0.5F, 0.0F,
-        0.0F, -1.0F * 0.5F, 0.09F * 0.5F,
-        0.025F * 0.5F, -1.3F * 0.5F, 0.11F * 0.5F,
-        0.025F * 0.5F, -1.25F * 0.5F, 0.11F * 0.5F
-    };
-
     static
     {
         for (int i = 0; i < BYTE_DATAPARAMETER_ARRAY.length; ++i)
@@ -259,10 +237,6 @@ public class SummerIbuki extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        cliententitiesmemory.itemlayerrender.iv_int_array = IV_INT_ARRAY;
-        cliententitiesmemory.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
-        cliententitiesmemory.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
         return new IbukiRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 
@@ -301,8 +275,8 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
-    public ClientEntitiesMemory createClientEntitiesMemory(BothData bothdata, WorkBytes workbytes)
+    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        return new ClientIbukiMemory(bothdata, workbytes);
+        new ClientIbukiMemory(skinningentities, bothdata, workbytes);
     }
 }

@@ -10,6 +10,7 @@ import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.YuzuData;
 import com.nali.summer.entities.bytes.YuzuBytes;
+import com.nali.summer.entities.memory.client.ClientYuzuMemory;
 import com.nali.summer.render.RenderHelper;
 import com.nali.summer.render.YuzuRender;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -193,5 +194,11 @@ public class SummerYuzu extends SkinningEntities
     public Object createObjectRender()
     {
         return new YuzuRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+    }
+
+    @Override
+    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
+    {
+        new ClientYuzuMemory(skinningentities, bothdata, workbytes);
     }
 }

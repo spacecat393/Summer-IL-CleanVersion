@@ -10,6 +10,7 @@ import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.IrohaData;
 import com.nali.summer.entities.bytes.IrohaBytes;
+import com.nali.summer.entities.memory.client.ClientIrohaMemory;
 import com.nali.summer.render.IrohaRender;
 import com.nali.summer.render.RenderHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -60,29 +61,6 @@ public class SummerIroha extends SkinningEntities
         { 788, 821 },// 21 loop ride-attack
         { 822, 838 },// 22 end ride-attack
         { 839, 889 }// 23 ride-reload
-    };
-
-    public static int[] IV_INT_ARRAY = new int[]
-    {
-        8, 837,
-        8, 2145,
-        8, 10171,
-        8, 6617,
-        8, 5653,
-        10, 39,
-        5, 26084
-    };
-    public static float[] ROTATION_FLOAT_ARRAY = new float[]
-    {
-        0.0F, 0.0F,
-        0.0F, 0.0F
-    };
-    public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
-    {
-        0.0F, -0.55F * 0.5F, 0.0F,
-        0.0F, -1.0F * 0.5F, 0.09F * 0.5F,
-        0.0F, -1.3F * 0.5F, 0.11F * 0.5F,
-        0.0F, -1.25F * 0.5F, 0.11F * 0.5F
     };
 
     static
@@ -301,10 +279,6 @@ public class SummerIroha extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        cliententitiesmemory.itemlayerrender.iv_int_array = IV_INT_ARRAY;
-        cliententitiesmemory.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
-        cliententitiesmemory.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
         return new IrohaRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
     }
 
@@ -318,5 +292,11 @@ public class SummerIroha extends SkinningEntities
         {
             serverentitiesmemory.skinningentities = null;
         }
+    }
+
+    @Override
+    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
+    {
+        new ClientIrohaMemory(skinningentities, bothdata, workbytes);
     }
 }

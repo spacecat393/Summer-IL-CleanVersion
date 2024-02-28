@@ -7,17 +7,17 @@ import com.nali.small.entities.skinning.SkinningEntities;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ClientResaMemory extends ClientEntitiesMemory
+public class ClientNasuMemory extends ClientEntitiesMemory
 {
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        7, 15515,
-        7, 16019,
-        1, 176,
-        7, 2115,
-        7, 1941,
-        10, 52
+        7, 3319,
+        7, 5470,
+        4, 7013,
+        7, 1454,
+        7, 1690,
+        11, 45
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]
@@ -30,14 +30,11 @@ public class ClientResaMemory extends ClientEntitiesMemory
     {
         0.0F, -0.55F * 0.5F, 0.0F,
         0.0F, -1.0F * 0.5F, 0.09F * 0.5F,
-        0.0F, -1.3F * 0.5F, 0.11F * 0.5F,
-        0.0F, -1.25F * 0.5F, 0.11F * 0.5F
+        0.0F, -1.2F * 0.5F, 0.11F * 0.5F,
+        0.0F, -1.15F * 0.5F, 0.11F * 0.5F
     };
 
-    @SideOnly(Side.CLIENT)
-    public int client_eyes_tick;
-
-    public ClientResaMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
+    public ClientNasuMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         super(skinningentities, bothdata, workbytes);
         this.itemlayerrender.iv_int_array = IV_INT_ARRAY;
