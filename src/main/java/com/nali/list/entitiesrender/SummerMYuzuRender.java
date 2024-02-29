@@ -29,6 +29,9 @@ public class SummerMYuzuRender<T extends SummerMYuzu> extends SkinningEntitiesRe
     @Override
     public void multiplyAnimation(T entities)
     {
+        this.shadowOpaque = 0.5F;
+        this.shadowSize = 0.25F;
+
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)entities.bothentitiesmemory;
         SkinningRender skinningrender = ((SkinningRender)cliententitiesmemory.objectrender);
         EntitiesRenderMemory entitiesrendermemory = skinningrender.entitiesrendermemory;

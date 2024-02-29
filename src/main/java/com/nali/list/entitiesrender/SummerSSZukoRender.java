@@ -29,6 +29,9 @@ public class SummerSSZukoRender<T extends SummerSSZuko> extends SkinningEntities
     @Override
     public void multiplyAnimation(T entities)
     {
+        this.shadowOpaque = 0.5F;
+        this.shadowSize = 0.25F;
+
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)entities.bothentitiesmemory;
         SSZukoRender sszukorender = ((SSZukoRender)cliententitiesmemory.objectrender);
         EntitiesRenderMemory entitiesrendermemory = sszukorender.entitiesrendermemory;
