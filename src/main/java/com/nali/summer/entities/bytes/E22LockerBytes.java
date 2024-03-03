@@ -53,6 +53,12 @@ public class E22LockerBytes implements WorkBytes
     }
 
     @Override
+    public int WALK_TO()
+    {
+        return -1;
+    }
+
+    @Override
     public int SIT()
     {
         return 2;
@@ -126,6 +132,12 @@ public class E22LockerBytes implements WorkBytes
 
     @Override
     public int RANDOM_WALK()
+    {
+        return -1;
+    }
+
+    @Override
+    public int LOOK_TO()
     {
         return -1;
     }

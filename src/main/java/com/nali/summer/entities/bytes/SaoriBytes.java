@@ -53,27 +53,33 @@ public class SaoriBytes implements WorkBytes
     }
 
     @Override
-    public int SIT()
+    public int WALK_TO()
     {
         return 6;
     }
 
     @Override
-    public int LOCATION()
+    public int SIT()
     {
         return 7;
     }
 
     @Override
-    public int FOLLOW()
+    public int LOCATION()
     {
         return 8;
     }
 
     @Override
-    public int REVIVE()
+    public int FOLLOW()
     {
         return 9;
+    }
+
+    @Override
+    public int REVIVE()
+    {
+        return 10;
     }
 
     @Override
@@ -97,48 +103,54 @@ public class SaoriBytes implements WorkBytes
     @Override
     public int CARE_OWNER()
     {
-        return 10;
+        return 11;
     }
 
     @Override
     public int ATTACK()
     {
-        return 11;
+        return 12;
     }
 
     @Override
     public int MINE()
     {
-        return 12;
+        return 13;
     }
 
     @Override
     public int PLANT()
     {
-        return 13;
+        return 14;
     }
 
     @Override
     public int FIND_ITEM()
     {
-        return 14;
+        return 15;
     }
 
     @Override
     public int RANDOM_WALK()
     {
-        return 15;
+        return 16;
+    }
+
+    @Override
+    public int LOOK_TO()
+    {
+        return 17;
     }
 
     @Override
     public int RANDOM_LOOK()
     {
-        return 16;
+        return 18;
     }
 
     @Override
     public int MAX_WORKS()
     {
-        return 17;
+        return 19;
     }
 }

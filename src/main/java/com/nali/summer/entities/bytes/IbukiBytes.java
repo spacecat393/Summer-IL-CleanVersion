@@ -53,33 +53,39 @@ public class IbukiBytes implements WorkBytes
     }
 
     @Override
-    public int SIT()
+    public int WALK_TO()
     {
         return 7;
     }
 
     @Override
-    public int LOCATION()
+    public int SIT()
     {
         return 8;
     }
 
     @Override
-    public int FOLLOW()
+    public int LOCATION()
     {
         return 9;
     }
 
     @Override
-    public int REVIVE()
+    public int FOLLOW()
     {
         return 10;
     }
 
     @Override
-    public int PLAY()
+    public int REVIVE()
     {
         return 11;
+    }
+
+    @Override
+    public int PLAY()
+    {
+        return 12;
     }
 
     @Override
@@ -97,48 +103,54 @@ public class IbukiBytes implements WorkBytes
     @Override
     public int CARE_OWNER()
     {
-        return 12;
+        return 13;
     }
 
     @Override
     public int ATTACK()
     {
-        return 13;
+        return 14;
     }
 
     @Override
     public int MINE()
     {
-        return 14;
+        return 15;
     }
 
     @Override
     public int PLANT()
     {
-        return 15;
+        return 16;
     }
 
     @Override
     public int FIND_ITEM()
     {
-        return 16;
+        return 17;
     }
 
     @Override
     public int RANDOM_WALK()
     {
-        return 17;
+        return 18;
+    }
+
+    @Override
+    public int LOOK_TO()
+    {
+        return 19;
     }
 
     @Override
     public int RANDOM_LOOK()
     {
-        return 18;
+        return 20;
     }
 
     @Override
     public int MAX_WORKS()
     {
-        return 19;
+        return 21;
     }
 }
