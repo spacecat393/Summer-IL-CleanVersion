@@ -16,70 +16,70 @@ public class IrohaBytes implements WorkBytes
         return 1;
     }
 
+//    @Override
+//    public int HARD_READY()
+//    {
+//        return 2;
+//    }
+
+//    @Override
+//    public int SOFT_READY()
+//    {
+//        return 3;
+//    }
+
+//    @Override
+//    public int AMMO()
+//    {
+//        return 4;
+//    }
+
+//    @Override
+//    public int ON_REVIVE()
+//    {
+//        return 5;
+//    }
+
+//    @Override
+//    public int ON_PAT()
+//    {
+//        return 6;
+//    }
+
+//    @Override
+//    public int ON_EAT()
+//    {
+//        return 6;
+//    }
+
     @Override
-    public int HARD_READY()
+    public int WALK_TO()
     {
         return 2;
     }
 
     @Override
-    public int SOFT_READY()
+    public int SIT()
     {
         return 3;
     }
 
     @Override
-    public int AMMO()
+    public int LOCATION()
     {
         return 4;
     }
 
     @Override
-    public int ON_REVIVE()
+    public int FOLLOW()
     {
         return 5;
     }
 
     @Override
-    public int ON_PAT()
-    {
-        return 6;
-    }
-
-    @Override
-    public int ON_EAT()
-    {
-        return 6;
-    }
-
-    @Override
-    public int WALK_TO()
-    {
-        return 7;
-    }
-
-    @Override
-    public int SIT()
-    {
-        return 8;
-    }
-
-    @Override
-    public int LOCATION()
-    {
-        return 9;
-    }
-
-    @Override
-    public int FOLLOW()
-    {
-        return 10;
-    }
-
-    @Override
     public int REVIVE()
     {
-        return 11;
+        return 6;
     }
 
     @Override
@@ -103,54 +103,60 @@ public class IrohaBytes implements WorkBytes
     @Override
     public int CARE_OWNER()
     {
-        return 12;
+        return 7;
     }
 
     @Override
     public int ATTACK()
     {
-        return 13;
+        return 8;
     }
 
     @Override
     public int MINE()
     {
-        return 14;
+        return 9;
     }
 
     @Override
     public int PLANT()
     {
-        return 15;
+        return 10;
+    }
+
+    @Override
+    public int FISHING()
+    {
+        return 11;
     }
 
     @Override
     public int FIND_ITEM()
     {
-        return 16;
+        return 12;
     }
 
     @Override
     public int RANDOM_WALK()
     {
-        return 17;
+        return 13;
     }
 
     @Override
     public int LOOK_TO()
     {
-        return 18;
+        return 14;
     }
 
     @Override
     public int RANDOM_LOOK()
     {
-        return 19;
+        return 15;
     }
 
     @Override
     public int MAX_WORKS()
     {
-        return 20;
+        return 16;
     }
 }

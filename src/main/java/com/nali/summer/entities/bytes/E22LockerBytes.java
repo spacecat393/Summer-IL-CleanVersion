@@ -16,70 +16,70 @@ public class E22LockerBytes implements WorkBytes
         return 1;
     }
 
-    @Override
-    public int HARD_READY()
-    {
-        return 2;
-    }
+//    @Override
+//    public int HARD_READY()
+//    {
+//        return 2;
+//    }
 
-    @Override
-    public int SOFT_READY()
-    {
-        return 2;
-    }
+//    @Override
+//    public int SOFT_READY()
+//    {
+//        return 2;
+//    }
 
-    @Override
-    public int AMMO()
-    {
-        return 2;
-    }
+//    @Override
+//    public int AMMO()
+//    {
+//        return 2;
+//    }
 
-    @Override
-    public int ON_REVIVE()
-    {
-        return 2;
-    }
+//    @Override
+//    public int ON_REVIVE()
+//    {
+//        return 2;
+//    }
 
-    @Override
-    public int ON_PAT()
-    {
-        return 2;
-    }
+//    @Override
+//    public int ON_PAT()
+//    {
+//        return 2;
+//    }
 
-    @Override
-    public int ON_EAT()
-    {
-        return 2;
-    }
+//    @Override
+//    public int ON_EAT()
+//    {
+//        return 2;
+//    }
 
     @Override
     public int WALK_TO()
     {
-        return -1;
+        return 2;
     }
 
     @Override
     public int SIT()
     {
-        return 2;
+        return 3;
     }
 
     @Override
     public int LOCATION()
     {
-        return 3;
+        return 4;
     }
 
     @Override
     public int FOLLOW()
     {
-        return -1;
+        return 5;
     }
 
     @Override
     public int REVIVE()
     {
-        return -1;
+        return 6;
     }
 
     @Override
@@ -115,42 +115,48 @@ public class E22LockerBytes implements WorkBytes
     @Override
     public int MINE()
     {
-        return -1;
+        return 7;
     }
 
     @Override
     public int PLANT()
     {
-        return -1;
+        return 8;
+    }
+
+    @Override
+    public int FISHING()
+    {
+        return 9;
     }
 
     @Override
     public int FIND_ITEM()
     {
-        return 4;
+        return 10;
     }
 
     @Override
     public int RANDOM_WALK()
     {
-        return -1;
+        return 11;
     }
 
     @Override
     public int LOOK_TO()
     {
-        return -1;
+        return 12;
     }
 
     @Override
     public int RANDOM_LOOK()
     {
-        return -1;
+        return 13;
     }
 
     @Override
     public int MAX_WORKS()
     {
-        return 5;
+        return 14;
     }
 }

@@ -3,7 +3,6 @@ package com.nali.list.entities;
 import com.nali.data.BothData;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
@@ -13,9 +12,12 @@ import com.nali.summer.entities.memory.client.ClientE22LockerMemory;
 import com.nali.summer.render.E22LockerRender;
 import com.nali.summer.render.RenderHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -109,13 +111,12 @@ public class SummerE22Locker extends SkinningEntities
     public void createServer()
     {
         ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
-        WorkBytes workbytes = serverentitiesmemory.workbytes;
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
-            () -> serverentitiesmemory.skinningentities != null && serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(0, workbytes.SIT()),
+            () -> serverentitiesmemory.skinningentities != null && (serverentitiesmemory.statentitiesmemory.stat & 16) == 16 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(0, (byte)16),
             () -> serverentitiesmemory.skinningentities != null && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(2),
             () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1)
         };
@@ -175,6 +176,17 @@ public class SummerE22Locker extends SkinningEntities
     }
 
     @Override
+    public boolean processInitialInteract(EntityPlayer entityplayer, EnumHand enumhand)
+    {
+        if (!this.world.isRemote)
+        {
+            ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+            serverentitiesmemory.statentitiesmemory.stat ^= 16;
+        }
+        return super.processInitialInteract(entityplayer, enumhand);
+    }
+
+    @Override
     public DataParameter<Integer>[] getIntegerDataParameterArray()
     {
         return INTEGER_DATAPARAMETER_ARRAY;
@@ -196,5 +208,15 @@ public class SummerE22Locker extends SkinningEntities
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientE22LockerMemory(skinningentities, bothdata, workbytes);
+    }
+
+    @Override
+    public void initWriteEntityToNBT(NBTTagCompound nbttagcompound)
+    {
+    }
+
+    @Override
+    public void initReadEntityFromNBT(NBTTagCompound nbttagcompound)
+    {
     }
 }

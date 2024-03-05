@@ -16,70 +16,70 @@ public class SaoriBytes implements WorkBytes
         return 1;
     }
 
+//    @Override
+//    public int HARD_READY()
+//    {
+//        return 2;
+//    }
+
+//    @Override
+//    public int SOFT_READY()
+//    {
+//        return 3;
+//    }
+
+//    @Override
+//    public int AMMO()
+//    {
+//        return 4;
+//    }
+
+//    @Override
+//    public int ON_REVIVE()
+//    {
+//        return 5;
+//    }
+
+//    @Override
+//    public int ON_PAT()
+//    {
+//        return 3;
+//    }
+
+//    @Override
+//    public int ON_EAT()
+//    {
+//        return 3;
+//    }
+
     @Override
-    public int HARD_READY()
+    public int WALK_TO()
     {
         return 2;
     }
 
     @Override
-    public int SOFT_READY()
-    {
-        return 3;
-    }
-
-    @Override
-    public int AMMO()
-    {
-        return 4;
-    }
-
-    @Override
-    public int ON_REVIVE()
-    {
-        return 5;
-    }
-
-    @Override
-    public int ON_PAT()
-    {
-        return 3;
-    }
-
-    @Override
-    public int ON_EAT()
-    {
-        return 3;
-    }
-
-    @Override
-    public int WALK_TO()
-    {
-        return 6;
-    }
-
-    @Override
     public int SIT()
     {
-        return 7;
+        return 3;
     }
 
     @Override
     public int LOCATION()
     {
-        return 8;
+        return 4;
     }
 
     @Override
     public int FOLLOW()
     {
-        return 9;
+        return 5;
     }
 
     @Override
     public int REVIVE()
     {
-        return 10;
+        return 6;
     }
 
     @Override
@@ -103,54 +103,60 @@ public class SaoriBytes implements WorkBytes
     @Override
     public int CARE_OWNER()
     {
-        return 11;
+        return 7;
     }
 
     @Override
     public int ATTACK()
     {
-        return 12;
+        return 8;
     }
 
     @Override
     public int MINE()
     {
-        return 13;
+        return 9;
     }
 
     @Override
     public int PLANT()
     {
-        return 14;
+        return 10;
+    }
+
+    @Override
+    public int FISHING()
+    {
+        return 11;
     }
 
     @Override
     public int FIND_ITEM()
     {
-        return 15;
+        return 12;
     }
 
     @Override
     public int RANDOM_WALK()
     {
-        return 16;
+        return 13;
     }
 
     @Override
     public int LOOK_TO()
     {
-        return 17;
+        return 14;
     }
 
     @Override
     public int RANDOM_LOOK()
     {
-        return 18;
+        return 15;
     }
 
     @Override
     public int MAX_WORKS()
     {
-        return 19;
+        return 16;
     }
 }
