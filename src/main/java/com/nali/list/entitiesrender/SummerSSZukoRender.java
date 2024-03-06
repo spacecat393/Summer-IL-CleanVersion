@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class SummerSSZukoRender<T extends SummerSSZuko> extends SkinningEntitiesRender<T>
@@ -55,11 +56,14 @@ public class SummerSSZukoRender<T extends SummerSSZuko> extends SkinningEntities
     }
 
     @Override
-    public void updateData(T entities, float partialTicks)
+    public void doRender(T skinningentities, double ox, double oy, double oz, float entityYaw, float partialTicks)
     {
-        super.updateData(entities, partialTicks);
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)entities.bothentitiesmemory;
+        super.doRender(skinningentities, ox, oy, oz, entityYaw, partialTicks);
+        GL11.glPushMatrix();
+        GL11.glTranslated(ox, oy, oz);
+        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)skinningentities.bothentitiesmemory;
         SSZukoRender sszukorender = ((SSZukoRender)cliententitiesmemory.objectrender);
         sszukorender.seahouserender.objectworlddraw.renderWorld();
+        GL11.glPopMatrix();
     }
 }

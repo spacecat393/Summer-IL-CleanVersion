@@ -30,7 +30,7 @@ public class SSZukoRender extends SkinningEntitiesRender
         this.texture_index_int_array[9] = 32;
         this.texture_index_int_array[10] = 32;
         this.texture_index_int_array[11] = 31;
-        this.seahouserender = new SeaHouseRender(new EntitiesRenderMemory(), SEAHOUSEDATA, dataloader);
+        this.seahouserender = new SeaHouseRender(entitiesrendermemory, SEAHOUSEDATA, dataloader);
     }
 
     @Override
