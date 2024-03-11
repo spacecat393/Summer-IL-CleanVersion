@@ -17,8 +17,6 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.function.Supplier;
@@ -113,28 +111,28 @@ public class SummerSSUna extends SkinningEntities
         }
     }
 
-    @Override
-    public AxisAlignedBB getMouthAxisAlignedBB()
-    {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
-        int frame = skinningrender.frame_int_array[0];
-
-        if (frame > 314 && frame < 351)
-        {
-            double hw = this.width / 2.0F;
-            double hh = 0.5;
-            Vec3d view_vec3d = this.getVectorForRotation(this.rotationPitch, this.rotationYaw + 90.0F).scale(0.5);
-            double x = this.posX + view_vec3d.x;
-            double y = this.posY + this.height / 2.0F + view_vec3d.y;
-            double z = this.posZ + view_vec3d.z;
-            return new AxisAlignedBB(x - hw, y, z - hw, x + hw, y + hh, z + hw);
-        }
-        else
-        {
-            return super.getMouthAxisAlignedBB();
-        }
-    }
+//    @Override
+//    public AxisAlignedBB getMouthAxisAlignedBB()
+//    {
+//        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+//        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+//        int frame = skinningrender.frame_int_array[0];
+//
+//        if (frame > 314 && frame < 351)
+//        {
+//            double hw = this.width / 2.0F;
+//            double hh = 0.5;
+//            Vec3d view_vec3d = this.getVectorForRotation(this.rotationPitch, this.rotationYaw + 90.0F).scale(0.5);
+//            double x = this.posX + view_vec3d.x;
+//            double y = this.posY + this.height / 2.0F + view_vec3d.y;
+//            double z = this.posZ + view_vec3d.z;
+//            return new AxisAlignedBB(x - hw, y, z - hw, x + hw, y + hh, z + hw);
+//        }
+//        else
+//        {
+//            return super.getMouthAxisAlignedBB();
+//        }
+//    }
 
     @Override
     public BothData createBothData()
@@ -225,6 +223,12 @@ public class SummerSSUna extends SkinningEntities
     public Object createObjectRender()
     {
         return new SSUnaRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+    }
+
+    @Override
+    public int[] getIVIntArray()
+    {
+        return ClientSSUnaMemory.IV_INT_ARRAY;
     }
 
     @Override

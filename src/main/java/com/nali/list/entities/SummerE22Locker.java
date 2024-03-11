@@ -18,7 +18,6 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
@@ -128,11 +127,11 @@ public class SummerE22Locker extends SkinningEntities
         return BYTE_DATAPARAMETER_ARRAY;
     }
 
-    @Override
-    public AxisAlignedBB getMouthAxisAlignedBB()
-    {
-        return this.getEntityBoundingBox().grow(0.25);
-    }
+//    @Override
+//    public AxisAlignedBB getMouthAxisAlignedBB()
+//    {
+//        return this.getEntityBoundingBox().grow(0.25);
+//    }
 
     @Override
     public void collideWithNearbyEntities()
@@ -202,6 +201,12 @@ public class SummerE22Locker extends SkinningEntities
     public Object createObjectRender()
     {
         return new E22LockerRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+    }
+
+    @Override
+    public int[] getIVIntArray()
+    {
+        return ClientE22LockerMemory.IV_INT_ARRAY;
     }
 
     @Override

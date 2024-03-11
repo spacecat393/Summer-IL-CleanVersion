@@ -94,11 +94,11 @@ public class SummerIbukiRender<T extends SummerIbuki> extends SkinningEntitiesRe
             ibukirender.iroharender.initSkinning();
             setAnimation(ibukirender.iroharender);
             ibukirender.iroharender.setSkinning();
-            float[] c_vec4 = this.get3DSkinning(ibukirender.iroharender, (float)ox, (float)oy, (float)oz, 0.168471F, -0.111817F, -0.35F / (s / 1.5F), IV_INT_ARRAY[12], IV_INT_ARRAY[13]);
-            this.apply3DSkinningVec4(c_vec4);
+            float[] c_vec4 = ibukirender.iroharender.get3DSkinning((float)ox, (float)oy, (float)oz, 0.168471F, -0.111817F, -0.35F / (s / 1.5F), IV_INT_ARRAY[12], IV_INT_ARRAY[13]);
+            ibukirender.apply3DSkinningVec4(c_vec4);
 //            GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
 
-            float[] c_mat4 = this.getMat43DSkinning(ibukirender.iroharender, IV_INT_ARRAY[12], IV_INT_ARRAY[13]);
+            float[] c_mat4 = ibukirender.iroharender.getMat43DSkinning(IV_INT_ARRAY[12], IV_INT_ARRAY[13]);
             float[] mat4 = new float[]
             {
                 c_mat4[0], c_mat4[4], c_mat4[8], 0,

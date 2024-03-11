@@ -205,6 +205,12 @@ public class SummerSSHino extends SkinningEntities
     }
 
     @Override
+    public int[] getIVIntArray()
+    {
+        return ClientSSHinoMemory.IV_INT_ARRAY;
+    }
+
+    @Override
     public void createServerEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ServerSSHinoMemory(skinningentities, bothdata, workbytes);

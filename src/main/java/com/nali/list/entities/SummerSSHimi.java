@@ -207,6 +207,12 @@ public class SummerSSHimi extends SkinningEntities
     }
 
     @Override
+    public int[] getIVIntArray()
+    {
+        return ClientSSHimiMemory.IV_INT_ARRAY;
+    }
+
+    @Override
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientSSHimiMemory(skinningentities, bothdata, workbytes);

@@ -241,6 +241,12 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
+    public int[] getIVIntArray()
+    {
+        return ClientIbukiMemory.IV_INT_ARRAY;
+    }
+
+    @Override
     public void onShouldPlayWith()
     {
         super.onShouldPlayWith();

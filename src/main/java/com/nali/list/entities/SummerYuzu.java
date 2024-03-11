@@ -197,6 +197,12 @@ public class SummerYuzu extends SkinningEntities
     }
 
     @Override
+    public int[] getIVIntArray()
+    {
+        return ClientYuzuMemory.IV_INT_ARRAY;
+    }
+
+    @Override
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientYuzuMemory(skinningentities, bothdata, workbytes);

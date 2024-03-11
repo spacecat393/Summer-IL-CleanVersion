@@ -192,6 +192,12 @@ public class SummerNasu extends SkinningEntities
     }
 
     @Override
+    public int[] getIVIntArray()
+    {
+        return ClientNasuMemory.IV_INT_ARRAY;
+    }
+
+    @Override
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientNasuMemory(skinningentities, bothdata, workbytes);

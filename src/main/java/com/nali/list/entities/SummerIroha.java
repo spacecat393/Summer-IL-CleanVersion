@@ -283,6 +283,12 @@ public class SummerIroha extends SkinningEntities
     }
 
     @Override
+    public int[] getIVIntArray()
+    {
+        return ClientIrohaMemory.IV_INT_ARRAY;
+    }
+
+    @Override
     public void updateServer()
     {
         ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;

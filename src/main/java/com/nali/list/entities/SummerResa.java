@@ -203,6 +203,12 @@ public class SummerResa extends SkinningEntities
     }
 
     @Override
+    public int[] getIVIntArray()
+    {
+        return ClientResaMemory.IV_INT_ARRAY;
+    }
+
+    @Override
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientResaMemory(skinningentities, bothdata, workbytes);
