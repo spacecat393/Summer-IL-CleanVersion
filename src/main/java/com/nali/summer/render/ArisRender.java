@@ -28,8 +28,8 @@ public class ArisRender extends SkinningEntitiesRender
     @Override
     public void setGlow()
     {
-        this.glow_boolean_array[4] = true;
-        this.glow_boolean_array[7] = true;
+        this.glow_byte_array[4 / 8] ^= 16;//Math.pow(2, 4 % 8)
+        this.glow_byte_array[7 / 8] ^= 128;//Math.pow(2, 7 % 8)
         super.setGlow();
     }
 }

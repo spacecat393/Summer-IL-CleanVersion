@@ -36,7 +36,7 @@ public class SSZukoRender extends SkinningEntitiesRender
     @Override
     public void setGlow()
     {
-        this.glow_boolean_array[6] = true;
+        this.glow_byte_array[6 / 8] ^= 64;//Math.pow(2, 6 % 8)
         super.setGlow();
     }
 
@@ -44,8 +44,8 @@ public class SSZukoRender extends SkinningEntitiesRender
     public void updateLightCoord()
     {
         super.updateLightCoord();
-        this.seahouserender.objectworlddraw.lig_b = this.objectworlddraw.lig_b;
-        this.seahouserender.objectworlddraw.lig_s = this.objectworlddraw.lig_s;
+        this.seahouserender.lig_b = this.lig_b;
+        this.seahouserender.lig_s = this.lig_s;
     }
 
     @Override

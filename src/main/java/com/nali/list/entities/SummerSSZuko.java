@@ -85,17 +85,18 @@ public class SummerSSZuko extends SkinningEntities
 
         if (frame > 481 && frame < 533)
         {
-            Arrays.fill(sszukorender.seahouserender.model_boolean_array, true);
+            Arrays.fill(sszukorender.seahouserender.model_byte_array, (byte)255);
         }
         else if (frame > 532 && frame < 751)
         {
-            sszukorender.seahouserender.model_boolean_array[0] = true;
-            sszukorender.seahouserender.model_boolean_array[1] = false;
-            sszukorender.seahouserender.model_boolean_array[2] = false;
+            sszukorender.seahouserender.model_byte_array[0 / 8] |= 1;//Math.pow(2, 0 % 8)
+//            sszukorender.seahouserender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
+//            sszukorender.seahouserender.model_byte_array[2 / 8] &= 251;//255 - Math.pow(2, 2 % 8)
+            sszukorender.seahouserender.model_byte_array[0] &= 253 & 251;
         }
         else
         {
-            Arrays.fill(sszukorender.seahouserender.model_boolean_array, false);
+            Arrays.fill(sszukorender.seahouserender.model_byte_array, (byte)0);
         }
 
         super.updateClient();
@@ -106,7 +107,7 @@ public class SummerSSZuko extends SkinningEntities
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
         SSZukoRender sszukorender = (SSZukoRender)cliententitiesmemory.objectrender;
-        Arrays.fill(sszukorender.seahouserender.model_boolean_array, false);
+        Arrays.fill(sszukorender.seahouserender.model_byte_array, (byte)0);
     }
 
 //    @Override
@@ -177,7 +178,7 @@ public class SummerSSZuko extends SkinningEntities
         {
             () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(0),
             () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setProtect(6, 7, 8, 9, serverentitiesmemory.entitiesaimemory.skinningentitiesprotect),
-            () -> serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
+            () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
             () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(2),
             () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(3, (byte)4),
             () -> ((serverentitiesmemory.statentitiesmemory.stat & 1) == 1 || (serverentitiesmemory.statentitiesmemory.stat & 2) == 2 || (serverentitiesmemory.statentitiesmemory.stat & 8) == 8) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(4, (byte)(1 + 2 + 8)),

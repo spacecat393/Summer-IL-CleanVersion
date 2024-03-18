@@ -144,35 +144,35 @@ public class SummerE22Locker extends SkinningEntities
         return false;
     }
 
-    @Override
-    public void heal(float value)
-    {
-        if (!this.world.isRemote)
-        {
-            ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+//    @Override
+//    public void heal(float value)
+//    {
+//        if (!this.world.isRemote)
+//        {
+//            ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
+//
+//            if (serverentitiesmemory.skinningentities != null)
+//            {
+//                serverentitiesmemory.skinningentities.heal(value);
+//            }
+//        }
+//        else
+//        {
+//            super.heal(value);
+//        }
+//    }
 
-            if (serverentitiesmemory.skinningentities != null)
-            {
-                serverentitiesmemory.skinningentities.heal(value);
-            }
-        }
-        else
-        {
-            super.heal(value);
-        }
-    }
+//    @Override
+//    public boolean canEat()
+//    {
+//        return this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).skinningentities != null;
+//    }
 
-    @Override
-    public boolean canEat()
-    {
-        return this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).skinningentities != null;
-    }
-
-    @Override
-    public boolean canPat()
-    {
-        return false;
-    }
+//    @Override
+//    public boolean canPat()
+//    {
+//        return false;
+//    }
 
     @Override
     public boolean processInitialInteract(EntityPlayer entityplayer, EnumHand enumhand)

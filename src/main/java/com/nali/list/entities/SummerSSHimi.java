@@ -84,25 +84,29 @@ public class SummerSSHimi extends SkinningEntities
 
         if (frame > 267 && frame < 284)
         {
-            skinningrender.model_boolean_array[0] = false;
-            skinningrender.model_boolean_array[1] = false;
-            skinningrender.model_boolean_array[2] = false;
-            skinningrender.model_boolean_array[3] = false;
-            skinningrender.model_boolean_array[4] = false;
-            skinningrender.model_boolean_array[6] = false;
-            skinningrender.model_boolean_array[11] = false;
-            skinningrender.model_boolean_array[12] = false;
+//            skinningrender.model_byte_array[0 / 8] &= 254;//255 - Math.pow(2, 0 % 8)
+//            skinningrender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
+//            skinningrender.model_byte_array[2 / 8] &= 251;//255 - Math.pow(2, 2 % 8)
+//            skinningrender.model_byte_array[3 / 8] &= 247;//255 - Math.pow(2, 3 % 8)
+//            skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
+//            skinningrender.model_byte_array[6 / 8] &= 191;//255 - Math.pow(2, 6 % 8)
+            skinningrender.model_byte_array[0] &= 254 & 253 & 251 & 247 & 239 & 191;
+//            skinningrender.model_byte_array[11 / 8] &= 247;//255 - Math.pow(2, 11 % 8)
+//            skinningrender.model_byte_array[12 / 8] &= 239;//255 - Math.pow(2, 12 % 8)
+            skinningrender.model_byte_array[1] &= 247 & 239;
         }
         else
         {
-            skinningrender.model_boolean_array[0] = true;
-            skinningrender.model_boolean_array[1] = true;
-            skinningrender.model_boolean_array[2] = true;
-            skinningrender.model_boolean_array[3] = true;
-            skinningrender.model_boolean_array[4] = true;
-            skinningrender.model_boolean_array[6] = true;
-            skinningrender.model_boolean_array[11] = true;
-            skinningrender.model_boolean_array[12] = true;
+//            skinningrender.model_byte_array[0 / 8] |= 1;//Math.pow(2, 0 % 8)
+//            skinningrender.model_byte_array[1 / 8] |= 2;//Math.pow(2, 1 % 8)
+//            skinningrender.model_byte_array[2 / 8] |= 4;//Math.pow(2, 2 % 8)
+//            skinningrender.model_byte_array[3 / 8] |= 8;//Math.pow(2, 3 % 8)
+//            skinningrender.model_byte_array[4 / 8] |= 16;//Math.pow(2, 4 % 8)
+//            skinningrender.model_byte_array[6 / 8] |= 64;//Math.pow(2, 6 % 8)
+            skinningrender.model_byte_array[0] |= 1 | 2 | 4 | 8 | 16 | 64;
+//            skinningrender.model_byte_array[11 / 8] |= 8;//Math.pow(2, 11 % 8)
+//            skinningrender.model_byte_array[12 / 8] |= 16;//Math.pow(2, 12 % 8)
+            skinningrender.model_byte_array[1] |= 8 | 16;
         }
 
         float scale = skinningrender.entitiesrendermemory.scale;
@@ -110,20 +114,22 @@ public class SummerSSHimi extends SkinningEntities
         {
             this.width = 1.7F * scale;
             this.height = 1.5F * scale;
-            skinningrender.model_boolean_array[8] = true;
-            skinningrender.model_boolean_array[9] = true;
-            skinningrender.model_boolean_array[10] = true;
+//            skinningrender.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
+//            skinningrender.model_byte_array[9 / 8] |= 2;//Math.pow(2, 9 % 8)
+//            skinningrender.model_byte_array[10 / 8] |= 4;//Math.pow(2, 10 % 8)
+            skinningrender.model_byte_array[1] |= 1 | 2 | 4;
         }
         else
         {
             this.width = bothdata.Width() * scale;
             this.height = bothdata.Height() * scale;
-            skinningrender.model_boolean_array[8] = false;
-            skinningrender.model_boolean_array[9] = false;
-            skinningrender.model_boolean_array[10] = false;
+//            skinningrender.model_byte_array[8 / 8] &= 254;//255 - Math.pow(2, 8 % 8)
+//            skinningrender.model_byte_array[9 / 8] &= 253;//255 - Math.pow(2, 9 % 8)
+//            skinningrender.model_byte_array[10 / 8] &= 251;//255 - Math.pow(2, 10 % 8)
+            skinningrender.model_byte_array[1] &= 254 & 253 & 251;
         }
 
-        skinningrender.model_boolean_array[5] = false;
+        skinningrender.model_byte_array[5 / 8] &= 223;//255 - Math.pow(2, 5 % 8)
     }
 
     @Override
@@ -169,15 +175,15 @@ public class SummerSSHimi extends SkinningEntities
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
         {
             () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
-            () -> serverentitiesmemory.current_work_byte_array[workbytes.SIT()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoopFB(1),
-            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
+            () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoopFB(1),
+            () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
             () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setShoot(2, 11, 12, 13, false, serverentitiesmemory.entitiesaimemory.skinningentitiesattack),
-            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
+            () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
             () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5),
             () -> ((serverentitiesmemory.statentitiesmemory.stat & 1) == 1 || (serverentitiesmemory.statentitiesmemory.stat & 8) == 8) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(6, (byte)(1 + 8)),
             () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(7, (byte)4),
             () -> (serverentitiesmemory.statentitiesmemory.stat & 2) == 2 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(8, (byte)2),
-            () -> serverentitiesmemory.main_work_byte_array[workbytes.ATTACK()] == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(9),
+            () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(9),
             () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(10)
         };
     }

@@ -31,7 +31,7 @@ public class NasuRender extends SkinningEntitiesRender
     @Override
     public void setGlow()
     {
-        this.glow_boolean_array[6] = true;
+        this.glow_byte_array[6 / 8] ^= 64;//Math.pow(2, 6 % 8)
         super.setGlow();
     }
 }

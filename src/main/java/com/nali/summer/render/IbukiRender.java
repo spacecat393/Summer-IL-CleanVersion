@@ -38,7 +38,7 @@ public class IbukiRender extends SkinningEntitiesRender
     @Override
     public void setGlow()
     {
-        this.glow_boolean_array[13] = true;
+        this.glow_byte_array[13 / 8] ^= 32;//Math.pow(2, 13 % 8)
         super.setGlow();
     }
 }

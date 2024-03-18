@@ -30,7 +30,7 @@ public class ResaRender extends SkinningEntitiesRender
     @Override
     public void setGlow()
     {
-        this.glow_boolean_array[9] = true;
+        this.glow_byte_array[9 / 8] ^= 2;//Math.pow(2, 9 % 8)
         super.setGlow();
     }
 }

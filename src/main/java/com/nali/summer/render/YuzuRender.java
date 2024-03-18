@@ -28,7 +28,7 @@ public class YuzuRender extends SkinningEntitiesRender
     @Override
     public void setGlow()
     {
-        this.glow_boolean_array[7] = true;
+        this.glow_byte_array[7 / 8] ^= 128;//Math.pow(2, 7 % 8)
         super.setGlow();
     }
 }
