@@ -10,3 +10,6 @@ mods
 resourcepacks
 Results
 logs
+build.gradle
+gradle.properties
+*.gradle
