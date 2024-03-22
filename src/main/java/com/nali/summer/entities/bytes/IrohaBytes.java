@@ -16,42 +16,6 @@ public class IrohaBytes implements WorkBytes
         return 1;
     }
 
-//    @Override
-//    public byte HARD_READY()
-//    {
-//        return 2;
-//    }
-
-//    @Override
-//    public byte SOFT_READY()
-//    {
-//        return 3;
-//    }
-
-//    @Override
-//    public byte AMMO()
-//    {
-//        return 4;
-//    }
-
-//    @Override
-//    public byte ON_REVIVE()
-//    {
-//        return 5;
-//    }
-
-//    @Override
-//    public byte ON_PAT()
-//    {
-//        return 6;
-//    }
-
-//    @Override
-//    public byte ON_EAT()
-//    {
-//        return 6;
-//    }
-
     @Override
     public byte WALK_TO()
     {
@@ -59,27 +23,33 @@ public class IrohaBytes implements WorkBytes
     }
 
     @Override
-    public byte SIT()
+    public byte USE_TO()
     {
         return 3;
     }
 
     @Override
-    public byte LOCATION()
+    public byte SIT()
     {
         return 4;
     }
 
     @Override
-    public byte FOLLOW()
+    public byte LOCATION()
     {
         return 5;
     }
 
     @Override
-    public byte REVIVE()
+    public byte FOLLOW()
     {
         return 6;
+    }
+
+    @Override
+    public byte REVIVE()
+    {
+        return 7;
     }
 
     @Override
@@ -103,60 +73,66 @@ public class IrohaBytes implements WorkBytes
     @Override
     public byte CARE_OWNER()
     {
-        return 7;
+        return 8;
     }
 
     @Override
     public byte ATTACK()
     {
-        return 8;
-    }
-
-    @Override
-    public byte MINE()
-    {
         return 9;
     }
 
     @Override
-    public byte PLANT()
+    public byte MANAGE_ITEM()
     {
         return 10;
     }
 
     @Override
-    public byte FISHING()
+    public byte FIND_ITEM()
     {
         return 11;
     }
 
     @Override
-    public byte FIND_ITEM()
+    public byte FISHING()
     {
         return 12;
     }
 
     @Override
-    public byte RANDOM_WALK()
+    public byte PLANT()
     {
         return 13;
     }
 
     @Override
-    public byte LOOK_TO()
+    public byte MINE()
     {
         return 14;
     }
 
     @Override
-    public byte RANDOM_LOOK()
+    public byte RANDOM_WALK()
     {
         return 15;
     }
 
     @Override
+    public byte LOOK_TO()
+    {
+        return 16;
+    }
+
+    @Override
+    public byte RANDOM_LOOK()
+    {
+        return 17;
+    }
+
+    @Override
     public byte MAX_WORKS()
     {
-        return 2;
+        return 3;
     }
 }

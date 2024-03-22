@@ -13,3 +13,7 @@ logs
 build.gradle
 gradle.properties
 *.gradle
+gradlew
+gradlew.bat
+LICENSE
+gradle
