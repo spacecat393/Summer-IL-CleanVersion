@@ -10,13 +10,13 @@ public class ArisData implements BothData
     @Override
     public int MaxPart()
     {
-        return 9;
+        return 9+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 28;
+        return 28-1;
     }
 
     @Override

@@ -1,8 +1,10 @@
-package com.nali.summer.render;
+package com.nali.list.render;
 
 import com.nali.data.BothData;
+import com.nali.list.entities.SummerYuzu;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.render.SkinningEntitiesRender;
+import com.nali.summer.render.RenderHelper;
 import com.nali.system.DataLoader;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
@@ -11,9 +13,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class YuzuRender extends SkinningEntitiesRender
 {
-    public YuzuRender(EntitiesRenderMemory entitiesrendermemory, BothData bothdata, DataLoader dataloader, Entity entity)
+    public static int ID;
+    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
+    public static BothData BOTHDATA = SummerYuzu.BOTHDATA;
+
+    public YuzuRender(EntitiesRenderMemory entitiesrendermemory, Entity entity)
     {
-        super(entitiesrendermemory, bothdata, dataloader, entity);
+        super(entitiesrendermemory, BOTHDATA, DATALOADER, entity, ID);
         this.texture_index_int_array[0] = 62;
         this.texture_index_int_array[1] = 54;
         this.texture_index_int_array[2] = 63;

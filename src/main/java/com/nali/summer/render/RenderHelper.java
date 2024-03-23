@@ -7,6 +7,5 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderHelper
 {
-    @SideOnly(Side.CLIENT)
     public static DataLoader DATALOADER = new DataLoader();
 }

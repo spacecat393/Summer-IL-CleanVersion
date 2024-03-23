@@ -10,13 +10,13 @@ public class SeaHouseData implements BothData
     @Override
     public int MaxPart()
     {
-        return 3;
+        return 3+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 38;
+        return 38-1;
     }
 
     @Override

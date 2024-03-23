@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.list.render.SSHimiRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
@@ -11,8 +12,6 @@ import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.SSHimiData;
 import com.nali.summer.entities.bytes.SSHimiBytes;
 import com.nali.summer.entities.memory.client.ClientSSHimiMemory;
-import com.nali.summer.render.RenderHelper;
-import com.nali.summer.render.SSHimiRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -25,6 +24,10 @@ public class SummerSSHimi extends SkinningEntities
 {
     public static int eggPrimary = 0xBE9478;
     public static int eggSecondary = 0xFFF6AE;
+
+    public static BothData BOTHDATA = new SSHimiData();
+    public static WorkBytes WORKBYTES = new SSHimiBytes();
+
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSHimiData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSHimiData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
@@ -142,13 +145,13 @@ public class SummerSSHimi extends SkinningEntities
     @Override
     public BothData createBothData()
     {
-        return new SSHimiData();
+        return BOTHDATA;
     }
 
     @Override
     public WorkBytes createWorkBytes()
     {
-        return new SSHimiBytes();
+        return WORKBYTES;
     }
 
     @Override
@@ -209,7 +212,7 @@ public class SummerSSHimi extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new SSHimiRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new SSHimiRender(new EntitiesRenderMemory(), this);
     }
 
     @Override

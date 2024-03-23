@@ -10,13 +10,13 @@ public class MYuzuData implements BothData
     @Override
     public int MaxPart()
     {
-        return 9;
+        return 9+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 90;
+        return 90-1;
     }
 
     @Override

@@ -10,13 +10,13 @@ public class IrohaData implements BothData
     @Override
     public int MaxPart()
     {
-        return 11;
+        return 11+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 144;
+        return 144-1;
     }
 
     @Override

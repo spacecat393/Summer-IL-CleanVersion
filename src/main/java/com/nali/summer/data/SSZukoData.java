@@ -10,13 +10,13 @@ public class SSZukoData implements BothData
     @Override
     public int MaxPart()
     {
-        return 12;
+        return 12+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 42;
+        return 42-1;
     }
 
     @Override

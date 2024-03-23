@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.list.render.SSZukoRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
@@ -11,8 +12,6 @@ import com.nali.summer.data.SSZukoData;
 import com.nali.summer.data.SeaHouseData;
 import com.nali.summer.entities.bytes.SSZukoBytes;
 import com.nali.summer.entities.memory.client.ClientSSZukoMemory;
-import com.nali.summer.render.RenderHelper;
-import com.nali.summer.render.SSZukoRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -26,6 +25,10 @@ public class SummerSSZuko extends SkinningEntities
 {
     public static int eggPrimary = 0xfff0e2;
     public static int eggSecondary = 0x645353;
+
+    public static BothData BOTHDATA = new SSZukoData();
+    public static WorkBytes WORKBYTES = new SSZukoBytes();
+
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSZukoData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSZukoData.MAX_FRAME + SeaHouseData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
@@ -148,13 +151,13 @@ public class SummerSSZuko extends SkinningEntities
     @Override
     public BothData createBothData()
     {
-        return new SSZukoData();
+        return BOTHDATA;
     }
 
     @Override
     public WorkBytes createWorkBytes()
     {
-        return new SSZukoBytes();
+        return WORKBYTES;
     }
 
     @Override
@@ -215,7 +218,7 @@ public class SummerSSZuko extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new SSZukoRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new SSZukoRender(new EntitiesRenderMemory(), this);
     }
 
     @Override

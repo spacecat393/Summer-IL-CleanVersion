@@ -12,12 +12,12 @@ public class ClientE22LockerMemory extends ClientEntitiesMemory
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        5, 523,
-        5, 560,
-        5, 12,
-        5, 451,
-        5, 451,
-        4, 99
+        5+1, 523,
+        5+1, 560,
+        5+1, 12,
+        5+1, 451,
+        5+1, 451,
+        4+1, 99
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]

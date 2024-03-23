@@ -10,13 +10,13 @@ public class NasuData implements BothData
     @Override
     public int MaxPart()
     {
-        return 12;
+        return 12+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 15;
+        return 15-1;
     }
 
     @Override

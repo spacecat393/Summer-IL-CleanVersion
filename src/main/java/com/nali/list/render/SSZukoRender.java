@@ -1,9 +1,10 @@
-package com.nali.summer.render;
+package com.nali.list.render;
 
 import com.nali.data.BothData;
+import com.nali.list.entities.SummerSSZuko;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.render.SkinningEntitiesRender;
-import com.nali.summer.data.SeaHouseData;
+import com.nali.summer.render.RenderHelper;
 import com.nali.system.DataLoader;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
@@ -12,12 +13,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class SSZukoRender extends SkinningEntitiesRender
 {
-    public SeaHouseRender seahouserender;
-    public static SeaHouseData SEAHOUSEDATA = new SeaHouseData();
+    public static int ID;
+    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
+    public static BothData BOTHDATA = SummerSSZuko.BOTHDATA;
 
-    public SSZukoRender(EntitiesRenderMemory entitiesrendermemory, BothData bothdata, DataLoader dataloader, Entity entity)
+    public SeaHouseRender seahouserender;
+
+    public SSZukoRender(EntitiesRenderMemory entitiesrendermemory, Entity entity)
     {
-        super(entitiesrendermemory, bothdata, dataloader, entity);
+        super(entitiesrendermemory, BOTHDATA, DATALOADER, entity, ID);
         this.texture_index_int_array[0] = 25;
         this.texture_index_int_array[1] = 26;
         this.texture_index_int_array[2] = 27;
@@ -30,7 +34,7 @@ public class SSZukoRender extends SkinningEntitiesRender
         this.texture_index_int_array[9] = 32;
         this.texture_index_int_array[10] = 32;
         this.texture_index_int_array[11] = 31;
-        this.seahouserender = new SeaHouseRender(entitiesrendermemory, SEAHOUSEDATA, dataloader);
+        this.seahouserender = new SeaHouseRender(entitiesrendermemory);
     }
 
     @Override

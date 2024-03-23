@@ -10,13 +10,13 @@ public class SSHinoData implements BothData
     @Override
     public int MaxPart()
     {
-        return 12;
+        return 12+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 77;
+        return 77-1;
     }
 
     @Override

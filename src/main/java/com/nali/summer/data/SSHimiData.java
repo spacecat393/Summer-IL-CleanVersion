@@ -10,13 +10,13 @@ public class SSHimiData implements BothData
     @Override
     public int MaxPart()
     {
-        return 13;
+        return 13+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 1;
+        return 1-1;
     }
 
     @Override

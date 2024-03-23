@@ -7,7 +7,7 @@ import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.render.SkinningEntitiesRender;
-import com.nali.summer.render.IbukiRender;
+import com.nali.list.render.IbukiRender;
 import com.nali.system.opengl.memory.OpenGLCurrentMemory;
 import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.RenderManager;

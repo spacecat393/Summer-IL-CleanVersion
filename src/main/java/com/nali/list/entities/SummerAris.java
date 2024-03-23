@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.list.render.ArisRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
@@ -11,8 +12,6 @@ import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.ArisData;
 import com.nali.summer.entities.bytes.ArisBytes;
 import com.nali.summer.entities.memory.client.ClientArisMemory;
-import com.nali.summer.render.ArisRender;
-import com.nali.summer.render.RenderHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -25,6 +24,10 @@ public class SummerAris extends SkinningEntities
 {
     public static int eggPrimary = 0x454D60;
     public static int eggSecondary = 0xF8E9E4;
+
+    public static BothData BOTHDATA = new ArisData();
+    public static WorkBytes WORKBYTES = new ArisBytes();
+
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[ArisData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[ArisData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
@@ -139,13 +142,13 @@ public class SummerAris extends SkinningEntities
     @Override
     public BothData createBothData()
     {
-        return new ArisData();
+        return BOTHDATA;
     }
 
     @Override
     public WorkBytes createWorkBytes()
     {
-        return new ArisBytes();
+        return WORKBYTES;
     }
 
     @Override
@@ -206,7 +209,7 @@ public class SummerAris extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new ArisRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new ArisRender(new EntitiesRenderMemory(), this);
     }
 
     @Override

@@ -12,12 +12,12 @@ public class ClientSSHinoMemory extends ClientEntitiesMemory
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        8, 8504,
-        8, 9063,
-        1, 103,
-        8, 5366,
-        8, 4275,
-        10, 69
+        8+1, 8504,
+        8+1, 9063,
+        1+1, 103,
+        8+1, 5366,
+        8+1, 4275,
+        10+1, 69
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]

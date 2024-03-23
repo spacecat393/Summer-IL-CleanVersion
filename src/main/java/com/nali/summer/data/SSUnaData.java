@@ -10,13 +10,13 @@ public class SSUnaData implements BothData
     @Override
     public int MaxPart()
     {
-        return 9;
+        return 9+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 55;
+        return 55-1;
     }
 
     @Override

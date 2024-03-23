@@ -12,12 +12,12 @@ public class ClientNasuMemory extends ClientEntitiesMemory
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        7, 3319,
-        7, 5470,
-        4, 7013,
-        7, 1454,
-        7, 1690,
-        11, 45
+        7+1, 3319,
+        7+1, 5470,
+        4+1, 7013,
+        7+1, 1454,
+        7+1, 1690,
+        11+1, 45
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]

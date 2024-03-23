@@ -10,13 +10,13 @@ public class ResaData implements BothData
     @Override
     public int MaxPart()
     {
-        return 11;
+        return 11+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 65;
+        return 65-1;
     }
 
     @Override

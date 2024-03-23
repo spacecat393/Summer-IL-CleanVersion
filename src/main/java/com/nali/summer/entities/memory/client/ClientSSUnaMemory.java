@@ -12,12 +12,12 @@ public class ClientSSUnaMemory extends ClientEntitiesMemory
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        4, 7108,
-        4, 11754,
-        0, 1805,
-        4, 12755,
-        4, 3359,
-        7, 69
+        4+1, 7108,
+        4+1, 11754,
+        0+1, 1805,
+        4+1, 12755,
+        4+1, 3359,
+        7+1, 69
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]

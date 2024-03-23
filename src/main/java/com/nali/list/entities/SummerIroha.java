@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.list.render.IrohaRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
@@ -11,8 +12,6 @@ import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.IrohaData;
 import com.nali.summer.entities.bytes.IrohaBytes;
 import com.nali.summer.entities.memory.client.ClientIrohaMemory;
-import com.nali.summer.render.IrohaRender;
-import com.nali.summer.render.RenderHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -26,6 +25,10 @@ public class SummerIroha extends SkinningEntities
 {
     public static int eggPrimary = 0xadb7c1;
     public static int eggSecondary = 0xc95b7e;
+
+    public static BothData BOTHDATA = new IrohaData();
+    public static WorkBytes WORKBYTES = new IrohaBytes();
+
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[IrohaData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[IrohaData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
@@ -116,13 +119,13 @@ public class SummerIroha extends SkinningEntities
     @Override
     public BothData createBothData()
     {
-        return new IrohaData();
+        return BOTHDATA;
     }
 
     @Override
     public WorkBytes createWorkBytes()
     {
-        return new IrohaBytes();
+        return WORKBYTES;
     }
 
     @Override
@@ -281,7 +284,7 @@ public class SummerIroha extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new IrohaRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new IrohaRender(new EntitiesRenderMemory(), this);
     }
 
     @Override

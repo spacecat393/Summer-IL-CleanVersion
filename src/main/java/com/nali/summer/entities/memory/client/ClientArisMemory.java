@@ -12,12 +12,12 @@ public class ClientArisMemory extends ClientEntitiesMemory
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        5, 8547,
-        5, 9270,
-        0, 2078,
-        5, 268,
-        5, 519,
-        8, 39
+        5+1, 8547,
+        5+1, 9270,
+        0+1, 2078,
+        5+1, 268,
+        5+1, 519,
+        8+1, 39
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]

@@ -10,13 +10,13 @@ public class E22LockerData implements BothData
     @Override
     public int MaxPart()
     {
-        return 7;
+        return 7+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 100;
+        return 100-1;
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.nali.math.Quaternion;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.entities.memory.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.render.SkinningEntitiesRender;
-import com.nali.summer.render.SSZukoRender;
+import com.nali.list.render.SSZukoRender;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;

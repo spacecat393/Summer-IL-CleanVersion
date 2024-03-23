@@ -10,13 +10,13 @@ public class IbukiData implements BothData
     @Override
     public int MaxPart()
     {
-        return 15;
+        return 15+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 128;
+        return 128-1;
     }
 
     @Override

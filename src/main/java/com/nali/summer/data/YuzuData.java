@@ -10,13 +10,13 @@ public class YuzuData implements BothData
     @Override
     public int MaxPart()
     {
-        return 9;
+        return 9+1;
     }
 
     @Override
     public int StepModels()
     {
-        return 108;
+        return 108-1;
     }
 
     @Override

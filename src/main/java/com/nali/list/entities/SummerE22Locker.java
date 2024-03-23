@@ -1,6 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
+import com.nali.list.render.E22LockerRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -9,8 +10,6 @@ import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.summer.data.E22LockerData;
 import com.nali.summer.entities.bytes.E22LockerBytes;
 import com.nali.summer.entities.memory.client.ClientE22LockerMemory;
-import com.nali.summer.render.E22LockerRender;
-import com.nali.summer.render.RenderHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,6 +26,10 @@ public class SummerE22Locker extends SkinningEntities
 {
     public static int eggPrimary = 0x1a69a7;
     public static int eggSecondary = 0xffffff;
+
+    public static BothData BOTHDATA = new E22LockerData();
+    public static WorkBytes WORKBYTES = new E22LockerBytes();
+
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[E22LockerData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[E22LockerData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
@@ -64,13 +67,13 @@ public class SummerE22Locker extends SkinningEntities
     @Override
     public BothData createBothData()
     {
-        return new E22LockerData();
+        return BOTHDATA;
     }
 
     @Override
     public WorkBytes createWorkBytes()
     {
-        return new E22LockerBytes();
+        return WORKBYTES;
     }
 
     @Override
@@ -200,7 +203,7 @@ public class SummerE22Locker extends SkinningEntities
     @Override
     public Object createObjectRender()
     {
-        return new E22LockerRender(new EntitiesRenderMemory(), this.bothentitiesmemory.bothdata, RenderHelper.DATALOADER, this);
+        return new E22LockerRender(new EntitiesRenderMemory(), this);
     }
 
     @Override
