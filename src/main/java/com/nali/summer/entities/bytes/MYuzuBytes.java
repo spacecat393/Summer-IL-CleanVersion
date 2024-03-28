@@ -89,7 +89,7 @@ public class MYuzuBytes implements WorkBytes
     }
 
     @Override
-    public byte FIND_ITEM()
+    public byte GET_ITEM()
     {
         return 11;
     }

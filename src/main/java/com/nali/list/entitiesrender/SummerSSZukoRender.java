@@ -65,7 +65,7 @@ public class SummerSSZukoRender<T extends SummerSSZuko> extends SkinningEntities
         float s = cliententitiesmemory.objectrender.entitiesrendermemory.scale;
         GL11.glScaled(s, s, s);
         SSZukoRender sszukorender = ((SSZukoRender)cliententitiesmemory.objectrender);
-        sszukorender.seahouserender.objectworlddraw.renderWorld();
+        sszukorender.seahouserender.objectworlddraw.renderWorld(/*ox, oy, oz*/);
         GL11.glPopMatrix();
     }
 }
