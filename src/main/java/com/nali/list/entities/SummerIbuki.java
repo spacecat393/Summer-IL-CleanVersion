@@ -5,14 +5,17 @@ import com.nali.list.render.IbukiRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
+import com.nali.small.entities.sounds.Sounds;
 import com.nali.summer.data.IbukiData;
 import com.nali.summer.data.IrohaData;
 import com.nali.summer.entities.bytes.IbukiBytes;
 import com.nali.summer.entities.memory.client.ClientIbukiMemory;
+import com.nali.summer.entities.sounds.IbukiSounds;
+import com.nali.summer.render.SummerSoundRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -28,6 +31,7 @@ public class SummerIbuki extends SkinningEntities
 
     public static BothData BOTHDATA = new IbukiData();
     public static WorkBytes WORKBYTES = new IbukiBytes();
+    public static Sounds SOUNDS = new IbukiSounds();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[IbukiData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[IbukiData.MAX_FRAME + IrohaData.MAX_FRAME];
@@ -244,6 +248,18 @@ public class SummerIbuki extends SkinningEntities
     public Object createObjectRender()
     {
         return new IbukiRender(new EntitiesRenderMemory(), this);
+    }
+
+    @Override
+    public Sounds createSounds()
+    {
+        return SOUNDS;
+    }
+
+    @Override
+    public Object createSoundRender()
+    {
+        return new SummerSoundRender();
     }
 
     @Override

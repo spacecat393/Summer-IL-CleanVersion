@@ -5,13 +5,16 @@ import com.nali.list.render.IrohaRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
+import com.nali.small.entities.sounds.Sounds;
 import com.nali.summer.data.IrohaData;
 import com.nali.summer.entities.bytes.IrohaBytes;
 import com.nali.summer.entities.memory.client.ClientIrohaMemory;
+import com.nali.summer.entities.sounds.IrohaSounds;
+import com.nali.summer.render.SummerSoundRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -28,6 +31,7 @@ public class SummerIroha extends SkinningEntities
 
     public static BothData BOTHDATA = new IrohaData();
     public static WorkBytes WORKBYTES = new IrohaBytes();
+    public static Sounds SOUNDS = new IrohaSounds();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[IrohaData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[IrohaData.MAX_FRAME];
@@ -285,6 +289,18 @@ public class SummerIroha extends SkinningEntities
     public Object createObjectRender()
     {
         return new IrohaRender(new EntitiesRenderMemory(), this);
+    }
+
+    @Override
+    public Sounds createSounds()
+    {
+        return SOUNDS;
+    }
+
+    @Override
+    public Object createSoundRender()
+    {
+        return new SummerSoundRender();
     }
 
     @Override

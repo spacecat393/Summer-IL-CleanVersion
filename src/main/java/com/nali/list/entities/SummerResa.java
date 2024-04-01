@@ -5,13 +5,16 @@ import com.nali.list.render.ResaRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
+import com.nali.small.entities.sounds.Sounds;
 import com.nali.summer.data.ResaData;
 import com.nali.summer.entities.bytes.ResaBytes;
 import com.nali.summer.entities.memory.client.ClientResaMemory;
+import com.nali.summer.entities.sounds.ResaSounds;
+import com.nali.summer.render.SummerSoundRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,6 +30,7 @@ public class SummerResa extends SkinningEntities
 
     public static BothData BOTHDATA = new ResaData();
     public static WorkBytes WORKBYTES = new ResaBytes();
+    public static Sounds SOUNDS = new ResaSounds();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[ResaData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[ResaData.MAX_FRAME];
@@ -203,6 +207,18 @@ public class SummerResa extends SkinningEntities
     public Object createObjectRender()
     {
         return new ResaRender(new EntitiesRenderMemory(), this);
+    }
+
+    @Override
+    public Sounds createSounds()
+    {
+        return SOUNDS;
+    }
+
+    @Override
+    public Object createSoundRender()
+    {
+        return new SummerSoundRender();
     }
 
     @Override

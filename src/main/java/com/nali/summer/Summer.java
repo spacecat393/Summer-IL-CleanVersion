@@ -6,6 +6,7 @@ import com.nali.system.DataLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME)
@@ -21,5 +22,11 @@ public class Summer
         {
             DataLoader.setModels(RenderHelper.DATALOADER, Reference.MOD_ID);
         }
+    }
+
+    @EventHandler
+    public void onFMLInitializationEvent(FMLInitializationEvent event)
+    {
+        DataLoader.setSounds(RenderHelper.DATALOADER, Reference.MOD_ID);
     }
 }

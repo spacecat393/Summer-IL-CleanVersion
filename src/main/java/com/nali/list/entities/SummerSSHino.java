@@ -5,13 +5,16 @@ import com.nali.list.render.SSHinoRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
+import com.nali.small.entities.sounds.Sounds;
 import com.nali.summer.data.SSHinoData;
 import com.nali.summer.entities.bytes.SSHinoBytes;
 import com.nali.summer.entities.memory.client.ClientSSHinoMemory;
 import com.nali.summer.entities.memory.server.ServerSSHinoMemory;
+import com.nali.summer.entities.sounds.SSHinoSounds;
+import com.nali.summer.render.SummerSoundRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,6 +30,7 @@ public class SummerSSHino extends SkinningEntities
 
     public static BothData BOTHDATA = new SSHinoData();
     public static WorkBytes WORKBYTES = new SSHinoBytes();
+    public static Sounds SOUNDS = new SSHinoSounds();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSHinoData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSHinoData.MAX_FRAME];
@@ -207,6 +211,18 @@ public class SummerSSHino extends SkinningEntities
     public Object createObjectRender()
     {
         return new SSHinoRender(new EntitiesRenderMemory(), this);
+    }
+
+    @Override
+    public Sounds createSounds()
+    {
+        return SOUNDS;
+    }
+
+    @Override
+    public Object createSoundRender()
+    {
+        return new SummerSoundRender();
     }
 
     @Override

@@ -4,14 +4,17 @@ import com.nali.data.BothData;
 import com.nali.list.render.SSZukoRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
+import com.nali.small.entities.sounds.Sounds;
 import com.nali.summer.data.SSZukoData;
 import com.nali.summer.data.SeaHouseData;
 import com.nali.summer.entities.bytes.SSZukoBytes;
 import com.nali.summer.entities.memory.client.ClientSSZukoMemory;
+import com.nali.summer.entities.sounds.SSZukoSounds;
+import com.nali.summer.render.SummerSoundRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -28,6 +31,7 @@ public class SummerSSZuko extends SkinningEntities
 
     public static BothData BOTHDATA = new SSZukoData();
     public static WorkBytes WORKBYTES = new SSZukoBytes();
+    public static Sounds SOUNDS = new SSZukoSounds();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSZukoData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSZukoData.MAX_FRAME + SeaHouseData.MAX_FRAME];
@@ -219,6 +223,18 @@ public class SummerSSZuko extends SkinningEntities
     public Object createObjectRender()
     {
         return new SSZukoRender(new EntitiesRenderMemory(), this);
+    }
+
+    @Override
+    public Sounds createSounds()
+    {
+        return SOUNDS;
+    }
+
+    @Override
+    public Object createSoundRender()
+    {
+        return new SummerSoundRender();
     }
 
     @Override

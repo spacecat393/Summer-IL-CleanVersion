@@ -5,13 +5,16 @@ import com.nali.list.render.NasuRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.ClientEntitiesMemory;
+import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
+import com.nali.small.entities.sounds.Sounds;
 import com.nali.summer.data.NasuData;
 import com.nali.summer.entities.bytes.NasuBytes;
 import com.nali.summer.entities.memory.client.ClientNasuMemory;
+import com.nali.summer.entities.sounds.NasuSounds;
+import com.nali.summer.render.SummerSoundRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,6 +30,7 @@ public class SummerNasu extends SkinningEntities
 
     public static BothData BOTHDATA = new NasuData();
     public static WorkBytes WORKBYTES = new NasuBytes();
+    public static Sounds SOUNDS = new NasuSounds();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[NasuData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[NasuData.MAX_FRAME];
@@ -197,6 +201,18 @@ public class SummerNasu extends SkinningEntities
     public Object createObjectRender()
     {
         return new NasuRender(new EntitiesRenderMemory(), this);
+    }
+
+    @Override
+    public Sounds createSounds()
+    {
+        return SOUNDS;
+    }
+
+    @Override
+    public Object createSoundRender()
+    {
+        return new SummerSoundRender();
     }
 
     @Override

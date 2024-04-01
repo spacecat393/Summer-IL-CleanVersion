@@ -7,9 +7,12 @@ import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
+import com.nali.small.entities.sounds.Sounds;
 import com.nali.summer.data.E22LockerData;
 import com.nali.summer.entities.bytes.E22LockerBytes;
 import com.nali.summer.entities.memory.client.ClientE22LockerMemory;
+import com.nali.summer.entities.sounds.E22LockerSounds;
+import com.nali.summer.render.SummerSoundRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -29,6 +32,7 @@ public class SummerE22Locker extends SkinningEntities
 
     public static BothData BOTHDATA = new E22LockerData();
     public static WorkBytes WORKBYTES = new E22LockerBytes();
+    public static Sounds SOUNDS = new E22LockerSounds();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[E22LockerData.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[E22LockerData.MAX_FRAME];
@@ -204,6 +208,18 @@ public class SummerE22Locker extends SkinningEntities
     public Object createObjectRender()
     {
         return new E22LockerRender(new EntitiesRenderMemory(), this);
+    }
+
+    @Override
+    public Sounds createSounds()
+    {
+        return SOUNDS;
+    }
+
+    @Override
+    public Object createSoundRender()
+    {
+        return new SummerSoundRender();
     }
 
     @Override
