@@ -1,16 +1,16 @@
 [
 	{
-		"modid": "summer",
+		"modid": "${modid}",
 		"name": "SummerIllegalLoli",
 		"description": "Our Loli\nLogo by yor42",
 		"version": "${version}",
-		"mcversion": "1.12.2",
+		"mcversion": "${mcversion}",
 		"url": "https://twitter.com/Nali36687751",
 		"updateUrl": "",
 		"authorList": ["Nali"],
 		"credits": "",
 		"logoFile": "logo.png",
 		"screenshots": [],
-		"dependencies": []
+		"dependencies": ["mixinbooter", "nali", "small"]
 	}
 ]
