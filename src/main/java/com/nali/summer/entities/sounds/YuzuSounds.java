@@ -57,7 +57,7 @@ public class YuzuSounds implements Sounds
     @Override
     public int SOFT_READY()
     {
-        return -1;
+        return this.PAT();
     }
 
     @Override
