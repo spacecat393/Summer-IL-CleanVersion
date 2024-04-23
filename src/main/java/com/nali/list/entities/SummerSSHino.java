@@ -148,7 +148,7 @@ public class SummerSSHino extends SkinningEntities
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
         serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.max_ammo = 8;
+        serverentitiesmemory.statentitiesmemory.max_magic_point = 8;
         serverentitiesmemory.entitiesaimemory.skinningentitiesattack.minimum_distance = 32.0F;
 
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);

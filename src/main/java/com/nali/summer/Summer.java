@@ -27,6 +27,9 @@ public class Summer
     @EventHandler
     public void onFMLInitializationEvent(FMLInitializationEvent event)
     {
-        DataLoader.setSounds(RenderHelper.DATALOADER, Reference.MOD_ID);
+        if (event.getSide().isClient())
+        {
+            DataLoader.setSounds(RenderHelper.DATALOADER, Reference.MOD_ID);
+        }
     }
 }

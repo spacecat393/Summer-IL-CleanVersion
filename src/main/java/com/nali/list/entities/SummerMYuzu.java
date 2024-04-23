@@ -139,7 +139,7 @@ public class SummerMYuzu extends SkinningEntities
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
         serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-//        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.max_ammo = 4;
+//        serverentitiesmemory.statentitiesmemory.max_magic_point = 4;
         serverentitiesmemory.entitiesaimemory.skinningentitiesattack.minimum_distance = 10.0F;
 
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
@@ -149,10 +149,10 @@ public class SummerMYuzu extends SkinningEntities
             () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
             () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
 
-            () -> !(serverentitiesmemory.entitiesaimemory.skinningentitiesattack.state == 0 || serverentitiesmemory.entitiesaimemory.skinningentitiesattack.state == 1) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(2, 2) && serverentitiesmemory.entitiesaimemory.skinningentitiesfindmove.endGoalT(),
+            () -> (serverentitiesmemory.entitiesaimemory.skinningentitiesattack.flag & 2) == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(2, 2) && serverentitiesmemory.entitiesaimemory.skinningentitiesfindmove.endGoalT(),
             () ->
             {
-                boolean result = serverentitiesmemory.entitiesaimemory.skinningentitiesattack.state == 0 || serverentitiesmemory.entitiesaimemory.skinningentitiesattack.state == 1;
+                boolean result = (serverentitiesmemory.entitiesaimemory.skinningentitiesattack.flag & 2) == 2;
                 if (result)
                 {
                     serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].step = 1;
@@ -168,7 +168,7 @@ public class SummerMYuzu extends SkinningEntities
                     {
                         if (serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] == attack_frame)
                         {
-                            serverentitiesmemory.entitiesaimemory.skinningentitiesattack.state = 1;
+                            serverentitiesmemory.entitiesaimemory.skinningentitiesattack.flag |= 4;
                             break;
                         }
                     }
