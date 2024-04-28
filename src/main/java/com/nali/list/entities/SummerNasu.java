@@ -156,7 +156,7 @@ public class SummerNasu extends SkinningEntities
         ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
         WorkBytes workbytes = serverentitiesmemory.workbytes;
         serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-//        serverentitiesmemory.statentitiesmemory.max_magic_point = 16;
+//        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.max_magic_point = 16;
         serverentitiesmemory.entitiesaimemory.skinningentitiesattack.minimum_distance = 8.0F;
 
         serverentitiesmemory.entitiesaimemory.skinningentitiesheal.heal_frame_int_array = HEAL_FRAME_INT_ARRAY;
