@@ -4,6 +4,7 @@ import com.nali.data.BothData;
 import com.nali.list.render.NasuRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
+import com.nali.render.SoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -14,7 +15,6 @@ import com.nali.summer.data.NasuData;
 import com.nali.summer.entities.bytes.NasuBytes;
 import com.nali.summer.entities.memory.client.ClientNasuMemory;
 import com.nali.summer.entities.sounds.NasuSounds;
-import com.nali.summer.render.SummerSoundRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -22,6 +22,8 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
 
 import java.util.function.Supplier;
+
+import static com.nali.summer.render.RenderHelper.DATALOADER;
 
 public class SummerNasu extends SkinningEntities
 {
@@ -212,7 +214,7 @@ public class SummerNasu extends SkinningEntities
     @Override
     public Object createSoundRender()
     {
-        return new SummerSoundRender();
+        return SoundRender.getSoundRender(DATALOADER);
     }
 
     @Override

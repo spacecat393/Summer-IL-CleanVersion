@@ -3,6 +3,7 @@ package com.nali.list.entities;
 import com.nali.data.BothData;
 import com.nali.list.render.E22LockerRender;
 import com.nali.render.EntitiesRenderMemory;
+import com.nali.render.SoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
@@ -12,7 +13,6 @@ import com.nali.summer.data.E22LockerData;
 import com.nali.summer.entities.bytes.E22LockerBytes;
 import com.nali.summer.entities.memory.client.ClientE22LockerMemory;
 import com.nali.summer.entities.sounds.E22LockerSounds;
-import com.nali.summer.render.SummerSoundRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,6 +24,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
 import java.util.function.Supplier;
+
+import static com.nali.summer.render.RenderHelper.DATALOADER;
 
 public class SummerE22Locker extends SkinningEntities
 {
@@ -219,7 +221,7 @@ public class SummerE22Locker extends SkinningEntities
     @Override
     public Object createSoundRender()
     {
-        return new SummerSoundRender();
+        return SoundRender.getSoundRender(DATALOADER);
     }
 
     @Override
