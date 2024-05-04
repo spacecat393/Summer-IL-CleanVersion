@@ -12,13 +12,13 @@ public class ClientIrohaMemory extends ClientEntitiesMemory
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        8+1, 837,
-        8+1, 2145,
-        8+1, 10171,
-        8+1, 6617,
-        8+1, 5653,
-        10+1, 39,
-        5+1, 26084
+        8+144, 837,
+        8+144, 2145,
+        8+144, 10171,
+        8+144, 6617,
+        8+144, 5653,
+        10+144, 39,
+        5+144, 26084
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]

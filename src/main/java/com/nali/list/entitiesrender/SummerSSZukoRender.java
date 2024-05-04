@@ -1,7 +1,7 @@
 package com.nali.list.entitiesrender;
 
 import com.nali.list.entities.SummerSSZuko;
-import com.nali.list.render.SSZukoRender;
+import com.nali.summer.render.skinning.SSZukoRender;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.render.EntitiesRenderMemory;
@@ -65,7 +65,8 @@ public class SummerSSZukoRender<T extends SummerSSZuko> extends SkinningEntities
         float s = cliententitiesmemory.objectrender.entitiesrendermemory.scale;
         GL11.glScaled(s, s, s);
         SSZukoRender sszukorender = ((SSZukoRender)cliententitiesmemory.objectrender);
-        sszukorender.seahouserender.objectworlddraw.renderWorld(/*ox, oy, oz*/);
+        GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
+        sszukorender.seahouserender.draw(/*ox, oy, oz*/);
         GL11.glPopMatrix();
     }
 }

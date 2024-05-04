@@ -1,9 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.list.render.YuzuRender;
 import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.SkinningRender;
 import com.nali.render.SoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
@@ -11,15 +9,19 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.YuzuData;
+import com.nali.summer.data.both.YuzuData;
 import com.nali.summer.entities.bytes.YuzuBytes;
 import com.nali.summer.entities.memory.client.ClientYuzuMemory;
 import com.nali.summer.entities.sounds.YuzuSounds;
+import com.nali.summer.render.skinning.YuzuRender;
+import com.nali.system.opengl.memory.OpenGLObjectMemory;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
@@ -88,33 +90,44 @@ public class SummerYuzu extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void updateClient()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+        YuzuRender skinningrender = (YuzuRender)cliententitiesmemory.objectrender;
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 
         float scale = skinningrender.entitiesrendermemory.scale;
         if (frame > 195 && frame < 222)
         {
-            skinningrender.texture_index_int_array[8] = 66;
+//            skinningrender.texture_index_int_array[8] = 66;
+//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[skinningrender.clientdata.StartPart() + 8].element_array_buffer, 66);
+            skinningrender.texture_map.put(((OpenGLObjectMemory)skinningrender.dataloader.object_array[skinningrender.clientdata.StartPart() + 8]).element_array_buffer, 66);
         }
         else if ((frame > 221 && frame < 250) || (frame > 354 && frame < 429))
         {
-            skinningrender.texture_index_int_array[8] = 67;
+//            skinningrender.texture_index_int_array[8] = 67;
+//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[skinningrender.clientdata.StartPart() + 8].element_array_buffer, 67);
+            skinningrender.texture_map.put(((OpenGLObjectMemory)skinningrender.dataloader.object_array[skinningrender.clientdata.StartPart() + 8]).element_array_buffer, 67);
         }
         else if (frame > 249 && frame < 266)
         {
-            skinningrender.texture_index_int_array[8] = 68;
+//            skinningrender.texture_index_int_array[8] = 68;
+//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[skinningrender.clientdata.StartPart() + 8].element_array_buffer, 68);
+            skinningrender.texture_map.put(((OpenGLObjectMemory)skinningrender.dataloader.object_array[skinningrender.clientdata.StartPart() + 8]).element_array_buffer, 68);
         }
         else if (frame > 301 && frame < 355)
         {
-            skinningrender.texture_index_int_array[8] = 69;
+//            skinningrender.texture_index_int_array[8] = 69;
+//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[skinningrender.clientdata.StartPart() + 8].element_array_buffer, 69);
+            skinningrender.texture_map.put(((OpenGLObjectMemory)skinningrender.dataloader.object_array[skinningrender.clientdata.StartPart() + 8]).element_array_buffer, 69);
         }
         else
         {
-            skinningrender.texture_index_int_array[8] = 9;
+//            skinningrender.texture_index_int_array[8] = 9;
+//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[skinningrender.clientdata.StartPart() + 8].element_array_buffer, 9);
+            skinningrender.texture_map.put(((OpenGLObjectMemory)skinningrender.dataloader.object_array[skinningrender.clientdata.StartPart() + 8]).element_array_buffer, 9);
         }
 
         if (frame > 716 && frame < 768)
@@ -200,6 +213,7 @@ public class SummerYuzu extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createObjectRender()
     {
         return new YuzuRender(new EntitiesRenderMemory(), this);
@@ -212,18 +226,21 @@ public class SummerYuzu extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createSoundRender()
     {
         return SoundRender.getSoundRender(DATALOADER);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public int[] getIVIntArray()
     {
         return ClientYuzuMemory.IV_INT_ARRAY;
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientYuzuMemory(skinningentities, bothdata, workbytes);

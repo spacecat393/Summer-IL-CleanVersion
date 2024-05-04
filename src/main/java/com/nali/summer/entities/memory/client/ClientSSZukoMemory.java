@@ -12,12 +12,12 @@ public class ClientSSZukoMemory extends ClientEntitiesMemory
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        4+1, 8643,
-        4+1, 1426,
-        0+1, 1374,
-        4+1, 1726,
-        4+1, 2838,
-        8+1, 45
+        4+42, 8643,
+        4+42, 1426,
+        0+42, 1374,
+        4+42, 1726,
+        4+42, 2838,
+        8+42, 45
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]

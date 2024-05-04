@@ -1,7 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.list.render.SaoriRender;
+import com.nali.summer.render.skinning.SaoriRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.render.SoundRender;
@@ -10,7 +10,7 @@ import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.SaoriData;
+import com.nali.summer.data.both.SaoriData;
 import com.nali.summer.entities.bytes.SaoriBytes;
 import com.nali.summer.entities.memory.client.ClientSaoriMemory;
 import com.nali.summer.entities.memory.server.ServerSaoriMemory;
@@ -20,6 +20,8 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
@@ -90,6 +92,7 @@ public class SummerSaori extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void updateClient()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
@@ -225,6 +228,7 @@ public class SummerSaori extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createObjectRender()
     {
         return new SaoriRender(new EntitiesRenderMemory(), this);
@@ -237,12 +241,14 @@ public class SummerSaori extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createSoundRender()
     {
         return SoundRender.getSoundRender(DATALOADER);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public int[] getIVIntArray()
     {
         return ClientSaoriMemory.IV_INT_ARRAY;
@@ -255,6 +261,7 @@ public class SummerSaori extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientSaoriMemory(skinningentities, bothdata, workbytes);

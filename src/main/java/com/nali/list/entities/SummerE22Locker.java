@@ -1,7 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.list.render.E22LockerRender;
+import com.nali.summer.render.skinning.E22LockerRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
@@ -9,7 +9,7 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.E22LockerData;
+import com.nali.summer.data.both.E22LockerData;
 import com.nali.summer.entities.bytes.E22LockerBytes;
 import com.nali.summer.entities.memory.client.ClientE22LockerMemory;
 import com.nali.summer.entities.sounds.E22LockerSounds;
@@ -22,6 +22,8 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
@@ -92,6 +94,7 @@ public class SummerE22Locker extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void updateClient()
     {
         super.updateClient();
@@ -207,6 +210,7 @@ public class SummerE22Locker extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createObjectRender()
     {
         return new E22LockerRender(new EntitiesRenderMemory(), this);
@@ -219,18 +223,21 @@ public class SummerE22Locker extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createSoundRender()
     {
         return SoundRender.getSoundRender(DATALOADER);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public int[] getIVIntArray()
     {
         return ClientE22LockerMemory.IV_INT_ARRAY;
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientE22LockerMemory(skinningentities, bothdata, workbytes);

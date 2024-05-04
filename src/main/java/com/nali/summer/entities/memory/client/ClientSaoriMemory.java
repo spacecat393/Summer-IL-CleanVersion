@@ -12,12 +12,12 @@ public class ClientSaoriMemory extends ClientEntitiesMemory
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        4+1, 6697,
-        4+1, 7694,
-        4+1, 11839,
-        4+1, 2735,
-        4+1, 1759,
-        8+1, 39
+        4+118, 6697,
+        4+118, 7694,
+        4+118, 11839,
+        4+118, 2735,
+        4+118, 1759,
+        8+118, 39
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]

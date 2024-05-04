@@ -1,7 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.list.render.MYuzuRender;
+import com.nali.summer.render.skinning.MYuzuRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.render.SoundRender;
@@ -11,7 +11,7 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.MYuzuData;
+import com.nali.summer.data.both.MYuzuData;
 import com.nali.summer.entities.bytes.MYuzuBytes;
 import com.nali.summer.entities.memory.client.ClientMYuzuMemory;
 import com.nali.summer.entities.sounds.MYuzuSounds;
@@ -20,6 +20,8 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
@@ -80,6 +82,7 @@ public class SummerMYuzu extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void updateClient()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
@@ -106,6 +109,7 @@ public class SummerMYuzu extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void initFakeFrame()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
@@ -208,6 +212,7 @@ public class SummerMYuzu extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createObjectRender()
     {
         return new MYuzuRender(new EntitiesRenderMemory(), this);
@@ -220,18 +225,21 @@ public class SummerMYuzu extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createSoundRender()
     {
         return SoundRender.getSoundRender(DATALOADER);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public int[] getIVIntArray()
     {
         return ClientMYuzuMemory.IV_INT_ARRAY;
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientMYuzuMemory(skinningentities, bothdata, workbytes);

@@ -1,9 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.list.render.IbukiRender;
 import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.SkinningRender;
 import com.nali.render.SoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
@@ -11,16 +9,19 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.IbukiData;
-import com.nali.summer.data.IrohaData;
+import com.nali.summer.data.both.IbukiData;
+import com.nali.summer.data.both.IrohaData;
 import com.nali.summer.entities.bytes.IbukiBytes;
 import com.nali.summer.entities.memory.client.ClientIbukiMemory;
 import com.nali.summer.entities.sounds.IbukiSounds;
+import com.nali.summer.render.skinning.IbukiRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
@@ -96,10 +97,11 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void updateClient()
     {
         ClientIbukiMemory cliententitiesmemory = (ClientIbukiMemory)this.bothentitiesmemory;
-        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+        IbukiRender skinningrender = (IbukiRender)cliententitiesmemory.objectrender;
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 
@@ -138,6 +140,7 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void updateRendering(EntityDataManager entitydatamanager)
     {
         super.updateRendering(entitydatamanager);
@@ -147,10 +150,11 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void initFakeFrame()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+        IbukiRender skinningrender = (IbukiRender)cliententitiesmemory.objectrender;
 //        skinningrender.model_byte_array[0 / 8] &= 254;//255 - Math.pow(2, 0 % 8)
 //        skinningrender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
         skinningrender.model_byte_array[0] &= 254 & 253;
@@ -247,6 +251,7 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createObjectRender()
     {
         return new IbukiRender(new EntitiesRenderMemory(), this);
@@ -259,12 +264,14 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createSoundRender()
     {
         return SoundRender.getSoundRender(DATALOADER);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public int[] getIVIntArray()
     {
         return ClientIbukiMemory.IV_INT_ARRAY;
@@ -305,6 +312,7 @@ public class SummerIbuki extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientIbukiMemory(skinningentities, bothdata, workbytes);

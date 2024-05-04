@@ -12,12 +12,12 @@ public class ClientIbukiMemory extends ClientEntitiesMemory
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        9+1, 2882,
-        9+1, 5893,
-        4+1, 290,
-        9+1, 969,
-        9+1, 624,
-        14+1, 38
+        9+128, 2882,
+        9+128, 5893,
+        4+128, 290,
+        9+128, 969,
+        9+128, 624,
+        14+128, 38
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]

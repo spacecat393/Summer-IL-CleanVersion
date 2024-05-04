@@ -1,7 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.list.render.SSZukoRender;
+import com.nali.summer.render.skinning.SSZukoRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
@@ -10,8 +10,8 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.SSZukoData;
-import com.nali.summer.data.SeaHouseData;
+import com.nali.summer.data.both.SSZukoData;
+import com.nali.summer.data.both.SeaHouseBothData;
 import com.nali.summer.entities.bytes.SSZukoBytes;
 import com.nali.summer.entities.memory.client.ClientSSZukoMemory;
 import com.nali.summer.entities.sounds.SSZukoSounds;
@@ -20,6 +20,8 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Arrays;
 import java.util.function.Supplier;
@@ -36,7 +38,7 @@ public class SummerSSZuko extends SkinningEntities
     public static Sounds SOUNDS = new SSZukoSounds();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSZukoData.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSZukoData.MAX_FRAME + SeaHouseData.MAX_FRAME];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSZukoData.MAX_FRAME + SeaHouseBothData.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[][] SSZUKO_FRAME_INT_2D_ARRAY = new int[][]
@@ -86,6 +88,7 @@ public class SummerSSZuko extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void updateClient()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
@@ -112,6 +115,7 @@ public class SummerSSZuko extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void initFakeFrame()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
@@ -143,6 +147,7 @@ public class SummerSSZuko extends SkinningEntities
 //    }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void updateRendering(EntityDataManager entitydatamanager)
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
@@ -222,6 +227,7 @@ public class SummerSSZuko extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createObjectRender()
     {
         return new SSZukoRender(new EntitiesRenderMemory(), this);
@@ -234,18 +240,21 @@ public class SummerSSZuko extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createSoundRender()
     {
         return SoundRender.getSoundRender(DATALOADER);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public int[] getIVIntArray()
     {
         return ClientSSZukoMemory.IV_INT_ARRAY;
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientSSZukoMemory(skinningentities, bothdata, workbytes);

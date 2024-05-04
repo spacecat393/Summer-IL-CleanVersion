@@ -1,13 +1,15 @@
 package com.nali.list.entitiesrender;
 
+import com.nali.data.client.SkinningClientData;
 import com.nali.list.entities.SummerIbuki;
-import com.nali.list.render.IbukiRender;
+import com.nali.summer.render.skinning.IbukiRender;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.SkinningRender;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.render.SkinningEntitiesRender;
+import com.nali.system.opengl.memory.OpenGLAnimationMemory;
 import com.nali.system.opengl.memory.OpenGLCurrentMemory;
 import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -91,9 +93,11 @@ public class SummerIbukiRender<T extends SummerIbuki> extends SkinningEntitiesRe
             float s = skinningentities.getDataManager().get(skinningentities.getFloatDataParameterArray()[1]);
             GL11.glScalef(s, s, s);
             GL11.glTranslated(-ox, -oy, -oz);
-            ibukirender.iroharender.initSkinning();
+//            OpenGLAnimationMemory openglanimationmemory = ibukirender.dataloader.openglanimationmemory_list.get(((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID());
+            OpenGLAnimationMemory openglanimationmemory = (OpenGLAnimationMemory)ibukirender.dataloader.object_array[((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID()];
+            ibukirender.iroharender.initSkinning(openglanimationmemory);
             setAnimation(ibukirender.iroharender);
-            ibukirender.iroharender.setSkinning();
+            ibukirender.iroharender.setSkinning(openglanimationmemory);
             float[] c_vec4 = ibukirender.iroharender.get3DSkinning((float)ox, (float)oy, (float)oz, 0.168471F, -0.111817F, -0.35F / (s / 1.5F), IV_INT_ARRAY[12], IV_INT_ARRAY[13]);
             ibukirender.apply3DSkinningVec4(c_vec4);
 //            GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);

@@ -1,25 +1,26 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.list.render.SSUnaRender;
 import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.SkinningRender;
 import com.nali.render.SoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.SSUnaData;
+import com.nali.summer.data.both.SSUnaData;
 import com.nali.summer.entities.bytes.SSUnaBytes;
 import com.nali.summer.entities.memory.client.ClientSSUnaMemory;
 import com.nali.summer.entities.memory.server.ServerSSUnaMemory;
 import com.nali.summer.entities.sounds.SSUnaSounds;
+import com.nali.summer.render.skinning.SSUnaRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
@@ -86,10 +87,11 @@ public class SummerSSUna extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void updateClient()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        SkinningRender skinningrender = (SkinningRender)cliententitiesmemory.objectrender;
+        SSUnaRender skinningrender = (SSUnaRender)cliententitiesmemory.objectrender;
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 
@@ -229,6 +231,7 @@ public class SummerSSUna extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createObjectRender()
     {
         return new SSUnaRender(new EntitiesRenderMemory(), this);
@@ -241,12 +244,14 @@ public class SummerSSUna extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Object createSoundRender()
     {
         return SoundRender.getSoundRender(DATALOADER);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public int[] getIVIntArray()
     {
         return ClientSSUnaMemory.IV_INT_ARRAY;
@@ -259,6 +264,7 @@ public class SummerSSUna extends SkinningEntities
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
         new ClientSSUnaMemory(skinningentities, bothdata, workbytes);
