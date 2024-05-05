@@ -1,6 +1,7 @@
 package com.nali.summer.render.skinning;
 
 import com.nali.data.client.ClientData;
+import com.nali.data.client.SkinningClientData;
 import com.nali.list.entities.SummerSSZuko;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.render.SkinningEntitiesRender;
@@ -60,14 +61,14 @@ public class SSZukoRender extends SkinningEntitiesRender
     public void initSkinning(OpenGLAnimationMemory openglanimationmemory)
     {
         super.initSkinning(openglanimationmemory);
-        this.seahouserender.initSkinning(openglanimationmemory);
+        this.seahouserender.initSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).AnimationID()]);
     }
 
     @Override
     public void setSkinning(OpenGLAnimationMemory openglanimationmemory)
     {
         super.setSkinning(openglanimationmemory);
-        this.seahouserender.setSkinning(openglanimationmemory);
+        this.seahouserender.setSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).AnimationID()]);
     }
 
 //    @Override
