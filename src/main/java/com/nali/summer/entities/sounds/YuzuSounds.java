@@ -10,11 +10,11 @@ public class YuzuSounds implements Sounds
     {
         byte time = (byte)(Minecraft.getSystemTime() % 255);
 
-        if (time > 127)
+        if (time > 85)
         {
             return 2;
         }
-        else if (time > 85)
+        else if (time > -85)
         {
             return 3;
         }
@@ -29,7 +29,7 @@ public class YuzuSounds implements Sounds
     {
         byte time = (byte)(Minecraft.getSystemTime() % 255);
 
-        if (time > 127)
+        if (time > 85)
         {
             return 11;
         }
@@ -44,7 +44,7 @@ public class YuzuSounds implements Sounds
     {
         byte time = (byte)(Minecraft.getSystemTime() % 255);
 
-        if (time > 127)
+        if (time > 85)
         {
             return 7;
         }

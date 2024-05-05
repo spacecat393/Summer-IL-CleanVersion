@@ -129,6 +129,7 @@ public class SummerSSHimi extends SkinningEntities
 //            skinningrender.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
 //            skinningrender.model_byte_array[9 / 8] |= 2;//Math.pow(2, 9 % 8)
 //            skinningrender.model_byte_array[10 / 8] |= 4;//Math.pow(2, 10 % 8)
+            skinningrender.model_byte_array[0] |= 128;//8/8 == 1 7/8 : 8 -> i
             skinningrender.model_byte_array[1] |= 1 | 2 | 4;
         }
         else
@@ -138,6 +139,7 @@ public class SummerSSHimi extends SkinningEntities
 //            skinningrender.model_byte_array[8 / 8] &= 254;//255 - Math.pow(2, 8 % 8)
 //            skinningrender.model_byte_array[9 / 8] &= 253;//255 - Math.pow(2, 9 % 8)
 //            skinningrender.model_byte_array[10 / 8] &= 251;//255 - Math.pow(2, 10 % 8)
+            skinningrender.model_byte_array[0] &= 127;
             skinningrender.model_byte_array[1] &= 254 & 253 & 251;
         }
 
