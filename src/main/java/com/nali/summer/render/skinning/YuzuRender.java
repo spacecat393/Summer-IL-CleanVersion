@@ -49,7 +49,7 @@ public class YuzuRender extends SkinningEntitiesRender
         }
         else
         {
-            return integer;
+            return (int)this.dataloader.opengltexturememory.texture_array[integer];
         }
     }
 
