@@ -37,6 +37,7 @@ public class ResaRender extends SkinningEntitiesRender
 //        this.texture_index_int_array[9] = 46;
 //        this.texture_index_int_array[10] = 9;
         Arrays.fill(this.model_byte_array, (byte)255);
+        this.model_byte_array[3 / 8] &= 255-8;
     }
 
     @Override
@@ -46,6 +47,16 @@ public class ResaRender extends SkinningEntitiesRender
         if ((this.model_byte_array[i / 8] >> i % 8 & 1) == 1)
         {
             super.draw(index);
+        }
+    }
+
+    @Override
+    public void drawLater(int index)
+    {
+        int i = index - this.clientdata.StartPart();
+        if ((this.model_byte_array[i / 8] >> i % 8 & 1) == 1)
+        {
+            super.drawLater(index);
         }
     }
 

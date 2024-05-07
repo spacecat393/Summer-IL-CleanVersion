@@ -93,35 +93,31 @@ public class SummerSSHimi extends SkinningEntities
         SSHimiRender skinningrender = (SSHimiRender)cliententitiesmemory.objectrender;
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
+        float scale = skinningrender.entitiesrendermemory.scale;
 
         if (frame > 267 && frame < 284)
         {
-//            skinningrender.model_byte_array[0 / 8] &= 254;//255 - Math.pow(2, 0 % 8)
-//            skinningrender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
-//            skinningrender.model_byte_array[2 / 8] &= 251;//255 - Math.pow(2, 2 % 8)
-//            skinningrender.model_byte_array[3 / 8] &= 247;//255 - Math.pow(2, 3 % 8)
-//            skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
-//            skinningrender.model_byte_array[6 / 8] &= 191;//255 - Math.pow(2, 6 % 8)
-            skinningrender.model_byte_array[0] &= 254 & 253 & 251 & 247 & 239 & 191;
-//            skinningrender.model_byte_array[11 / 8] &= 247;//255 - Math.pow(2, 11 % 8)
-//            skinningrender.model_byte_array[12 / 8] &= 239;//255 - Math.pow(2, 12 % 8)
-            skinningrender.model_byte_array[1] &= 247 & 239;
+//            this.width = bothdata.Width() * scale;
+//            this.height = bothdata.Height() * scale;
+            skinningrender.model_byte_array[0] &= 255-1 & 255-2 & 255-4 & 255-8 & 255-16/* & 255-32*/ & 255-64;
+            skinningrender.model_byte_array[1] &= 255-8 & 255-16;
         }
         else
         {
+//            this.width = bothdata.Width() * scale;
+//            this.height = bothdata.Height() * scale;
 //            skinningrender.model_byte_array[0 / 8] |= 1;//Math.pow(2, 0 % 8)
 //            skinningrender.model_byte_array[1 / 8] |= 2;//Math.pow(2, 1 % 8)
 //            skinningrender.model_byte_array[2 / 8] |= 4;//Math.pow(2, 2 % 8)
 //            skinningrender.model_byte_array[3 / 8] |= 8;//Math.pow(2, 3 % 8)
 //            skinningrender.model_byte_array[4 / 8] |= 16;//Math.pow(2, 4 % 8)
 //            skinningrender.model_byte_array[6 / 8] |= 64;//Math.pow(2, 6 % 8)
-            skinningrender.model_byte_array[0] |= 1 | 2 | 4 | 8 | 16 | 64;
+            skinningrender.model_byte_array[0] |= 1 | 2 | 4 | 8 | 16/* | 32*/ | 64;
 //            skinningrender.model_byte_array[11 / 8] |= 8;//Math.pow(2, 11 % 8)
 //            skinningrender.model_byte_array[12 / 8] |= 16;//Math.pow(2, 12 % 8)
             skinningrender.model_byte_array[1] |= 8 | 16;
         }
 
-        float scale = skinningrender.entitiesrendermemory.scale;
         if (frame < 379 || (frame > 590 && frame < 642))
         {
             this.width = 1.7F * scale;
@@ -129,7 +125,7 @@ public class SummerSSHimi extends SkinningEntities
 //            skinningrender.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
 //            skinningrender.model_byte_array[9 / 8] |= 2;//Math.pow(2, 9 % 8)
 //            skinningrender.model_byte_array[10 / 8] |= 4;//Math.pow(2, 10 % 8)
-            skinningrender.model_byte_array[0] |= 128;//8/8 == 1 7/8 : 8 -> i
+            skinningrender.model_byte_array[0] |= 128;
             skinningrender.model_byte_array[1] |= 1 | 2 | 4;
         }
         else
@@ -139,11 +135,11 @@ public class SummerSSHimi extends SkinningEntities
 //            skinningrender.model_byte_array[8 / 8] &= 254;//255 - Math.pow(2, 8 % 8)
 //            skinningrender.model_byte_array[9 / 8] &= 253;//255 - Math.pow(2, 9 % 8)
 //            skinningrender.model_byte_array[10 / 8] &= 251;//255 - Math.pow(2, 10 % 8)
-            skinningrender.model_byte_array[0] &= 127;
-            skinningrender.model_byte_array[1] &= 254 & 253 & 251;
+            skinningrender.model_byte_array[0] &= 255-128;
+            skinningrender.model_byte_array[1] &= 255-1 & 255-2 & 255-4;
         }
 
-        skinningrender.model_byte_array[5 / 8] &= 223;//255 - Math.pow(2, 5 % 8)
+//        skinningrender.model_byte_array[5 / 8] &= 255-32;//255 - Math.pow(2, 5 % 8)
     }
 
     @Override

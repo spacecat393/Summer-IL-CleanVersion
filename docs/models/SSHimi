@@ -1,0 +1,29 @@
+frame > 267 && frame < 284
+SSHimiCH0058.Body 0 1
+SSHimiCH0058.Eyebrow 0 2
+SSHimiCH0058.Eyes 0 4
+SSHimiCH0058.Face 0 8
+SSHimiCH0058.Hair 0 16
+SSHimiCH0058.Weapon 0 32
+SSHimiHihumi.Original.Halo 0 64
+SSHimiTank.Crusader.01 1 128
+SSHimiCH0058.BeachTank.01 1 1
+SSHimiCH0058.BeachTank.02 1 2
+SSHimiCH0058.BeachTank.01.001 1 4
+SSHimiCH0058.Mouth 0 8
+SSHimiCH0058.BeachTube 0 16
+
+!(frame < 379 || (frame > 590 && frame < 642))
+SSHimiCH0058.Body 1 1
+SSHimiCH0058.Eyebrow 1 2
+SSHimiCH0058.Eyes 1 4
+SSHimiCH0058.Face 1 8
+SSHimiCH0058.Hair 1 16
+SSHimiCH0058.Weapon 0 32
+SSHimiHihumi.Original.Halo 1 64
+SSHimiTank.Crusader.01 0 128
+SSHimiCH0058.BeachTank.01 0 1
+SSHimiCH0058.BeachTank.02 0 2
+SSHimiCH0058.BeachTank.01.001 0 4
+SSHimiCH0058.Mouth 1 8
+SSHimiCH0058.BeachTube 1 16

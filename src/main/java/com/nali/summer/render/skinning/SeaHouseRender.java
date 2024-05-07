@@ -40,4 +40,14 @@ public class SeaHouseRender extends SkinningRender
             super.draw(index);
         }
     }
+
+    @Override
+    public void drawLater(int index)
+    {
+        int i = index - this.clientdata.StartPart();
+        if ((this.model_byte_array[i / 8] >> i % 8 & 1) == 1)
+        {
+            super.drawLater(index);
+        }
+    }
 }

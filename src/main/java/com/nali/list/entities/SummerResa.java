@@ -95,15 +95,15 @@ public class SummerResa extends SkinningEntities
 
         if (this.ticksExisted % 200 == 0)
         {
-            skinningrender.model_byte_array[0 / 8] &= 254;//255 - Math.pow(2, 0 % 8)
+            skinningrender.model_byte_array[0 / 8] &= 255-1;//255 - Math.pow(2, 0 % 8)
             skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
-            skinningrender.model_byte_array[8 / 8] &= 254;//255 - Math.pow(2, 8 % 8)
+            skinningrender.model_byte_array[8 / 8] &= 255-1;//255 - Math.pow(2, 8 % 8)
             cliententitiesmemory.client_eyes_tick = 20;
         }
         else if (--cliententitiesmemory.client_eyes_tick <= 0)
         {
             skinningrender.model_byte_array[0 / 8] |= 1;//Math.pow(2, 0 % 8)
-            skinningrender.model_byte_array[5 / 8] &= 223;//255 - Math.pow(2, 5 % 8)
+            skinningrender.model_byte_array[5 / 8] &= 255-32;//255 - Math.pow(2, 5 % 8)
             skinningrender.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
         }
 
@@ -113,7 +113,7 @@ public class SummerResa extends SkinningEntities
         }
         else
         {
-            skinningrender.model_byte_array[6 / 8] &= 191;//255 - Math.pow(2, 6 % 8)
+            skinningrender.model_byte_array[6 / 8] &= 255-64;//255 - Math.pow(2, 6 % 8)
         }
 
         float scale = skinningrender.entitiesrendermemory.scale;
@@ -128,7 +128,7 @@ public class SummerResa extends SkinningEntities
             this.height = bothdata.Height() * scale;
         }
 
-        skinningrender.model_byte_array[3 / 8] &= 247;//255 - Math.pow(2, 3 % 8)
+//        skinningrender.model_byte_array[3 / 8] &= 255-8;//255 - Math.pow(2, 3 % 8)
     }
 
     @Override
@@ -137,9 +137,9 @@ public class SummerResa extends SkinningEntities
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
         ResaRender skinningrender = (ResaRender)cliententitiesmemory.objectrender;
-        skinningrender.model_byte_array[0 / 8] &= 254;//255 - Math.pow(2, 0 % 8)
-        skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
-        skinningrender.model_byte_array[8 / 8] &= 254;//255 - Math.pow(2, 8 % 8)
+        skinningrender.model_byte_array[0 / 8] &= 255-1;//255 - Math.pow(2, 0 % 8)
+//        skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
+        skinningrender.model_byte_array[8 / 8] &= 255-1;//255 - Math.pow(2, 8 % 8)
     }
 
     @Override
