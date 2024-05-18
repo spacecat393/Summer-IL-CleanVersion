@@ -1,9 +1,8 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.summer.render.skinning.SSZukoRender;
 import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.SoundRender;
+import com.nali.render.NoSoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -15,6 +14,7 @@ import com.nali.summer.data.both.SeaHouseBothData;
 import com.nali.summer.entities.bytes.SSZukoBytes;
 import com.nali.summer.entities.memory.client.ClientSSZukoMemory;
 import com.nali.summer.entities.sounds.SSZukoSounds;
+import com.nali.summer.render.skinning.SSZukoRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -25,8 +25,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Arrays;
 import java.util.function.Supplier;
-
-import static com.nali.summer.render.RenderHelper.DATALOADER;
 
 public class SummerSSZuko extends SkinningEntities
 {
@@ -243,7 +241,8 @@ public class SummerSSZuko extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public Object createSoundRender()
     {
-        return SoundRender.getSoundRender(DATALOADER);
+//        return SoundRender.getSoundRender(DATALOADER);
+        return new NoSoundRender();
     }
 
     @Override

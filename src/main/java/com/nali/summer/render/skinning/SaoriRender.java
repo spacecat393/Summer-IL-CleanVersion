@@ -3,15 +3,13 @@ package com.nali.summer.render.skinning;
 import com.nali.data.client.ClientData;
 import com.nali.list.entities.SummerSaori;
 import com.nali.render.EntitiesRenderMemory;
-import com.nali.small.render.SkinningEntitiesRender;
 import com.nali.summer.data.client.SaoriClientData;
-import com.nali.summer.render.RenderHelper;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class SaoriRender extends SkinningEntitiesRender
+public class SaoriRender extends SummerSkinningEntitiesRender
 {
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
@@ -20,7 +18,7 @@ public class SaoriRender extends SkinningEntitiesRender
 
     public SaoriRender(EntitiesRenderMemory entitiesrendermemory, Entity entity)
     {
-        super(entitiesrendermemory, SummerSaori.BOTHDATA, CLIENTDATA, RenderHelper.DATALOADER, entity);
+        super(entitiesrendermemory, SummerSaori.BOTHDATA, CLIENTDATA/*, RenderHelper.DATALOADER*/, entity);
 //        this.texture_index_int_array[0] = 70;
 //        this.texture_index_int_array[1] = 71;
 //        this.texture_index_int_array[2] = 71;

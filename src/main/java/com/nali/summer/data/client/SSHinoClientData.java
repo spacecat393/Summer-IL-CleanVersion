@@ -2,23 +2,25 @@ package com.nali.summer.data.client;
 
 import com.nali.data.client.SkinningClientData;
 
+import static com.nali.list.data.SummerData.MODEL_STEP;
+
 public class SSHinoClientData implements SkinningClientData
 {
     @Override
     public int AnimationID()
     {
-        return 76;
+        return MODEL_STEP + 76;
     }
 
     @Override
     public int StartPart()
     {
-        return 77;
+        return MODEL_STEP + 77;
     }
 
     @Override
     public int EndPart()
     {
-        return 89;
+        return MODEL_STEP + 89;
     }
 }

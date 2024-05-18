@@ -1,56 +1,85 @@
 package com.nali.summer.entities.sounds;
 
 import com.nali.small.entities.sounds.Sounds;
-import net.minecraft.client.Minecraft;
+import net.minecraft.server.MinecraftServer;
+
+import static com.nali.list.data.SummerData.OPENAL_STEP;
 
 public class YuzuSounds implements Sounds
 {
     @Override
     public int HURT()
     {
-        byte time = (byte)(Minecraft.getSystemTime() % 255);
+//        byte time;
+//        if (FMLLaunchHandler.side() == Side.SERVER)
+//        {
+//            time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
+//        }
+//        else
+//        {
+//            time = (byte)(Minecraft.getSystemTime() % 255);
+//        }
+        byte time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
 
         if (time > 85)
         {
-            return 2;
+            return OPENAL_STEP + 2;
         }
         else if (time > -85)
         {
-            return 3;
+            return OPENAL_STEP + 3;
         }
         else
         {
-            return 4;
+            return OPENAL_STEP + 4;
         }
     }
 
     @Override
     public int DEATH()
     {
-        byte time = (byte)(Minecraft.getSystemTime() % 255);
+//        byte time;
+//        if (FMLLaunchHandler.side() == Side.SERVER)
+//        {
+//            time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
+//        }
+//        else
+//        {
+//            time = (byte)(Minecraft.getSystemTime() % 255);
+//        }
+        byte time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
 
         if (time > 85)
         {
-            return 11;
+            return OPENAL_STEP + 11;
         }
         else
         {
-            return 10;
+            return OPENAL_STEP + 10;
         }
     }
 
     @Override
     public int PAT()
     {
-        byte time = (byte)(Minecraft.getSystemTime() % 255);
+//        byte time;
+//        if (FMLLaunchHandler.side() == Side.SERVER)
+//        {
+//            time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
+//        }
+//        else
+//        {
+//            time = (byte)(Minecraft.getSystemTime() % 255);
+//        }
+        byte time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
 
         if (time > 85)
         {
-            return 7;
+            return OPENAL_STEP + 7;
         }
         else
         {
-            return 8;
+            return OPENAL_STEP + 8;
         }
     }
 
@@ -63,6 +92,6 @@ public class YuzuSounds implements Sounds
     @Override
     public int HARD_READY()
     {
-        return 12;
+        return OPENAL_STEP + 12;
     }
 }

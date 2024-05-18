@@ -3,15 +3,13 @@ package com.nali.summer.render.skinning;
 import com.nali.data.client.ClientData;
 import com.nali.list.entities.SummerE22Locker;
 import com.nali.render.EntitiesRenderMemory;
-import com.nali.small.render.SkinningEntitiesRender;
 import com.nali.summer.data.client.E22LockerClientData;
-import com.nali.summer.render.RenderHelper;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class E22LockerRender extends SkinningEntitiesRender
+public class E22LockerRender extends SummerSkinningEntitiesRender
 {
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
@@ -20,7 +18,7 @@ public class E22LockerRender extends SkinningEntitiesRender
 
     public E22LockerRender(EntitiesRenderMemory entitiesrendermemory, Entity entity)
     {
-        super(entitiesrendermemory, SummerE22Locker.BOTHDATA, CLIENTDATA, RenderHelper.DATALOADER, entity);
+        super(entitiesrendermemory, SummerE22Locker.BOTHDATA, CLIENTDATA/*, RenderHelper.DATALOADER*/, entity);
 //        Arrays.fill(this.texture_index_int_array, 61);
     }
 

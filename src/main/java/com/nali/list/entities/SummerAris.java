@@ -2,7 +2,7 @@ package com.nali.list.entities;
 
 import com.nali.data.BothData;
 import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.SoundRender;
+import com.nali.render.NoSoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -23,8 +23,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
-
-import static com.nali.summer.render.RenderHelper.DATALOADER;
 
 public class SummerAris extends SkinningEntities
 {
@@ -231,7 +229,8 @@ public class SummerAris extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public Object createSoundRender()
     {
-        return SoundRender.getSoundRender(DATALOADER);
+//        return SoundRender.getSoundRender(DATALOADER);
+        return new NoSoundRender();
     }
 
     @Override

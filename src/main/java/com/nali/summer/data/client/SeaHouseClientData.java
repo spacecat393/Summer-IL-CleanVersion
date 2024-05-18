@@ -2,23 +2,25 @@ package com.nali.summer.data.client;
 
 import com.nali.data.client.SkinningClientData;
 
+import static com.nali.list.data.SummerData.MODEL_STEP;
+
 public class SeaHouseClientData implements SkinningClientData
 {
     @Override
     public int AnimationID()
     {
-        return 37;
+        return MODEL_STEP + 37;
     }
 
     @Override
     public int StartPart()
     {
-        return 38;
+        return MODEL_STEP + 38;
     }
 
     @Override
     public int EndPart()
     {
-        return 41;
+        return MODEL_STEP + 41;
     }
 }

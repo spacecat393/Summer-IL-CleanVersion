@@ -7,17 +7,19 @@ import com.nali.small.entities.skinning.SkinningEntities;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.nali.list.data.SummerData.MODEL_STEP;
+
 public class ClientNasuMemory extends ClientEntitiesMemory
 {
     @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
-        7+15, 3319,
-        7+15, 5470,
-        4+15, 7013,
-        7+15, 1454,
-        7+15, 1690,
-        11+15, 45
+        7+15 + MODEL_STEP, 3319,
+        7+15 + MODEL_STEP, 5470,
+        4+15 + MODEL_STEP, 7013,
+        7+15 + MODEL_STEP, 1454,
+        7+15 + MODEL_STEP, 1690,
+        11+15 + MODEL_STEP, 45
     };
     @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]

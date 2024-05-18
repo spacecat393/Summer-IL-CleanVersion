@@ -4,16 +4,16 @@ import com.nali.data.client.ClientData;
 import com.nali.data.client.SkinningClientData;
 import com.nali.list.entities.SummerSSZuko;
 import com.nali.render.EntitiesRenderMemory;
-import com.nali.small.render.SkinningEntitiesRender;
 import com.nali.summer.data.client.SSZukoClientData;
-import com.nali.summer.render.RenderHelper;
 import com.nali.system.opengl.memory.OpenGLAnimationMemory;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.nali.system.ClientLoader.OBJECT_LIST;
+
 @SideOnly(Side.CLIENT)
-public class SSZukoRender extends SkinningEntitiesRender
+public class SSZukoRender extends SummerSkinningEntitiesRender
 {
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
@@ -25,7 +25,7 @@ public class SSZukoRender extends SkinningEntitiesRender
 
     public SSZukoRender(EntitiesRenderMemory entitiesrendermemory, Entity entity)
     {
-        super(entitiesrendermemory, SummerSSZuko.BOTHDATA, CLIENTDATA, RenderHelper.DATALOADER, entity);
+        super(entitiesrendermemory, SummerSSZuko.BOTHDATA, CLIENTDATA/*, RenderHelper.DATALOADER*/, entity);
 //        this.model_byte_array = new byte[(int)Math.ceil((CLIENTDATA.EndPart() - CLIENTDATA.StartPart()) / 8.0D)];
 //        this.texture_index_int_array[0] = 25;
 //        this.texture_index_int_array[1] = 26;
@@ -61,14 +61,16 @@ public class SSZukoRender extends SkinningEntitiesRender
     public void initSkinning(OpenGLAnimationMemory openglanimationmemory)
     {
         super.initSkinning(openglanimationmemory);
-        this.seahouserender.initSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).AnimationID()]);
+//        this.seahouserender.initSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).AnimationID()]);
+        this.seahouserender.initSkinning((OpenGLAnimationMemory)OBJECT_LIST.get(((SkinningClientData)this.seahouserender.clientdata).AnimationID()));
     }
 
     @Override
     public void setSkinning(OpenGLAnimationMemory openglanimationmemory)
     {
         super.setSkinning(openglanimationmemory);
-        this.seahouserender.setSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).AnimationID()]);
+//        this.seahouserender.setSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).AnimationID()]);
+        this.seahouserender.setSkinning((OpenGLAnimationMemory)OBJECT_LIST.get(((SkinningClientData)this.seahouserender.clientdata).AnimationID()));
     }
 
 //    @Override

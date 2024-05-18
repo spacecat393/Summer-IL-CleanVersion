@@ -2,23 +2,25 @@ package com.nali.summer.data.client;
 
 import com.nali.data.client.SkinningClientData;
 
+import static com.nali.list.data.SummerData.MODEL_STEP;
+
 public class E22LockerClientData implements SkinningClientData
 {
     @Override
     public int AnimationID()
     {
-        return 99;
+        return MODEL_STEP + 99;
     }
 
     @Override
     public int StartPart()
     {
-        return 100;
+        return MODEL_STEP + 100;
     }
 
     @Override
     public int EndPart()
     {
-        return 107;
+        return MODEL_STEP + 107;
     }
 }

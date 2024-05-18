@@ -20,6 +20,7 @@ import org.lwjgl.opengl.GL11;
 
 import static com.nali.list.entitiesrender.SummerIrohaRender.setAnimation;
 import static com.nali.summer.entities.memory.client.ClientIrohaMemory.IV_INT_ARRAY;
+import static com.nali.system.ClientLoader.OBJECT_LIST;
 
 @SideOnly(Side.CLIENT)
 public class SummerIbukiRender<T extends SummerIbuki> extends SkinningEntitiesRender<T>
@@ -94,7 +95,8 @@ public class SummerIbukiRender<T extends SummerIbuki> extends SkinningEntitiesRe
             GL11.glScalef(s, s, s);
             GL11.glTranslated(-ox, -oy, -oz);
 //            OpenGLAnimationMemory openglanimationmemory = ibukirender.dataloader.openglanimationmemory_list.get(((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID());
-            OpenGLAnimationMemory openglanimationmemory = (OpenGLAnimationMemory)ibukirender.dataloader.object_array[((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID()];
+//            OpenGLAnimationMemory openglanimationmemory = (OpenGLAnimationMemory)ibukirender.dataloader.object_array[((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID()];
+            OpenGLAnimationMemory openglanimationmemory = (OpenGLAnimationMemory)OBJECT_LIST.get(((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID());
             ibukirender.iroharender.initSkinning(openglanimationmemory);
             setAnimation(ibukirender.iroharender);
             ibukirender.iroharender.setSkinning(openglanimationmemory);
