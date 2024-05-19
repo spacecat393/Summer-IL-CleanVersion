@@ -14,7 +14,7 @@ import com.nali.summer.data.both.SeaHouseBothData;
 import com.nali.summer.entities.bytes.SSZukoBytes;
 import com.nali.summer.entities.memory.client.ClientSSZukoMemory;
 import com.nali.summer.entities.sounds.SSZukoSounds;
-import com.nali.summer.render.skinning.SSZukoRender;
+import com.nali.list.render.SSZukoRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

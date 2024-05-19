@@ -14,7 +14,7 @@ import com.nali.summer.data.both.MYuzuData;
 import com.nali.summer.entities.bytes.MYuzuBytes;
 import com.nali.summer.entities.memory.client.ClientMYuzuMemory;
 import com.nali.summer.entities.sounds.MYuzuSounds;
-import com.nali.summer.render.skinning.MYuzuRender;
+import com.nali.list.render.MYuzuRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

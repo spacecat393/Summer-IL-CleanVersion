@@ -1,7 +1,7 @@
 package com.nali.list.entitiesrender;
 
 import com.nali.list.entities.SummerSSZuko;
-import com.nali.summer.render.skinning.SSZukoRender;
+import com.nali.list.render.SSZukoRender;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.render.EntitiesRenderMemory;

@@ -14,7 +14,7 @@ import com.nali.summer.data.both.IrohaData;
 import com.nali.summer.entities.bytes.IbukiBytes;
 import com.nali.summer.entities.memory.client.ClientIbukiMemory;
 import com.nali.summer.entities.sounds.IbukiSounds;
-import com.nali.summer.render.skinning.IbukiRender;
+import com.nali.list.render.IbukiRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

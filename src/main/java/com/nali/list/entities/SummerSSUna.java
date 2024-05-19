@@ -13,7 +13,7 @@ import com.nali.summer.entities.bytes.SSUnaBytes;
 import com.nali.summer.entities.memory.client.ClientSSUnaMemory;
 import com.nali.summer.entities.memory.server.ServerSSUnaMemory;
 import com.nali.summer.entities.sounds.SSUnaSounds;
-import com.nali.summer.render.skinning.SSUnaRender;
+import com.nali.list.render.SSUnaRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

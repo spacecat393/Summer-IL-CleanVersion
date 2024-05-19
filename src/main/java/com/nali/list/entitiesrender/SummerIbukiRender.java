@@ -2,7 +2,7 @@ package com.nali.list.entitiesrender;
 
 import com.nali.data.client.SkinningClientData;
 import com.nali.list.entities.SummerIbuki;
-import com.nali.summer.render.skinning.IbukiRender;
+import com.nali.list.render.IbukiRender;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.render.EntitiesRenderMemory;

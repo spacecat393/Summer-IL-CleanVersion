@@ -13,7 +13,7 @@ import com.nali.summer.data.both.YuzuData;
 import com.nali.summer.entities.bytes.YuzuBytes;
 import com.nali.summer.entities.memory.client.ClientYuzuMemory;
 import com.nali.summer.entities.sounds.YuzuSounds;
-import com.nali.summer.render.skinning.YuzuRender;
+import com.nali.list.render.YuzuRender;
 import com.nali.system.opengl.memory.OpenGLObjectMemory;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;

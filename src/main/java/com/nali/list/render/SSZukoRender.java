@@ -1,10 +1,11 @@
-package com.nali.summer.render.skinning;
+package com.nali.list.render;
 
 import com.nali.data.client.ClientData;
 import com.nali.data.client.SkinningClientData;
 import com.nali.list.entities.SummerSSZuko;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.summer.data.client.SSZukoClientData;
+import com.nali.summer.render.skinning.SummerSkinningEntitiesRender;
 import com.nali.system.opengl.memory.OpenGLAnimationMemory;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;

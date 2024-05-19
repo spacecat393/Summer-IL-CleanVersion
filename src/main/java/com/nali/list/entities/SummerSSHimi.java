@@ -14,7 +14,7 @@ import com.nali.summer.data.both.SSHimiBothData;
 import com.nali.summer.entities.bytes.SSHimiBytes;
 import com.nali.summer.entities.memory.client.ClientSSHimiMemory;
 import com.nali.summer.entities.sounds.SSHimiSounds;
-import com.nali.summer.render.skinning.SSHimiRender;
+import com.nali.list.render.SSHimiRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

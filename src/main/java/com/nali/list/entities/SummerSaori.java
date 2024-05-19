@@ -14,7 +14,7 @@ import com.nali.summer.entities.bytes.SaoriBytes;
 import com.nali.summer.entities.memory.client.ClientSaoriMemory;
 import com.nali.summer.entities.memory.server.ServerSaoriMemory;
 import com.nali.summer.entities.sounds.SaoriSounds;
-import com.nali.summer.render.skinning.SaoriRender;
+import com.nali.list.render.SaoriRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

@@ -13,7 +13,7 @@ import com.nali.summer.entities.bytes.SSHinoBytes;
 import com.nali.summer.entities.memory.client.ClientSSHinoMemory;
 import com.nali.summer.entities.memory.server.ServerSSHinoMemory;
 import com.nali.summer.entities.sounds.SSHinoSounds;
-import com.nali.summer.render.skinning.SSHinoRender;
+import com.nali.list.render.SSHinoRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

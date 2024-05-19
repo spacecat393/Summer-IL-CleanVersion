@@ -12,7 +12,7 @@ import com.nali.summer.data.both.E22LockerData;
 import com.nali.summer.entities.bytes.E22LockerBytes;
 import com.nali.summer.entities.memory.client.ClientE22LockerMemory;
 import com.nali.summer.entities.sounds.E22LockerSounds;
-import com.nali.summer.render.skinning.E22LockerRender;
+import com.nali.list.render.E22LockerRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;

@@ -13,7 +13,7 @@ import com.nali.summer.data.both.ArisBothData;
 import com.nali.summer.entities.bytes.ArisBytes;
 import com.nali.summer.entities.memory.client.ClientArisMemory;
 import com.nali.summer.entities.sounds.ArisSounds;
-import com.nali.summer.render.skinning.ArisRender;
+import com.nali.list.render.ArisRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

@@ -1,9 +1,10 @@
-package com.nali.summer.render.skinning;
+package com.nali.list.render;
 
 import com.nali.data.client.ClientData;
 import com.nali.list.entities.SummerYuzu;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.summer.data.client.YuzuClientData;
+import com.nali.summer.render.skinning.SummerSkinningEntitiesRender;
 import com.nali.system.opengl.memory.OpenGLObjectMemory;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;

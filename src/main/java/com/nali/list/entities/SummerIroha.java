@@ -13,7 +13,7 @@ import com.nali.summer.data.both.IrohaData;
 import com.nali.summer.entities.bytes.IrohaBytes;
 import com.nali.summer.entities.memory.client.ClientIrohaMemory;
 import com.nali.summer.entities.sounds.IrohaSounds;
-import com.nali.summer.render.skinning.IrohaRender;
+import com.nali.list.render.IrohaRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

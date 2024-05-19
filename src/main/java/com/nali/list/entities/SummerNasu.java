@@ -13,7 +13,7 @@ import com.nali.summer.data.both.NasuBothData;
 import com.nali.summer.entities.bytes.NasuBytes;
 import com.nali.summer.entities.memory.client.ClientNasuMemory;
 import com.nali.summer.entities.sounds.NasuSounds;
-import com.nali.summer.render.skinning.NasuRender;
+import com.nali.list.render.NasuRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

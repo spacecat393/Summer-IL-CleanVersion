@@ -1,9 +1,10 @@
-package com.nali.summer.render.skinning;
+package com.nali.list.render;
 
 import com.nali.data.client.ClientData;
 import com.nali.list.entities.SummerSSHimi;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.summer.data.client.SSHimiClientData;
+import com.nali.summer.render.skinning.SummerSkinningEntitiesRender;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

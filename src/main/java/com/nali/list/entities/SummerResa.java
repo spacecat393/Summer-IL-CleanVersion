@@ -13,7 +13,7 @@ import com.nali.summer.data.both.ResaData;
 import com.nali.summer.entities.bytes.ResaBytes;
 import com.nali.summer.entities.memory.client.ClientResaMemory;
 import com.nali.summer.entities.sounds.ResaSounds;
-import com.nali.summer.render.skinning.ResaRender;
+import com.nali.list.render.ResaRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

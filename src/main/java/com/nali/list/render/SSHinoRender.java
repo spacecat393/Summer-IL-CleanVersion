@@ -1,9 +1,10 @@
-package com.nali.summer.render.skinning;
+package com.nali.list.render;
 
 import com.nali.data.client.ClientData;
-import com.nali.list.entities.SummerIroha;
+import com.nali.list.entities.SummerSSHino;
 import com.nali.render.EntitiesRenderMemory;
-import com.nali.summer.data.client.IrohaClientData;
+import com.nali.summer.data.client.SSHinoClientData;
+import com.nali.summer.render.skinning.SummerSkinningEntitiesRender;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -11,29 +12,30 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Arrays;
 
 @SideOnly(Side.CLIENT)
-public class IrohaRender extends SummerSkinningEntitiesRender
+public class SSHinoRender extends SummerSkinningEntitiesRender
 {
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
-//    public static BothData BOTHDATA = SummerIroha.BOTHDATA;
-    public static ClientData CLIENTDATA = new IrohaClientData();
+//    public static BothData BOTHDATA = SummerSSHino.BOTHDATA;
+    public static ClientData CLIENTDATA = new SSHinoClientData();
     public byte[] model_byte_array;
 
-    public IrohaRender(EntitiesRenderMemory entitiesrendermemory, Entity entity)
+    public SSHinoRender(EntitiesRenderMemory entitiesrendermemory, Entity entity)
     {
-        super(entitiesrendermemory, SummerIroha.BOTHDATA, CLIENTDATA/*, RenderHelper.DATALOADER*/, entity);
+        super(entitiesrendermemory, SummerSSHino.BOTHDATA, CLIENTDATA/*, RenderHelper.DATALOADER*/, entity);
         this.model_byte_array = new byte[(int)Math.ceil((CLIENTDATA.EndPart() - CLIENTDATA.StartPart()) / 8.0D)];
-//        this.texture_index_int_array[0] = 84;
-//        this.texture_index_int_array[1] = 85;
-//        this.texture_index_int_array[2] = 85;
-//        this.texture_index_int_array[3] = 86;
-//        this.texture_index_int_array[4] = 87;
-//        this.texture_index_int_array[5] = 88;
-//        this.texture_index_int_array[6] = 89;
-//        this.texture_index_int_array[7] = 90;
-//        this.texture_index_int_array[8] = 91;
-//        this.texture_index_int_array[9] = 92;
+//        this.texture_index_int_array[0] = 47;
+//        this.texture_index_int_array[1] = 48;
+//        this.texture_index_int_array[2] = 49;
+//        this.texture_index_int_array[3] = 47;
+//        this.texture_index_int_array[4] = 50;
+//        this.texture_index_int_array[5] = 51;
+//        this.texture_index_int_array[6] = 52;
+//        this.texture_index_int_array[7] = 52;
+//        this.texture_index_int_array[8] = 52;
+//        this.texture_index_int_array[9] = 53;
 //        this.texture_index_int_array[10] = 9;
+//        this.texture_index_int_array[11] = 50;
         Arrays.fill(this.model_byte_array, (byte)255);
     }
 
