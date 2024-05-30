@@ -1,6 +1,8 @@
 package com.nali.summer.entities.memory.client;
 
 import com.nali.data.BothData;
+import com.nali.list.render.SSHimiRender;
+import com.nali.render.*;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
@@ -9,9 +11,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static com.nali.list.data.SummerData.MODEL_STEP;
 
+@SideOnly(Side.CLIENT)
 public class ClientSSHimiMemory extends ClientEntitiesMemory
 {
-    @SideOnly(Side.CLIENT)
+//    @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
         0+1 + MODEL_STEP, 9046,
@@ -21,13 +24,13 @@ public class ClientSSHimiMemory extends ClientEntitiesMemory
         0+1 + MODEL_STEP, 7860,
         12+1 + MODEL_STEP, 69
     };
-    @SideOnly(Side.CLIENT)
+//    @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]
     {
         0.0F, 0.0F,
         0.0F, 0.0F
     };
-    @SideOnly(Side.CLIENT)
+//    @SideOnly(Side.CLIENT)
     public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
     {
         0.0F, -0.55F * 0.5F, 0.0F,
@@ -42,5 +45,29 @@ public class ClientSSHimiMemory extends ClientEntitiesMemory
         this.itemlayerrender.iv_int_array = IV_INT_ARRAY;
         this.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
         this.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
+    }
+
+    @Override
+    public void initFakeFrame()
+    {
+        ((SkinningRender)this.objectrender).frame_int_array[0] = 379;
+    }
+
+    @Override
+    public ObjectRender createObjectRender()
+    {
+        return new SSHimiRender(new EntitiesRenderMemory(), this.main_skinningentities);
+    }
+
+    @Override
+    public SoundRender createSoundRender()
+    {
+        return new NoSoundRender();
+    }
+
+    @Override
+    public int[] getIVIntArray()
+    {
+        return ClientSSHimiMemory.IV_INT_ARRAY;
     }
 }

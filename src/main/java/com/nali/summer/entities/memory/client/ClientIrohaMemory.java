@@ -1,6 +1,11 @@
 package com.nali.summer.entities.memory.client;
 
 import com.nali.data.BothData;
+import com.nali.list.render.IrohaRender;
+import com.nali.render.EntitiesRenderMemory;
+import com.nali.render.NoSoundRender;
+import com.nali.render.ObjectRender;
+import com.nali.render.SoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
@@ -9,9 +14,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static com.nali.list.data.SummerData.MODEL_STEP;
 
+@SideOnly(Side.CLIENT)
 public class ClientIrohaMemory extends ClientEntitiesMemory
 {
-    @SideOnly(Side.CLIENT)
+//    @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]
     {
         8+144 + MODEL_STEP, 837,
@@ -22,13 +28,13 @@ public class ClientIrohaMemory extends ClientEntitiesMemory
         10+144 + MODEL_STEP, 39,
         5+144 + MODEL_STEP, 26084
     };
-    @SideOnly(Side.CLIENT)
+//    @SideOnly(Side.CLIENT)
     public static float[] ROTATION_FLOAT_ARRAY = new float[]
     {
         0.0F, 0.0F,
         0.0F, 0.0F
     };
-    @SideOnly(Side.CLIENT)
+//    @SideOnly(Side.CLIENT)
     public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
     {
         0.0F, -0.55F * 0.5F, 0.0F,
@@ -43,5 +49,23 @@ public class ClientIrohaMemory extends ClientEntitiesMemory
         this.itemlayerrender.iv_int_array = IV_INT_ARRAY;
         this.itemlayerrender.rotation_float_array = ROTATION_FLOAT_ARRAY;
         this.itemlayerrender.transform_float_array = TRANSFORM_FLOAT_ARRAY;
+    }
+
+    @Override
+    public ObjectRender createObjectRender()
+    {
+        return new IrohaRender(new EntitiesRenderMemory(), this.main_skinningentities);
+    }
+
+    @Override
+    public SoundRender createSoundRender()
+    {
+        return new NoSoundRender();
+    }
+
+    @Override
+    public int[] getIVIntArray()
+    {
+        return ClientIrohaMemory.IV_INT_ARRAY;
     }
 }

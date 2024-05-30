@@ -1,10 +1,8 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.NoSoundRender;
+import com.nali.list.render.ResaRender;
 import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
@@ -13,7 +11,6 @@ import com.nali.summer.data.both.ResaData;
 import com.nali.summer.entities.bytes.ResaBytes;
 import com.nali.summer.entities.memory.client.ClientResaMemory;
 import com.nali.summer.entities.sounds.ResaSounds;
-import com.nali.list.render.ResaRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -129,16 +126,16 @@ public class SummerResa extends SkinningEntities
 //        skinningrender.model_byte_array[3 / 8] &= 255-8;//255 - Math.pow(2, 3 % 8)
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void initFakeFrame()
-    {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        ResaRender skinningrender = (ResaRender)cliententitiesmemory.objectrender;
-        skinningrender.model_byte_array[0 / 8] &= 255-1;//255 - Math.pow(2, 0 % 8)
-//        skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
-        skinningrender.model_byte_array[8 / 8] &= 255-1;//255 - Math.pow(2, 8 % 8)
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public void initFakeFrame()
+//    {
+//        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+//        ResaRender skinningrender = (ResaRender)cliententitiesmemory.objectrender;
+//        skinningrender.model_byte_array[0 / 8] &= 255-1;//255 - Math.pow(2, 0 % 8)
+////        skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
+//        skinningrender.model_byte_array[8 / 8] &= 255-1;//255 - Math.pow(2, 8 % 8)
+//    }
 
     @Override
     public BothData createBothData()
@@ -206,12 +203,12 @@ public class SummerResa extends SkinningEntities
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createObjectRender()
-    {
-        return new ResaRender(new EntitiesRenderMemory(), this);
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createObjectRender()
+//    {
+//        return new ResaRender(new EntitiesRenderMemory(), this);
+//    }
 
     @Override
     public Sounds createSounds()
@@ -219,20 +216,20 @@ public class SummerResa extends SkinningEntities
         return SOUNDS;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createSoundRender()
-    {
-//        return SoundRender.getSoundRender(DATALOADER);
-        return new NoSoundRender();
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int[] getIVIntArray()
-    {
-        return ClientResaMemory.IV_INT_ARRAY;
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createSoundRender()
+//    {
+////        return SoundRender.getSoundRender(DATALOADER);
+//        return new NoSoundRender();
+//    }
+//
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public int[] getIVIntArray()
+//    {
+//        return ClientResaMemory.IV_INT_ARRAY;
+//    }
 
     @Override
     @SideOnly(Side.CLIENT)

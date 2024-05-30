@@ -1,8 +1,6 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.NoSoundRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
@@ -12,7 +10,6 @@ import com.nali.summer.data.both.E22LockerData;
 import com.nali.summer.entities.bytes.E22LockerBytes;
 import com.nali.summer.entities.memory.client.ClientE22LockerMemory;
 import com.nali.summer.entities.sounds.E22LockerSounds;
-import com.nali.list.render.E22LockerRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -207,12 +204,12 @@ public class SummerE22Locker extends SkinningEntities
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createObjectRender()
-    {
-        return new E22LockerRender(new EntitiesRenderMemory(), this);
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createObjectRender()
+//    {
+//        return new E22LockerRender(new EntitiesRenderMemory(), this);
+//    }
 
     @Override
     public Sounds createSounds()
@@ -220,20 +217,20 @@ public class SummerE22Locker extends SkinningEntities
         return SOUNDS;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createSoundRender()
-    {
-//        return SoundRender.getSoundRender(DATALOADER);
-        return new NoSoundRender();
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int[] getIVIntArray()
-    {
-        return ClientE22LockerMemory.IV_INT_ARRAY;
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createSoundRender()
+//    {
+////        return SoundRender.getSoundRender(DATALOADER);
+//        return new NoSoundRender();
+//    }
+//
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public int[] getIVIntArray()
+//    {
+//        return ClientE22LockerMemory.IV_INT_ARRAY;
+//    }
 
     @Override
     @SideOnly(Side.CLIENT)

@@ -1,8 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.NoSoundRender;
+import com.nali.list.render.IrohaRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -13,7 +12,6 @@ import com.nali.summer.data.both.IrohaData;
 import com.nali.summer.entities.bytes.IrohaBytes;
 import com.nali.summer.entities.memory.client.ClientIrohaMemory;
 import com.nali.summer.entities.sounds.IrohaSounds;
-import com.nali.list.render.IrohaRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -287,12 +285,12 @@ public class SummerIroha extends SkinningEntities
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createObjectRender()
-    {
-        return new IrohaRender(new EntitiesRenderMemory(), this);
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createObjectRender()
+//    {
+//        return new IrohaRender(new EntitiesRenderMemory(), this);
+//    }
 
     @Override
     public Sounds createSounds()
@@ -300,20 +298,20 @@ public class SummerIroha extends SkinningEntities
         return SOUNDS;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createSoundRender()
-    {
-//        return SoundRender.getSoundRender(DATALOADER);
-        return new NoSoundRender();
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int[] getIVIntArray()
-    {
-        return ClientIrohaMemory.IV_INT_ARRAY;
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createSoundRender()
+//    {
+////        return SoundRender.getSoundRender(DATALOADER);
+//        return new NoSoundRender();
+//    }
+//
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public int[] getIVIntArray()
+//    {
+//        return ClientIrohaMemory.IV_INT_ARRAY;
+//    }
 
     @Override
     public void updateServer()

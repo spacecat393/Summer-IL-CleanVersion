@@ -1,8 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.SoundRender;
+import com.nali.list.render.YuzuRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -13,7 +12,6 @@ import com.nali.summer.data.both.YuzuData;
 import com.nali.summer.entities.bytes.YuzuBytes;
 import com.nali.summer.entities.memory.client.ClientYuzuMemory;
 import com.nali.summer.entities.sounds.YuzuSounds;
-import com.nali.list.render.YuzuRender;
 import com.nali.system.opengl.memory.OpenGLObjectMemory;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
@@ -214,12 +212,12 @@ public class SummerYuzu extends SkinningEntities
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createObjectRender()
-    {
-        return new YuzuRender(new EntitiesRenderMemory(), this);
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createObjectRender()
+//    {
+//        return new YuzuRender(new EntitiesRenderMemory(), this);
+//    }
 
     @Override
     public Sounds createSounds()
@@ -227,19 +225,19 @@ public class SummerYuzu extends SkinningEntities
         return SOUNDS;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createSoundRender()
-    {
-        return new SoundRender();
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int[] getIVIntArray()
-    {
-        return ClientYuzuMemory.IV_INT_ARRAY;
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createSoundRender()
+//    {
+//        return new SoundRender();
+//    }
+//
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public int[] getIVIntArray()
+//    {
+//        return ClientYuzuMemory.IV_INT_ARRAY;
+//    }
 
     @Override
     @SideOnly(Side.CLIENT)

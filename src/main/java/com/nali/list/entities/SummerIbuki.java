@@ -1,8 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.NoSoundRender;
+import com.nali.list.render.IbukiRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -14,7 +13,6 @@ import com.nali.summer.data.both.IrohaData;
 import com.nali.summer.entities.bytes.IbukiBytes;
 import com.nali.summer.entities.memory.client.ClientIbukiMemory;
 import com.nali.summer.entities.sounds.IbukiSounds;
-import com.nali.list.render.IbukiRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -147,19 +145,19 @@ public class SummerIbuki extends SkinningEntities
         ibukirender.iroharender.frame_int_array[0] = entitydatamanager.get(this.getIntegerDataParameterArray()[1]);
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void initFakeFrame()
-    {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        IbukiRender skinningrender = (IbukiRender)cliententitiesmemory.objectrender;
-//        skinningrender.model_byte_array[0 / 8] &= 254;//255 - Math.pow(2, 0 % 8)
-//        skinningrender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
-        skinningrender.model_byte_array[0] &= 254 & 253;
-        skinningrender.model_byte_array[2 / 8] |= 4;//Math.pow(2, 2 % 8)
-        skinningrender.model_byte_array[11 / 8] &= 247;//255 - Math.pow(2, 11 % 8)
-        skinningrender.model_byte_array[12 / 8] |= 16;//Math.pow(2, 12 % 8)
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public void initFakeFrame()
+//    {
+//        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+//        IbukiRender skinningrender = (IbukiRender)cliententitiesmemory.objectrender;
+////        skinningrender.model_byte_array[0 / 8] &= 254;//255 - Math.pow(2, 0 % 8)
+////        skinningrender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
+//        skinningrender.model_byte_array[0] &= 254 & 253;
+//        skinningrender.model_byte_array[2 / 8] |= 4;//Math.pow(2, 2 % 8)
+//        skinningrender.model_byte_array[11 / 8] &= 247;//255 - Math.pow(2, 11 % 8)
+//        skinningrender.model_byte_array[12 / 8] |= 16;//Math.pow(2, 12 % 8)
+//    }
 
     @Override
     public BothData createBothData()
@@ -248,12 +246,12 @@ public class SummerIbuki extends SkinningEntities
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createObjectRender()
-    {
-        return new IbukiRender(new EntitiesRenderMemory(), this);
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createObjectRender()
+//    {
+//        return new IbukiRender(new EntitiesRenderMemory(), this);
+//    }
 
     @Override
     public Sounds createSounds()
@@ -261,20 +259,20 @@ public class SummerIbuki extends SkinningEntities
         return SOUNDS;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createSoundRender()
-    {
-//        return SoundRender.getSoundRender(DATALOADER);
-        return new NoSoundRender();
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int[] getIVIntArray()
-    {
-        return ClientIbukiMemory.IV_INT_ARRAY;
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createSoundRender()
+//    {
+////        return SoundRender.getSoundRender(DATALOADER);
+//        return new NoSoundRender();
+//    }
+//
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public int[] getIVIntArray()
+//    {
+//        return ClientIbukiMemory.IV_INT_ARRAY;
+//    }
 
     @Override
     public void onShouldPlayWith()

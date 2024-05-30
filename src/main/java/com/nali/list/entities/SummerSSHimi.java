@@ -1,9 +1,7 @@
 package com.nali.list.entities;
 
 import com.nali.data.BothData;
-import com.nali.render.EntitiesRenderMemory;
-import com.nali.render.NoSoundRender;
-import com.nali.render.SkinningRender;
+import com.nali.list.render.SSHimiRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -14,7 +12,6 @@ import com.nali.summer.data.both.SSHimiBothData;
 import com.nali.summer.entities.bytes.SSHimiBytes;
 import com.nali.summer.entities.memory.client.ClientSSHimiMemory;
 import com.nali.summer.entities.sounds.SSHimiSounds;
-import com.nali.list.render.SSHimiRender;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -140,13 +137,13 @@ public class SummerSSHimi extends SkinningEntities
 //        skinningrender.model_byte_array[5 / 8] &= 255-32;//255 - Math.pow(2, 5 % 8)
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void initFakeFrame()
-    {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        ((SkinningRender)cliententitiesmemory.objectrender).frame_int_array[0] = 379;
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public void initFakeFrame()
+//    {
+//        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
+//        ((SkinningRender)cliententitiesmemory.objectrender).frame_int_array[0] = 379;
+//    }
 
     @Override
     public BothData createBothData()
@@ -215,12 +212,12 @@ public class SummerSSHimi extends SkinningEntities
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createObjectRender()
-    {
-        return new SSHimiRender(new EntitiesRenderMemory(), this);
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createObjectRender()
+//    {
+//        return new SSHimiRender(new EntitiesRenderMemory(), this);
+//    }
 
     @Override
     public Sounds createSounds()
@@ -228,20 +225,20 @@ public class SummerSSHimi extends SkinningEntities
         return SOUNDS;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Object createSoundRender()
-    {
-//        return SoundRender.getSoundRender(DATALOADER);
-        return new NoSoundRender();
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int[] getIVIntArray()
-    {
-        return ClientSSHimiMemory.IV_INT_ARRAY;
-    }
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public Object createSoundRender()
+//    {
+////        return SoundRender.getSoundRender(DATALOADER);
+//        return new NoSoundRender();
+//    }
+//
+//    @Override
+//    @SideOnly(Side.CLIENT)
+//    public int[] getIVIntArray()
+//    {
+//        return ClientSSHimiMemory.IV_INT_ARRAY;
+//    }
 
     @Override
     @SideOnly(Side.CLIENT)
