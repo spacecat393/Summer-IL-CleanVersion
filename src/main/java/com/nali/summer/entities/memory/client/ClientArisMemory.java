@@ -1,7 +1,7 @@
 package com.nali.summer.entities.memory.client;
 
 import com.nali.data.BothData;
-import com.nali.list.render.ArisRender;
+import com.nali.list.render.s.ArisRender;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.NoSoundRender;
 import com.nali.render.ObjectRender;

@@ -1,8 +1,7 @@
 package com.nali.summer.entities.memory.client;
 
 import com.nali.data.BothData;
-import com.nali.list.render.SSHimiRender;
-import com.nali.render.*;
+import com.nali.list.render.s.SSHimiRender;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
