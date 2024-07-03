@@ -7,11 +7,11 @@ import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.SSUnaDa;
-import com.nali.summer.entities.bytes.SSUnaBytes;
-import com.nali.summer.entities.memory.client.ClientSSUnaMemory;
-import com.nali.summer.entities.memory.server.ServerSSUnaMemory;
-import com.nali.summer.entities.sounds.SSUnaSound;
+import com.nali.summer.data.both.BothDaSSUna;
+import com.nali.summer.entity.bytes.SSUnaBytes;
+import com.nali.summer.entity.memory.client.ClientSSUna;
+import com.nali.summer.entity.memory.server.ServerSSUna;
+import com.nali.summer.entity.sounds.SoundSSUna;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,12 +27,12 @@ public class SummerSSUna extends SkinningEntities
     public static int eggPrimary = 0x7d4a39;
     public static int eggSecondary = 0xf4c4d7;
 
-    public static BothData BOTHDATA = new SSUnaDa();
+    public static BothData BOTHDATA = new BothDaSSUna();
     public static WorkBytes WORKBYTES = new SSUnaBytes();
-    public static Sounds SOUNDS = new SSUnaSound();
+    public static Sounds SOUNDS = new SoundSSUna();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSUnaDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSUnaDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSUna.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSUna.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -165,7 +165,7 @@ public class SummerSSUna extends SkinningEntities
     @Override
     public void createServer()
     {
-        ServerSSUnaMemory serverentitiesmemory = (ServerSSUnaMemory)this.bothentitiesmemory;
+        ServerSSUna serverentitiesmemory = (ServerSSUna)this.bothentitiesmemory;
         WorkBytes workbytes = serverentitiesmemory.workbytes;
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
@@ -257,13 +257,13 @@ public class SummerSSUna extends SkinningEntities
     @Override
     public void createServerEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ServerSSUnaMemory(skinningentities, bothdata, workbytes);
+        new ServerSSUna(skinningentities, bothdata, workbytes);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientSSUnaMemory(skinningentities, bothdata, workbytes);
+        new ClientSSUna(skinningentities, bothdata, workbytes);
     }
 }

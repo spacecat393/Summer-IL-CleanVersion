@@ -8,10 +8,10 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.NasuBothDa;
-import com.nali.summer.entities.bytes.NasuBytes;
-import com.nali.summer.entities.memory.client.ClientNasuMemory;
-import com.nali.summer.entities.sounds.NasuSound;
+import com.nali.summer.data.both.BothDaNasu;
+import com.nali.summer.entity.bytes.NasuBytes;
+import com.nali.summer.entity.memory.client.ClientNasu;
+import com.nali.summer.entity.sounds.SoundNasu;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,12 +27,12 @@ public class SummerNasu extends SkinningEntities
     public static int eggPrimary = 0xF1F6F9;
     public static int eggSecondary = 0xFB7290;
 
-    public static BothData BOTHDATA = new NasuBothDa();
+    public static BothData BOTHDATA = new BothDaNasu();
     public static WorkBytes WORKBYTES = new NasuBytes();
-    public static Sounds SOUNDS = new NasuSound();
+    public static Sounds SOUNDS = new SoundNasu();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[NasuBothDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[NasuBothDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaNasu.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaNasu.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -229,6 +229,6 @@ public class SummerNasu extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientNasuMemory(skinningentities, bothdata, workbytes);
+        new ClientNasu(skinningentities, bothdata, workbytes);
     }
 }

@@ -8,10 +8,10 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.YuzuDa;
-import com.nali.summer.entities.bytes.YuzuBytes;
-import com.nali.summer.entities.memory.client.ClientYuzuMemory;
-import com.nali.summer.entities.sounds.YuzuSound;
+import com.nali.summer.data.both.BothDaYuzu;
+import com.nali.summer.entity.bytes.YuzuBytes;
+import com.nali.summer.entity.memory.client.ClientYuzu;
+import com.nali.summer.entity.sounds.SoundYuzu;
 import com.nali.system.opengl.memory.OpenGLObjectMemory;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
@@ -31,12 +31,12 @@ public class SummerYuzu extends SkinningEntities
     public static int eggPrimary = 0xfbdad0;
     public static int eggSecondary = 0xfc6c78;
 
-    public static BothData BOTHDATA = new YuzuDa();
+    public static BothData BOTHDATA = new BothDaYuzu();
     public static WorkBytes WORKBYTES = new YuzuBytes();
-    public static Sounds SOUNDS = new YuzuSound();
+    public static Sounds SOUNDS = new SoundYuzu();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[YuzuDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[YuzuDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaYuzu.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaYuzu.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -243,6 +243,6 @@ public class SummerYuzu extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientYuzuMemory(skinningentities, bothdata, workbytes);
+        new ClientYuzu(skinningentities, bothdata, workbytes);
     }
 }

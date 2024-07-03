@@ -8,10 +8,10 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.IrohaBothDa;
-import com.nali.summer.entities.bytes.IrohaBytes;
-import com.nali.summer.entities.memory.client.ClientIrohaMemory;
-import com.nali.summer.entities.sounds.IrohaSound;
+import com.nali.summer.data.both.BothDaIroha;
+import com.nali.summer.entity.bytes.IrohaBytes;
+import com.nali.summer.entity.memory.client.ClientIroha;
+import com.nali.summer.entity.sounds.SoundIroha;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -28,12 +28,12 @@ public class SummerIroha extends SkinningEntities
     public static int eggPrimary = 0xadb7c1;
     public static int eggSecondary = 0xc95b7e;
 
-    public static BothData BOTHDATA = new IrohaBothDa();
+    public static BothData BOTHDATA = new BothDaIroha();
     public static WorkBytes WORKBYTES = new IrohaBytes();
-    public static Sounds SOUNDS = new IrohaSound();
+    public static Sounds SOUNDS = new SoundIroha();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[IrohaBothDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[IrohaBothDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaIroha.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIroha.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -329,6 +329,6 @@ public class SummerIroha extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientIrohaMemory(skinningentities, bothdata, workbytes);
+        new ClientIroha(skinningentities, bothdata, workbytes);
     }
 }

@@ -7,10 +7,10 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.ResaBothDa;
-import com.nali.summer.entities.bytes.ResaBytes;
-import com.nali.summer.entities.memory.client.ClientResaMemory;
-import com.nali.summer.entities.sounds.ResaSound;
+import com.nali.summer.data.both.BothDaResa;
+import com.nali.summer.entity.bytes.ResaBytes;
+import com.nali.summer.entity.memory.client.ClientResa;
+import com.nali.summer.entity.sounds.SoundResa;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -26,12 +26,12 @@ public class SummerResa extends SkinningEntities
     public static int eggPrimary = 0x4e466d;
     public static int eggSecondary = 0xbdb5ff;
 
-    public static BothData BOTHDATA = new ResaBothDa();
+    public static BothData BOTHDATA = new BothDaResa();
     public static WorkBytes WORKBYTES = new ResaBytes();
-    public static Sounds SOUNDS = new ResaSound();
+    public static Sounds SOUNDS = new SoundResa();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[ResaBothDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[ResaBothDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaResa.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaResa.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -83,7 +83,7 @@ public class SummerResa extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void updateClient()
     {
-        ClientResaMemory cliententitiesmemory = (ClientResaMemory)this.bothentitiesmemory;
+        ClientResa cliententitiesmemory = (ClientResa)this.bothentitiesmemory;
         ResaRender skinningrender = (ResaRender)cliententitiesmemory.objectrender;
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
@@ -235,6 +235,6 @@ public class SummerResa extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientResaMemory(skinningentities, bothdata, workbytes);
+        new ClientResa(skinningentities, bothdata, workbytes);
     }
 }

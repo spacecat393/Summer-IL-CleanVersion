@@ -1,12 +1,13 @@
 package com.nali.summer;
 
-import com.nali.summer.system.Reference;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.Instance;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.NAME)
+@Mod(modid = Summer.ID)
 public class Summer
 {
+    public final static String ID = "summer";
+
     @Instance
     public static Summer I;
 

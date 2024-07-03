@@ -8,11 +8,11 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.SSZukoDa;
-import com.nali.summer.data.both.SeaHouseBothDa;
-import com.nali.summer.entities.bytes.SSZukoBytes;
-import com.nali.summer.entities.memory.client.ClientSSZukoMemory;
-import com.nali.summer.entities.sounds.SSZukoSound;
+import com.nali.summer.data.both.BothDaSSZuko;
+import com.nali.summer.data.both.BothDaSeaHouse;
+import com.nali.summer.entity.bytes.SSZukoBytes;
+import com.nali.summer.entity.memory.client.ClientSSZuko;
+import com.nali.summer.entity.sounds.SoundSSZuko;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -29,12 +29,12 @@ public class SummerSSZuko extends SkinningEntities
     public static int eggPrimary = 0xfff0e2;
     public static int eggSecondary = 0x645353;
 
-    public static BothData BOTHDATA = new SSZukoDa();
+    public static BothData BOTHDATA = new BothDaSSZuko();
     public static WorkBytes WORKBYTES = new SSZukoBytes();
-    public static Sounds SOUNDS = new SSZukoSound();
+    public static Sounds SOUNDS = new SoundSSZuko();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSZukoDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSZukoDa.MAX_FRAME + SeaHouseBothDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSZuko.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSZuko.MAX_FRAME + BothDaSeaHouse.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[][] SSZUKO_FRAME_INT_2D_ARRAY = new int[][]
@@ -254,6 +254,6 @@ public class SummerSSZuko extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientSSZukoMemory(skinningentities, bothdata, workbytes);
+        new ClientSSZuko(skinningentities, bothdata, workbytes);
     }
 }

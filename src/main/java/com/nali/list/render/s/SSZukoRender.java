@@ -2,28 +2,25 @@ package com.nali.list.render.s;
 
 import com.nali.data.IBothDaNe;
 import com.nali.data.IBothDaSn;
-import com.nali.data.client.ClientData;
 import com.nali.data.client.IClientDaS;
-import com.nali.data.client.SkinningClientData;
-import com.nali.list.entity.SummerSSZuko;
-import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.entity.IMixLe;
 import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderE;
 import com.nali.sound.ISoundLe;
-import com.nali.summer.data.client.SSZukoClientDa;
-import com.nali.summer.render.skinning.SummerRenderSle;
+import com.nali.summer.data.both.BothDaSSZuko;
+import com.nali.summer.data.both.BothDaSeaHouse;
+import com.nali.summer.data.client.ClientDaSSZuko;
+import com.nali.summer.data.client.ClientDaSeaHouse;
+import com.nali.summer.render.s.SummerRenderSle;
 import com.nali.system.opengl.memo.client.MemoGs;
 import com.nali.system.opengl.memo.client.MemoSs;
 import com.nali.system.opengl.memo.client.store.StoreS;
-import com.nali.system.opengl.memory.OpenGLAnimationMemory;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.system.ClientLoader.OBJECT_LIST;
+import static com.nali.Nali.I;
 
 @SideOnly(Side.CLIENT)
 public class SSZukoRender<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, ?, SD, BD, E, I, MR, C>, MR extends MixRenderE<RG, RS, RC, RST, ?, SD, BD, E, I, MB, C>, C extends ClientSle<RG, RS, RC, RST, ?, SD, BD, E, I, MB, MR>, SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, RG extends MemoGs, RS extends MemoSs, RST extends StoreS<RG, RS>, RC extends IClientDaS> extends SummerRenderSle<E, I, MB, MR, C, SD, BD, RG, RS, RST, RC>
@@ -31,14 +28,18 @@ public class SSZukoRender<E extends EntityLivingBase, I extends IMixLe<SD, BD, E
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = SummerSSZuko.BOTHDATA;
-    public static ClientData CLIENTDATA = new SSZukoClientDa();
-
+//    public static IClientDaS ICLIENTDAS = new SSZukoClientDa();
     public SeaHouseRender seahouserender;
 //    public byte[] model_byte_array;
 
-    public SSZukoRender(EntitiesRenderMemory entitiesrendermemory, Entity entity)
+    public SSZukoRender()
     {
-        super(entitiesrendermemory, SummerSSZuko.BOTHDATA, CLIENTDATA/*, RenderHelper.DATALOADER*/, entity);
+        this((RST)I.clientloader.stores, (RC) ClientDaSSZuko.ICLIENTDAS, (BD) BothDaSSZuko.IBOTHDASN);
+    }
+
+    public SSZukoRender(RST rst, RC rc, BD bd)
+    {
+        super(rst, rc, bd);
 //        this.model_byte_array = new byte[(int)Math.ceil((CLIENTDATA.EndPart() - CLIENTDATA.StartPart()) / 8.0D)];
 //        this.texture_index_int_array[0] = 25;
 //        this.texture_index_int_array[1] = 26;
@@ -52,7 +53,7 @@ public class SSZukoRender<E extends EntityLivingBase, I extends IMixLe<SD, BD, E
 //        this.texture_index_int_array[9] = 32;
 //        this.texture_index_int_array[10] = 32;
 //        this.texture_index_int_array[11] = 31;
-        this.seahouserender = new SeaHouseRender(entitiesrendermemory);
+        this.seahouserender = new SeaHouseRender(I.clientloader.stores, ClientDaSeaHouse.ICLIENTDAS, BothDaSeaHouse.IBOTHDASN);
     }
 
 //    @Override
@@ -71,19 +72,19 @@ public class SSZukoRender<E extends EntityLivingBase, I extends IMixLe<SD, BD, E
     }
 
     @Override
-    public void initSkinning(OpenGLAnimationMemory openglanimationmemory)
+    public void initSkinning(/*MemoAnimation memoanimation*/)
     {
-        super.initSkinning(openglanimationmemory);
+        super.initSkinning(/*memoanimation*/);
 //        this.seahouserender.initSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).AnimationID()]);
-        this.seahouserender.initSkinning((OpenGLAnimationMemory)OBJECT_LIST.get(((SkinningClientData)this.seahouserender.clientdata).AnimationID()));
+        this.seahouserender.initSkinning(/*this.rst.memoanimation_list.get(this.seahouserender.rc.AnimationID())*/);
     }
 
     @Override
-    public void setSkinning(OpenGLAnimationMemory openglanimationmemory)
+    public void setSkinning(/*MemoAnimation memoanimation*/)
     {
-        super.setSkinning(openglanimationmemory);
+        super.setSkinning(/*memoanimation*/);
 //        this.seahouserender.setSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).AnimationID()]);
-        this.seahouserender.setSkinning((OpenGLAnimationMemory)OBJECT_LIST.get(((SkinningClientData)this.seahouserender.clientdata).AnimationID()));
+        this.seahouserender.setSkinning(/*this.rst.memoanimation_list.get(this.seahouserender.rc.AnimationID())*/);
     }
 
 //    @Override

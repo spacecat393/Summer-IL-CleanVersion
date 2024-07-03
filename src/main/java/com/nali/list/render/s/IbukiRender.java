@@ -2,17 +2,17 @@ package com.nali.list.render.s;
 
 import com.nali.data.IBothDaNe;
 import com.nali.data.IBothDaSn;
-import com.nali.data.client.ClientData;
 import com.nali.data.client.IClientDaS;
-import com.nali.render.EntitiesRenderMemory;
 import com.nali.small.entity.IMixLe;
 import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderE;
 import com.nali.sound.ISoundLe;
-import com.nali.summer.data.both.IbukiBothDa;
-import com.nali.summer.data.client.IbukiClientDa;
-import com.nali.summer.render.skinning.SummerRenderSle;
+import com.nali.summer.data.both.BothDaIbuki;
+import com.nali.summer.data.both.BothDaIroha;
+import com.nali.summer.data.client.ClientDaIbuki;
+import com.nali.summer.data.client.ClientDaIroha;
+import com.nali.summer.render.s.SummerRenderSle;
 import com.nali.system.opengl.memo.client.MemoGs;
 import com.nali.system.opengl.memo.client.MemoSs;
 import com.nali.system.opengl.memo.client.store.StoreS;
@@ -30,19 +30,19 @@ public class IbukiRender<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = SummerIbuki.BOTHDATA;
-    public static IClientDaS ICLIENTDAS = new IbukiClientDa();
+//    public static IClientDaS ICLIENTDAS = new IbukiClientDa();
     public IrohaRender iroharender;
     public byte[] model_byte_array;
 
     public IbukiRender()
     {
-        this((RST)I.clientloader.stores, (RC)ICLIENTDAS, (BD) IbukiBothDa.IBOTHDASN, null);
+        this((RST)I.clientloader.stores, (RC) ClientDaIbuki.ICLIENTDAS, (BD) BothDaIbuki.IBOTHDASN);
     }
 
-    public IbukiRender(RST rst, RC rc, BD bd, C c)
+    public IbukiRender(RST rst, RC rc, BD bd)
     {
-        super(rst, rc, bd, c);
-        this.model_byte_array = new byte[(int)Math.ceil((ICLIENTDAS.EndPart() - ICLIENTDAS.StartPart()) / 8.0D)];
+        super(rst, rc, bd);
+        this.model_byte_array = new byte[(int)Math.ceil((rc.EndPart() - rc.StartPart()) / 8.0D)];
 //        this.texture_index_int_array[0] = 76;
 //        this.texture_index_int_array[1] = 77;
 //        this.texture_index_int_array[2] = 77;
@@ -58,7 +58,7 @@ public class IbukiRender<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
 //        this.texture_index_int_array[12] = 81;
 //        this.texture_index_int_array[13] = 83;
 //        this.texture_index_int_array[14] = 9;
-        this.iroharender = new IrohaRender(entitiesrendermemory, , , c);
+        this.iroharender = new IrohaRender(I.clientloader.stores, ClientDaIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN, c);
         Arrays.fill(this.model_byte_array, (byte)255);
     }
 

@@ -8,9 +8,9 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderE;
 import com.nali.sound.ISoundLe;
-import com.nali.summer.data.both.ArisBothDa;
-import com.nali.summer.data.client.ArisClientDa;
-import com.nali.summer.render.skinning.SummerRenderSle;
+import com.nali.summer.data.both.BothDaAris;
+import com.nali.summer.data.client.ClientDaAris;
+import com.nali.summer.render.s.SummerRenderSle;
 import com.nali.system.opengl.memo.client.MemoGs;
 import com.nali.system.opengl.memo.client.MemoSs;
 import com.nali.system.opengl.memo.client.store.StoreS;
@@ -27,18 +27,18 @@ public class ArisRender<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>,
 {
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
-    public static IClientDaS ICLIENTDAS = new ArisClientDa();
+//    public static IClientDaS ICLIENTDAS = new ArisClientDa();
     public byte[] model_byte_array;
 
     public ArisRender()
     {
-        this((RST)I.clientloader.stores, (RC)ICLIENTDAS, (BD) ArisBothDa.IBOTHDASN, null);
+        this((RST)I.clientloader.stores, (RC) ClientDaAris.ICLIENTDAS, (BD) BothDaAris.IBOTHDASN);
     }
 
-    public ArisRender(RST rst, RC rc, BD bd, C c)
+    public ArisRender(RST rst, RC rc, BD bd)
     {
-        super(rst, rc, bd, c);
-        this.model_byte_array = new byte[(int)Math.ceil((ICLIENTDAS.EndPart() - ICLIENTDAS.StartPart()) / 8.0D)];
+        super(rst, rc, bd);
+        this.model_byte_array = new byte[(int)Math.ceil((rc.EndPart() - rc.StartPart()) / 8.0D)];
 //        this.texture_index_int_array[0] = 19;
 //        this.texture_index_int_array[1] = 20;
 //        this.texture_index_int_array[2] = 21;

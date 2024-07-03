@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 import static com.nali.list.entity.render.SummerIrohaRender.setAnimation;
-import static com.nali.summer.entities.memory.client.ClientIrohaMemory.IV_INT_ARRAY;
+import static com.nali.summer.entity.memory.client.ClientIroha.IV_INT_ARRAY;
 import static com.nali.system.ClientLoader.OBJECT_LIST;
 
 @SideOnly(Side.CLIENT)

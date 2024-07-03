@@ -8,10 +8,10 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.SSHimiBothDa;
-import com.nali.summer.entities.bytes.SSHimiBytes;
-import com.nali.summer.entities.memory.client.ClientSSHimiMemory;
-import com.nali.summer.entities.sounds.SSHimiSound;
+import com.nali.summer.data.both.BothDaSSHimi;
+import com.nali.summer.entity.bytes.SSHimiBytes;
+import com.nali.summer.entity.memory.client.ClientSSHimi;
+import com.nali.summer.entity.sounds.SoundSSHimi;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,12 +27,12 @@ public class SummerSSHimi extends SkinningEntities
     public static int eggPrimary = 0xBE9478;
     public static int eggSecondary = 0xFFF6AE;
 
-    public static BothData BOTHDATA = new SSHimiBothDa();
+    public static BothData BOTHDATA = new BothDaSSHimi();
     public static WorkBytes WORKBYTES = new SSHimiBytes();
-    public static Sounds SOUNDS = new SSHimiSound();
+    public static Sounds SOUNDS = new SoundSSHimi();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSHimiBothDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSHimiBothDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHimi.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHimi.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -244,6 +244,6 @@ public class SummerSSHimi extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientSSHimiMemory(skinningentities, bothdata, workbytes);
+        new ClientSSHimi(skinningentities, bothdata, workbytes);
     }
 }

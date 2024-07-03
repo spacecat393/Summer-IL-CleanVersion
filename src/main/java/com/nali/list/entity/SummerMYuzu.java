@@ -8,10 +8,10 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.MYuzuBothDa;
-import com.nali.summer.entities.bytes.MYuzuBytes;
-import com.nali.summer.entities.memory.client.ClientMYuzuMemory;
-import com.nali.summer.entities.sounds.MYuzuSound;
+import com.nali.summer.data.both.BothDaMYuzu;
+import com.nali.summer.entity.bytes.MYuzuBytes;
+import com.nali.summer.entity.memory.client.ClientMYuzu;
+import com.nali.summer.entity.sounds.SoundMYuzu;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,12 +27,12 @@ public class SummerMYuzu extends SkinningEntities
     public static int eggPrimary = 0xfbdad0;
     public static int eggSecondary = 0xfc6c78;
 
-    public static BothData BOTHDATA = new MYuzuBothDa();
+    public static BothData BOTHDATA = new BothDaMYuzu();
     public static WorkBytes WORKBYTES = new MYuzuBytes();
-    public static Sounds SOUNDS = new MYuzuSound();
+    public static Sounds SOUNDS = new SoundMYuzu();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[MYuzuBothDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[MYuzuBothDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaMYuzu.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaMYuzu.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -238,6 +238,6 @@ public class SummerMYuzu extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientMYuzuMemory(skinningentities, bothdata, workbytes);
+        new ClientMYuzu(skinningentities, bothdata, workbytes);
     }
 }

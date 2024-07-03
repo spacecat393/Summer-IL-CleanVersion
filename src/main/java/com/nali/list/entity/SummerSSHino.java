@@ -7,11 +7,11 @@ import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.SSHinoDa;
-import com.nali.summer.entities.bytes.SSHinoBytes;
-import com.nali.summer.entities.memory.client.ClientSSHinoMemory;
-import com.nali.summer.entities.memory.server.ServerSSHinoMemory;
-import com.nali.summer.entities.sounds.SSHinoSound;
+import com.nali.summer.data.both.BothDaSSHino;
+import com.nali.summer.entity.bytes.SSHinoBytes;
+import com.nali.summer.entity.memory.client.ClientSSHino;
+import com.nali.summer.entity.memory.server.ServerSSHino;
+import com.nali.summer.entity.sounds.SoundSSHino;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,12 +27,12 @@ public class SummerSSHino extends SkinningEntities
     public static int eggPrimary = 0xfef4f4;
     public static int eggSecondary = 0xffbac2;
 
-    public static BothData BOTHDATA = new SSHinoDa();
+    public static BothData BOTHDATA = new BothDaSSHino();
     public static WorkBytes WORKBYTES = new SSHinoBytes();
-    public static Sounds SOUNDS = new SSHinoSound();
+    public static Sounds SOUNDS = new SoundSSHino();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SSHinoDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SSHinoDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHino.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHino.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -143,7 +143,7 @@ public class SummerSSHino extends SkinningEntities
     @Override
     public void createServer()
     {
-        ServerSSHinoMemory serverentitiesmemory = (ServerSSHinoMemory)this.bothentitiesmemory;
+        ServerSSHino serverentitiesmemory = (ServerSSHino)this.bothentitiesmemory;
         WorkBytes workbytes = serverentitiesmemory.workbytes;
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
@@ -238,13 +238,13 @@ public class SummerSSHino extends SkinningEntities
     @Override
     public void createServerEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ServerSSHinoMemory(skinningentities, bothdata, workbytes);
+        new ServerSSHino(skinningentities, bothdata, workbytes);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientSSHinoMemory(skinningentities, bothdata, workbytes);
+        new ClientSSHino(skinningentities, bothdata, workbytes);
     }
 }

@@ -6,10 +6,10 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.E22LockerBothDa;
-import com.nali.summer.entities.bytes.E22LockerBytes;
-import com.nali.summer.entities.memory.client.ClientE22LockerMemory;
-import com.nali.summer.entities.sounds.E22LockerSound;
+import com.nali.summer.data.both.BothDaE22Locker;
+import com.nali.summer.entity.bytes.E22LockerBytes;
+import com.nali.summer.entity.memory.client.ClientE22Locker;
+import com.nali.summer.entity.sounds.SoundE22Locker;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -29,12 +29,12 @@ public class SummerE22Locker extends SkinningEntities
     public static int eggPrimary = 0x1a69a7;
     public static int eggSecondary = 0xffffff;
 
-    public static BothData BOTHDATA = new E22LockerBothDa();
+    public static BothData BOTHDATA = new BothDaE22Locker();
     public static WorkBytes WORKBYTES = new E22LockerBytes();
-    public static Sounds SOUNDS = new E22LockerSound();
+    public static Sounds SOUNDS = new SoundE22Locker();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[E22LockerBothDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[E22LockerBothDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaE22Locker.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaE22Locker.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[][] FRAME_INT_2D_ARRAY = new int[][]
@@ -236,7 +236,7 @@ public class SummerE22Locker extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientE22LockerMemory(skinningentities, bothdata, workbytes);
+        new ClientE22Locker(skinningentities, bothdata, workbytes);
     }
 
     @Override

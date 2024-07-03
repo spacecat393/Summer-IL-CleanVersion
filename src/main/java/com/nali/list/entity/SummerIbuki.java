@@ -8,11 +8,11 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.IbukiBothDa;
-import com.nali.summer.data.both.IrohaBothDa;
-import com.nali.summer.entities.bytes.IbukiBytes;
-import com.nali.summer.entities.memory.client.ClientIbukiMemory;
-import com.nali.summer.entities.sounds.IbukiSound;
+import com.nali.summer.data.both.BothDaIbuki;
+import com.nali.summer.data.both.BothDaIroha;
+import com.nali.summer.entity.bytes.IbukiBytes;
+import com.nali.summer.entity.memory.client.ClientIbuki;
+import com.nali.summer.entity.sounds.SoundIbuki;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -28,12 +28,12 @@ public class SummerIbuki extends SkinningEntities
     public static int eggPrimary = 0xfef5cb;
     public static int eggSecondary = 0xab6402;
 
-    public static BothData BOTHDATA = new IbukiBothDa();
+    public static BothData BOTHDATA = new BothDaIbuki();
     public static WorkBytes WORKBYTES = new IbukiBytes();
-    public static Sounds SOUNDS = new IbukiSound();
+    public static Sounds SOUNDS = new SoundIbuki();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[IbukiBothDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[IbukiBothDa.MAX_FRAME + IrohaBothDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.MAX_FRAME + BothDaIroha.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[2];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -96,7 +96,7 @@ public class SummerIbuki extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void updateClient()
     {
-        ClientIbukiMemory cliententitiesmemory = (ClientIbukiMemory)this.bothentitiesmemory;
+        ClientIbuki cliententitiesmemory = (ClientIbuki)this.bothentitiesmemory;
         IbukiRender skinningrender = (IbukiRender)cliententitiesmemory.objectrender;
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
@@ -312,6 +312,6 @@ public class SummerIbuki extends SkinningEntities
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientIbukiMemory(skinningentities, bothdata, workbytes);
+        new ClientIbuki(skinningentities, bothdata, workbytes);
     }
 }

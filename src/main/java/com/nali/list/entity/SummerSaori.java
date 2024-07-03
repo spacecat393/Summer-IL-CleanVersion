@@ -7,11 +7,11 @@ import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.SaoriBothDa;
-import com.nali.summer.entities.bytes.SaoriBytes;
-import com.nali.summer.entities.memory.client.ClientSaoriMemory;
-import com.nali.summer.entities.memory.server.ServerSaoriMemory;
-import com.nali.summer.entities.sounds.SaoriSound;
+import com.nali.summer.data.both.BothDaSaori;
+import com.nali.summer.entity.bytes.SaoriBytes;
+import com.nali.summer.entity.memory.client.ClientSaori;
+import com.nali.summer.entity.memory.server.ServerSaori;
+import com.nali.summer.entity.sounds.SoundSaori;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -27,12 +27,12 @@ public class SummerSaori extends SkinningEntities
     public static int eggPrimary = 0x283756;
     public static int eggSecondary = 0x4a73bd;
 
-    public static BothData BOTHDATA = new SaoriBothDa();
+    public static BothData BOTHDATA = new BothDaSaori();
     public static WorkBytes WORKBYTES = new SaoriBytes();
-    public static Sounds SOUNDS = new SaoriSound();
+    public static Sounds SOUNDS = new SoundSaori();
 
-    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[SaoriBothDa.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[SaoriBothDa.MAX_FRAME];
+    public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSaori.MAX_SYNC];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSaori.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -155,7 +155,7 @@ public class SummerSaori extends SkinningEntities
     @Override
     public void createServer()
     {
-        ServerSaoriMemory serverentitiesmemory = (ServerSaoriMemory)this.bothentitiesmemory;
+        ServerSaori serverentitiesmemory = (ServerSaori)this.bothentitiesmemory;
         WorkBytes workbytes = serverentitiesmemory.workbytes;
         serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
 
@@ -253,13 +253,13 @@ public class SummerSaori extends SkinningEntities
     @Override
     public void createServerEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ServerSaoriMemory(skinningentities, bothdata, workbytes);
+        new ServerSaori(skinningentities, bothdata, workbytes);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
     {
-        new ClientSaoriMemory(skinningentities, bothdata, workbytes);
+        new ClientSaori(skinningentities, bothdata, workbytes);
     }
 }
