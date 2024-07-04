@@ -1,4 +1,4 @@
-package com.nali.summer.entity.memory.client;
+package com.nali.summer.entity.memory.client.ibuki;
 
 import com.nali.data.BothData;
 import com.nali.list.render.s.IbukiRender;

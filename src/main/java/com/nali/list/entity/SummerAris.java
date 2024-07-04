@@ -2,9 +2,6 @@ package com.nali.list.entity;
 
 import com.nali.data.IBothDaNe;
 import com.nali.list.render.s.ArisRender;
-import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.server.ServerEntitiesMemory;
-import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
@@ -24,8 +21,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.function.Supplier;
-
 import static com.nali.Nali.I;
 
 public class SummerAris extends EntityLeInv
@@ -36,12 +31,6 @@ public class SummerAris extends EntityLeInv
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaAris.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaAris.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
-
-    public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
-    {
-        603,
-        650
-    };
 
     static
     {
@@ -181,7 +170,7 @@ public class SummerAris extends EntityLeInv
     @Override
     public byte[] getAI()
     {
-        return ;
+        return MixAIAris.AI_BYTE_ARRAY;
     }
 
     @Override
@@ -208,10 +197,8 @@ public class SummerAris extends EntityLeInv
     {
         ArisRender arisrender = new ArisRender(I.clientloader.stores, ClientDaAris.ICLIENTDAS, BothDaAris.IBOTHDASN);
         ClientAris clientaris = new ClientAris(this, arisrender, new Inventory(1));
-        MixBoxSle mixboxsle = new MixBoxSle(clientaris);
-        MixRenderSleInv mixrendersleinv = new MixRenderAris(clientaris);
-        clientaris.mb = mixboxsle;
-        clientaris.mr = mixrendersleinv;
+        clientaris.mb = new MixBoxSle(clientaris);
+        clientaris.mr = new MixRenderAris(clientaris);
         arisrender.c = clientaris;
         this.ibothleinv = clientaris;
     }
@@ -221,28 +208,8 @@ public class SummerAris extends EntityLeInv
     {
         ServerAris serveraris = new ServerAris(this, new Inventory(1));
         serveraris.a = new MixAIAris(serveraris);
+        serveraris.initFrame();
         this.ibothleinv = serveraris;
-
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
-
-        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.max_magic_point = 2;
-        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.minimum_distance = 48.0F;
-
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
-        {
-            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
-            () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoopFB(1),
-            () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setShoot(2, 10, 11, 12, false, serverentitiesmemory.entitiesaimemory.skinningentitiesattack),
-            () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
-            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5),
-            () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(6, (byte)4),
-            () -> ((serverentitiesmemory.statentitiesmemory.stat & 1) == 1 || (serverentitiesmemory.statentitiesmemory.stat & 2) == 2 || (serverentitiesmemory.statentitiesmemory.stat & 8) == 8) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(7, (byte)(1 + 2 + 8)),
-            () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(8),
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(9)
-        };
     }
 
     @Override

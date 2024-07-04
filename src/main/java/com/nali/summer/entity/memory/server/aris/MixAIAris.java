@@ -1,28 +1,39 @@
 package com.nali.summer.entity.memory.server.aris;
 
-import com.nali.data.IBothDaNe;
-import com.nali.small.entity.IMixE;
-import com.nali.small.entity.memo.server.ServerE;
+import com.nali.list.entity.ai.*;
+import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixLe;
+import com.nali.small.entity.memo.server.ServerSleInv;
 import com.nali.small.entity.memo.server.ai.MixAIEInv;
-import net.minecraft.entity.Entity;
+import com.nali.sound.ISoundLe;
+import com.nali.summer.data.both.BothDaAris;
 
-public class MixAIAris<SD, BD extends IBothDaNe, E extends Entity, I extends IMixE<SD, BD, E>, S extends ServerE<SD, BD, E, I, ?>> extends MixAIEInv<SD, BD, E, I, S>
+public class MixAIAris<SD extends ISoundLe, BD extends BothDaAris<SD>, E extends EntityLeInv, I extends IMixLe<SD, BD, E>, S extends ServerSleInv<SD, BD, E, I, ?>> extends MixAIEInv<SD, BD, E, I, S>
 {
-    public static int[][] FRAME_INT_2D_ARRAY = new int[][]
+    public static byte[] AI_BYTE_ARRAY =
     {
-        { 738, 783 },
-        { 835, 860 },
-        { 560, 576 },
-        { 932, 948 },
-        { 949, 999 },
-        { 173, 204 },
-        { 522, 559 },
-        { 81, 172 },
-        { 861, 931 },
-        { 0, 80 },
-        { 577, 643 },
-        { 644, 660 },
-        { 687, 737 }
+        AIEInvLockInv.ID,
+        AILeLockDMG.ID,
+        AILeMineTo.ID,
+        AILeWalkTo.ID,
+        AILeUseTo.ID,
+        AIESit.ID,
+        AILeSetLocation.ID,
+        AILeFollow.ID,
+        AILeRevive.ID,
+        AILeCareOwner.ID,
+        AILeAttack.ID,
+        AILeInvManageItem.ID,
+        AILeInvGetItem.ID,
+        AILeRandomWalk.ID,
+        AILeLookTo.ID,
+        AILeRandomLook.ID
+    };
+
+    public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
+    {
+        603,
+        650
     };
 
     public MixAIAris(S s)
@@ -33,12 +44,9 @@ public class MixAIAris<SD, BD extends IBothDaNe, E extends Entity, I extends IMi
     @Override
     public void init()
     {
-
-    }
-
-    @Override
-    public int[][] getFrame2DIntArray()
-    {
-        return FRAME_INT_2D_ARRAY;
+        AILeAttack<SD, BD, E, I, S, ?> aileattack = (AILeAttack<SD, BD, E, I, S, ?>)this.s.a.aie_map.get(AILeAttack.ID);
+        aileattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
+        aileattack.max_magic_point = 2;
+        aileattack.minimum_distance = 48.0F;
     }
 }

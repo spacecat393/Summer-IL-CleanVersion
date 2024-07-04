@@ -58,7 +58,7 @@ public class IbukiRender<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
 //        this.texture_index_int_array[12] = 81;
 //        this.texture_index_int_array[13] = 83;
 //        this.texture_index_int_array[14] = 9;
-        this.iroharender = new IrohaRender(I.clientloader.stores, ClientDaIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN, c);
+        this.iroharender = new IrohaRender(I.clientloader.stores, ClientDaIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
         Arrays.fill(this.model_byte_array, (byte)255);
     }
 

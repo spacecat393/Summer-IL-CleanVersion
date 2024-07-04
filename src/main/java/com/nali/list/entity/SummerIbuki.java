@@ -11,7 +11,7 @@ import com.nali.small.entities.sounds.Sounds;
 import com.nali.summer.data.both.BothDaIbuki;
 import com.nali.summer.data.both.BothDaIroha;
 import com.nali.summer.entity.bytes.IbukiBytes;
-import com.nali.summer.entity.memory.client.ClientIbuki;
+import com.nali.summer.entity.memory.client.ibuki.ClientIbuki;
 import com.nali.summer.entity.sounds.SoundIbuki;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
