@@ -1,7 +1,7 @@
 package com.nali.list.entity;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.ResaRender;
+import com.nali.list.render.s.RenderResa;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
@@ -84,7 +84,7 @@ public class SummerResa extends SkinningEntities
     public void updateClient()
     {
         ClientResa cliententitiesmemory = (ClientResa)this.bothentitiesmemory;
-        ResaRender skinningrender = (ResaRender)cliententitiesmemory.objectrender;
+        RenderResa skinningrender = (RenderResa)cliententitiesmemory.objectrender;
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 

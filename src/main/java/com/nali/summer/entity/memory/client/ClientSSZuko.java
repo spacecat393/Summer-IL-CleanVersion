@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memory.client;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.SSZukoRender;
+import com.nali.list.render.s.RenderSSZuko;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.NoSoundRender;
 import com.nali.render.ObjectRender;
@@ -55,14 +55,14 @@ public class ClientSSZuko extends ClientEntitiesMemory
     @Override
     public void initFakeFrame()
     {
-        SSZukoRender sszukorender = (SSZukoRender)this.objectrender;
+        RenderSSZuko sszukorender = (RenderSSZuko)this.objectrender;
         Arrays.fill(sszukorender.seahouserender.model_byte_array, (byte)0);
     }
 
     @Override
     public ObjectRender createObjectRender()
     {
-        return new SSZukoRender(new EntitiesRenderMemory(), this.main_skinningentities);
+        return new RenderSSZuko(new EntitiesRenderMemory(), this.main_skinningentities);
     }
 
     @Override

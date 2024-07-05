@@ -1,7 +1,7 @@
 package com.nali.list.entity;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.SSHinoRender;
+import com.nali.list.render.s.RenderSSHino;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
@@ -85,7 +85,7 @@ public class SummerSSHino extends SkinningEntities
     public void updateClient()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        SSHinoRender skinningrender = (SSHinoRender)cliententitiesmemory.objectrender;
+        RenderSSHino skinningrender = (RenderSSHino)cliententitiesmemory.objectrender;
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 

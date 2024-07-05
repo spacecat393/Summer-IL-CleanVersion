@@ -3,10 +3,9 @@ package com.nali.summer.entity.memory.client.ibuki;
 import com.nali.data.IBothDaNe;
 import com.nali.data.IBothDaSn;
 import com.nali.data.client.IClientDaS;
-import com.nali.list.render.s.IbukiRender;
+import com.nali.list.render.s.RenderIbuki;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
-import com.nali.render.RenderS;
 import com.nali.small.entity.IMixLe;
 import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
@@ -17,14 +16,16 @@ import com.nali.system.opengl.memo.client.MemoCurrent;
 import com.nali.system.opengl.memo.client.MemoGs;
 import com.nali.system.opengl.memo.client.MemoSs;
 import com.nali.system.opengl.memo.client.store.StoreS;
-import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
-import static com.nali.list.entity.render.SummerIrohaRender.setAnimation;
+import static com.nali.list.entity.render.SummerFRenderIroha.setAnimation;
 import static com.nali.summer.entity.memory.client.ClientIroha.IV_INT_ARRAY;
 
-public class MixRenderIbuki<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends IbukiRender<E, I, MB, ?, C, SD, BD, RG, RS, RST, RC>, SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, ?, C>, C extends ClientSle<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, C>
+@SideOnly(Side.CLIENT)
+public class MixRenderIbuki<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderIbuki<E, I, MB, ?, C, SD, BD, RG, RS, RST, RC>, SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, ?, C>, C extends ClientSle<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, C>
 {
     public MixRenderIbuki(C c)
     {
@@ -95,12 +96,12 @@ public class MixRenderIbuki<RG extends MemoGs, RS extends MemoSs, RC extends ICl
 
             float[] c_mat4 = r.iroharender.getMat43DSkinning(IV_INT_ARRAY[12], IV_INT_ARRAY[13]);
             float[] mat4 = new float[]
-                    {
-                            c_mat4[0], c_mat4[4], c_mat4[8], 0,
-                            c_mat4[1], c_mat4[5], c_mat4[9], 0,
-                            c_mat4[2], c_mat4[6], c_mat4[10], 0,
-                            0, 0, 0, 1.0F
-                    };
+            {
+                c_mat4[0], c_mat4[4], c_mat4[8], 0,
+                c_mat4[1], c_mat4[5], c_mat4[9], 0,
+                c_mat4[2], c_mat4[6], c_mat4[10], 0,
+                0, 0, 0, 1.0F
+            };
             MemoCurrent.setFloatBuffer(mat4);
 //            GL11.glTranslated(-0.25F, -0.5F, -0.5F);
 //            GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);

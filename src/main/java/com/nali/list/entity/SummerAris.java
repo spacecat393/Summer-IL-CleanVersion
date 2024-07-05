@@ -1,11 +1,10 @@
 package com.nali.list.entity;
 
 import com.nali.data.IBothDaNe;
-import com.nali.list.render.s.ArisRender;
+import com.nali.list.render.s.RenderAris;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
-import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.summer.data.both.BothDaAris;
 import com.nali.summer.data.client.ClientDaAris;
 import com.nali.summer.entity.memory.client.aris.ClientAris;
@@ -195,21 +194,21 @@ public class SummerAris extends EntityLeInv
     @Override
     public void newC()
     {
-        ArisRender arisrender = new ArisRender(I.clientloader.stores, ClientDaAris.ICLIENTDAS, BothDaAris.IBOTHDASN);
-        ClientAris clientaris = new ClientAris(this, arisrender, new Inventory(1));
-        clientaris.mb = new MixBoxSle(clientaris);
-        clientaris.mr = new MixRenderAris(clientaris);
-        arisrender.c = clientaris;
-        this.ibothleinv = clientaris;
+        RenderAris r = new RenderAris(I.clientloader.stores, ClientDaAris.ICLIENTDAS, BothDaAris.IBOTHDASN);
+        ClientAris c = new ClientAris(this, r, new Inventory(1));
+        c.mb = new MixBoxSle(c);
+        c.mr = new MixRenderAris(c);
+        r.c = c;
+        this.ibothleinv = c;
     }
 
     @Override
     public void newS()
     {
-        ServerAris serveraris = new ServerAris(this, new Inventory(1));
-        serveraris.a = new MixAIAris(serveraris);
-        serveraris.initFrame();
-        this.ibothleinv = serveraris;
+        ServerAris s = new ServerAris(this, new Inventory(1));
+        s.a = new MixAIAris(s);
+        s.initFrame();
+        this.ibothleinv = s;
     }
 
     @Override

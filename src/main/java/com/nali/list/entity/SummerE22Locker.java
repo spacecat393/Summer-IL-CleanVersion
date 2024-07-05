@@ -1,15 +1,18 @@
 package com.nali.list.entity;
 
 import com.nali.data.BothData;
+import com.nali.data.IBothDaNe;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
+import com.nali.small.entity.EntityEInv;
 import com.nali.summer.data.both.BothDaE22Locker;
 import com.nali.summer.entity.bytes.E22LockerBytes;
-import com.nali.summer.entity.memory.client.ClientE22Locker;
+import com.nali.summer.entity.memory.client.e22locker.ClientE22Locker;
 import com.nali.summer.entity.sounds.SoundE22Locker;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,25 +27,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
-public class SummerE22Locker extends SkinningEntities
+public class SummerE22Locker extends EntityEInv
 {
     public static int eggPrimary = 0x1a69a7;
     public static int eggSecondary = 0xffffff;
 
-    public static BothData BOTHDATA = new BothDaE22Locker();
-    public static WorkBytes WORKBYTES = new E22LockerBytes();
-    public static Sounds SOUNDS = new SoundE22Locker();
-
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaE22Locker.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaE22Locker.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
-
-    public static int[][] FRAME_INT_2D_ARRAY = new int[][]
-    {
-        { 0, 297 },//react
-        { 298, 302 },//noact
-        { 303, 386 }//idle
-    };
 
     static
     {
@@ -68,64 +60,23 @@ public class SummerE22Locker extends SkinningEntities
     }
 
     @Override
-    public BothData createBothData()
-    {
-        return BOTHDATA;
+    protected void entityInit() {
+
     }
 
-    @Override
-    public WorkBytes createWorkBytes()
-    {
-        return WORKBYTES;
-    }
+//    @Override
+//    public void applyEntityAttributes()
+//    {
+//        super.applyEntityAttributes();
+//        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
+//        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.0D);
+//        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(0.0D);
+//    }
 
     @Override
-    public void applyEntityAttributes()
+    public byte[] getAI()
     {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.0D);
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(0.0D);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void updateClient()
-    {
-        super.updateClient();
-
-        this.rotationYawHead = this.rotationYaw;
-        this.prevRotationYawHead = this.rotationYaw;
-        this.renderYawOffset = this.rotationYaw;
-    }
-
-    @Override
-    public void updateServer()
-    {
-        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
-        super.updateServer();
-
-        if (serverentitiesmemory.skinningentities != null && ((WorldServer)this.world).getEntityFromUuid(serverentitiesmemory.skinningentities.getUniqueID()) == null)
-        {
-            serverentitiesmemory.skinningentities = null;
-        }
-
-        this.renderYawOffset = this.rotationYaw;
-    }
-
-    @Override
-    public void createServer()
-    {
-        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
-
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
-        {
-            () -> serverentitiesmemory.skinningentities != null && (serverentitiesmemory.statentitiesmemory.stat & 16) == 16 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(0, (byte)16),
-            () -> serverentitiesmemory.skinningentities != null && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(2),
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1)
-        };
+        return ;
     }
 
     @Override
@@ -140,16 +91,16 @@ public class SummerE22Locker extends SkinningEntities
 //        return this.getEntityBoundingBox().grow(0.25);
 //    }
 
-    @Override
-    public void collideWithNearbyEntities()
-    {
-    }
+//    @Override
+//    public void collideWithNearbyEntities()
+//    {
+//    }
 
-    @Override
-    public boolean canBePushed()
-    {
-        return false;
-    }
+//    @Override
+//    public boolean canBePushed()
+//    {
+//        return false;
+//    }
 
 //    @Override
 //    public void heal(float value)
@@ -204,18 +155,36 @@ public class SummerE22Locker extends SkinningEntities
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
+    @Override
+    public void newC()
+    {
+
+    }
+
+    @Override
+    public void newS()
+    {
+
+    }
+
+    @Override
+    public IBothDaNe getBD()
+    {
+        return BothDaE22Locker.IBOTHDASN;
+    }
+
+    @Override
+    public Object getSD()
+    {
+        return null;
+    }
+
 //    @Override
 //    @SideOnly(Side.CLIENT)
 //    public Object createObjectRender()
 //    {
 //        return new E22LockerRender(new EntitiesRenderMemory(), this);
 //    }
-
-    @Override
-    public Sounds createSounds()
-    {
-        return SOUNDS;
-    }
 
 //    @Override
 //    @SideOnly(Side.CLIENT)
@@ -231,21 +200,4 @@ public class SummerE22Locker extends SkinningEntities
 //    {
 //        return ClientE22LockerMemory.IV_INT_ARRAY;
 //    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
-    {
-        new ClientE22Locker(skinningentities, bothdata, workbytes);
-    }
-
-    @Override
-    public void initWriteEntityToNBT(NBTTagCompound nbttagcompound)
-    {
-    }
-
-    @Override
-    public void initReadEntityFromNBT(NBTTagCompound nbttagcompound)
-    {
-    }
 }

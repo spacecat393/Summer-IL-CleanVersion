@@ -1,7 +1,7 @@
 package com.nali.list.entity;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.SSHimiRender;
+import com.nali.list.render.s.RenderSSHimi;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -85,7 +85,7 @@ public class SummerSSHimi extends SkinningEntities
     public void updateClient()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        SSHimiRender skinningrender = (SSHimiRender)cliententitiesmemory.objectrender;
+        RenderSSHimi skinningrender = (RenderSSHimi)cliententitiesmemory.objectrender;
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
         float scale = skinningrender.entitiesrendermemory.scale;

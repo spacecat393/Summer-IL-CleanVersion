@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memory.client;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.SSHimiRender;
+import com.nali.list.render.s.RenderSSHimi;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
@@ -55,7 +55,7 @@ public class ClientSSHimi extends ClientEntitiesMemory
     @Override
     public ObjectRender createObjectRender()
     {
-        return new SSHimiRender(new EntitiesRenderMemory(), this.main_skinningentities);
+        return new RenderSSHimi(new EntitiesRenderMemory(), this.main_skinningentities);
     }
 
     @Override

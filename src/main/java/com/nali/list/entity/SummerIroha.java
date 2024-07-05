@@ -1,7 +1,7 @@
 package com.nali.list.entity;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.IrohaRender;
+import com.nali.list.render.s.RenderIroha;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -9,9 +9,6 @@ import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
 import com.nali.summer.data.both.BothDaIroha;
-import com.nali.summer.entity.bytes.IrohaBytes;
-import com.nali.summer.entity.memory.client.ClientIroha;
-import com.nali.summer.entity.sounds.SoundIroha;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -28,46 +25,9 @@ public class SummerIroha extends SkinningEntities
     public static int eggPrimary = 0xadb7c1;
     public static int eggSecondary = 0xc95b7e;
 
-    public static BothData BOTHDATA = new BothDaIroha();
-    public static WorkBytes WORKBYTES = new IrohaBytes();
-    public static Sounds SOUNDS = new SoundIroha();
-
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaIroha.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIroha.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
-
-    public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
-    {
-        534,
-        789
-    };
-    public static int[][] FRAME_INT_2D_ARRAY = new int[][]
-    {
-        { 321, 371 },
-        { 635, 685 },
-        { 516, 532 },//start attack
-        { 423, 473 },//loop move
-        { 474, 515 },//end move
-        { 143, 206 },//cafe walk
-        { 51, 142 },
-        { 258, 320 },
-        { 207, 257 },
-        { 372, 422 },
-        { 0, 50 },
-        { 533, 566 },
-        { 567, 583 },
-        { 584, 634 },
-        { 686, 719 },// 14 start ride
-        { 720, 770 },// 15 loop ride
-        { 1034, 1084 },// 16 loop ride-move
-        { 941, 982 },// 17 end ride-move
-        { 983, 1033 },// 18 ride-panic
-        { 890, 940 },// 19 ride-destroy
-        { 771, 787 },// 20 start ride-attack
-        { 788, 821 },// 21 loop ride-attack
-        { 822, 838 },// 22 end ride-attack
-        { 839, 889 }// 23 ride-reload
-    };
 
     static
     {
@@ -97,7 +57,7 @@ public class SummerIroha extends SkinningEntities
     public void updateClient()
     {
         ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        IrohaRender skinningrender = (IrohaRender)cliententitiesmemory.objectrender;
+        RenderIroha skinningrender = (RenderIroha)cliententitiesmemory.objectrender;
         BothData bothdata = cliententitiesmemory.bothdata;
         int frame = skinningrender.frame_int_array[0];
 

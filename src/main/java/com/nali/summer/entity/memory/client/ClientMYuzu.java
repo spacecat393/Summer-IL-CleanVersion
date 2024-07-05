@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memory.client;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.MYuzuRender;
+import com.nali.list.render.s.RenderMYuzu;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
@@ -55,7 +55,7 @@ public class ClientMYuzu extends ClientEntitiesMemory
     @Override
     public ObjectRender createObjectRender()
     {
-        return new MYuzuRender(new EntitiesRenderMemory(), this.main_skinningentities);
+        return new RenderMYuzu(new EntitiesRenderMemory(), this.main_skinningentities);
     }
 
     @Override

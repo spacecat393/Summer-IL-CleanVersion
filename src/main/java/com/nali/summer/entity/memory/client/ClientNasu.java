@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memory.client;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.NasuRender;
+import com.nali.list.render.s.RenderNasu;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.NoSoundRender;
 import com.nali.render.ObjectRender;
@@ -53,7 +53,7 @@ public class ClientNasu extends ClientEntitiesMemory
     @Override
     public ObjectRender createObjectRender()
     {
-        return new NasuRender(new EntitiesRenderMemory(), this.main_skinningentities);
+        return new RenderNasu(new EntitiesRenderMemory(), this.main_skinningentities);
     }
 
     @Override

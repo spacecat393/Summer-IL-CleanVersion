@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memory.client;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.ResaRender;
+import com.nali.list.render.s.RenderResa;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.NoSoundRender;
 import com.nali.render.ObjectRender;
@@ -56,7 +56,7 @@ public class ClientResa extends ClientEntitiesMemory
     @Override
     public void initFakeFrame()
     {
-        ResaRender skinningrender = (ResaRender)this.objectrender;
+        RenderResa skinningrender = (RenderResa)this.objectrender;
         skinningrender.model_byte_array[0 / 8] &= 255-1;//255 - Math.pow(2, 0 % 8)
 //        skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
         skinningrender.model_byte_array[8 / 8] &= 255-1;//255 - Math.pow(2, 8 % 8)
@@ -65,7 +65,7 @@ public class ClientResa extends ClientEntitiesMemory
     @Override
     public ObjectRender createObjectRender()
     {
-        return new ResaRender(new EntitiesRenderMemory(), this.main_skinningentities);
+        return new RenderResa(new EntitiesRenderMemory(), this.main_skinningentities);
     }
 
     @Override

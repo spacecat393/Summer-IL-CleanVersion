@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memory.client;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.YuzuRender;
+import com.nali.list.render.s.RenderYuzu;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.ObjectRender;
 import com.nali.render.SoundRender;
@@ -52,7 +52,7 @@ public class ClientYuzu extends ClientEntitiesMemory
     @Override
     public ObjectRender createObjectRender()
     {
-        return new YuzuRender(new EntitiesRenderMemory(), this.main_skinningentities);
+        return new RenderYuzu(new EntitiesRenderMemory(), this.main_skinningentities);
     }
 
     @Override

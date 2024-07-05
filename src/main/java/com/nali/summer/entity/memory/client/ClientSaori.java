@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memory.client;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.SaoriRender;
+import com.nali.list.render.s.RenderSaori;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.NoSoundRender;
 import com.nali.render.ObjectRender;
@@ -53,7 +53,7 @@ public class ClientSaori extends ClientEntitiesMemory
     @Override
     public ObjectRender createObjectRender()
     {
-        return new SaoriRender(new EntitiesRenderMemory(), this.main_skinningentities);
+        return new RenderSaori(new EntitiesRenderMemory(), this.main_skinningentities);
     }
 
 

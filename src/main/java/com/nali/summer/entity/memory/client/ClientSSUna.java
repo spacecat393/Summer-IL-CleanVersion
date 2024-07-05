@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memory.client;
 
 import com.nali.data.BothData;
-import com.nali.list.render.s.SSUnaRender;
+import com.nali.list.render.s.RenderSSUna;
 import com.nali.render.EntitiesRenderMemory;
 import com.nali.render.NoSoundRender;
 import com.nali.render.ObjectRender;
@@ -53,7 +53,7 @@ public class ClientSSUna extends ClientEntitiesMemory
     @Override
     public ObjectRender createObjectRender()
     {
-        return new SSUnaRender(new EntitiesRenderMemory(), this.main_skinningentities);
+        return new RenderSSUna(new EntitiesRenderMemory(), this.main_skinningentities);
     }
 
     @Override
