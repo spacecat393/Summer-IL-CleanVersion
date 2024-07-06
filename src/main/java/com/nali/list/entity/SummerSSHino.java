@@ -7,11 +7,10 @@ import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.BothDaSSHino;
-import com.nali.summer.entity.bytes.SSHinoBytes;
-import com.nali.summer.entity.memory.client.ClientSSHino;
-import com.nali.summer.entity.memory.server.ServerSSHino;
-import com.nali.summer.entity.sounds.SoundSSHino;
+import com.nali.small.entity.EntityLeInv;
+import com.nali.summer.da.both.BothDaSSHino;
+import com.nali.summer.entity.memo.client.sshino.ClientSSHino;
+import com.nali.summer.entity.memo.server.sshino.ServerSSHino;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -22,14 +21,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
-public class SummerSSHino extends SkinningEntities
+public class SummerSSHino extends EntityLeInv
 {
     public static int eggPrimary = 0xfef4f4;
     public static int eggSecondary = 0xffbac2;
-
-    public static BothData BOTHDATA = new BothDaSSHino();
-    public static WorkBytes WORKBYTES = new SSHinoBytes();
-    public static Sounds SOUNDS = new SoundSSHino();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHino.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHino.MAX_FRAME];

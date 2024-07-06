@@ -8,24 +8,13 @@ import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
 import com.nali.small.entity.EntityEInv;
-import com.nali.summer.data.both.BothDaE22Locker;
-import com.nali.summer.entity.bytes.E22LockerBytes;
-import com.nali.summer.entity.memory.client.e22locker.ClientE22Locker;
-import com.nali.summer.entity.sounds.SoundE22Locker;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
+import com.nali.summer.da.both.BothDaE22Locker;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.function.Supplier;
 
 public class SummerE22Locker extends EntityEInv
 {

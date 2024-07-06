@@ -8,10 +8,9 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.BothDaNasu;
-import com.nali.summer.entity.bytes.NasuBytes;
-import com.nali.summer.entity.memory.client.ClientNasu;
-import com.nali.summer.entity.sounds.SoundNasu;
+import com.nali.small.entity.EntityLeInv;
+import com.nali.summer.da.both.BothDaNasu;
+import com.nali.summer.entity.memo.client.nasu.ClientNasu;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -22,14 +21,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
-public class SummerNasu extends SkinningEntities
+public class SummerNasu extends EntityLeInv
 {
     public static int eggPrimary = 0xF1F6F9;
     public static int eggSecondary = 0xFB7290;
-
-    public static BothData BOTHDATA = new BothDaNasu();
-    public static WorkBytes WORKBYTES = new NasuBytes();
-    public static Sounds SOUNDS = new SoundNasu();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaNasu.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaNasu.MAX_FRAME];

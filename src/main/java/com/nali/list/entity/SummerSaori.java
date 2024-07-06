@@ -7,11 +7,10 @@ import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.BothDaSaori;
-import com.nali.summer.entity.bytes.SaoriBytes;
-import com.nali.summer.entity.memory.client.ClientSaori;
-import com.nali.summer.entity.memory.server.ServerSaori;
-import com.nali.summer.entity.sounds.SoundSaori;
+import com.nali.small.entity.EntityLeInv;
+import com.nali.summer.da.both.BothDaSaori;
+import com.nali.summer.entity.memo.client.saori.ClientSaori;
+import com.nali.summer.entity.memo.server.saori.ServerSaori;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -22,14 +21,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
-public class SummerSaori extends SkinningEntities
+public class SummerSaori extends EntityLeInv
 {
     public static int eggPrimary = 0x283756;
     public static int eggSecondary = 0x4a73bd;
-
-    public static BothData BOTHDATA = new BothDaSaori();
-    public static WorkBytes WORKBYTES = new SaoriBytes();
-    public static Sounds SOUNDS = new SoundSaori();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSaori.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSaori.MAX_FRAME];

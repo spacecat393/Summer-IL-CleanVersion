@@ -8,11 +8,10 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.BothDaSSZuko;
-import com.nali.summer.data.both.BothDaSeaHouse;
-import com.nali.summer.entity.bytes.SSZukoBytes;
-import com.nali.summer.entity.memory.client.ClientSSZuko;
-import com.nali.summer.entity.sounds.SoundSSZuko;
+import com.nali.small.entity.EntityLeInv;
+import com.nali.summer.da.both.BothDaSSZuko;
+import com.nali.summer.da.both.BothDaSeaHouse;
+import com.nali.summer.entity.memo.client.sszuko.ClientSSZuko;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -24,14 +23,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Arrays;
 import java.util.function.Supplier;
 
-public class SummerSSZuko extends SkinningEntities
+public class SummerSSZuko extends EntityLeInv
 {
     public static int eggPrimary = 0xfff0e2;
     public static int eggSecondary = 0x645353;
-
-    public static BothData BOTHDATA = new BothDaSSZuko();
-    public static WorkBytes WORKBYTES = new SSZukoBytes();
-    public static Sounds SOUNDS = new SoundSSZuko();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSZuko.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSZuko.MAX_FRAME + BothDaSeaHouse.MAX_FRAME];

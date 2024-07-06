@@ -2,7 +2,6 @@ package com.nali.list.entity;
 
 import com.nali.data.BothData;
 import com.nali.data.IBothDaNe;
-import com.nali.list.render.s.RenderIbuki;
 import com.nali.small.entities.bytes.WorkBytes;
 import com.nali.small.entities.memory.client.ClientEntitiesMemory;
 import com.nali.small.entities.memory.server.ServerEntitiesMemory;
@@ -10,19 +9,14 @@ import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
 import com.nali.small.entity.EntityLeInv;
-import com.nali.summer.data.both.BothDaIbuki;
-import com.nali.summer.data.both.BothDaIroha;
-import com.nali.summer.entity.memory.client.ibuki.ClientIbuki;
-import com.nali.summer.entity.sounds.SoundIbuki;
+import com.nali.summer.da.both.BothDaIbuki;
+import com.nali.summer.da.both.BothDaIroha;
+import com.nali.summer.entity.sound.SoundIbuki;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.function.Supplier;
 
 public class SummerIbuki extends EntityLeInv
 {

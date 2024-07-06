@@ -8,7 +8,9 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.BothDaIroha;
+import com.nali.small.entity.EntityLeInv;
+import com.nali.summer.da.both.BothDaIroha;
+import com.nali.summer.entity.memo.client.iroha.ClientIroha;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -20,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
-public class SummerIroha extends SkinningEntities
+public class SummerIroha extends EntityLeInv
 {
     public static int eggPrimary = 0xadb7c1;
     public static int eggSecondary = 0xc95b7e;

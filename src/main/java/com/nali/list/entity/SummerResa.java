@@ -7,10 +7,9 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.BothDaResa;
-import com.nali.summer.entity.bytes.ResaBytes;
-import com.nali.summer.entity.memory.client.ClientResa;
-import com.nali.summer.entity.sounds.SoundResa;
+import com.nali.small.entity.EntityLeInv;
+import com.nali.summer.da.both.BothDaResa;
+import com.nali.summer.entity.memo.client.resa.ClientResa;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -21,14 +20,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
-public class SummerResa extends SkinningEntities
+public class SummerResa extends EntityLeInv
 {
     public static int eggPrimary = 0x4e466d;
     public static int eggSecondary = 0xbdb5ff;
-
-    public static BothData BOTHDATA = new BothDaResa();
-    public static WorkBytes WORKBYTES = new ResaBytes();
-    public static Sounds SOUNDS = new SoundResa();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaResa.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaResa.MAX_FRAME];

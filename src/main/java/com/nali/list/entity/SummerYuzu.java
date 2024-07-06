@@ -8,10 +8,9 @@ import com.nali.small.entities.memory.server.ServerEntitiesMemory;
 import com.nali.small.entities.skinning.SkinningEntities;
 import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
 import com.nali.small.entities.sounds.Sounds;
-import com.nali.summer.data.both.BothDaYuzu;
-import com.nali.summer.entity.bytes.YuzuBytes;
-import com.nali.summer.entity.memory.client.ClientYuzu;
-import com.nali.summer.entity.sounds.SoundYuzu;
+import com.nali.small.entity.EntityLeInv;
+import com.nali.summer.da.both.BothDaYuzu;
+import com.nali.summer.entity.memo.client.yuzu.ClientYuzu;
 import com.nali.system.opengl.memory.OpenGLObjectMemory;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
@@ -26,14 +25,10 @@ import java.util.function.Supplier;
 import static com.nali.list.data.SummerData.TEXTURE_STEP;
 import static com.nali.system.ClientLoader.OBJECT_LIST;
 
-public class SummerYuzu extends SkinningEntities
+public class SummerYuzu extends EntityLeInv
 {
     public static int eggPrimary = 0xfbdad0;
     public static int eggSecondary = 0xfc6c78;
-
-    public static BothData BOTHDATA = new BothDaYuzu();
-    public static WorkBytes WORKBYTES = new YuzuBytes();
-    public static Sounds SOUNDS = new SoundYuzu();
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaYuzu.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaYuzu.MAX_FRAME];
