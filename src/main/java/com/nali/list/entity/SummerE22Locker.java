@@ -1,20 +1,23 @@
 package com.nali.list.entity;
 
-import com.nali.data.BothData;
-import com.nali.data.IBothDaNe;
-import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.server.ServerEntitiesMemory;
-import com.nali.small.entities.skinning.SkinningEntities;
-import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
-import com.nali.small.entities.sounds.Sounds;
+import com.nali.da.IBothDaNe;
+import com.nali.list.render.s.RenderE22Locker;
 import com.nali.small.entity.EntityEInv;
+import com.nali.small.entity.Inventory;
 import com.nali.summer.da.both.BothDaE22Locker;
-import net.minecraft.entity.player.EntityPlayer;
+import com.nali.summer.da.client.ClientDaE22Locker;
+import com.nali.summer.entity.memo.client.e22locker.ClientE22Locker;
+import com.nali.summer.entity.memo.client.e22locker.MixRenderE22Locker;
+import com.nali.summer.entity.memo.server.e22locker.MixAIE22Locker;
+import com.nali.summer.entity.memo.server.e22locker.ServerE22Locker;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import static com.nali.Nali.I;
 
 public class SummerE22Locker extends EntityEInv
 {
@@ -65,7 +68,7 @@ public class SummerE22Locker extends EntityEInv
     @Override
     public byte[] getAI()
     {
-        return ;
+        return MixAIE22Locker.AI_BYTE_ARRAY;
     }
 
     @Override
@@ -122,17 +125,6 @@ public class SummerE22Locker extends EntityEInv
 //    }
 
     @Override
-    public boolean processInitialInteract(EntityPlayer entityplayer, EnumHand enumhand)
-    {
-        if (!this.world.isRemote)
-        {
-            ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
-            serverentitiesmemory.statentitiesmemory.stat ^= 16;
-        }
-        return super.processInitialInteract(entityplayer, enumhand);
-    }
-
-    @Override
     public DataParameter<Integer>[] getIntegerDataParameterArray()
     {
         return INTEGER_DATAPARAMETER_ARRAY;
@@ -144,16 +136,25 @@ public class SummerE22Locker extends EntityEInv
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void newC()
     {
-
+        RenderE22Locker r = new RenderE22Locker(I.clientloader.stores, ClientDaE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
+        ClientE22Locker c = new ClientE22Locker(this, r, new Inventory(1));
+//        c.mb = new MixBoxE(c);
+        c.mr = new MixRenderE22Locker(c);
+        r.c = c;
+        this.ibotheinv = c;
     }
 
     @Override
     public void newS()
     {
-
+        ServerE22Locker s = new ServerE22Locker(this, new Inventory(1));
+        s.a = new MixAIE22Locker(s);
+        s.initFrame();
+        this.ibotheinv = s;
     }
 
     @Override

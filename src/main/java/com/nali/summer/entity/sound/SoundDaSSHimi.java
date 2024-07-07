@@ -1,10 +1,10 @@
 package com.nali.summer.entity.sound;
 
-import com.nali.sound.ISoundLe;
+import com.nali.sound.ISoundDaLe;
 
-public class SoundIroha implements ISoundLe
+public class SoundDaSSHimi implements ISoundDaLe
 {
-    public static ISoundLe ISOUNDLE = new SoundIroha();
+    public static ISoundDaLe ISOUNDDALE = new SoundDaSSHimi();
 
     @Override
     public int HURT()

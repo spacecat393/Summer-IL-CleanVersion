@@ -1,8 +1,8 @@
 package com.nali.summer.entity.memo.client.e22locker;
 
-import com.nali.data.IBothDaNe;
-import com.nali.data.IBothDaSn;
-import com.nali.data.client.IClientDaS;
+import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaSn;
+import com.nali.da.client.IClientDaS;
 import com.nali.math.Quaternion;
 import com.nali.render.RenderS;
 import com.nali.small.entity.IMixE;

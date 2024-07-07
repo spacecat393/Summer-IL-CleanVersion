@@ -1,17 +1,16 @@
 package com.nali.summer.entity.memo.client.ibuki;
 
-import com.nali.data.IBothDaNe;
-import com.nali.data.IBothDaSn;
-import com.nali.data.client.IClientDaS;
+import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaSn;
+import com.nali.da.client.IClientDaS;
 import com.nali.list.render.s.RenderIbuki;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.small.entity.IMixLe;
 import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
-import com.nali.small.entity.memo.client.render.RenderE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
-import com.nali.sound.ISoundLe;
+import com.nali.sound.ISoundDaLe;
 import com.nali.system.opengl.memo.client.MemoCurrent;
 import com.nali.system.opengl.memo.client.MemoGs;
 import com.nali.system.opengl.memo.client.MemoSs;
@@ -21,11 +20,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
-import static com.nali.list.entity.render.SummerFRenderIroha.setAnimation;
-import static com.nali.summer.entity.memo.client.ClientIroha.IV_INT_ARRAY;
-
 @SideOnly(Side.CLIENT)
-public class MixRenderIbuki<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderIbuki<E, I, MB, ?, C, SD, BD, RG, RS, RST, RC>, SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, ?, C>, C extends ClientSle<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, C>
+public class MixRenderIbuki<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderIbuki<E, I, MB, ?, C, SD, BD, RG, RS, RST, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, ?, C>, C extends ClientSle<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, C>
 {
     public MixRenderIbuki(C c)
     {

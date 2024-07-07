@@ -1,16 +1,17 @@
 package com.nali.list.entity;
 
-import com.nali.data.BothData;
+import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderSSUna;
-import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.client.ClientEntitiesMemory;
-import com.nali.small.entities.skinning.SkinningEntities;
-import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
-import com.nali.small.entities.sounds.Sounds;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.Inventory;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaSSUna;
+import com.nali.summer.da.client.ClientDaSSUna;
 import com.nali.summer.entity.memo.client.ssuna.ClientSSUna;
+import com.nali.summer.entity.memo.client.ssuna.MixRenderSSUna;
+import com.nali.summer.entity.memo.server.ssuna.MixAISSUna;
 import com.nali.summer.entity.memo.server.ssuna.ServerSSUna;
+import com.nali.summer.entity.sound.SoundDaSSUna;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.function.Supplier;
+import static com.nali.Nali.I;
 
 public class SummerSSUna extends EntityLeInv
 {
@@ -29,30 +30,6 @@ public class SummerSSUna extends EntityLeInv
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSUna.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSUna.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
-
-    public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
-    {
-        487,
-        493,
-        496
-    };
-    public static int[][] FRAME_INT_2D_ARRAY = new int[][]
-    {
-        { 264, 314 },
-        { 315, 350 },
-        { 470, 483 },
-        { 612, 628 },
-        { 629, 659 },
-        { 232, 263 },
-        { 432, 469 },
-        { 81, 231 },
-        { 660, 690 },
-        { 0, 80 },
-        { 484, 499 },
-        { 500, 513 },
-        { 514, 562 },
-        { 563, 611 }
-    };
 
     static
     {
@@ -75,42 +52,6 @@ public class SummerSSUna extends EntityLeInv
     public SummerSSUna(World world)
     {
         super(world);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void updateClient()
-    {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        RenderSSUna skinningrender = (RenderSSUna)cliententitiesmemory.objectrender;
-        BothData bothdata = cliententitiesmemory.bothdata;
-        int frame = skinningrender.frame_int_array[0];
-
-        if (frame < 264 || (frame > 562 && frame < 612))
-        {
-            skinningrender.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
-        }
-        else
-        {
-            skinningrender.model_byte_array[8 / 8] &= 254;//255 - Math.pow(2, 8 % 8)
-        }
-
-        float scale = skinningrender.entitiesrendermemory.scale;
-        if (frame > 314 && frame < 351)
-        {
-            this.width = bothdata.Width() * scale;
-            this.height = 0.65F * scale;
-        }
-        else if (frame > 263 && frame < 315)
-        {
-            this.width = 1.5F * scale;
-            this.height = 0.2F * scale;
-        }
-        else
-        {
-            this.width = bothdata.Width() * scale;
-            this.height = bothdata.Height() * scale;
-        }
     }
 
 //    @Override
@@ -137,18 +78,6 @@ public class SummerSSUna extends EntityLeInv
 //    }
 
     @Override
-    public BothData createBothData()
-    {
-        return BOTHDATA;
-    }
-
-    @Override
-    public WorkBytes createWorkBytes()
-    {
-        return WORKBYTES;
-    }
-
-    @Override
     public void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -158,49 +87,9 @@ public class SummerSSUna extends EntityLeInv
     }
 
     @Override
-    public void createServer()
+    public byte[] getAI()
     {
-        ServerSSUna serverentitiesmemory = (ServerSSUna)this.bothentitiesmemory;
-        WorkBytes workbytes = serverentitiesmemory.workbytes;
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[1];
-
-        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.max_magic_point = 8;
-        serverentitiesmemory.entitiesaimemory.skinningentitiesattack.minimum_distance = 6.0F;
-
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, FRAME_INT_2D_ARRAY);
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
-        {
-            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
-            () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoopFB(1),
-            () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
-            () ->
-            {
-                int id = 13;
-                if (serverentitiesmemory.entitiesaimemory.skinningentitiesattack.magic_point <= 0)
-                {
-                    if (serverentitiesmemory.server_step_reload)
-                    {
-                        id = 12;
-                    }
-                }
-                else
-                {
-                    if (this.ticksExisted % 50 == 0)
-                    {
-                        serverentitiesmemory.server_step_reload = !serverentitiesmemory.server_step_reload;
-                    }
-                }
-
-                return serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setShoot(2, 10, 11, id, false, serverentitiesmemory.entitiesaimemory.skinningentitiesattack);
-            },
-            () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
-            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5),
-            () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(6, (byte)4),
-            () -> ((serverentitiesmemory.statentitiesmemory.stat & 1) == 1 || (serverentitiesmemory.statentitiesmemory.stat & 2) == 2 || (serverentitiesmemory.statentitiesmemory.stat & 8) == 8) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(7, (byte)(1 + 2 + 8)),
-            () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(8),
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(9)
-        };
+        return MixAISSUna.AI_BYTE_ARRAY;
     }
 
     @Override
@@ -221,18 +110,45 @@ public class SummerSSUna extends EntityLeInv
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void newC()
+    {
+        RenderSSUna r = new RenderSSUna(I.clientloader.stores, ClientDaSSUna.ICLIENTDAS, BothDaSSUna.IBOTHDASN);
+        ClientSSUna c = new ClientSSUna(this, r, new Inventory(1));
+        c.mb = new MixBoxSle(c);
+        c.mr = new MixRenderSSUna(c);
+        r.c = c;
+        this.ibothleinv = c;
+    }
+
+    @Override
+    public void newS()
+    {
+        ServerSSUna s = new ServerSSUna(this, new Inventory(1));
+        s.a = new MixAISSUna(s);
+        s.initFrame();
+        this.ibothleinv = s;
+    }
+
+    @Override
+    public IBothDaNe getBD()
+    {
+        return BothDaSSUna.IBOTHDASN;
+    }
+
+    @Override
+    public Object getSD()
+    {
+        return SoundDaSSUna.ISOUNDDALE;
+    }
+
 //    @Override
 //    @SideOnly(Side.CLIENT)
 //    public Object createObjectRender()
 //    {
 //        return new SSUnaRender(new EntitiesRenderMemory(), this);
 //    }
-
-    @Override
-    public Sounds createSounds()
-    {
-        return SOUNDS;
-    }
 
 //    @Override
 //    @SideOnly(Side.CLIENT)
@@ -248,17 +164,4 @@ public class SummerSSUna extends EntityLeInv
 //    {
 //        return ClientSSUnaMemory.IV_INT_ARRAY;
 //    }
-
-    @Override
-    public void createServerEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
-    {
-        new ServerSSUna(skinningentities, bothdata, workbytes);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
-    {
-        new ClientSSUna(skinningentities, bothdata, workbytes);
-    }
 }

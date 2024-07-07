@@ -1,8 +1,8 @@
 package com.nali.summer.entity.memo.client.e22locker;
 
-import com.nali.data.IBothDaNe;
-import com.nali.data.IBothDaSn;
-import com.nali.data.client.IClientDaS;
+import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaSn;
+import com.nali.da.client.IClientDaS;
 import com.nali.render.RenderS;
 import com.nali.small.entity.EntityEInv;
 import com.nali.small.entity.IMixE;
@@ -78,14 +78,14 @@ public class ClientE22Locker<RG extends MemoGs, RS extends MemoSs, RC extends IC
     {
         return TRANSFORM_FLOAT_ARRAY;
     }
-
-    @Override
-    public void updateClient()
-    {
-        super.updateClient();
-
-        this.rotationYawHead = this.rotationYaw;
-        this.prevRotationYawHead = this.rotationYaw;
-        this.renderYawOffset = this.rotationYaw;
-    }
+//    @Override
+//    public void updateClient()
+//    {
+//        super.updateClient();
+//
+//        E e = this.i.getE();
+//        e.rotationYawHead = e.rotationYaw;
+//        e.prevRotationYawHead = e.rotationYaw;
+//        e.renderYawOffset = e.rotationYaw;
+//    }
 }

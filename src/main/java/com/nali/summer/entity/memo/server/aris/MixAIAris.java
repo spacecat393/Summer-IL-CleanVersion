@@ -5,10 +5,10 @@ import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixLe;
 import com.nali.small.entity.memo.server.ServerSleInv;
 import com.nali.small.entity.memo.server.ai.MixAIEInv;
-import com.nali.sound.ISoundLe;
+import com.nali.sound.ISoundDaLe;
 import com.nali.summer.da.both.BothDaAris;
 
-public class MixAIAris<SD extends ISoundLe, BD extends BothDaAris<SD>, E extends EntityLeInv, I extends IMixLe<SD, BD, E>, S extends ServerSleInv<SD, BD, E, I, ?>> extends MixAIEInv<SD, BD, E, I, S>
+public class MixAIAris<SD extends ISoundDaLe, BD extends BothDaAris<SD>, E extends EntityLeInv, I extends IMixLe<SD, BD, E>, S extends ServerSleInv<SD, BD, E, I, ?>> extends MixAIEInv<SD, BD, E, I, S>
 {
     public static byte[] AI_BYTE_ARRAY =
     {

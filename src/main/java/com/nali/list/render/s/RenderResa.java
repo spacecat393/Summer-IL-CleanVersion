@@ -1,13 +1,13 @@
 package com.nali.list.render.s;
 
-import com.nali.data.IBothDaNe;
-import com.nali.data.IBothDaSn;
-import com.nali.data.client.IClientDaS;
+import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaSn;
+import com.nali.da.client.IClientDaS;
 import com.nali.small.entity.IMixLe;
 import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderE;
-import com.nali.sound.ISoundLe;
+import com.nali.sound.ISoundDaLe;
 import com.nali.summer.da.both.BothDaResa;
 import com.nali.summer.da.client.ClientDaResa;
 import com.nali.summer.render.SummerRenderSe;
@@ -23,7 +23,7 @@ import java.util.Arrays;
 import static com.nali.Nali.I;
 
 @SideOnly(Side.CLIENT)
-public class RenderResa<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, ?, SD, BD, E, I, MR, C>, MR extends MixRenderE<RG, RS, RC, RST, ?, SD, BD, E, I, MB, C>, C extends ClientSle<RG, RS, RC, RST, ?, SD, BD, E, I, MB, MR>, SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, RG extends MemoGs, RS extends MemoSs, RST extends StoreS<RG, RS>, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RG, RS, RST, RC>
+public class RenderResa<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, ?, SD, BD, E, I, MR, C>, MR extends MixRenderE<RG, RS, RC, RST, ?, SD, BD, E, I, MB, C>, C extends ClientSle<RG, RS, RC, RST, ?, SD, BD, E, I, MB, MR>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, RG extends MemoGs, RS extends MemoSs, RST extends StoreS<RG, RS>, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RG, RS, RST, RC>
 {
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;

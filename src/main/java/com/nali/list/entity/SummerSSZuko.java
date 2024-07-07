@@ -1,17 +1,18 @@
 package com.nali.list.entity;
 
-import com.nali.data.BothData;
+import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderSSZuko;
-import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.client.ClientEntitiesMemory;
-import com.nali.small.entities.memory.server.ServerEntitiesMemory;
-import com.nali.small.entities.skinning.SkinningEntities;
-import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
-import com.nali.small.entities.sounds.Sounds;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.Inventory;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaSSZuko;
 import com.nali.summer.da.both.BothDaSeaHouse;
+import com.nali.summer.da.client.ClientDaSSZuko;
 import com.nali.summer.entity.memo.client.sszuko.ClientSSZuko;
+import com.nali.summer.entity.memo.client.sszuko.MixRenderSSZuko;
+import com.nali.summer.entity.memo.server.sszuko.MixAISSZuko;
+import com.nali.summer.entity.memo.server.sszuko.ServerSSZuko;
+import com.nali.summer.entity.sound.SoundDaSSZuko;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -20,8 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Arrays;
-import java.util.function.Supplier;
+import static com.nali.Nali.I;
 
 public class SummerSSZuko extends EntityLeInv
 {
@@ -31,29 +31,6 @@ public class SummerSSZuko extends EntityLeInv
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSZuko.MAX_SYNC];
     public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSZuko.MAX_FRAME + BothDaSeaHouse.MAX_FRAME];
     public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
-
-    public static int[][] SSZUKO_FRAME_INT_2D_ARRAY = new int[][]
-    {
-        { 0, 222 },
-        { 0, 222 },
-        { 381, 481 },
-        { 482, 532 },
-        { 223, 380 },
-        { 0, 222 },
-        { 533, 610 },//spawn
-        { 611, 704 },//idle
-        { 705, 725 },//act
-        { 726, 750 }//end
-    };
-    public static int[][] SEAHOUSE_FRAME_INT_2D_ARRAY = new int[][]
-    {
-        { 0, 50 },
-        { 0, 0 },
-        { 51, 128 },//spawn
-        { 129, 222 },//idle
-        { 223, 243 },//act
-        { 244, 269 }//end
-    };
 
     static
     {
@@ -76,33 +53,6 @@ public class SummerSSZuko extends EntityLeInv
     public SummerSSZuko(World world)
     {
         super(world);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void updateClient()
-    {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        RenderSSZuko sszukorender = (RenderSSZuko)cliententitiesmemory.objectrender;
-        int frame = sszukorender.frame_int_array[0];
-
-        if (frame > 481 && frame < 533)
-        {
-            Arrays.fill(sszukorender.seahouserender.model_byte_array, (byte)255);
-        }
-        else if (frame > 532 && frame < 751)
-        {
-            sszukorender.seahouserender.model_byte_array[0 / 8] |= 1;//Math.pow(2, 0 % 8)
-//            sszukorender.seahouserender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
-//            sszukorender.seahouserender.model_byte_array[2 / 8] &= 251;//255 - Math.pow(2, 2 % 8)
-            sszukorender.seahouserender.model_byte_array[0] &= 253 & 251;
-        }
-        else
-        {
-            Arrays.fill(sszukorender.seahouserender.model_byte_array, (byte)0);
-        }
-
-        super.updateClient();
     }
 
 //    @Override
@@ -138,31 +88,6 @@ public class SummerSSZuko extends EntityLeInv
 //    }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public void updateRendering(EntityDataManager entitydatamanager)
-    {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        RenderSSZuko sszukorender = (RenderSSZuko)cliententitiesmemory.objectrender;
-
-        DataParameter<Integer>[] integer_dataparameter = this.getIntegerDataParameterArray();
-
-        sszukorender.frame_int_array[0] = entitydatamanager.get(integer_dataparameter[0]);
-        sszukorender.seahouserender.frame_int_array[0] = entitydatamanager.get(integer_dataparameter[1]);
-    }
-
-    @Override
-    public BothData createBothData()
-    {
-        return BOTHDATA;
-    }
-
-    @Override
-    public WorkBytes createWorkBytes()
-    {
-        return WORKBYTES;
-    }
-
-    @Override
     public void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -172,31 +97,9 @@ public class SummerSSZuko extends EntityLeInv
     }
 
     @Override
-    public void createServer()
+    public byte[] getAI()
     {
-        ServerEntitiesMemory serverentitiesmemory = (ServerEntitiesMemory)this.bothentitiesmemory;
-        WorkBytes workbytes = serverentitiesmemory.workbytes;
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array = new SkinningEntitiesLiveFrame[2];
-
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0] = new SkinningEntitiesLiveFrame(this, 0, SSZUKO_FRAME_INT_2D_ARRAY);
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].condition_boolean_supplier_array = new Supplier[]
-        {
-            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(0),
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setProtect(6, 7, 8, 9, serverentitiesmemory.entitiesaimemory.skinningentitiesprotect),
-            () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
-            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(2),
-            () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(3, (byte)4),
-            () -> ((serverentitiesmemory.statentitiesmemory.stat & 1) == 1 || (serverentitiesmemory.statentitiesmemory.stat & 2) == 2 || (serverentitiesmemory.statentitiesmemory.stat & 8) == 8) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(4, (byte)(1 + 2 + 8)),
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5)
-        };
-
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1] = new SkinningEntitiesLiveFrame(this, 1, SEAHOUSE_FRAME_INT_2D_ARRAY);
-        serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].condition_boolean_supplier_array = new Supplier[]
-        {
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setProtect(2, 3, 4, 5, serverentitiesmemory.entitiesaimemory.skinningentitiesprotect),
-            () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setFLoopFree(0, (byte)4),
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setTLoop(1)
-        };
+        return MixAISSZuko.AI_BYTE_ARRAY;
     }
 
     @Override
@@ -217,19 +120,45 @@ public class SummerSSZuko extends EntityLeInv
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void newC()
+    {
+        RenderSSZuko r = new RenderSSZuko(I.clientloader.stores, ClientDaSSZuko.ICLIENTDAS, BothDaSSZuko.IBOTHDASN);
+        ClientSSZuko c = new ClientSSZuko(this, r, new Inventory(1));
+        c.mb = new MixBoxSle(c);
+        c.mr = new MixRenderSSZuko(c);
+        r.c = c;
+        this.ibothleinv = c;
+    }
+
+    @Override
+    public void newS()
+    {
+        ServerSSZuko s = new ServerSSZuko(this, new Inventory(1));
+        s.a = new MixAISSZuko(s);
+        s.initFrame();
+        this.ibothleinv = s;
+    }
+
+    @Override
+    public IBothDaNe getBD()
+    {
+        return BothDaSSZuko.IBOTHDASN;
+    }
+
+    @Override
+    public Object getSD()
+    {
+        return SoundDaSSZuko.ISOUNDDALE;
+    }
+
 //    @Override
 //    @SideOnly(Side.CLIENT)
 //    public Object createObjectRender()
 //    {
 //        return new SSZukoRender(new EntitiesRenderMemory(), this);
 //    }
-
-    @Override
-    public Sounds createSounds()
-    {
-        return SOUNDS;
-    }
-
 //    @Override
 //    @SideOnly(Side.CLIENT)
 //    public Object createSoundRender()
@@ -244,11 +173,4 @@ public class SummerSSZuko extends EntityLeInv
 //    {
 //        return ClientSSZukoMemory.IV_INT_ARRAY;
 //    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void createClientEntitiesMemory(SkinningEntities skinningentities, BothData bothdata, WorkBytes workbytes)
-    {
-        new ClientSSZuko(skinningentities, bothdata, workbytes);
-    }
 }

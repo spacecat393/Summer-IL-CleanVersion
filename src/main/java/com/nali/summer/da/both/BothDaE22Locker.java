@@ -1,7 +1,7 @@
 package com.nali.summer.da.both;
 
-import com.nali.data.IBothDaNe;
-import com.nali.data.IBothDaSn;
+import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaSn;
 
 public class BothDaE22Locker implements IBothDaSn, IBothDaNe
 {

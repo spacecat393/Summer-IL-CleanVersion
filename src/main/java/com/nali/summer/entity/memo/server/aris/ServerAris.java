@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memo.server.aris;
 
-import com.nali.data.IBothDaNe;
-import com.nali.data.IBothDaSn;
+import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaSn;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixLe;
 import com.nali.small.entity.Inventory;
@@ -18,9 +18,9 @@ import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSleTLoopAttackStand
 import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSleTLoopAttackWalk;
 import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSleTLoopWalk;
 import com.nali.small.entity.memo.server.ai.frame.tloopfb.FrameSTLoopFBSit;
-import com.nali.sound.ISoundLe;
+import com.nali.sound.ISoundDaLe;
 
-public class ServerAris<SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLeInv, I extends IMixLe<SD, BD, E>, A extends MixAIE<SD, BD, E, I, ?>> extends ServerSleInv<SD, BD, E, I, A>
+public class ServerAris<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLeInv, I extends IMixLe<SD, BD, E>, A extends MixAIE<SD, BD, E, I, ?>> extends ServerSleInv<SD, BD, E, I, A>
 {
     public static int[][] FRAME_INT_2D_ARRAY = new int[][]
     {
@@ -38,7 +38,6 @@ public class ServerAris<SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, E
         { 644, 660 },
         { 687, 737 }
     };
-
     public static byte[] FRAME_BYTE_ARRAY = new byte[]
     {
         0, 0,
@@ -52,8 +51,7 @@ public class ServerAris<SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, E
         0, 8,
         0, 9
     };
-
-    public FrameS[] frames_array;
+    public FrameS[][] frames_2d_array;
 
     public ServerAris(I i, Inventory inventory)
     {
@@ -61,26 +59,22 @@ public class ServerAris<SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, E
     }
 
     @Override
-    public void updateServer()
-    {
-
-    }
-
-    @Override
     public void initFrame()
     {
-        this.frames_array = new FrameS[]
+        this.frames_2d_array = new FrameS[][]
         {
-            new FrameSleFLoopDie(this, 0),
-            new FrameSTLoopFBSit(this, 2),
-            new FrameSleFLoopOffSetAttackEndWalk(this, 4),
-            new FrameSleShoot(this, 7),
-            new FrameSleTLoopAttackWalk(this, 12),
-            new FrameSleTLoopWalk(this, 14),
-            new FrameSFLoopFreeHardReady(this, 16),
-            new FrameSleFLoopFreePSrE(this, 18),
-            new FrameSleTLoopAttackStand(this, 20),
-            new FrameSTLoop(this, 22)
+            {
+                new FrameSleFLoopDie(this, 0),
+                new FrameSTLoopFBSit(this, 2),
+                new FrameSleFLoopOffSetAttackEndWalk(this, 4),
+                new FrameSleShoot(this, 7),
+                new FrameSleTLoopAttackWalk(this, 12),
+                new FrameSleTLoopWalk(this, 14),
+                new FrameSFLoopFreeHardReady(this, 16),
+                new FrameSleFLoopFreePSrE(this, 18),
+                new FrameSleTLoopAttackStand(this, 20),
+                new FrameSTLoop(this, 22)
+            }
         };
 //        () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
 //        () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoopFB(1),
@@ -95,9 +89,15 @@ public class ServerAris<SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, E
     }
 
     @Override
-    public FrameS[] getFrameSArray()
+    public void updateServer()
     {
-        return this.frames_array;
+
+    }
+
+    @Override
+    public FrameS[][] getFrameS2DArray()
+    {
+        return this.frames_2d_array;
     }
 
     @Override

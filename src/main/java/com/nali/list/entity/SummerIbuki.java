@@ -1,22 +1,27 @@
 package com.nali.list.entity;
 
-import com.nali.data.BothData;
-import com.nali.data.IBothDaNe;
-import com.nali.small.entities.bytes.WorkBytes;
-import com.nali.small.entities.memory.client.ClientEntitiesMemory;
-import com.nali.small.entities.memory.server.ServerEntitiesMemory;
-import com.nali.small.entities.skinning.SkinningEntities;
-import com.nali.small.entities.skinning.ai.frame.SkinningEntitiesLiveFrame;
-import com.nali.small.entities.sounds.Sounds;
+import com.nali.da.IBothDaNe;
+import com.nali.list.render.s.RenderIbuki;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.Inventory;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaIbuki;
 import com.nali.summer.da.both.BothDaIroha;
-import com.nali.summer.entity.sound.SoundIbuki;
+import com.nali.summer.da.client.ClientDaIbuki;
+import com.nali.summer.entity.memo.client.ibuki.ClientIbuki;
+import com.nali.summer.entity.memo.client.ibuki.MixRenderIbuki;
+import com.nali.summer.entity.memo.server.ibuki.MixAIIbuki;
+import com.nali.summer.entity.memo.server.ibuki.ServerIbuki;
+import com.nali.summer.entity.sound.SoundDaIbuki;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import static com.nali.Nali.I;
 
 public class SummerIbuki extends EntityLeInv
 {
@@ -62,7 +67,7 @@ public class SummerIbuki extends EntityLeInv
     @Override
     public byte[] getAI()
     {
-        return ;
+        return MixAIIbuki.AI_BYTE_ARRAY;
     }
 
     @Override
@@ -83,16 +88,25 @@ public class SummerIbuki extends EntityLeInv
         return FLOAT_DATAPARAMETER_ARRAY;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void newC()
     {
-
+        RenderIbuki r = new RenderIbuki(I.clientloader.stores, ClientDaIbuki.ICLIENTDAS, BothDaIbuki.IBOTHDASN);
+        ClientIbuki c = new ClientIbuki(this, r, new Inventory(1));
+        c.mb = new MixBoxSle(c);
+        c.mr = new MixRenderIbuki(c);
+        r.c = c;
+        this.ibothleinv = c;
     }
 
     @Override
     public void newS()
     {
-
+        ServerIbuki s = new ServerIbuki(this, new Inventory(1));
+        s.a = new MixAIIbuki(s);
+        s.initFrame();
+        this.ibothleinv = s;
     }
 
     @Override
@@ -104,21 +118,6 @@ public class SummerIbuki extends EntityLeInv
     @Override
     public Object getSD()
     {
-        return SoundIbuki.ISOUNDLE;
-    }
-
-    @Override
-    public void collideWithNearbyEntities()
-    {
-        if (this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities == null || !((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.should_play)
-        {
-            super.collideWithNearbyEntities();
-        }
-    }
-
-    @Override
-    public boolean canBePushed()
-    {
-        return this.world.isRemote || ((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities == null || !((ServerEntitiesMemory)this.bothentitiesmemory).entitiesaimemory.skinningentitiesplaywith.should_play;
+        return SoundDaIbuki.ISOUNDDALE;
     }
 }

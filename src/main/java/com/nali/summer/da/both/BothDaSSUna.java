@@ -1,15 +1,15 @@
 package com.nali.summer.da.both;
 
-import com.nali.data.IBothDaNe;
-import com.nali.data.IBothDaNs;
-import com.nali.data.IBothDaSn;
-import com.nali.sound.ISoundLe;
-import com.nali.summer.entity.sound.SoundSSUna;
+import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaNs;
+import com.nali.da.IBothDaSn;
+import com.nali.sound.ISoundDaLe;
+import com.nali.summer.entity.sound.SoundDaSSUna;
 
-public class BothDaSSUna<SD extends ISoundLe> extends IBothDaNs<SD> implements IBothDaSn, IBothDaNe
+public class BothDaSSUna<SD extends ISoundDaLe> extends IBothDaNs<SD> implements IBothDaSn, IBothDaNe
 {
-//    public static ISoundLe ISOUNDLE = new SSUnaSound();
-    public static BothDaSSUna IBOTHDASN = new BothDaSSUna(SoundSSUna.ISOUNDLE);
+//    public static ISoundDaLe ISOUNDDALE = new SSUnaSound();
+    public static BothDaSSUna IBOTHDASN = new BothDaSSUna(SoundDaSSUna.ISOUNDDALE);
 
     public static byte MAX_FRAME = 1;
     public static byte MAX_SYNC = 1;

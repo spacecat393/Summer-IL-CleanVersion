@@ -1,15 +1,15 @@
 package com.nali.summer.entity.memo.client.aris;
 
-import com.nali.data.IBothDaNe;
-import com.nali.data.IBothDaSn;
-import com.nali.data.client.IClientDaS;
+import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaSn;
+import com.nali.da.client.IClientDaS;
 import com.nali.list.render.s.RenderAris;
 import com.nali.small.entity.IMixLe;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.ClientSleInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
-import com.nali.sound.ISoundLe;
+import com.nali.sound.ISoundDaLe;
 import com.nali.sound.NoSound;
 import com.nali.sound.Sound;
 import com.nali.system.opengl.memo.client.MemoGs;
@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.nali.list.data.SummerData.MODEL_S_STEP;
 
 @SideOnly(Side.CLIENT)
-public class ClientAris<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderAris<E, I, MB, MR, ?, SD, BD, RG, RS, RST, RC>, SD extends ISoundLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, MR>
+public class ClientAris<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderAris<E, I, MB, MR, ?, SD, BD, RG, RS, RST, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, MR>
 {
 //    @SideOnly(Side.CLIENT)
     public static int[] IV_INT_ARRAY = new int[]

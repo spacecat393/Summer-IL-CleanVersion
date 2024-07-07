@@ -1,7 +1,7 @@
 package com.nali.list.render.s;
 
-import com.nali.data.IBothDaSn;
-import com.nali.data.client.IClientDaS;
+import com.nali.da.IBothDaSn;
+import com.nali.da.client.IClientDaS;
 import com.nali.summer.da.both.BothDaSeaHouse;
 import com.nali.summer.da.client.ClientDaSeaHouse;
 import com.nali.summer.render.SummerRenderS;

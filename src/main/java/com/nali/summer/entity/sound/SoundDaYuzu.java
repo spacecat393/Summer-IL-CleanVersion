@@ -1,13 +1,13 @@
 package com.nali.summer.entity.sound;
 
-import com.nali.sound.ISoundLe;
+import com.nali.sound.ISoundDaLe;
 import net.minecraft.server.MinecraftServer;
 
 import static com.nali.list.data.SummerData.OPENAL_STEP;
 
-public class SoundYuzu implements ISoundLe
+public class SoundDaYuzu implements ISoundDaLe
 {
-    public static ISoundLe ISOUNDLE = new SoundYuzu();
+    public static ISoundDaLe ISOUNDDALE = new SoundDaYuzu();
 
     @Override
     public int HURT()

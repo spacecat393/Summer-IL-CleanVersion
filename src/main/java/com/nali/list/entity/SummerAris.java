@@ -1,6 +1,6 @@
 package com.nali.list.entity;
 
-import com.nali.data.IBothDaNe;
+import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderAris;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.Inventory;
@@ -11,7 +11,7 @@ import com.nali.summer.entity.memo.client.aris.ClientAris;
 import com.nali.summer.entity.memo.client.aris.MixRenderAris;
 import com.nali.summer.entity.memo.server.aris.MixAIAris;
 import com.nali.summer.entity.memo.server.aris.ServerAris;
-import com.nali.summer.entity.sound.SoundAris;
+import com.nali.summer.entity.sound.SoundDaAris;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -220,7 +220,7 @@ public class SummerAris extends EntityLeInv
     @Override
     public Object getSD()
     {
-        return SoundAris.ISOUNDLE;
+        return SoundDaAris.ISOUNDDALE;
     }
 
 //    @Override
