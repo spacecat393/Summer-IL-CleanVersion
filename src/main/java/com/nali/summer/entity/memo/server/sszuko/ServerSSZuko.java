@@ -8,9 +8,14 @@ import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.server.ServerSleInv;
 import com.nali.small.entity.memo.server.ai.MixAIE;
 import com.nali.small.entity.memo.server.ai.frame.FrameS;
+import com.nali.small.entity.memo.server.ai.frame.FrameSleProtect;
+import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopDie;
+import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreeHardReady;
+import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSleFLoopFreePSrE;
+import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSTLoop;
+import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSeTLoopSit;
+import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSleTLoopWalk;
 import com.nali.sound.ISoundDaLe;
-
-import java.util.function.Supplier;
 
 public class ServerSSZuko<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLeInv, I extends IMixLe<SD, BD, E>, A extends MixAIE<SD, BD, E, I, ?>> extends ServerSleInv<SD, BD, E, I, A>
 {
@@ -38,6 +43,17 @@ public class ServerSSZuko<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaS
     };
     public static byte[] FRAME_BYTE_ARRAY = new byte[]
     {
+        0, 0,
+        0, 6, 7, 8, 9,
+        0, 1,
+        0, 2,
+        0, 3,
+        0, 4,
+        0, 5,
+
+        1, 2, 3, 4, 5,
+        1, 0,
+        1, 1
     };
     public FrameS[][] frames_2d_array;
 
@@ -49,20 +65,37 @@ public class ServerSSZuko<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaS
     @Override
     public void initFrame()
     {
+        this.frames_2d_array = new FrameS[][]
         {
-            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(0),
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setProtect(6, 7, 8, 9, serverentitiesmemory.entitiesaimemory.skinningentitiesprotect),
-            () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
-            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(2),
-            () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(3, (byte)4),
-            () -> ((serverentitiesmemory.statentitiesmemory.stat & 1) == 1 || (serverentitiesmemory.statentitiesmemory.stat & 2) == 2 || (serverentitiesmemory.statentitiesmemory.stat & 8) == 8) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(4, (byte)(1 + 2 + 8)),
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5)
+            {
+                new FrameSleFLoopDie(this, 0),
+                new FrameSleProtect(this, 2),
+                new FrameSeTLoopSit(this, 7),
+                new FrameSleTLoopWalk(this, 9),
+                new FrameSFLoopFreeHardReady(this, 11),
+                new FrameSleFLoopFreePSrE(this, 13),
+                new FrameSTLoop(this, 15)
+            },
+            {
+                new FrameSleProtect(this, 17),
+                new FrameSFLoopFreeHardReady(this, 22),
+                new FrameSTLoop(this, 24)
+            }
         };
-        {
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setProtect(2, 3, 4, 5, serverentitiesmemory.entitiesaimemory.skinningentitiesprotect),
-            () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setFLoopFree(0, (byte)4),
-            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setTLoop(1)
-        };
+//        {
+////            () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(0),
+////            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setProtect(6, 7, 8, 9, serverentitiesmemory.entitiesaimemory.skinningentitiesprotect),
+////            () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
+////            () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(2),
+////            () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(3, (byte)4),
+////            () -> ((serverentitiesmemory.statentitiesmemory.stat & 1) == 1 || (serverentitiesmemory.statentitiesmemory.stat & 2) == 2 || (serverentitiesmemory.statentitiesmemory.stat & 8) == 8) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(4, (byte)(1 + 2 + 8)),
+////            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5)
+//        };
+//        {
+////            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setProtect(2, 3, 4, 5, serverentitiesmemory.entitiesaimemory.skinningentitiesprotect),
+////            () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setFLoopFree(0, (byte)4),
+////            () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[1].setTLoop(1)
+//        };
     }
 
     @Override

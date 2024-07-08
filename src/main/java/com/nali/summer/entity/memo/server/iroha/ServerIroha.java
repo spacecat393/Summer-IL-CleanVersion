@@ -8,6 +8,7 @@ import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.server.ServerSleInv;
 import com.nali.small.entity.memo.server.ai.MixAIE;
 import com.nali.small.entity.memo.server.ai.frame.FrameS;
+import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopDie;
 import com.nali.sound.ISoundDaLe;
 import net.minecraft.world.WorldServer;
 
@@ -44,6 +45,7 @@ public class ServerIroha<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn
     };
     public static byte[] FRAME_BYTE_ARRAY = new byte[]
     {
+//        0, 14
     };
     public FrameS[][] frames_2d_array;
 
@@ -55,6 +57,12 @@ public class ServerIroha<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn
     @Override
     public void initFrame()
     {
+        this.frames_2d_array = new FrameS[][]
+        {
+            {
+//                new FrameSleFLoopDie(this, 0)
+            }
+        };
         () ->
         {
             int id = 14;

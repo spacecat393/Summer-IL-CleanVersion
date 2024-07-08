@@ -9,6 +9,7 @@ import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.server.ServerSleInv;
 import com.nali.small.entity.memo.server.ai.MixAIE;
 import com.nali.small.entity.memo.server.ai.frame.FrameS;
+import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopDie;
 import com.nali.sound.ISoundDaLe;
 
 import java.util.function.Supplier;
@@ -36,6 +37,8 @@ public class ServerYuzu<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn,
     };
     public static byte[] FRAME_BYTE_ARRAY = new byte[]
     {
+        0, 0,
+        0,
     };
     public FrameS[][] frames_2d_array;
 
@@ -47,7 +50,14 @@ public class ServerYuzu<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn,
     @Override
     public void initFrame()
     {
-        () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
+        this.frames_2d_array = new FrameS[][]
+        {
+            {
+                new FrameSleFLoopDie(this, 0),
+                new
+            }
+        };
+//        () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
         () -> serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.should_play && (((ServerEntitiesMemory)serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities.bothentitiesmemory).statentitiesmemory.stat & 16) == 16 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(14),
         () -> serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.should_play && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(15),
         () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),

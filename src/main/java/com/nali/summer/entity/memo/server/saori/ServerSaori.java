@@ -8,9 +8,13 @@ import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.server.ServerSleInv;
 import com.nali.small.entity.memo.server.ai.MixAIE;
 import com.nali.small.entity.memo.server.ai.frame.FrameS;
+import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopDie;
+import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreeHardReady;
+import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSleFLoopFreePSrE;
+import com.nali.small.entity.memo.server.ai.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
+import com.nali.small.entity.memo.server.ai.frame.shoot.FrameSleShootAttackPlus;
+import com.nali.small.entity.memo.server.ai.frame.tloop.*;
 import com.nali.sound.ISoundDaLe;
-
-import java.util.function.Supplier;
 
 public class ServerSaori<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLeInv, I extends IMixLe<SD, BD, E>, A extends MixAIE<SD, BD, E, I, ?>> extends ServerSleInv<SD, BD, E, I, A>
 {
@@ -34,6 +38,15 @@ public class ServerSaori<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn
     };
     public static byte[] FRAME_BYTE_ARRAY = new byte[]
     {
+        0, 0,
+        0, 1,
+        0, 3, 4,
+        0, 2, 10, 13, 2, 13,
+        0, 3,
+        0, 5,
+        0, 6,
+        0, 7,
+        0, 9
     };
     public FrameS[][] frames_2d_array;
 
@@ -46,41 +59,56 @@ public class ServerSaori<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn
     @Override
     public void initFrame()
     {
-        () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
-        () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
-        () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
-        () ->
+        this.frames_2d_array = new FrameS[][]
         {
-            int id = 10;
-            int start_id = 2;
-
-            if (serverentitiesmemory.server_how_attack)
             {
-                id = 13;
-                start_id = 13;
-
-                if (serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] == serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].int_2d_array[id][1] - 1)
-                {
-                    start_id = 2;
-                    id = 10;
-                    serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] = serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].int_2d_array[2][0];
-                    serverentitiesmemory.server_how_attack = false;
-                }
+                new FrameSleFLoopDie(this, 0),
+                new FrameSeTLoopSit(this, 2),
+                new FrameSleFLoopOffSetAttackEndWalk(this, 4),
+                new FrameSleShootAttackPlus(this, 7),//?
+                new FrameSleTLoopAttackWalk(this, 13),
+                new FrameSleTLoopWalk(this, 15),
+                new FrameSFLoopFreeHardReady(this, 17),
+                new FrameSleFLoopFreePSrE(this, 19),
+                new FrameSleTLoopAttackStand(this, 21),
+                new FrameSTLoop(this, 23)
             }
-
-            if (serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] == serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].int_2d_array[id][1] - 1)
-            {
-                serverentitiesmemory.server_how_attack = (byte)(this.ticksExisted % 20) == 0;
-            }
-
-            return serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setShoot(start_id, id, 11, 12, false, serverentitiesmemory.entitiesaimemory.skinningentitiesattack);
-        },
-        () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
-        () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5),
-        () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(6, (byte)4),
-        () -> ((serverentitiesmemory.statentitiesmemory.stat & 1) == 1 || (serverentitiesmemory.statentitiesmemory.stat & 2) == 2 || (serverentitiesmemory.statentitiesmemory.stat & 8) == 8) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(7, (byte)(1 + 2 + 8)),
-        () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(8),
-        () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(9)
+        };
+//        () -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
+//        () -> (serverentitiesmemory.current_work_byte_array[workbytes.SIT() / 8] >> workbytes.SIT() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1),
+//        () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && this.moveForward == 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopOffSet(3, 4),
+//        () ->
+//        {
+//            int id = 10;
+//            int start_id = 2;
+//
+//            if (serverentitiesmemory.server_how_attack)
+//            {
+//                id = 13;
+//                start_id = 13;
+//
+//                if (serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] == serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].int_2d_array[id][1] - 1)
+//                {
+//                    start_id = 2;
+//                    id = 10;
+//                    serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] = serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].int_2d_array[2][0];
+//                    serverentitiesmemory.server_how_attack = false;
+//                }
+//            }
+//
+//            if (serverentitiesmemory.frame_int_array[serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].integer_index] == serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].int_2d_array[id][1] - 1)
+//            {
+//                serverentitiesmemory.server_how_attack = (byte)(this.ticksExisted % 20) == 0;
+//            }
+//
+//            return serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setShoot(start_id, id, 11, 12, false, serverentitiesmemory.entitiesaimemory.skinningentitiesattack);
+//        },
+//        () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(3),
+//        () -> this.moveForward != 0 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(5),
+//        () -> (serverentitiesmemory.statentitiesmemory.stat & 4) == 4 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(6, (byte)4),
+//        () -> ((serverentitiesmemory.statentitiesmemory.stat & 1) == 1 || (serverentitiesmemory.statentitiesmemory.stat & 2) == 2 || (serverentitiesmemory.statentitiesmemory.stat & 8) == 8) && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(7, (byte)(1 + 2 + 8)),
+//        () -> (serverentitiesmemory.main_work_byte_array[workbytes.ATTACK() / 8] >> workbytes.ATTACK() % 8 & 1) == 1 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(8),
+//        () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(9)
     }
 
     @Override
