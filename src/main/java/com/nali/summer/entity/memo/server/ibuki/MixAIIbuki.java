@@ -22,7 +22,7 @@ public class MixAIIbuki<SD extends ISoundDaLe, BD extends BothDaIbuki<SD>, E ext
         AILeSetLocation.ID,
         AILeFollow.ID,
         AILeRevive.ID,
-        //Play+1
+        AILePlayWithSSe.ID,//Play+1
         AILeCareOwner.ID,
         AILeAttack.ID,
         AILeInvManageItem.ID,
@@ -47,7 +47,7 @@ public class MixAIIbuki<SD extends ISoundDaLe, BD extends BothDaIbuki<SD>, E ext
     @Override
     public void init()
     {
-        serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.clasz = SummerIroha.class;
+        ((AILePlayWithSSe)this.s.a.aie_map.get(AILePlayWithSSe.ID)).e2_class = SummerIroha.class;
 
         AILeAttack<SD, BD, E, I, S, ?> aileattack = (AILeAttack<SD, BD, E, I, S, ?>)this.s.a.aie_map.get(AILeAttack.ID);
         aileattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;

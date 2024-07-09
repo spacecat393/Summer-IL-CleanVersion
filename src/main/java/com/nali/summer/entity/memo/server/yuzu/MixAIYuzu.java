@@ -22,7 +22,7 @@ public class MixAIYuzu<SD extends ISoundDaLe, BD extends BothDaYuzu<SD>, E exten
         AILeSetLocation.ID,
         AILeFollow.ID,
         AILeRevive.ID,
-        //Play+1
+        AILePlayWithSSle.ID,//Play+1
         AILeCareOwner.ID,
         AILeAttack.ID,
         AILeInvManageItem.ID,
@@ -47,7 +47,7 @@ public class MixAIYuzu<SD extends ISoundDaLe, BD extends BothDaYuzu<SD>, E exten
     @Override
     public void init()
     {
-        serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.clasz = SummerE22Locker.class;
+        ((AILePlayWithSSle)this.s.a.aie_map.get(AILePlayWithSSle.ID)).e2_class = SummerE22Locker.class;
 
         AILeAttack<SD, BD, E, I, S, ?> aileattack = (AILeAttack<SD, BD, E, I, S, ?>)this.s.a.aie_map.get(AILeAttack.ID);
         aileattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;

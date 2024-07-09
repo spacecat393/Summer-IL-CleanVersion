@@ -177,10 +177,10 @@ public class ServerIroha<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn
     @Override
     public void updateServer()
     {
-        if (serverentitiesmemory.skinningentities != null && ((WorldServer)this.world).getEntityFromUuid(serverentitiesmemory.skinningentities.getUniqueID()) == null)
-        {
-            serverentitiesmemory.skinningentities = null;
-        }
+//        if (serverentitiesmemory.skinningentities != null && ((WorldServer)this.world).getEntityFromUuid(serverentitiesmemory.skinningentities.getUniqueID()) == null)
+//        {
+//            serverentitiesmemory.skinningentities = null;
+//        }
     }
 
     @Override

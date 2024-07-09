@@ -4,6 +4,7 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderE22Locker;
 import com.nali.small.entity.EntityEInv;
 import com.nali.small.entity.Inventory;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSeRSe;
 import com.nali.summer.da.both.BothDaE22Locker;
 import com.nali.summer.da.client.ClientDaE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.ClientE22Locker;
@@ -142,7 +143,7 @@ public class SummerE22Locker extends EntityEInv
     {
         RenderE22Locker r = new RenderE22Locker(I.clientloader.stores, ClientDaE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
         ClientE22Locker c = new ClientE22Locker(this, r, new Inventory(1));
-//        c.mb = new MixBoxE(c);
+        c.mb = new MixBoxSeRSe(c);
         c.mr = new MixRenderE22Locker(c);
         r.c = c;
         this.ibotheinv = c;

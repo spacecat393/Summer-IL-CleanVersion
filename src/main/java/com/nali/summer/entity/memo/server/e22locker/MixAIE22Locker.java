@@ -12,7 +12,8 @@ public class MixAIE22Locker<SD, BD extends BothDaE22Locker, E extends EntityEInv
     public static byte[] AI_BYTE_ARRAY =
     {
         AIEInvLockInv.ID,
-//        AIESit.ID//Play-1
+        AIEPlayWithRSe.ID//Play-1
+//        AIESit.ID
     };
 
     public MixAIE22Locker(S s)

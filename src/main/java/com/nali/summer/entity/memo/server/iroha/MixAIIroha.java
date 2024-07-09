@@ -21,7 +21,7 @@ public class MixAIIroha<SD extends ISoundDaLe, BD extends BothDaIroha<SD>, E ext
         AILeSetLocation.ID,
         AILeFollow.ID,
         AILeRevive.ID,
-        //Play-1
+        AIEPlayWithRSe.ID,//Play-1
         AILeCareOwner.ID,
         AILeAttack.ID,
         AILeInvManageItem.ID,
