@@ -63,7 +63,7 @@ public class ServerSaori<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn
         {
             {
                 new FrameSleFLoopDie(this, 0),
-                new FrameSeTLoopSit(this, 2),
+                new FrameSTLoopSit(this, 2),
                 new FrameSleFLoopOffSetAttackEndWalk(this, 4),
                 new FrameSleShootAttackPlus(this, 7),//?
                 new FrameSleTLoopAttackWalk(this, 13),

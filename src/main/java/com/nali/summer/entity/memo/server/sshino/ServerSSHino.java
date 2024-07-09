@@ -63,7 +63,7 @@ public class ServerSSHino<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaS
         {
             {
                 new FrameSleFLoopDiePlus(this, 0/*, 2*/),
-                new FrameSeTLoopSit(this, 3+1+2),
+                new FrameSTLoopSit(this, 3+1+2),
                 new FrameSleFLoopOffSetAttackEndWalk(this, 5+1+2),
                 new FrameSleShoot(this, 8+1+2),
                 new FrameSleTLoopAttackWalk(this, 13+1+2),

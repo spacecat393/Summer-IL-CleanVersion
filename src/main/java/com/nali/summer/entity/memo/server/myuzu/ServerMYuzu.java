@@ -60,7 +60,7 @@ public class ServerMYuzu<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn
         {
             {
                 new FrameSleFLoopDie(this, 0),
-                new FrameSeTLoopSit(this, 2),
+                new FrameSTLoopSit(this, 2),
                 new FrameSleFLoopOffSetAttackPrepare(this, 4),
                 new FrameSleAttack(this, 7),
                 new FrameSleTLoopAttackWalk(this, 9),

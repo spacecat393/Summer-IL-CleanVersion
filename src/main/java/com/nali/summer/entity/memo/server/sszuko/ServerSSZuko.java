@@ -13,7 +13,7 @@ import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopDie;
 import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreeHardReady;
 import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSleFLoopFreePSrE;
 import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSTLoop;
-import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSeTLoopSit;
+import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSTLoopSit;
 import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSleTLoopWalk;
 import com.nali.sound.ISoundDaLe;
 
@@ -70,7 +70,7 @@ public class ServerSSZuko<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaS
             {
                 new FrameSleFLoopDie(this, 0),
                 new FrameSleProtect(this, 2),
-                new FrameSeTLoopSit(this, 7),
+                new FrameSTLoopSit(this, 7),
                 new FrameSleTLoopWalk(this, 9),
                 new FrameSFLoopFreeHardReady(this, 11),
                 new FrameSleFLoopFreePSrE(this, 13),
