@@ -22,7 +22,7 @@ public class MixAIIbuki<SD extends ISoundDaLe, BD extends BothDaIbuki<SD>, E ext
         AILeSetLocation.ID,
         AILeFollow.ID,
         AILeRevive.ID,
-        AILePlayWithSSe.ID,//Play+1
+        AILePlayWithSSle.ID,//Play+1
         AILeCareOwner.ID,
         AILeAttack.ID,
         AILeInvManageItem.ID,
@@ -39,6 +39,8 @@ public class MixAIIbuki<SD extends ISoundDaLe, BD extends BothDaIbuki<SD>, E ext
         496
     };
 
+    public AILePlayWithSSle aileplaywithssle;
+
     public MixAIIbuki(S s)
     {
         super(s);
@@ -47,7 +49,9 @@ public class MixAIIbuki<SD extends ISoundDaLe, BD extends BothDaIbuki<SD>, E ext
     @Override
     public void init()
     {
-        ((AILePlayWithSSe)this.s.a.aie_map.get(AILePlayWithSSe.ID)).e2_class = SummerIroha.class;
+        this.aileplaywithssle = ((AILePlayWithSSle)this.aie_map.get(AILePlayWithSSle.ID));
+        this.aileplaywithssle.e2_class = SummerIroha.class;
+//        ((AILePlayWithSSle)this.s.a.aie_map.get(AILePlayWithSSle.ID)).e2_class = SummerIroha.class;
 
         AILeAttack<SD, BD, E, I, S, ?> aileattack = (AILeAttack<SD, BD, E, I, S, ?>)this.s.a.aie_map.get(AILeAttack.ID);
         aileattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;

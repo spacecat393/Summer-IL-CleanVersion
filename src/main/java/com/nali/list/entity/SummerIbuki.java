@@ -6,7 +6,6 @@ import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaIbuki;
-import com.nali.summer.da.both.BothDaIroha;
 import com.nali.summer.da.client.ClientDaIbuki;
 import com.nali.summer.entity.memo.client.ibuki.ClientIbuki;
 import com.nali.summer.entity.memo.client.ibuki.MixRenderIbuki;
@@ -29,8 +28,8 @@ public class SummerIbuki extends EntityLeInv
     public static int eggSecondary = 0xab6402;
 
     public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.MAX_SYNC];
-    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.MAX_FRAME + BothDaIroha.MAX_FRAME];
-    public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[2];
+    public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.MAX_FRAME/* + BothDaIroha.MAX_FRAME*/];
+    public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1/*2*/];
 
     static
     {

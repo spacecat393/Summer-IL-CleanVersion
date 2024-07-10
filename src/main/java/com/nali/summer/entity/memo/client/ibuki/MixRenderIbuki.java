@@ -9,8 +9,11 @@ import com.nali.math.Quaternion;
 import com.nali.small.entity.IMixLe;
 import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.memo.client.render.FRenderE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.sound.ISoundDaLe;
+import com.nali.summer.entity.memo.client.iroha.ClientIroha;
+import com.nali.summer.entity.memo.client.iroha.MixRenderIroha;
 import com.nali.system.opengl.memo.client.MemoCurrent;
 import com.nali.system.opengl.memo.client.MemoGs;
 import com.nali.system.opengl.memo.client.MemoSs;
@@ -68,8 +71,9 @@ public class MixRenderIbuki<RG extends MemoGs, RS extends MemoSs, RC extends ICl
 //        }
 //    }
 
+
     @Override
-    public void doRender(RenderE<E> rendere, double ox, double oy, double oz, float partialTicks)
+    public void doRender(FRenderE<E> rendere, double ox, double oy, double oz, float partialTicks)
     {
         GL11.glPushMatrix();
 
@@ -84,13 +88,13 @@ public class MixRenderIbuki<RG extends MemoGs, RS extends MemoSs, RC extends ICl
 //            OpenGLAnimationMemory openglanimationmemory = (OpenGLAnimationMemory)ibukirender.dataloader.object_array[((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID()];
 //            OpenGLAnimationMemory openglanimationmemory = (OpenGLAnimationMemory)OBJECT_LIST.get(((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID());
             r.iroharender.initSkinning(/*openglanimationmemory*/);
-            setAnimation(r.iroharender);
+            MixRenderIroha.setAnimation(this, r.iroharender);
             r.iroharender.setSkinning(/*openglanimationmemory*/);
-            float[] c_vec4 = r.iroharender.get3DSkinning((float)ox, (float)oy, (float)oz, 0.168471F, -0.111817F, -0.35F / (s / 1.5F), IV_INT_ARRAY[12], IV_INT_ARRAY[13]);
+            float[] c_vec4 = r.iroharender.get3DSkinning((float)ox, (float)oy, (float)oz, 0.168471F, -0.111817F, -0.35F / (s / 1.5F), ClientIroha.IV_INT_ARRAY[12], ClientIroha.IV_INT_ARRAY[13]);
             r.apply3DSkinningVec4(c_vec4);
 //            GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
 
-            float[] c_mat4 = r.iroharender.getMat43DSkinning(IV_INT_ARRAY[12], IV_INT_ARRAY[13]);
+            float[] c_mat4 = r.iroharender.getMat43DSkinning(ClientIroha.IV_INT_ARRAY[12], ClientIroha.IV_INT_ARRAY[13]);
             float[] mat4 = new float[]
             {
                 c_mat4[0], c_mat4[4], c_mat4[8], 0,

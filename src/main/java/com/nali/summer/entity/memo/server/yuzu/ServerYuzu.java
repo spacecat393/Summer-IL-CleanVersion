@@ -9,7 +9,7 @@ import com.nali.small.entity.memo.server.ServerSleInv;
 import com.nali.small.entity.memo.server.ai.MixAIE;
 import com.nali.small.entity.memo.server.ai.frame.FrameS;
 import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopDie;
-import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopPlayWithSSeRSePlay;
+import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopSSeRSePlay;
 import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreeHardReady;
 import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSleFLoopFreePSrE;
 import com.nali.small.entity.memo.server.ai.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
@@ -67,8 +67,8 @@ public class ServerYuzu<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn,
         {
             {
                 new FrameSleFLoopDie(this, 0),
-                new FrameSleFLoopPlayWithSSeRSePlay(this, 2),
-                new FrameSleTLoopPlayWithSSeRSeStand(this, 4),
+                new FrameSleFLoopSSeRSePlay(this, 2),
+                new FrameSleTLoopSSeRSeStand(this, 4),
                 new FrameSTLoopSit(this, 6),
                 new FrameSleFLoopOffSetAttackEndWalk(this, 8),
                 new FrameSleShoot(this, 11),

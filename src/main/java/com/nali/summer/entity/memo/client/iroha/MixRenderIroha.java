@@ -31,27 +31,31 @@ public class MixRenderIroha<RG extends MemoGs, RS extends MemoSs, RC extends ICl
     @Override
     public void multiplyAnimation()
     {
-        float head_pitch = this.head_pitch;
-        if (this.head_pitch > 1.04719755119659774615F)
+        setAnimation(this, this.c.r);
+    }
+
+    public static void setAnimation(MixRenderSleInv mr, RenderS r)
+    {
+        float head_pitch = mr.head_pitch;
+        if (mr.head_pitch > 1.04719755119659774615F)
         {
             head_pitch = 1.04719755119659774615F;
         }
-        else if (this.head_pitch < -1.04719755119659774615F)
+        else if (mr.head_pitch < -1.04719755119659774615F)
         {
             head_pitch = -1.04719755119659774615F;
         }
-        M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, this.body_rot).getM4x4();
+        M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, mr.body_rot).getM4x4();
 
-        R r = this.c.r;
         if (r.frame_int_array[0] > 257)
         {
-            M4x4 head_m4x4 = new Quaternion(0, 0, this.net_head_yaw).getM4x4();
+            M4x4 head_m4x4 = new Quaternion(0, 0, mr.net_head_yaw).getM4x4();
 
             head_m4x4.multiply(r.skinning_float_array, 5 * 16);
         }
         else
         {
-            M4x4 head_m4x4 = new Quaternion(-head_pitch, 0, this.net_head_yaw).getM4x4();
+            M4x4 head_m4x4 = new Quaternion(-head_pitch, 0, mr.net_head_yaw).getM4x4();
 
             head_m4x4.multiply(r.skinning_float_array, 20 * 16);
         }

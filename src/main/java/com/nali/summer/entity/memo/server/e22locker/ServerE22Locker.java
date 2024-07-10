@@ -8,8 +8,8 @@ import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.server.ServerSeInv;
 import com.nali.small.entity.memo.server.ai.MixAIE;
 import com.nali.small.entity.memo.server.ai.frame.FrameS;
-import com.nali.small.entity.memo.server.ai.frame.floop.FrameSFLoopPlayWithRSeStand;
-import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreePlayWithRSePlay;
+import com.nali.small.entity.memo.server.ai.frame.floop.FrameSFLoopRSeStand;
+import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreeRSePlay;
 import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSTLoop;
 
 public class ServerE22Locker<SD, BD extends IBothDaNe & IBothDaSn, E extends EntityEInv, I extends IMixE<SD, BD, E>, A extends MixAIE<SD, BD, E, I, ?>> extends ServerSeInv<SD, BD, E, I, A>
@@ -39,8 +39,8 @@ public class ServerE22Locker<SD, BD extends IBothDaNe & IBothDaSn, E extends Ent
         this.frames_2d_array = new FrameS[][]
         {
             {
-                new FrameSFLoopFreePlayWithRSePlay(this, 0),
-                new FrameSFLoopPlayWithRSeStand(this, 2),
+                new FrameSFLoopFreeRSePlay(this, 0),
+                new FrameSFLoopRSeStand(this, 2),
                 new FrameSTLoop(this, 4)
             }
         };

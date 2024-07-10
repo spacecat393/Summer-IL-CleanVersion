@@ -16,7 +16,6 @@ import com.nali.system.opengl.memo.client.MemoGs;
 import com.nali.system.opengl.memo.client.MemoSs;
 import com.nali.system.opengl.memo.client.store.StoreS;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -94,13 +93,12 @@ public class ClientIbuki<RG extends MemoGs, RS extends MemoSs, RC extends IClien
             e.height = bd.Height() * scale;
         }
     }
-
-    @Override
-    public void updateRendering(EntityDataManager entitydatamanager)
-    {
-        super.updateRendering(entitydatamanager);
-        this.r.iroharender.frame_int_array[0] = entitydatamanager.get(this.i.getIntegerDataParameterArray()[1]);
-    }
+//    @Override
+//    public void updateClientObject()
+//    {
+//        super.updateClientObject();
+//        this.r.iroharender.frame_int_array[0] = this.i.getE().getDataManager().get(this.i.getIntegerDataParameterArray()[1]);
+//    }
 
     @Override
     public void initFakeFrame()

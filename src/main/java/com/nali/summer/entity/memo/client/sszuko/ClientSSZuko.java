@@ -80,6 +80,17 @@ public class ClientSSZuko<RG extends MemoGs, RS extends MemoSs, RC extends IClie
     }
 
     @Override
+    public void updateClientObject()//?
+    {
+        super.updateClientObject();
+        DataParameter<Integer>[] integer_dataparameter = this.i.getIntegerDataParameterArray();
+
+        EntityDataManager entitydatamanager = this.i.getE().getDataManager();
+        this.r.frame_int_array[0] = entitydatamanager.get(integer_dataparameter[0]);
+        this.r.seahouserender.frame_int_array[0] = entitydatamanager.get(integer_dataparameter[1]);
+    }
+
+    @Override
     public void initFakeFrame()
     {
         Arrays.fill(this.r.seahouserender.model_byte_array, (byte)0);
@@ -107,17 +118,5 @@ public class ClientSSZuko<RG extends MemoGs, RS extends MemoSs, RC extends IClie
     public float[] getTransformFloatArray()
     {
         return TRANSFORM_FLOAT_ARRAY;
-    }
-
-    @Override
-    public void updateRendering(EntityDataManager entitydatamanager)
-    {
-        ClientEntitiesMemory cliententitiesmemory = (ClientEntitiesMemory)this.bothentitiesmemory;
-        RenderSSZuko sszukorender = (RenderSSZuko)cliententitiesmemory.objectrender;
-
-        DataParameter<Integer>[] integer_dataparameter = this.getIntegerDataParameterArray();
-
-        sszukorender.frame_int_array[0] = entitydatamanager.get(integer_dataparameter[0]);
-        sszukorender.seahouserender.frame_int_array[0] = entitydatamanager.get(integer_dataparameter[1]);
     }
 }
