@@ -103,7 +103,9 @@ public class SummerIroha extends EntityLeInv
     public void newS()
     {
         ServerIroha s = new ServerIroha(this, new Inventory(1));
-        s.a = new MixAIIroha(s);
+        MixAIIroha a = new MixAIIroha(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }

@@ -103,7 +103,9 @@ public class SummerNasu extends EntityLeInv
     public void newS()
     {
         ServerNasu s = new ServerNasu(this, new Inventory(1));
-        s.a = new MixAINasu(s);
+        MixAINasu a = new MixAINasu(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }

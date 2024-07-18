@@ -126,7 +126,9 @@ public class SummerSSUna extends EntityLeInv
     public void newS()
     {
         ServerSSUna s = new ServerSSUna(this, new Inventory(1));
-        s.a = new MixAISSUna(s);
+        MixAISSUna a = new MixAISSUna(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }

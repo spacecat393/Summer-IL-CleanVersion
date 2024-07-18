@@ -24,6 +24,6 @@ public class MixAIE22Locker<SD, BD extends BothDaE22Locker, E extends EntityEInv
     @Override
     public void init()
     {
-
+        super.init();
     }
 }

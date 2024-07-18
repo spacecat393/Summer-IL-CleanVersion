@@ -47,6 +47,7 @@ public class MixAIYuzu<SD extends ISoundDaLe, BD extends BothDaYuzu<SD>, E exten
     @Override
     public void init()
     {
+        super.init();
         ((AILePlayWithSSe)this.s.a.aie_map.get(AILePlayWithSSe.ID)).e2_class = SummerE22Locker.class;
 
         AILeAttack<SD, BD, E, I, S, ?> aileattack = (AILeAttack<SD, BD, E, I, S, ?>)this.s.a.aie_map.get(AILeAttack.ID);

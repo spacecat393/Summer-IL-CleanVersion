@@ -153,7 +153,9 @@ public class SummerE22Locker extends EntityEInv
     public void newS()
     {
         ServerE22Locker s = new ServerE22Locker(this, new Inventory(1));
-        s.a = new MixAIE22Locker(s);
+        MixAIE22Locker a = new MixAIE22Locker(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibotheinv = s;
     }

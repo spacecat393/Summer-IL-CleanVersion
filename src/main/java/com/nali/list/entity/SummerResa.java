@@ -114,7 +114,9 @@ public class SummerResa extends EntityLeInv
     public void newS()
     {
         ServerResa s = new ServerResa(this, new Inventory(1));
-        s.a = new MixAIResa(s);
+        MixAIResa a = new MixAIResa(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }

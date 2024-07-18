@@ -49,6 +49,7 @@ public class MixAIIbuki<SD extends ISoundDaLe, BD extends BothDaIbuki<SD>, E ext
     @Override
     public void init()
     {
+        super.init();
         this.aileplaywithssle = ((AILePlayWithSSle)this.aie_map.get(AILePlayWithSSle.ID));
         this.aileplaywithssle.e2_class = SummerIroha.class;
 //        ((AILePlayWithSSle)this.s.a.aie_map.get(AILePlayWithSSle.ID)).e2_class = SummerIroha.class;

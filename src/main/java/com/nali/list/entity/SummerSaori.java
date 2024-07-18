@@ -126,7 +126,9 @@ public class SummerSaori extends EntityLeInv
     public void newS()
     {
         ServerSaori s = new ServerSaori(this, new Inventory(1));
-        s.a = new MixAISaori(s);
+        MixAISaori a = new MixAISaori(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }

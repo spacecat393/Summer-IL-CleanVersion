@@ -39,6 +39,6 @@ public class MixAISSZuko<SD extends ISoundDaLe, BD extends BothDaSSZuko<SD>, E e
     @Override
     public void init()
     {
-
+        super.init();
     }
 }

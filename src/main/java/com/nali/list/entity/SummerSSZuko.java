@@ -136,7 +136,9 @@ public class SummerSSZuko extends EntityLeInv
     public void newS()
     {
         ServerSSZuko s = new ServerSSZuko(this, new Inventory(1));
-        s.a = new MixAISSZuko(s);
+        MixAISSZuko a = new MixAISSZuko(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }

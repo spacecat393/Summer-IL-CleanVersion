@@ -12,10 +12,17 @@ public class MixAIAris<SD extends ISoundDaLe, BD extends BothDaAris<SD>, E exten
 {
     public static byte[] AI_BYTE_ARRAY =
     {
+        AIEArea.ID,
+        AIEOwner.ID,
+        AIEInvOpenInv.ID,
+        AILeEat.ID,
+
+        AIEPat.ID,
+
         AIEInvLockInv.ID,
         AILeLockDMG.ID,
         AILeMineTo.ID,
-        AILeWalkTo.ID,
+//        AILeWalkTo.ID,
         AILeUseTo.ID,
         AIESit.ID,
         AILeSetLocation.ID,
@@ -27,7 +34,15 @@ public class MixAIAris<SD extends ISoundDaLe, BD extends BothDaAris<SD>, E exten
         AILeInvGetItem.ID,
         AILeRandomWalk.ID,
         AILeLookTo.ID,
-        AILeRandomLook.ID
+        AILeRandomLook.ID,
+
+        //frame
+
+        AILeFindMove.ID,
+        AILeMove.ID,
+        AILeWalkTo.ID,
+        AILeLook.ID,
+        AILeJump.ID
     };
 
     public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -44,6 +59,7 @@ public class MixAIAris<SD extends ISoundDaLe, BD extends BothDaAris<SD>, E exten
     @Override
     public void init()
     {
+        super.init();
         AILeAttack<SD, BD, E, I, S, ?> aileattack = (AILeAttack<SD, BD, E, I, S, ?>)this.s.a.aie_map.get(AILeAttack.ID);
         aileattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
         aileattack.max_magic_point = 2;

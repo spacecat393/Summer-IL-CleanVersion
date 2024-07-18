@@ -206,7 +206,9 @@ public class SummerAris extends EntityLeInv
     public void newS()
     {
         ServerAris s = new ServerAris(this, new Inventory(1));
-        s.a = new MixAIAris(s);
+        MixAIAris a = new MixAIAris(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }

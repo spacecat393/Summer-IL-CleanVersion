@@ -103,7 +103,9 @@ public class SummerYuzu extends EntityLeInv
     public void newS()
     {
         ServerYuzu s = new ServerYuzu(this, new Inventory(1));
-        s.a = new MixAIYuzu(s);
+        MixAIYuzu a = new MixAIYuzu(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }

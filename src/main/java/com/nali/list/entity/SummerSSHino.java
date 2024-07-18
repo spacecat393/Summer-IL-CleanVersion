@@ -103,7 +103,9 @@ public class SummerSSHino extends EntityLeInv
     public void newS()
     {
         ServerSSHino s = new ServerSSHino(this, new Inventory(1));
-        s.a = new MixAISSHino(s);
+        MixAISSHino a = new MixAISSHino(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }

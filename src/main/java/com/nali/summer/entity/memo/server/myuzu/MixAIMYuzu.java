@@ -43,6 +43,7 @@ public class MixAIMYuzu<SD extends ISoundDaLe, BD extends BothDaMYuzu<SD>, E ext
     @Override
     public void init()
     {
+        super.init();
         AILeAttack<SD, BD, E, I, S, ?> aileattack = (AILeAttack<SD, BD, E, I, S, ?>)this.s.a.aie_map.get(AILeAttack.ID);
         aileattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
 //        aileattack.max_magic_point = 4;

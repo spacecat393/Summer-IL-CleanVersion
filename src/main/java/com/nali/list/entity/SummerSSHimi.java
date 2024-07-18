@@ -111,7 +111,9 @@ public class SummerSSHimi extends EntityLeInv
     public void newS()
     {
         ServerSSHimi s = new ServerSSHimi(this, new Inventory(1));
-        s.a = new MixAISSHimi(s);
+        MixAISSHimi a = new MixAISSHimi(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }

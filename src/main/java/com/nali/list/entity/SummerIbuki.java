@@ -103,7 +103,9 @@ public class SummerIbuki extends EntityLeInv
     public void newS()
     {
         ServerIbuki s = new ServerIbuki(this, new Inventory(1));
-        s.a = new MixAIIbuki(s);
+        MixAIIbuki a = new MixAIIbuki(s);
+        s.a = a;
+        a.init();
         s.initFrame();
         this.ibothleinv = s;
     }
