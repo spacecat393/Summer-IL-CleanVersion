@@ -92,10 +92,28 @@ public class ClientAris<RG extends MemoGs, RS extends MemoSs, RC extends IClient
         }
     }
 
-    @Override
-    public void initFakeFrame()
-    {
-    }
+//    @Override
+//    public void initFakeFrame()
+//    {
+////        int max_bones = this.r.rst.memoanimation_list.get(this.r.rc.AnimationID()).bones;
+////
+////        float[] f = new float[]
+////        {
+////            -1, 0, 0, 0,
+////            0, -1, 0, 0,
+////            0, 0, -1, 0,
+////            0, 0, 0, 1
+////        };
+////        System.arraycopy(f, 0, this.r.skinning_float_array, 0, 16);
+////        for (int i = 0; i < max_bones; ++i)
+////        {
+////            System.arraycopy(M4x4.IDENTITY, 0, this.r.skinning_float_array, i * 16, 16);
+////        }
+////        this.r.initSkinning();
+////        this.r.setSkinning();
+////        this.mr.updateSkinning();
+////        super.initFakeFrame();
+//    }
 
     @Override
     public Sound createSound()

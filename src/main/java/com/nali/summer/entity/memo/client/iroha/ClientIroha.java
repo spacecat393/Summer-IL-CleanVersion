@@ -78,11 +78,11 @@ public class ClientIroha<RG extends MemoGs, RS extends MemoSs, RC extends IClien
         }
     }
 
-    @Override
-    public void initFakeFrame()
-    {
-
-    }
+//    @Override
+//    public void initFakeFrame()
+//    {
+//
+//    }
 
     @Override
     public Sound createSound()

@@ -102,6 +102,7 @@ public class ClientResa<RG extends MemoGs, RS extends MemoSs, RC extends IClient
     @Override
     public void initFakeFrame()
     {
+        super.initFakeFrame();
         this.r.model_byte_array[0 / 8] &= 255-1;//255 - Math.pow(2, 0 % 8)
 //        skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
         this.r.model_byte_array[8 / 8] &= 255-1;//255 - Math.pow(2, 8 % 8)

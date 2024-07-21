@@ -225,6 +225,16 @@ public class SummerAris extends EntityLeInv
         return SoundDaAris.ISOUNDDALE;
     }
 
+    @SideOnly(Side.CLIENT)
+    public static ClientAris getC()
+    {
+        RenderAris r = new RenderAris(I.clientloader.stores, ClientDaAris.ICLIENTDAS, BothDaAris.IBOTHDASN);
+        ClientAris c = new ClientAris(null, r, new Inventory(1));
+        r.c = c;
+        c.mr = new MixRenderAris(c);
+        return c;
+    }
+
 //    @Override
 //    @SideOnly(Side.CLIENT)
 //    public Object createObjectRender()

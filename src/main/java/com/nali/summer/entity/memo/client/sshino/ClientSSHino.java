@@ -88,11 +88,11 @@ public class ClientSSHino<RG extends MemoGs, RS extends MemoSs, RC extends IClie
         this.r.model_byte_array[6 / 8] &= 191;//255 - Math.pow(2, 6 % 8)
     }
 
-    @Override
-    public void initFakeFrame()
-    {
-
-    }
+//    @Override
+//    public void initFakeFrame()
+//    {
+//
+//    }
 
     @Override
     public Sound createSound()

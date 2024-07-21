@@ -109,6 +109,7 @@ public class ClientSSHimi<RG extends MemoGs, RS extends MemoSs, RC extends IClie
     @Override
     public void initFakeFrame()
     {
+        super.initFakeFrame();
         this.r.frame_int_array[0] = 379;
     }
 

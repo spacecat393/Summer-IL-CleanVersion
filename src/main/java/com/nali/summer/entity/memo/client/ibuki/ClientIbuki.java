@@ -103,6 +103,7 @@ public class ClientIbuki<RG extends MemoGs, RS extends MemoSs, RC extends IClien
     @Override
     public void initFakeFrame()
     {
+        super.initFakeFrame();
 //        skinningrender.model_byte_array[0 / 8] &= 254;//255 - Math.pow(2, 0 % 8)
 //        skinningrender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
         this.r.model_byte_array[0] &= 254 & 253;

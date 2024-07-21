@@ -79,6 +79,7 @@ public class ClientMYuzu<RG extends MemoGs, RS extends MemoSs, RC extends IClien
     @Override
     public void initFakeFrame()
     {
+        super.initFakeFrame();
         this.r.frame_int_array[0] = 110;
     }
 

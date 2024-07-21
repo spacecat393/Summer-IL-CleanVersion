@@ -7,7 +7,7 @@ import com.nali.small.entity.IMixE;
 import com.nali.small.entity.memo.client.ClientE;
 import com.nali.small.entity.memo.client.IClientS;
 import com.nali.small.entity.memo.client.box.mix.MixBoxE;
-import com.nali.small.entity.memo.client.render.mix.MixRenderE;
+import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.summer.da.both.BothDaE22Locker;
 import com.nali.summer.da.client.ClientDaE22Locker;
 import com.nali.summer.render.SummerRenderSe;
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.nali.Nali.I;
 
 @SideOnly(Side.CLIENT)
-public class RenderE22Locker<E extends Entity, I extends IMixE<SD, BD, E>, MB extends MixBoxE<RG, RS, RC, RST, ?, SD, BD, E, I, MR, C>, MR extends MixRenderE<RG, RS, RC, RST, ?, SD, BD, E, I, MB, C>, C extends ClientE<RG, RS, RC, RST, ?, SD, BD, E, I, MB, MR> & IClientS<RG, RS, RC, RST, ?, SD, BD, E, I>, SD, BD extends IBothDaNe & IBothDaSn, RG extends MemoGs, RS extends MemoSs, RST extends StoreS<RG, RS>, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RG, RS, RST, RC>
+public class RenderE22Locker<E extends Entity, I extends IMixE<SD, BD, E>, MB extends MixBoxE<RG, RS, RC, RST, ?, SD, BD, E, I, MR, C>, MR extends MixRenderSe<RG, RS, RC, RST, ?, SD, BD, E, I, MB, C>, C extends ClientE<RG, RS, RC, RST, ?, SD, BD, E, I, MB, MR> & IClientS<RG, RS, RC, RST, ?, SD, BD, E, I, MR>, SD, BD extends IBothDaNe & IBothDaSn, RG extends MemoGs, RS extends MemoSs, RST extends StoreS<RG, RS>, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RG, RS, RST, RC>
 {
 //    public static IClientDaS ICLIENTDAS = new E22LockerClientDa();
     public RenderE22Locker()

@@ -89,11 +89,11 @@ public class ClientNasu<RG extends MemoGs, RS extends MemoSs, RC extends IClient
         }
     }
 
-    @Override
-    public void initFakeFrame()
-    {
-
-    }
+//    @Override
+//    public void initFakeFrame()
+//    {
+//
+//    }
 
     @Override
     public Sound createSound()
