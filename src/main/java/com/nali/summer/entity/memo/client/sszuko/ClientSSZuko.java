@@ -93,8 +93,8 @@ public class ClientSSZuko<RG extends MemoGs, RS extends MemoSs, RC extends IClie
     @Override
     public void initFakeFrame()
     {
-        super.initFakeFrame();
         Arrays.fill(this.r.seahouserender.model_byte_array, (byte)0);
+        super.initFakeFrame();
     }
 
     @Override
