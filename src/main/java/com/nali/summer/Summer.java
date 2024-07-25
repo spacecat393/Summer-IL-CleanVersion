@@ -1,15 +1,28 @@
 package com.nali.summer;
 
+import com.nali.system.opengl.memo.client.MemoC;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Summer.ID)
 public class Summer
 {
     public final static String ID = "summer";
+    static
+    {
+        if (FMLCommonHandler.instance().getSide() == Side.CLIENT)
+        {
+            int max_bone = 220 * 16;
+            if (MemoC.MAX_BONE < max_bone)
+            {
+                MemoC.MAX_BONE = max_bone;
+            }
+        }
+    }
 
-    @Instance
-    public static Summer I;
+//    @Instance
+//    public static Summer I;
 
 //    @EventHandler
 //    public void onFMLPreInitializationEvent(FMLPreInitializationEvent event)

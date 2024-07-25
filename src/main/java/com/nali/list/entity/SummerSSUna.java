@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerSSUna extends EntityLeInv
 {
     public static int eggPrimary = 0x7d4a39;
@@ -114,7 +112,7 @@ public class SummerSSUna extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderSSUna r = new RenderSSUna(I.clientloader.stores, ClientDaSSUna.ICLIENTDAS, BothDaSSUna.IBOTHDASN);
+        RenderSSUna r = new RenderSSUna(ClientDaSSUna.ICLIENTDAS, BothDaSSUna.IBOTHDASN);
         ClientSSUna c = new ClientSSUna(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderSSUna(c);

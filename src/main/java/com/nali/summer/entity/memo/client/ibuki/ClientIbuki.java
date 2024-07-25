@@ -12,26 +12,23 @@ import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.sound.ISoundDaLe;
 import com.nali.sound.NoSound;
 import com.nali.sound.Sound;
-import com.nali.system.opengl.memo.client.MemoGs;
-import com.nali.system.opengl.memo.client.MemoSs;
-import com.nali.system.opengl.memo.client.store.StoreS;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.list.data.SummerData.MODEL_S_STEP;
+import static com.nali.list.data.SummerData.MODEL_STEP;
 
 @SideOnly(Side.CLIENT)
-public class ClientIbuki<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderIbuki<E, I, MB, MR, ?, SD, BD, RG, RS, RST, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, MR>
+public class ClientIbuki<RC extends IClientDaS, R extends RenderIbuki<E, I, MB, MR, ?, SD, BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RC, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RC, R, SD, BD, E, I, MB, MR>
 {
     public static int[] IV_INT_ARRAY = new int[]
     {
-        9+115 + MODEL_S_STEP, 2882,
-        9+115 + MODEL_S_STEP, 5893,
-        4+115 + MODEL_S_STEP, 290,
-        9+115 + MODEL_S_STEP, 969,
-        9+115 + MODEL_S_STEP, 624,
-        14+115 + MODEL_S_STEP, 38
+        9+115 + MODEL_STEP, 2882,
+        9+115 + MODEL_STEP, 5893,
+        4+115 + MODEL_STEP, 290,
+        9+115 + MODEL_STEP, 969,
+        9+115 + MODEL_STEP, 624,
+        14+115 + MODEL_STEP, 38
     };
     public static float[] ROTATION_FLOAT_ARRAY = new float[]
     {

@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerYuzu extends EntityLeInv
 {
     public static int eggPrimary = 0xfbdad0;
@@ -91,7 +89,7 @@ public class SummerYuzu extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderYuzu r = new RenderYuzu(I.clientloader.stores, ClientDaYuzu.ICLIENTDAS, BothDaYuzu.IBOTHDASN);
+        RenderYuzu r = new RenderYuzu(ClientDaYuzu.ICLIENTDAS, BothDaYuzu.IBOTHDASN);
         ClientYuzu c = new ClientYuzu(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderYuzu(c);

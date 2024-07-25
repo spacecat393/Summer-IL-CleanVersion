@@ -11,27 +11,25 @@ import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.sound.ISoundDaLe;
 import com.nali.sound.Sound;
-import com.nali.system.opengl.memo.client.MemoGs;
-import com.nali.system.opengl.memo.client.MemoSs;
-import com.nali.system.opengl.memo.client.store.StoreS;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.list.data.SummerData.MODEL_S_STEP;
+import static com.nali.list.data.SummerData.MODEL_STEP;
 import static com.nali.list.data.SummerData.TEXTURE_STEP;
+import static com.nali.system.ClientLoader.G_LIST;
 
 @SideOnly(Side.CLIENT)
-public class ClientYuzu<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderYuzu<E, I, MB, MR, ?, SD, BD, RG, RS, RST, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, MR>
+public class ClientYuzu<RC extends IClientDaS, R extends RenderYuzu<E, I, MB, MR, ?, SD, BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RC, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RC, R, SD, BD, E, I, MB, MR>
 {
     public static int[] IV_INT_ARRAY = new int[]
     {
-        5+97 + MODEL_S_STEP, 7105,
-        5+97 + MODEL_S_STEP, 7881,
-        /*0+*/97 + MODEL_S_STEP, 2337,
-        5+97 + MODEL_S_STEP, 689,
-        5+97 + MODEL_S_STEP, 2661,
-        8+97 + MODEL_S_STEP, 69
+        5+97 + MODEL_STEP, 7105,
+        5+97 + MODEL_STEP, 7881,
+        /*0+*/97 + MODEL_STEP, 2337,
+        5+97 + MODEL_STEP, 689,
+        5+97 + MODEL_STEP, 2661,
+        8+97 + MODEL_STEP, 69
     };
     public static float[] ROTATION_FLOAT_ARRAY = new float[]
     {
@@ -58,37 +56,37 @@ public class ClientYuzu<RG extends MemoGs, RS extends MemoSs, RC extends IClient
 
         float scale = this.r.scale;
         RC rc = this.r.rc;
-        RST rst = this.r.rst;
+//        RST rst = this.r.rst;
         if (frame > 195 && frame < 222)
         {
 //            skinningrender.texture_index_int_array[8] = 66;
 //            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].element_array_buffer, 66);
 //            skinningrender.texture_map.put(((OpenGLObjectMemory)skinningrender.dataloader.object_array[rc.StartPart() + 8]).element_array_buffer, 66);
-            this.r.texture_map.put(rst.rg_list.get(rc.StartPart() + 8).element_array_buffer, 66 + TEXTURE_STEP);
+            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).element_array_buffer, 66 + TEXTURE_STEP);
         }
         else if ((frame > 221 && frame < 250) || (frame > 354 && frame < 429))
         {
 //            skinningrender.texture_index_int_array[8] = 67;
 //            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].element_array_buffer, 67);
-            this.r.texture_map.put(rst.rg_list.get(rc.StartPart() + 8).element_array_buffer, 67 + TEXTURE_STEP);
+            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).element_array_buffer, 67 + TEXTURE_STEP);
         }
         else if (frame > 249 && frame < 266)
         {
 //            skinningrender.texture_index_int_array[8] = 68;
 //            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].element_array_buffer, 68);
-            this.r.texture_map.put(rst.rg_list.get(rc.StartPart() + 8).element_array_buffer, 68 + TEXTURE_STEP);
+            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).element_array_buffer, 68 + TEXTURE_STEP);
         }
         else if (frame > 301 && frame < 355)
         {
 //            skinningrender.texture_index_int_array[8] = 69;
 //            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].element_array_buffer, 69);
-            this.r.texture_map.put(rst.rg_list.get(rc.StartPart() + 8).element_array_buffer, 69 + TEXTURE_STEP);
+            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).element_array_buffer, 69 + TEXTURE_STEP);
         }
         else
         {
 //            skinningrender.texture_index_int_array[8] = 9;
 //            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].element_array_buffer, 9);
-            this.r.texture_map.put(rst.rg_list.get(rc.StartPart() + 8).element_array_buffer, 9 + TEXTURE_STEP);
+            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).element_array_buffer, 9 + TEXTURE_STEP);
         }
 
         E e = this.i.getE();

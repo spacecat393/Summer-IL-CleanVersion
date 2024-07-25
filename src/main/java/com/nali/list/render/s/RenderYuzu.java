@@ -8,12 +8,8 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
-import com.nali.summer.da.both.BothDaYuzu;
-import com.nali.summer.da.client.ClientDaYuzu;
 import com.nali.summer.render.SummerRenderSe;
-import com.nali.system.opengl.memo.client.MemoGs;
-import com.nali.system.opengl.memo.client.MemoSs;
-import com.nali.system.opengl.memo.client.store.StoreS;
+import com.nali.system.opengl.memo.client.MemoG;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -21,11 +17,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.nali.Nali.I;
 import static com.nali.list.data.SummerData.TEXTURE_STEP;
+import static com.nali.system.ClientLoader.G_LIST;
 
 @SideOnly(Side.CLIENT)
-public class RenderYuzu<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, ?, SD, BD, E, I, MR, C>, MR extends MixRenderSe<RG, RS, RC, RST, ?, SD, BD, E, I, MB, C>, C extends ClientSle<RG, RS, RC, RST, ?, SD, BD, E, I, MB, MR>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, RG extends MemoGs, RS extends MemoSs, RST extends StoreS<RG, RS>, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RG, RS, RST, RC>
+public class RenderYuzu<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, ?, SD, BD, E, I, MR, C>, MR extends MixRenderSe<RC, ?, SD, BD, E, I, MB, C>, C extends ClientSle<RC, ?, SD, BD, E, I, MB, MR>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RC>
 {
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
@@ -33,14 +29,9 @@ public class RenderYuzu<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>,
 //    public static IClientDaS ICLIENTDAS = new YuzuClientDa();
     public Map<Integer, Integer> texture_map = new HashMap();//element_array_buffer texture_id
 
-    public RenderYuzu()
+    public RenderYuzu(RC rc, BD bd)
     {
-        this((RST)I.clientloader.stores, (RC) ClientDaYuzu.ICLIENTDAS, (BD) BothDaYuzu.IBOTHDASN);
-    }
-
-    public RenderYuzu(RST rst, RC rc, BD bd)
-    {
-        super(rst, rc, bd);
+        super(rc, bd);
 //        this.texture_index_int_array[0] = 62;
 //        this.texture_index_int_array[1] = 54;
 //        this.texture_index_int_array[2] = 63;
@@ -52,11 +43,11 @@ public class RenderYuzu<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>,
 //        this.texture_index_int_array[8] = 9;
 //        this.texture_map.put(this.dataloader.openglobjectmemory_array[CLIENTDATA.StartPart() + 8].element_array_buffer, 9);
 //        this.texture_map.put(((OpenGLObjectMemory)this.dataloader.object_array[CLIENTDATA.StartPart() + 8]).element_array_buffer, 9);
-        this.texture_map.put((rst.rg_list.get(rc.StartPart() + 8)).element_array_buffer, 9 + TEXTURE_STEP);
+        this.texture_map.put((G_LIST.get(rc.StartPart() + 8)).element_array_buffer, 9 + TEXTURE_STEP);
     }
 
     @Override
-    public int getTextureID(RG rg)
+    public int getTextureID(MemoG rg)
     {
         Integer integer = this.texture_map.get(rg.element_array_buffer);
         if (integer == null)

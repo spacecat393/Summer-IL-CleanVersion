@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerNasu extends EntityLeInv
 {
     public static int eggPrimary = 0xF1F6F9;
@@ -91,7 +89,7 @@ public class SummerNasu extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderNasu r = new RenderNasu(I.clientloader.stores, ClientDaNasu.ICLIENTDAS, BothDaNasu.IBOTHDASN);
+        RenderNasu r = new RenderNasu(ClientDaNasu.ICLIENTDAS, BothDaNasu.IBOTHDASN);
         ClientNasu c = new ClientNasu(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderNasu(c);

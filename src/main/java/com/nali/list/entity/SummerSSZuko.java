@@ -21,8 +21,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerSSZuko extends EntityLeInv
 {
     public static int eggPrimary = 0xfff0e2;
@@ -124,7 +122,7 @@ public class SummerSSZuko extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderSSZuko r = new RenderSSZuko(I.clientloader.stores, ClientDaSSZuko.ICLIENTDAS, BothDaSSZuko.IBOTHDASN);
+        RenderSSZuko r = new RenderSSZuko(ClientDaSSZuko.ICLIENTDAS, BothDaSSZuko.IBOTHDASN);
         ClientSSZuko c = new ClientSSZuko(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderSSZuko(c);

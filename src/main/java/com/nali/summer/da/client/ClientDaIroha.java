@@ -12,20 +12,20 @@ public class ClientDaIroha implements IClientDaS
     public static IClientDaS ICLIENTDAS = new ClientDaIroha();
 
     @Override
-    public int AnimationID()
+    public int FrameID()
     {
-        return ANIMATION_STEP + 13;
+        return FRAME_STEP + 13;
     }
 
     @Override
     public int StartPart()
     {
-        return MODEL_S_STEP + 130;
+        return MODEL_STEP + 130;
     }
 
     @Override
     public int EndPart()
     {
-        return MODEL_S_STEP + 141;
+        return MODEL_STEP + 141;
     }
 }

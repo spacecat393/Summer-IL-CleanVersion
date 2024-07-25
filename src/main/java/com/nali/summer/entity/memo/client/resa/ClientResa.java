@@ -12,26 +12,23 @@ import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.sound.ISoundDaLe;
 import com.nali.sound.NoSound;
 import com.nali.sound.Sound;
-import com.nali.system.opengl.memo.client.MemoGs;
-import com.nali.system.opengl.memo.client.MemoSs;
-import com.nali.system.opengl.memo.client.store.StoreS;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.list.data.SummerData.MODEL_S_STEP;
+import static com.nali.list.data.SummerData.MODEL_STEP;
 
 @SideOnly(Side.CLIENT)
-public class ClientResa<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderResa<E, I, MB, MR, ?, SD, BD, RG, RS, RST, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, MR>
+public class ClientResa<RC extends IClientDaS, R extends RenderResa<E, I, MB, MR, ?, SD, BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RC, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RC, R, SD, BD, E, I, MB, MR>
 {
     public static int[] IV_INT_ARRAY = new int[]
     {
-        7+58 + MODEL_S_STEP, 15515,
-        7+58 + MODEL_S_STEP, 16019,
-        1+58 + MODEL_S_STEP, 176,
-        7+58 + MODEL_S_STEP, 2115,
-        7+58 + MODEL_S_STEP, 1941,
-        10+58 + MODEL_S_STEP, 52
+        7+58 + MODEL_STEP, 15515,
+        7+58 + MODEL_STEP, 16019,
+        1+58 + MODEL_STEP, 176,
+        7+58 + MODEL_STEP, 2115,
+        7+58 + MODEL_STEP, 1941,
+        10+58 + MODEL_STEP, 52
     };
     public static float[] ROTATION_FLOAT_ARRAY = new float[]
     {

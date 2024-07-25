@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerIroha extends EntityLeInv
 {
     public static int eggPrimary = 0xadb7c1;
@@ -91,7 +89,7 @@ public class SummerIroha extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderIroha r = new RenderIroha(I.clientloader.stores, ClientDaIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
+        RenderIroha r = new RenderIroha(ClientDaIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
         ClientIroha c = new ClientIroha(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderIroha(c);

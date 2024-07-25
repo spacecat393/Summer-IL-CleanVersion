@@ -8,24 +8,17 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
-import com.nali.summer.da.both.BothDaIbuki;
 import com.nali.summer.da.both.BothDaIroha;
-import com.nali.summer.da.client.ClientDaIbuki;
 import com.nali.summer.da.client.ClientDaIroha;
 import com.nali.summer.render.SummerRenderSe;
-import com.nali.system.opengl.memo.client.MemoGs;
-import com.nali.system.opengl.memo.client.MemoSs;
-import com.nali.system.opengl.memo.client.store.StoreS;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Arrays;
 
-import static com.nali.Nali.I;
-
 @SideOnly(Side.CLIENT)
-public class RenderIbuki<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, ?, SD, BD, E, I, MR, C>, MR extends MixRenderSe<RG, RS, RC, RST, ?, SD, BD, E, I, MB, C>, C extends ClientSle<RG, RS, RC, RST, ?, SD, BD, E, I, MB, MR>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, RG extends MemoGs, RS extends MemoSs, RST extends StoreS<RG, RS>, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RG, RS, RST, RC>
+public class RenderIbuki<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, ?, SD, BD, E, I, MR, C>, MR extends MixRenderSe<RC, ?, SD, BD, E, I, MB, C>, C extends ClientSle<RC, ?, SD, BD, E, I, MB, MR>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RC>
 {
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
@@ -34,14 +27,9 @@ public class RenderIbuki<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
     public RenderIroha iroharender;
     public byte[] model_byte_array;
 
-    public RenderIbuki()
+    public RenderIbuki(RC rc, BD bd)
     {
-        this((RST)I.clientloader.stores, (RC) ClientDaIbuki.ICLIENTDAS, (BD) BothDaIbuki.IBOTHDASN);
-    }
-
-    public RenderIbuki(RST rst, RC rc, BD bd)
-    {
-        super(rst, rc, bd);
+        super(rc, bd);
         this.model_byte_array = new byte[(int)Math.ceil((rc.EndPart() - rc.StartPart()) / 8.0D)];
 //        this.texture_index_int_array[0] = 76;
 //        this.texture_index_int_array[1] = 77;
@@ -58,7 +46,7 @@ public class RenderIbuki<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
 //        this.texture_index_int_array[12] = 81;
 //        this.texture_index_int_array[13] = 83;
 //        this.texture_index_int_array[14] = 9;
-        this.iroharender = new RenderIroha(I.clientloader.stores, ClientDaIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
+        this.iroharender = new RenderIroha(ClientDaIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
         Arrays.fill(this.model_byte_array, (byte)255);
     }
 

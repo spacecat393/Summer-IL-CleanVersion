@@ -11,25 +11,22 @@ import com.nali.small.entity.memo.client.ClientSeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.Sound;
-import com.nali.system.opengl.memo.client.MemoGs;
-import com.nali.system.opengl.memo.client.MemoSs;
-import com.nali.system.opengl.memo.client.store.StoreS;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.list.data.SummerData.MODEL_S_STEP;
+import static com.nali.list.data.SummerData.MODEL_STEP;
 
 @SideOnly(Side.CLIENT)
-public class ClientE22Locker<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderS<BD, RG, RS, RST, RC>, SD, BD extends IBothDaNe & IBothDaSn, E extends EntityEInv, I extends IMixE<SD, BD, E>, MB extends MixBoxE<RG, RS, RC, RST, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSe<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends ClientSeInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, MR>
+public class ClientE22Locker<RC extends IClientDaS, R extends RenderS<BD, RC>, SD, BD extends IBothDaNe & IBothDaSn, E extends EntityEInv, I extends IMixE<SD, BD, E>, MB extends MixBoxE<RC, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSe<RC, R, SD, BD, E, I, MB, ?>> extends ClientSeInv<RC, R, SD, BD, E, I, MB, MR>
 {
     public static int[] IV_INT_ARRAY = new int[]
     {
-        5+90 + MODEL_S_STEP, 523,
-        5+90 + MODEL_S_STEP, 560,
-        5+90 + MODEL_S_STEP, 12,
-        5+90 + MODEL_S_STEP, 451,
-        5+90 + MODEL_S_STEP, 451,
-        4+90 + MODEL_S_STEP, 99
+        5+90 + MODEL_STEP, 523,
+        5+90 + MODEL_STEP, 560,
+        5+90 + MODEL_STEP, 12,
+        5+90 + MODEL_STEP, 451,
+        5+90 + MODEL_STEP, 451,
+        4+90 + MODEL_STEP, 99
     };
     public static float[] ROTATION_FLOAT_ARRAY = new float[]
     {

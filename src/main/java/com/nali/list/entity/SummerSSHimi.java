@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerSSHimi extends EntityLeInv
 {
     public static int eggPrimary = 0xBE9478;
@@ -99,7 +97,7 @@ public class SummerSSHimi extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderSSHimi r = new RenderSSHimi(I.clientloader.stores, ClientDaSSHimi.ICLIENTDAS, BothDaSSHimi.IBOTHDASN);
+        RenderSSHimi r = new RenderSSHimi(ClientDaSSHimi.ICLIENTDAS, BothDaSSHimi.IBOTHDASN);
         ClientSSHimi c = new ClientSSHimi(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderSSHimi(c);

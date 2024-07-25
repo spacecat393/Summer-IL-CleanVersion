@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerAris extends EntityLeInv
 {
     public static int eggPrimary = 0x454D60;
@@ -194,7 +192,7 @@ public class SummerAris extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderAris r = new RenderAris(I.clientloader.stores, ClientDaAris.ICLIENTDAS, BothDaAris.IBOTHDASN);
+        RenderAris r = new RenderAris(ClientDaAris.ICLIENTDAS, BothDaAris.IBOTHDASN);
         ClientAris c = new ClientAris(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderAris(c);
@@ -228,7 +226,7 @@ public class SummerAris extends EntityLeInv
     @SideOnly(Side.CLIENT)
     public static ClientAris getC()
     {
-        RenderAris r = new RenderAris(I.clientloader.stores, ClientDaAris.ICLIENTDAS, BothDaAris.IBOTHDASN);
+        RenderAris r = new RenderAris(ClientDaAris.ICLIENTDAS, BothDaAris.IBOTHDASN);
         ClientAris c = new ClientAris(null, r, new Inventory(1));
         r.c = c;
         c.mr = new MixRenderAris(c);

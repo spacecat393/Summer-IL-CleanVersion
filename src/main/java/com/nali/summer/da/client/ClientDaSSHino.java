@@ -4,8 +4,7 @@ import com.nali.da.client.IClientDaS;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.list.data.SummerData.ANIMATION_STEP;
-import static com.nali.list.data.SummerData.MODEL_S_STEP;
+import static com.nali.list.data.SummerData.*;
 
 @SideOnly(Side.CLIENT)
 public class ClientDaSSHino implements IClientDaS
@@ -13,20 +12,20 @@ public class ClientDaSSHino implements IClientDaS
     public static IClientDaS ICLIENTDAS = new ClientDaSSHino();
 
     @Override
-    public int AnimationID()
+    public int FrameID()
     {
-        return ANIMATION_STEP + 7;
+        return FRAME_STEP + 7;
     }
 
     @Override
     public int StartPart()
     {
-        return MODEL_S_STEP + 69;
+        return MODEL_STEP + 69;
     }
 
     @Override
     public int EndPart()
     {
-        return MODEL_S_STEP + 81;
+        return MODEL_STEP + 81;
     }
 }

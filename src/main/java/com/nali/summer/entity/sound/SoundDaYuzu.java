@@ -3,7 +3,7 @@ package com.nali.summer.entity.sound;
 import com.nali.sound.ISoundDaLe;
 import net.minecraft.server.MinecraftServer;
 
-import static com.nali.list.data.SummerData.OPENAL_STEP;
+import static com.nali.list.data.SummerData.SOUND_STEP;
 
 public class SoundDaYuzu implements ISoundDaLe
 {
@@ -25,15 +25,15 @@ public class SoundDaYuzu implements ISoundDaLe
 
         if (time > 85)
         {
-            return OPENAL_STEP + 2;
+            return SOUND_STEP + 2;
         }
         else if (time > -85)
         {
-            return OPENAL_STEP + 3;
+            return SOUND_STEP + 3;
         }
         else
         {
-            return OPENAL_STEP + 4;
+            return SOUND_STEP + 4;
         }
     }
 
@@ -53,11 +53,11 @@ public class SoundDaYuzu implements ISoundDaLe
 
         if (time > 85)
         {
-            return OPENAL_STEP + 11;
+            return SOUND_STEP + 11;
         }
         else
         {
-            return OPENAL_STEP + 10;
+            return SOUND_STEP + 10;
         }
     }
 
@@ -77,11 +77,11 @@ public class SoundDaYuzu implements ISoundDaLe
 
         if (time > 85)
         {
-            return OPENAL_STEP + 7;
+            return SOUND_STEP + 7;
         }
         else
         {
-            return OPENAL_STEP + 8;
+            return SOUND_STEP + 8;
         }
     }
 
@@ -94,6 +94,6 @@ public class SoundDaYuzu implements ISoundDaLe
     @Override
     public int HARD_READY()
     {
-        return OPENAL_STEP + 12;
+        return SOUND_STEP + 12;
     }
 }

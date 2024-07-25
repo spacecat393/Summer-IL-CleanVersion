@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerSSHino extends EntityLeInv
 {
     public static int eggPrimary = 0xfef4f4;
@@ -91,7 +89,7 @@ public class SummerSSHino extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderSSHino r = new RenderSSHino(I.clientloader.stores, ClientDaSSHino.ICLIENTDAS, BothDaSSHino.IBOTHDASN);
+        RenderSSHino r = new RenderSSHino(ClientDaSSHino.ICLIENTDAS, BothDaSSHino.IBOTHDASN);
         ClientSSHino c = new ClientSSHino(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderSSHino(c);

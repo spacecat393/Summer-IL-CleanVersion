@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerSaori extends EntityLeInv
 {
     public static int eggPrimary = 0x283756;
@@ -114,7 +112,7 @@ public class SummerSaori extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderSaori r = new RenderSaori(I.clientloader.stores, ClientDaSaori.ICLIENTDAS, BothDaSaori.IBOTHDASN);
+        RenderSaori r = new RenderSaori(ClientDaSaori.ICLIENTDAS, BothDaSaori.IBOTHDASN);
         ClientSaori c = new ClientSaori(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderSaori(c);

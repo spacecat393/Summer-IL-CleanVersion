@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerIbuki extends EntityLeInv
 {
     public static int eggPrimary = 0xfef5cb;
@@ -91,7 +89,7 @@ public class SummerIbuki extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderIbuki r = new RenderIbuki(I.clientloader.stores, ClientDaIbuki.ICLIENTDAS, BothDaIbuki.IBOTHDASN);
+        RenderIbuki r = new RenderIbuki(ClientDaIbuki.ICLIENTDAS, BothDaIbuki.IBOTHDASN);
         ClientIbuki c = new ClientIbuki(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderIbuki(c);

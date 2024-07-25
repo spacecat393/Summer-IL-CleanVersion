@@ -14,17 +14,15 @@ import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.sound.ISoundDaLe;
 import com.nali.summer.entity.memo.client.iroha.ClientIroha;
 import com.nali.summer.entity.memo.client.iroha.MixRenderIroha;
-import com.nali.system.opengl.memo.client.MemoCurrent;
-import com.nali.system.opengl.memo.client.MemoGs;
-import com.nali.system.opengl.memo.client.MemoSs;
-import com.nali.system.opengl.memo.client.store.StoreS;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
+import static com.nali.system.opengl.memo.client.MemoC.setFloatBuffer;
+
 @SideOnly(Side.CLIENT)
-public class MixRenderIbuki<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderIbuki<E, I, MB, ?, C, SD, BD, RG, RS, RST, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, ?, C>, C extends ClientSle<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, C>
+public class MixRenderIbuki<RC extends IClientDaS, R extends RenderIbuki<E, I, MB, ?, C, SD, BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, R, SD, BD, E, I, ?, C>, C extends ClientSle<RC, R, SD, BD, E, I, MB, ?>> extends MixRenderSleInv<RC, R, SD, BD, E, I, MB, C>
 {
     public MixRenderIbuki(C c)
     {
@@ -84,9 +82,9 @@ public class MixRenderIbuki<RG extends MemoGs, RS extends MemoSs, RC extends ICl
             float s = this.c.i.getE().getDataManager().get(this.c.i.getFloatDataParameterArray()[1]);
             GL11.glScalef(s, s, s);
             GL11.glTranslated(-ox, -oy, -oz);
-//            OpenGLAnimationMemory openglanimationmemory = ibukirender.dataloader.openglanimationmemory_list.get(((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID());
-//            OpenGLAnimationMemory openglanimationmemory = (OpenGLAnimationMemory)ibukirender.dataloader.object_array[((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID()];
-//            OpenGLAnimationMemory openglanimationmemory = (OpenGLAnimationMemory)OBJECT_LIST.get(((SkinningClientData)ibukirender.iroharender.clientdata).AnimationID());
+//            OpenGLAnimationMemory openglanimationmemory = ibukirender.dataloader.openglanimationmemory_list.get(((SkinningClientData)ibukirender.iroharender.clientdata).FrameID());
+//            OpenGLAnimationMemory openglanimationmemory = (OpenGLAnimationMemory)ibukirender.dataloader.object_array[((SkinningClientData)ibukirender.iroharender.clientdata).FrameID()];
+//            OpenGLAnimationMemory openglanimationmemory = (OpenGLAnimationMemory)OBJECT_LIST.get(((SkinningClientData)ibukirender.iroharender.clientdata).FrameID());
             r.iroharender.initSkinning(/*openglanimationmemory*/);
             MixRenderIroha.setAnimation(this, r.iroharender);
             r.iroharender.setSkinning(/*openglanimationmemory*/);
@@ -102,7 +100,7 @@ public class MixRenderIbuki<RG extends MemoGs, RS extends MemoSs, RC extends ICl
                 c_mat4[2], c_mat4[6], c_mat4[10], 0,
                 0, 0, 0, 1.0F
             };
-            MemoCurrent.setFloatBuffer(mat4);
+            setFloatBuffer(mat4);
 //            GL11.glTranslated(-0.25F, -0.5F, -0.5F);
 //            GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
 //            GL11.glMultMatrix(OpenGLCurrentMemory.OPENGL_FLOATBUFFER);

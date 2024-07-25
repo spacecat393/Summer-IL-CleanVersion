@@ -18,8 +18,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.Nali.I;
-
 public class SummerE22Locker extends EntityEInv
 {
     public static int eggPrimary = 0x1a69a7;
@@ -141,7 +139,7 @@ public class SummerE22Locker extends EntityEInv
     @Override
     public void newC()
     {
-        RenderE22Locker r = new RenderE22Locker(I.clientloader.stores, ClientDaE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
+        RenderE22Locker r = new RenderE22Locker(ClientDaE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
         ClientE22Locker c = new ClientE22Locker(this, r, new Inventory(1));
         c.mb = new MixBoxSeRSe(c);
         c.mr = new MixRenderE22Locker(c);

@@ -9,33 +9,30 @@ import com.nali.small.entity.memo.client.IClientS;
 import com.nali.small.entity.memo.client.box.mix.MixBoxE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.small.render.RenderSe;
-import com.nali.system.opengl.memo.client.MemoGs;
-import com.nali.system.opengl.memo.client.MemoSs;
-import com.nali.system.opengl.memo.client.store.StoreS;
+import com.nali.system.opengl.memo.client.MemoG;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.list.data.SummerData.SHADER_S_STEP;
-import static com.nali.list.data.SummerData.TEXTURE_STEP;
+import static com.nali.list.data.SummerData.*;
 
 @SideOnly(Side.CLIENT)
-public class SummerRenderSe<E extends Entity, I extends IMixE<SD, BD, E>, MB extends MixBoxE<RG, RS, RC, RST, ?, SD, BD, E, I, MR, C>, MR extends MixRenderSe<RG, RS, RC, RST, ?, SD, BD, E, I, MB, C>, C extends ClientE<RG, RS, RC, RST, ?, SD, BD, E, I, MB, MR> & IClientS<RG, RS, RC, RST, ?, SD, BD, E, I, MR>, SD, BD extends IBothDaNe & IBothDaSn, RG extends MemoGs, RS extends MemoSs, RST extends StoreS<RG, RS>, RC extends IClientDaS> extends RenderSe<E, I, MB, MR, C, SD, BD, RG, RS, RST, RC>
+public class SummerRenderSe<E extends Entity, I extends IMixE<SD, BD, E>, MB extends MixBoxE<RC, ?, SD, BD, E, I, MR, C>, MR extends MixRenderSe<RC, ?, SD, BD, E, I, MB, C>, C extends ClientE<RC, ?, SD, BD, E, I, MB, MR> & IClientS<RC, ?, SD, BD, E, I, MR>, SD, BD extends IBothDaNe & IBothDaSn, RC extends IClientDaS> extends RenderSe<E, I, MB, MR, C, SD, BD, RC>
 {
-    public SummerRenderSe(RST rst, RC rc, BD bd)
+    public SummerRenderSe(RC rc, BD bd)
     {
-        super(rst, rc, bd);
+        super(rc, bd);
     }
 
     @Override
-    public int getTextureID(RG rg)
+    public int getTextureID(MemoG rg)
     {
         return TEXTURE_STEP + super.getTextureID(rg);
     }
 
     @Override
-    public int getShaderID(RG rg)
+    public int getShaderID(MemoG rg)
     {
-        return SHADER_S_STEP + super.getShaderID(rg);
+        return SHADER_STEP + super.getShaderID(rg);
     }
 }

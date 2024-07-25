@@ -12,26 +12,23 @@ import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.sound.ISoundDaLe;
 import com.nali.sound.NoSound;
 import com.nali.sound.Sound;
-import com.nali.system.opengl.memo.client.MemoGs;
-import com.nali.system.opengl.memo.client.MemoSs;
-import com.nali.system.opengl.memo.client.store.StoreS;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.list.data.SummerData.MODEL_S_STEP;
+import static com.nali.list.data.SummerData.MODEL_STEP;
 
 @SideOnly(Side.CLIENT)
-public class ClientSSHimi<RG extends MemoGs, RS extends MemoSs, RC extends IClientDaS, RST extends StoreS<RG, RS>, R extends RenderSSHimi<E, I, MB, MR, ?, SD, BD, RG, RS, RST, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RG, RS, RC, RST, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RG, RS, RC, RST, R, SD, BD, E, I, MB, MR>
+public class ClientSSHimi<RC extends IClientDaS, R extends RenderSSHimi<E, I, MB, MR, ?, SD, BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RC, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RC, R, SD, BD, E, I, MB, MR>
 {
     public static int[] IV_INT_ARRAY = new int[]
     {
-        /*0+0 + */MODEL_S_STEP, 9046,
-        /*0+0 + */MODEL_S_STEP, 2581,
-        4/*+0*/ + MODEL_S_STEP, 1275,
-        /*0+0 + */MODEL_S_STEP, 9224,
-        /*0+0 + */MODEL_S_STEP, 7860,
-        12/*+0*/ + MODEL_S_STEP, 69
+        /*0+0 + */MODEL_STEP, 9046,
+        /*0+0 + */MODEL_STEP, 2581,
+        4/*+0*/ + MODEL_STEP, 1275,
+        /*0+0 + */MODEL_STEP, 9224,
+        /*0+0 + */MODEL_STEP, 7860,
+        12/*+0*/ + MODEL_STEP, 69
     };
     public static float[] ROTATION_FLOAT_ARRAY = new float[]
     {

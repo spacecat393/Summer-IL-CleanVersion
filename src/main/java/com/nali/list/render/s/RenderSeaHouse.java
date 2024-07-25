@@ -2,21 +2,14 @@ package com.nali.list.render.s;
 
 import com.nali.da.IBothDaSn;
 import com.nali.da.client.IClientDaS;
-import com.nali.summer.da.both.BothDaSeaHouse;
-import com.nali.summer.da.client.ClientDaSeaHouse;
 import com.nali.summer.render.SummerRenderS;
-import com.nali.system.opengl.memo.client.MemoGs;
-import com.nali.system.opengl.memo.client.MemoSs;
-import com.nali.system.opengl.memo.client.store.StoreS;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Arrays;
 
-import static com.nali.Nali.I;
-
 @SideOnly(Side.CLIENT)
-public class RenderSeaHouse<BD extends IBothDaSn, RG extends MemoGs, RS extends MemoSs, RST extends StoreS<RG, RS>, RC extends IClientDaS> extends SummerRenderS<BD, RG, RS, RST, RC>
+public class RenderSeaHouse<BD extends IBothDaSn, RC extends IClientDaS> extends SummerRenderS<BD, RC>
 {
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
@@ -24,14 +17,9 @@ public class RenderSeaHouse<BD extends IBothDaSn, RG extends MemoGs, RS extends 
 //    public static IClientDaS ICLIENTDAS = new SeaHouseClientDa();
     public byte[] model_byte_array;
 
-    public RenderSeaHouse()
+    public RenderSeaHouse(RC rc, BD bd)
     {
-        this((RST)I.clientloader.stores, (RC) ClientDaSeaHouse.ICLIENTDAS, (BD) BothDaSeaHouse.IBOTHDASN);
-    }
-
-    public RenderSeaHouse(RST rst, RC rc, BD bd)
-    {
-        super(rst, rc, bd);
+        super(rc, bd);
         this.model_byte_array = new byte[(int)Math.ceil((rc.EndPart() - rc.StartPart()) / 8.0D)];
 //        this.texture_index_int_array[0] = 32;
 //        this.texture_index_int_array[1] = 32;
