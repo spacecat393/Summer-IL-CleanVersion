@@ -2,8 +2,10 @@ package com.nali.list.entity;
 
 import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderE22Locker;
-import com.nali.small.entity.EntityEInv;
+import com.nali.small.entity.EntityE;
 import com.nali.small.entity.Inventory;
+import com.nali.small.entity.memo.IBothE;
+import com.nali.small.entity.memo.IBothEInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSeRSe;
 import com.nali.summer.da.both.BothDaE22Locker;
 import com.nali.summer.da.client.ClientDaE22Locker;
@@ -18,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerE22Locker extends EntityEInv
+public class SummerE22Locker extends EntityE
 {
     public static int eggPrimary = 0x1a69a7;
     public static int eggSecondary = 0xffffff;
@@ -45,14 +47,11 @@ public class SummerE22Locker extends EntityEInv
         }
     }
 
+    public IBothEInv ibotheinv;
+
     public SummerE22Locker(World world)
     {
         super(world);
-    }
-
-    @Override
-    protected void entityInit() {
-
     }
 
 //    @Override
@@ -168,6 +167,12 @@ public class SummerE22Locker extends EntityEInv
     public Object getSD()
     {
         return null;
+    }
+
+    @Override
+    public IBothE getB()
+    {
+        return ibotheinv;
     }
 
 //    @Override

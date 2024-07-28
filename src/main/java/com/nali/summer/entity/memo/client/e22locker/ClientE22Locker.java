@@ -4,7 +4,7 @@ import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
 import com.nali.da.client.IClientDaS;
 import com.nali.render.RenderS;
-import com.nali.small.entity.EntityEInv;
+import com.nali.small.entity.EntityE;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.ClientSeInv;
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.nali.list.data.SummerData.MODEL_STEP;
 
 @SideOnly(Side.CLIENT)
-public class ClientE22Locker<RC extends IClientDaS, R extends RenderS<BD, RC>, SD, BD extends IBothDaNe & IBothDaSn, E extends EntityEInv, I extends IMixE<SD, BD, E>, MB extends MixBoxE<RC, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSe<RC, R, SD, BD, E, I, MB, ?>> extends ClientSeInv<RC, R, SD, BD, E, I, MB, MR>
+public class ClientE22Locker<RC extends IClientDaS, R extends RenderS<BD, RC>, SD, BD extends IBothDaNe & IBothDaSn, E extends EntityE, I extends IMixE<SD, BD, E>, MB extends MixBoxE<RC, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSe<RC, R, SD, BD, E, I, MB, ?>> extends ClientSeInv<RC, R, SD, BD, E, I, MB, MR>
 {
     public static int[] IV_INT_ARRAY = new int[]
     {

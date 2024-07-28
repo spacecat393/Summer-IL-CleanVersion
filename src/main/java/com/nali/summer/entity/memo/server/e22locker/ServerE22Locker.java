@@ -2,7 +2,7 @@ package com.nali.summer.entity.memo.server.e22locker;
 
 import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
-import com.nali.small.entity.EntityEInv;
+import com.nali.small.entity.EntityE;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.server.ServerSeInv;
@@ -12,7 +12,7 @@ import com.nali.small.entity.memo.server.ai.frame.floop.FrameSFLoopRSeStand;
 import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreeRSePlay;
 import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSTLoop;
 
-public class ServerE22Locker<SD, BD extends IBothDaNe & IBothDaSn, E extends EntityEInv, I extends IMixE<SD, BD, E>, A extends MixAIE<SD, BD, E, I, ?>> extends ServerSeInv<SD, BD, E, I, A>
+public class ServerE22Locker<SD, BD extends IBothDaNe & IBothDaSn, E extends EntityE, I extends IMixE<SD, BD, E>, A extends MixAIE<SD, BD, E, I, ?>> extends ServerSeInv<SD, BD, E, I, A>
 {
     public static int[][] FRAME_INT_2D_ARRAY = new int[][]
     {

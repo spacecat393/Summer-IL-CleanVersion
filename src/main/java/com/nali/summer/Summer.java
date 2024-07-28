@@ -21,7 +21,7 @@ public class Summer
         }
     }
 
-//    @Instance
+//    @Mod.Instance
 //    public static Summer I;
 
 //    @EventHandler
