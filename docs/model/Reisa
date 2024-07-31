@@ -1,0 +1,25 @@
+open
+ReisaCH0167.Eyes 1 1
+ReisaCH0167.Hair 1 2
+ReisaCH0167.Eyebrow 1 4
+ReisaCH0167.Letter.Outline 0 8
+ReisaCH0167.Weapon 1 16
+ReisaCH0167.Body.Face01.Outline 0 32
+ReisaCH0167.Eyebrow02 1-0 64
+ReisaCH0167.Body 1 128
+ReisaCH0167.Body.Face.Outline 1 1
+ReisaCH0167.Halo 1 2
+ReisaCH0167.Mouth 1 4
+
+close
+ReisaCH0167.Eyes 0 1
+ReisaCH0167.Hair 1 2
+ReisaCH0167.Eyebrow 1 4
+ReisaCH0167.Letter.Outline 0 8
+ReisaCH0167.Weapon 1 16
+ReisaCH0167.Body.Face01.Outline 1-0 32
+ReisaCH0167.Eyebrow02 0 64
+ReisaCH0167.Body 1 128
+ReisaCH0167.Body.Face.Outline 0 1
+ReisaCH0167.Halo 1 2
+ReisaCH0167.Mouth 1 4
