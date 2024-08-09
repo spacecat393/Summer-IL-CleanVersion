@@ -27,7 +27,7 @@ public class RenderYuzu<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>,
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = SummerYuzu.BOTHDATA;
 //    public static IClientDaS ICLIENTDAS = new YuzuClientDa();
-    public Map<Integer, Integer> texture_map = new HashMap();//element_array_buffer texture_id
+    public Map<Integer, Integer> texture_map = new HashMap();//ebo texture_id
 
     public RenderYuzu(RC rc, BD bd)
     {
@@ -41,15 +41,15 @@ public class RenderYuzu<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>,
 //        this.texture_index_int_array[6] = 64;
 //        this.texture_index_int_array[7] = 60;
 //        this.texture_index_int_array[8] = 9;
-//        this.texture_map.put(this.dataloader.openglobjectmemory_array[CLIENTDATA.StartPart() + 8].element_array_buffer, 9);
-//        this.texture_map.put(((OpenGLObjectMemory)this.dataloader.object_array[CLIENTDATA.StartPart() + 8]).element_array_buffer, 9);
-        this.texture_map.put((G_LIST.get(rc.StartPart() + 8)).element_array_buffer, 9 + TEXTURE_STEP);
+//        this.texture_map.put(this.dataloader.openglobjectmemory_array[CLIENTDATA.StartPart() + 8].ebo, 9);
+//        this.texture_map.put(((OpenGLObjectMemory)this.dataloader.object_array[CLIENTDATA.StartPart() + 8]).ebo, 9);
+        this.texture_map.put((G_LIST.get(rc.StartPart() + 8)).ebo, 9 + TEXTURE_STEP);
     }
 
     @Override
     public int getTextureID(MemoG rg)
     {
-        Integer integer = this.texture_map.get(rg.element_array_buffer);
+        Integer integer = this.texture_map.get(rg.ebo);
         if (integer == null)
         {
             return super.getTextureID(rg);

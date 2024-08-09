@@ -60,33 +60,33 @@ public class ClientYuzu<RC extends IClientDaS, R extends RenderYuzu<E, I, MB, MR
         if (frame > 195 && frame < 222)
         {
 //            skinningrender.texture_index_int_array[8] = 66;
-//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].element_array_buffer, 66);
-//            skinningrender.texture_map.put(((OpenGLObjectMemory)skinningrender.dataloader.object_array[rc.StartPart() + 8]).element_array_buffer, 66);
-            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).element_array_buffer, 66 + TEXTURE_STEP);
+//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].ebo, 66);
+//            skinningrender.texture_map.put(((OpenGLObjectMemory)skinningrender.dataloader.object_array[rc.StartPart() + 8]).ebo, 66);
+            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).ebo, 66 + TEXTURE_STEP);
         }
         else if ((frame > 221 && frame < 250) || (frame > 354 && frame < 429))
         {
 //            skinningrender.texture_index_int_array[8] = 67;
-//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].element_array_buffer, 67);
-            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).element_array_buffer, 67 + TEXTURE_STEP);
+//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].ebo, 67);
+            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).ebo, 67 + TEXTURE_STEP);
         }
         else if (frame > 249 && frame < 266)
         {
 //            skinningrender.texture_index_int_array[8] = 68;
-//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].element_array_buffer, 68);
-            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).element_array_buffer, 68 + TEXTURE_STEP);
+//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].ebo, 68);
+            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).ebo, 68 + TEXTURE_STEP);
         }
         else if (frame > 301 && frame < 355)
         {
 //            skinningrender.texture_index_int_array[8] = 69;
-//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].element_array_buffer, 69);
-            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).element_array_buffer, 69 + TEXTURE_STEP);
+//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].ebo, 69);
+            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).ebo, 69 + TEXTURE_STEP);
         }
         else
         {
 //            skinningrender.texture_index_int_array[8] = 9;
-//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].element_array_buffer, 9);
-            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).element_array_buffer, 9 + TEXTURE_STEP);
+//            skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].ebo, 9);
+            this.r.texture_map.put(G_LIST.get(rc.StartPart() + 8).ebo, 9 + TEXTURE_STEP);
         }
 
         E e = this.i.getE();
