@@ -9,7 +9,7 @@ import static com.nali.list.data.SummerData.*;
 @SideOnly(Side.CLIENT)
 public class ClientDaMYuzu implements IClientDaS
 {
-    public static IClientDaS ICLIENTDAS = new ClientDaMYuzu();
+//    public static IClientDaS ICLIENTDAS = new ClientDaMYuzu();
 
     @Override
     public int FrameID()

@@ -8,6 +8,8 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
+import com.nali.summer.da.both.BothDaYuzu;
+import com.nali.summer.da.client.ClientDaYuzu;
 import com.nali.summer.render.SummerRenderSe;
 import com.nali.system.opengl.memo.client.MemoG;
 import net.minecraft.entity.EntityLivingBase;
@@ -26,7 +28,8 @@ public class RenderYuzu<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>,
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = SummerYuzu.BOTHDATA;
-//    public static IClientDaS ICLIENTDAS = new YuzuClientDa();
+    public static IClientDaS ICLIENTDAS = new ClientDaYuzu();
+    public static IBothDaSn IBOTHDASN = BothDaYuzu.IBOTHDASN;
     public Map<Integer, Integer> texture_map = new HashMap();//ebo texture_id
 
     public RenderYuzu(RC rc, BD bd)

@@ -192,7 +192,7 @@ public class SummerArisu extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderArisu r = new RenderArisu(ClientDaArisu.ICLIENTDAS, BothDaArisu.IBOTHDASN);
+        RenderArisu r = new RenderArisu(RenderArisu.ICLIENTDAS, BothDaArisu.IBOTHDASN);
         ClientArisu c = new ClientArisu(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderArisu(c);
@@ -226,7 +226,7 @@ public class SummerArisu extends EntityLeInv
     @SideOnly(Side.CLIENT)
     public static ClientArisu getC()
     {
-        RenderArisu r = new RenderArisu(ClientDaArisu.ICLIENTDAS, BothDaArisu.IBOTHDASN);
+        RenderArisu r = new RenderArisu(RenderArisu.ICLIENTDAS, BothDaArisu.IBOTHDASN);
         ClientArisu c = new ClientArisu(null, r, new Inventory(1));
         r.c = c;
         c.mr = new MixRenderArisu(c);

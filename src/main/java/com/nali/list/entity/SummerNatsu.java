@@ -6,7 +6,6 @@ import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaNatsu;
-import com.nali.summer.da.client.ClientDaNatsu;
 import com.nali.summer.entity.memo.client.natsu.ClientNatsu;
 import com.nali.summer.entity.memo.client.natsu.MixRenderNatsu;
 import com.nali.summer.entity.memo.server.natsu.MixAINatsu;
@@ -89,7 +88,7 @@ public class SummerNatsu extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderNatsu r = new RenderNatsu(ClientDaNatsu.ICLIENTDAS, BothDaNatsu.IBOTHDASN);
+        RenderNatsu r = new RenderNatsu(RenderNatsu.ICLIENTDAS, BothDaNatsu.IBOTHDASN);
         ClientNatsu c = new ClientNatsu(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderNatsu(c);

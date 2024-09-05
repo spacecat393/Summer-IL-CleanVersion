@@ -6,7 +6,6 @@ import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaIbuki;
-import com.nali.summer.da.client.ClientDaIbuki;
 import com.nali.summer.entity.memo.client.ibuki.ClientIbuki;
 import com.nali.summer.entity.memo.client.ibuki.MixRenderIbuki;
 import com.nali.summer.entity.memo.server.ibuki.MixAIIbuki;
@@ -89,7 +88,7 @@ public class SummerIbuki extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderIbuki r = new RenderIbuki(ClientDaIbuki.ICLIENTDAS, BothDaIbuki.IBOTHDASN);
+        RenderIbuki r = new RenderIbuki(RenderIbuki.ICLIENTDAS, BothDaIbuki.IBOTHDASN);
         ClientIbuki c = new ClientIbuki(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderIbuki(c);

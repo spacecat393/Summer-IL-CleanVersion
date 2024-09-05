@@ -8,6 +8,8 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
+import com.nali.summer.da.both.BothDaSSHoshino;
+import com.nali.summer.da.client.ClientDaSSHoshino;
 import com.nali.summer.render.SummerRenderSe;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
@@ -21,7 +23,8 @@ public class RenderSSHoshino<E extends EntityLivingBase, I extends IMixLe<SD, BD
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = SummerSSHino.BOTHDATA;
-//    public static IClientDaS ICLIENTDAS = new SSHinoClientDa();
+    public static IClientDaS ICLIENTDAS = new ClientDaSSHoshino();
+    public static IBothDaSn IBOTHDASN = BothDaSSHoshino.IBOTHDASN;
     public byte[] model_byte_array;
 
     public RenderSSHoshino(RC rc, BD bd)

@@ -8,6 +8,8 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
+import com.nali.summer.da.both.BothDaReisa;
+import com.nali.summer.da.client.ClientDaReisa;
 import com.nali.summer.render.SummerRenderSe;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
@@ -21,7 +23,8 @@ public class RenderReisa<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = SummerResa.BOTHDATA;
-//    public static IClientDaS ICLIENTDAS = new ResaClientDa();
+    public static IClientDaS ICLIENTDAS = new ClientDaReisa();
+    public static IBothDaSn IBOTHDASN = BothDaReisa.IBOTHDASN;
     public byte[] model_byte_array;
 
     public RenderReisa(RC rc, BD bd)

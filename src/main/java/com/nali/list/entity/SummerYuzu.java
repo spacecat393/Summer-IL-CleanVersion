@@ -89,7 +89,7 @@ public class SummerYuzu extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderYuzu r = new RenderYuzu(ClientDaYuzu.ICLIENTDAS, BothDaYuzu.IBOTHDASN);
+        RenderYuzu r = new RenderYuzu(RenderYuzu.ICLIENTDAS, BothDaYuzu.IBOTHDASN);
         ClientYuzu c = new ClientYuzu(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderYuzu(c);

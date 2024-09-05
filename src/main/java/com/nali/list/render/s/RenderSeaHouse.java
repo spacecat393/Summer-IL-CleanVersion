@@ -2,6 +2,8 @@ package com.nali.list.render.s;
 
 import com.nali.da.IBothDaSn;
 import com.nali.da.client.IClientDaS;
+import com.nali.summer.da.both.BothDaSeaHouse;
+import com.nali.summer.da.client.ClientDaSeaHouse;
 import com.nali.summer.render.SummerRenderS;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -14,7 +16,8 @@ public class RenderSeaHouse<BD extends IBothDaSn, RC extends IClientDaS> extends
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = new SeaHouseBothDa();
-//    public static IClientDaS ICLIENTDAS = new SeaHouseClientDa();
+    public static IClientDaS ICLIENTDAS = new ClientDaSeaHouse();
+    public static IBothDaSn IBOTHDASN = BothDaSeaHouse.IBOTHDASN;
     public byte[] model_byte_array;
 
     public RenderSeaHouse(RC rc, BD bd)

@@ -89,7 +89,7 @@ public class SummerIroha extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderIroha r = new RenderIroha(ClientDaIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
+        RenderIroha r = new RenderIroha(RenderIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
         ClientIroha c = new ClientIroha(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderIroha(c);

@@ -8,7 +8,6 @@ import com.nali.small.entity.memo.IBothE;
 import com.nali.small.entity.memo.IBothEInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSeRSe;
 import com.nali.summer.da.both.BothDaE22Locker;
-import com.nali.summer.da.client.ClientDaE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.ClientE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.MixRenderE22Locker;
 import com.nali.summer.entity.memo.server.e22locker.MixAIE22Locker;
@@ -138,7 +137,7 @@ public class SummerE22Locker extends EntityE
     @Override
     public void newC()
     {
-        RenderE22Locker r = new RenderE22Locker(ClientDaE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
+        RenderE22Locker r = new RenderE22Locker(RenderE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
         ClientE22Locker c = new ClientE22Locker(this, r, new Inventory(1));
         c.mb = new MixBoxSeRSe(c);
         c.mr = new MixRenderE22Locker(c);

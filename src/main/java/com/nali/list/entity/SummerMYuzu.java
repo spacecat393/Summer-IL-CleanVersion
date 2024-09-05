@@ -6,7 +6,6 @@ import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaMYuzu;
-import com.nali.summer.da.client.ClientDaMYuzu;
 import com.nali.summer.entity.memo.client.myuzu.ClientMYuzu;
 import com.nali.summer.entity.memo.client.myuzu.MixRenderMYuzu;
 import com.nali.summer.entity.memo.server.myuzu.MixAIMYuzu;
@@ -97,7 +96,7 @@ public class SummerMYuzu extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderMYuzu r = new RenderMYuzu(ClientDaMYuzu.ICLIENTDAS, BothDaMYuzu.IBOTHDASN);
+        RenderMYuzu r = new RenderMYuzu(RenderMYuzu.ICLIENTDAS, BothDaMYuzu.IBOTHDASN);
         ClientMYuzu c = new ClientMYuzu(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderMYuzu(c);

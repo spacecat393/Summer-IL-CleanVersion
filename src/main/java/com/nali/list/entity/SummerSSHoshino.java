@@ -89,7 +89,7 @@ public class SummerSSHoshino extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderSSHoshino r = new RenderSSHoshino(ClientDaSSHoshino.ICLIENTDAS, BothDaSSHoshino.IBOTHDASN);
+        RenderSSHoshino r = new RenderSSHoshino(RenderSSHoshino.ICLIENTDAS, BothDaSSHoshino.IBOTHDASN);
         ClientSSHoshino c = new ClientSSHoshino(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderSSHoshino(c);

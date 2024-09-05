@@ -8,8 +8,9 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
+import com.nali.summer.da.both.BothDaSSShizuko;
 import com.nali.summer.da.both.BothDaSeaHouse;
-import com.nali.summer.da.client.ClientDaSeaHouse;
+import com.nali.summer.da.client.ClientDaSSShizuko;
 import com.nali.summer.render.SummerRenderSe;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
@@ -21,7 +22,8 @@ public class RenderSSShizuko<E extends EntityLivingBase, I extends IMixLe<SD, BD
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = SummerSSZuko.BOTHDATA;
-//    public static IClientDaS ICLIENTDAS = new SSZukoClientDa();
+    public static IClientDaS ICLIENTDAS = new ClientDaSSShizuko();
+    public static IBothDaSn IBOTHDASN = BothDaSSShizuko.IBOTHDASN;
     public RenderSeaHouse seahouserender;
 //    public byte[] model_byte_array;
 
@@ -41,7 +43,7 @@ public class RenderSSShizuko<E extends EntityLivingBase, I extends IMixLe<SD, BD
 //        this.texture_index_int_array[9] = 32;
 //        this.texture_index_int_array[10] = 32;
 //        this.texture_index_int_array[11] = 31;
-        this.seahouserender = new RenderSeaHouse(ClientDaSeaHouse.ICLIENTDAS, BothDaSeaHouse.IBOTHDASN);
+        this.seahouserender = new RenderSeaHouse(RenderSeaHouse.ICLIENTDAS, BothDaSeaHouse.IBOTHDASN);
     }
 
 //    @Override

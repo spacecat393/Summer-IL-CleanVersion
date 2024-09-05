@@ -6,7 +6,6 @@ import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaSSHifumi;
-import com.nali.summer.da.client.ClientDaSSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.ClientSSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.MixRenderSSHifumi;
 import com.nali.summer.entity.memo.server.sshifumi.MixAISSHifumi;
@@ -97,7 +96,7 @@ public class SummerSSHifumi extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderSSHifumi r = new RenderSSHifumi(ClientDaSSHifumi.ICLIENTDAS, BothDaSSHifumi.IBOTHDASN);
+        RenderSSHifumi r = new RenderSSHifumi(RenderSSHifumi.ICLIENTDAS, BothDaSSHifumi.IBOTHDASN);
         ClientSSHifumi c = new ClientSSHifumi(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderSSHifumi(c);

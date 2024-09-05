@@ -8,6 +8,8 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
+import com.nali.summer.da.both.BothDaIroha;
+import com.nali.summer.da.client.ClientDaIroha;
 import com.nali.summer.render.SummerRenderSe;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
@@ -21,7 +23,8 @@ public class RenderIroha<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = SummerIroha.BOTHDATA;
-//    public static IClientDaS ICLIENTDAS = new IrohaClientDa();
+    public static IClientDaS ICLIENTDAS = new ClientDaIroha();
+    public static IBothDaSn IBOTHDASN = BothDaIroha.IBOTHDASN;
     public byte[] model_byte_array;
 
     public RenderIroha(RC rc, BD bd)

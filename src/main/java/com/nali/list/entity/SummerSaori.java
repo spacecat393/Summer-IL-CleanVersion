@@ -6,7 +6,6 @@ import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaSaori;
-import com.nali.summer.da.client.ClientDaSaori;
 import com.nali.summer.entity.memo.client.saori.ClientSaori;
 import com.nali.summer.entity.memo.client.saori.MixRenderSaori;
 import com.nali.summer.entity.memo.server.saori.MixAISaori;
@@ -112,7 +111,7 @@ public class SummerSaori extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderSaori r = new RenderSaori(ClientDaSaori.ICLIENTDAS, BothDaSaori.IBOTHDASN);
+        RenderSaori r = new RenderSaori(RenderSaori.ICLIENTDAS, BothDaSaori.IBOTHDASN);
         ClientSaori c = new ClientSaori(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderSaori(c);

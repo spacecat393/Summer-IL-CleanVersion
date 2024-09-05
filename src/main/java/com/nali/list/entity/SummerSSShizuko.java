@@ -7,7 +7,6 @@ import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaSSShizuko;
 import com.nali.summer.da.both.BothDaSeaHouse;
-import com.nali.summer.da.client.ClientDaSSShizuko;
 import com.nali.summer.entity.memo.client.ssshizuko.ClientSSShizuko;
 import com.nali.summer.entity.memo.client.ssshizuko.MixRenderSSShizuko;
 import com.nali.summer.entity.memo.server.ssshizuko.MixAISSShizuko;
@@ -122,7 +121,7 @@ public class SummerSSShizuko extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderSSShizuko r = new RenderSSShizuko(ClientDaSSShizuko.ICLIENTDAS, BothDaSSShizuko.IBOTHDASN);
+        RenderSSShizuko r = new RenderSSShizuko(RenderSSShizuko.ICLIENTDAS, BothDaSSShizuko.IBOTHDASN);
         ClientSSShizuko c = new ClientSSShizuko(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderSSShizuko(c);

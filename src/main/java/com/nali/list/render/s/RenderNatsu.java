@@ -8,6 +8,8 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
+import com.nali.summer.da.both.BothDaNatsu;
+import com.nali.summer.da.client.ClientDaNatsu;
 import com.nali.summer.render.SummerRenderSe;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
@@ -20,7 +22,8 @@ public class RenderNatsu<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
 {
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
-//    public static IClientDaS ICLIENTDAS = new NasuClientDa();
+    public static IClientDaS ICLIENTDAS = new ClientDaNatsu();
+    public static IBothDaSn IBOTHDASN = BothDaNatsu.IBOTHDASN;
     public byte[] model_byte_array;
 
     public RenderNatsu(RC rc, BD bd)

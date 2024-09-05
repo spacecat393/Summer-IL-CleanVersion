@@ -8,6 +8,8 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
+import com.nali.summer.da.both.BothDaMYuzu;
+import com.nali.summer.da.client.ClientDaMYuzu;
 import com.nali.summer.render.SummerRenderSe;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,7 +21,8 @@ public class RenderMYuzu<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = SummerMYuzu.BOTHDATA;
-//    public static IClientDaS ICLIENTDAS = new MYuzuClientDa();
+    public static IClientDaS ICLIENTDAS = new ClientDaMYuzu();
+    public static IBothDaSn IBOTHDASN = BothDaMYuzu.IBOTHDASN;
 
     public RenderMYuzu(RC rc, BD bd)
     {

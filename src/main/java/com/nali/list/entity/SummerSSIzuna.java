@@ -112,7 +112,7 @@ public class SummerSSIzuna extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderSSIzuna r = new RenderSSIzuna(ClientDaSSIzuna.ICLIENTDAS, BothDaSSIzuna.IBOTHDASN);
+        RenderSSIzuna r = new RenderSSIzuna(RenderSSIzuna.ICLIENTDAS, BothDaSSIzuna.IBOTHDASN);
         ClientSSIzuna c = new ClientSSIzuna(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderSSIzuna(c);

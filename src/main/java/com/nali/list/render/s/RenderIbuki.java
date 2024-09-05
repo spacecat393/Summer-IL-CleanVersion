@@ -8,8 +8,9 @@ import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
+import com.nali.summer.da.both.BothDaIbuki;
 import com.nali.summer.da.both.BothDaIroha;
-import com.nali.summer.da.client.ClientDaIroha;
+import com.nali.summer.da.client.ClientDaIbuki;
 import com.nali.summer.render.SummerRenderSe;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
@@ -23,7 +24,8 @@ public class RenderIbuki<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
 //    public static int ID;
 //    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
 //    public static BothData BOTHDATA = SummerIbuki.BOTHDATA;
-//    public static IClientDaS ICLIENTDAS = new IbukiClientDa();
+    public static IClientDaS ICLIENTDAS = new ClientDaIbuki();
+    public static IBothDaSn IBOTHDASN = BothDaIbuki.IBOTHDASN;
     public RenderIroha iroharender;
     public byte[] model_byte_array;
 
@@ -46,7 +48,7 @@ public class RenderIbuki<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>
 //        this.texture_index_int_array[12] = 81;
 //        this.texture_index_int_array[13] = 83;
 //        this.texture_index_int_array[14] = 9;
-        this.iroharender = new RenderIroha(ClientDaIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
+        this.iroharender = new RenderIroha(RenderIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
         Arrays.fill(this.model_byte_array, (byte)255);
     }
 

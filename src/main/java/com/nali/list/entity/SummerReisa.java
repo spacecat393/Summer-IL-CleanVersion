@@ -6,7 +6,6 @@ import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaReisa;
-import com.nali.summer.da.client.ClientDaReisa;
 import com.nali.summer.entity.memo.client.reisa.ClientReisa;
 import com.nali.summer.entity.memo.client.reisa.MixRenderReisa;
 import com.nali.summer.entity.memo.server.reisa.MixAIReisa;
@@ -100,7 +99,7 @@ public class SummerReisa extends EntityLeInv
     @Override
     public void newC()
     {
-        RenderReisa r = new RenderReisa(ClientDaReisa.ICLIENTDAS, BothDaReisa.IBOTHDASN);
+        RenderReisa r = new RenderReisa(RenderReisa.ICLIENTDAS, BothDaReisa.IBOTHDASN);
         ClientReisa c = new ClientReisa(this, r, new Inventory(1));
         c.mb = new MixBoxSle(c);
         c.mr = new MixRenderReisa(c);
