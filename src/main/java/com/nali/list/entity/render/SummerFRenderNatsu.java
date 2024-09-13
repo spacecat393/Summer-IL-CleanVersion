@@ -9,8 +9,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class SummerFRenderNatsu<E extends SummerNatsu> extends FRenderSeInv<E>
 {
-    public SummerFRenderNatsu(RenderManager rendermanager)
-    {
-        super(rendermanager);
-    }
+	public SummerFRenderNatsu(RenderManager rendermanager)
+	{
+		super(rendermanager);
+	}
 }

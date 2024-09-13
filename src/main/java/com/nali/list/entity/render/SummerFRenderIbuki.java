@@ -9,8 +9,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class SummerFRenderIbuki<E extends SummerIbuki> extends FRenderSeInv<E>
 {
-    public SummerFRenderIbuki(RenderManager rendermanager)
-    {
-        super(rendermanager);
-    }
+	public SummerFRenderIbuki(RenderManager rendermanager)
+	{
+		super(rendermanager);
+	}
 }

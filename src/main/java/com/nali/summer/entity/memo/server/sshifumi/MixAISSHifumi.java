@@ -10,43 +10,43 @@ import com.nali.summer.da.both.BothDaSSHifumi;
 
 public class MixAISSHifumi<SD extends ISoundDaLe, BD extends BothDaSSHifumi<SD>, E extends EntityLeInv, I extends IMixLe<SD, BD, E>, S extends ServerSleInv<SD, BD, E, I, ?>> extends MixAIEInv<SD, BD, E, I, S>
 {
-    public static byte[] AI_BYTE_ARRAY =
-    {
-        AIEInvLockInv.ID,
-        AILeLockDMG.ID,
-        AILeMineTo.ID,
-        AILeWalkTo.ID,
-        AILeUseTo.ID,
-        AIESit.ID,
-        AILeSetLocation.ID,
-        AILeFollow.ID,
-        AILeRevive.ID,
-        AILeCareOwner.ID,
-        AILeAttack.ID,
-        AILeInvManageItem.ID,
-        AILeInvGetItem.ID,
-        AILeRandomWalk.ID,
-        AILeLookTo.ID,
-        AILeRandomLook.ID
-    };
+	public static byte[] AI_BYTE_ARRAY =
+	{
+		AIEInvLockInv.ID,
+		AILeLockDMG.ID,
+		AILeMineTo.ID,
+		AILeWalkTo.ID,
+		AILeUseTo.ID,
+		AIESit.ID,
+		AILeSetLocation.ID,
+		AILeFollow.ID,
+		AILeRevive.ID,
+		AILeCareOwner.ID,
+		SILeAttack.ID,
+		AILeInvManageItem.ID,
+		AILeInvGetItem.ID,
+		AILeRandomWalk.ID,
+		AILeLookTo.ID,
+		AILeRandomLook.ID
+	};
 
-    public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
-    {
-        203
-    };
+	public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
+	{
+		203
+	};
 
-    public MixAISSHifumi(S s)
-    {
-        super(s);
-    }
+	public MixAISSHifumi(S s)
+	{
+		super(s);
+	}
 
-    @Override
-    public void init()
-    {
-        super.init();
-        AILeAttack<SD, BD, E, I, S, ?> aileattack = (AILeAttack<SD, BD, E, I, S, ?>)this.s.a.aie_map.get(AILeAttack.ID);
-        aileattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
-        aileattack.max_magic_point = 1;
-        aileattack.minimum_distance = 32.0F;
-    }
+	@Override
+	public void init()
+	{
+		super.init();
+		SILeAttack<SD, BD, E, I, S, ?> sileattack = (SILeAttack<SD, BD, E, I, S, ?>)this.s.a.aie_map.get(SILeAttack.ID);
+		sileattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
+		sileattack.max_magic_point = 1;
+		sileattack.minimum_distance = 32.0F;
+	}
 }

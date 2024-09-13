@@ -4,11 +4,11 @@
 //
 //public class SmallRender
 //{
-//    public native void init();
-//    public native void runtime();
+//	public native void init();
+//	public native void runtime();
 //
-//    static
-//    {
-//        System.load(new File("nali/summer/c/libSmallRender.so").getAbsolutePath());
-//    }
+//	static
+//	{
+//		System.load(new File("nali/summer/c/libSmallRender.so").getAbsolutePath());
+//	}
 //}

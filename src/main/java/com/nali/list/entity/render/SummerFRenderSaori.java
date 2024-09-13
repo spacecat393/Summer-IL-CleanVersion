@@ -9,8 +9,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class SummerFRenderSaori<E extends SummerSaori> extends FRenderSeInv<E>
 {
-    public SummerFRenderSaori(RenderManager rendermanager)
-    {
-        super(rendermanager);
-    }
+	public SummerFRenderSaori(RenderManager rendermanager)
+	{
+		super(rendermanager);
+	}
 }

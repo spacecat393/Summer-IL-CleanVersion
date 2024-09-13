@@ -9,8 +9,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class SummerFRenderIroha<E extends SummerIroha> extends FRenderSeInv<E>
 {
-    public SummerFRenderIroha(RenderManager rendermanager)
-    {
-        super(rendermanager);
-    }
+	public SummerFRenderIroha(RenderManager rendermanager)
+	{
+		super(rendermanager);
+	}
 }

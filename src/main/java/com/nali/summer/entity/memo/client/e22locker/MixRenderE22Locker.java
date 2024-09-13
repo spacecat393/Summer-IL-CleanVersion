@@ -17,16 +17,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class MixRenderE22Locker<RC extends IClientDaS, R extends RenderS<BD, RC>, SD, BD extends IBothDaNe & IBothDaSn, E extends Entity, I extends IMixE<SD, BD, E>, MB extends MixBoxE<RC, R, SD, BD, E, I, ?, C>, C extends ClientE<RC, R, SD, BD, E, I, MB, ?> & IClientS<RC, R, SD, BD, E, I, ?>> extends MixRenderSe<RC, R, SD, BD, E, I, MB, C>
 {
-    public MixRenderE22Locker(C c)
-    {
-        super(c);
-        this.shadow_opaque = 0.5F;
-        this.shadow_size = 0.25F;
-    }
+	public MixRenderE22Locker(C c)
+	{
+		super(c);
+		this.shadow_opaque = 0.5F;
+		this.shadow_size = 0.25F;
+	}
 
-    @Override
-    public void multiplyAnimation()
-    {
-        new Quaternion(0, 0, this.head_rot).getM4x4().multiply(this.c.r.skinning_float_array, 0);
-    }
+	@Override
+	public void multiplyAnimation()
+	{
+		new Quaternion(0, 0, this.head_rot).getM4x4().multiply(this.c.r.skinning_float_array, 0);
+	}
 }

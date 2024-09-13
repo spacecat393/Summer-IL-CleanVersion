@@ -12,76 +12,76 @@ import com.nali.small.entity.memo.server.ai.frame.floop.FrameSFLoopRSeStand;
 import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreeRSePlay;
 import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSTLoop;
 
-public class ServerE22Locker<SD, BD extends IBothDaNe & IBothDaSn, E extends EntityE, I extends IMixE<SD, BD, E>, A extends MixAIE<SD, BD, E, I, ?>> extends ServerSeInv<SD, BD, E, I, A>
+public class ServerE22Locker<SD, BD extends IBothDaNe & IBothDaSn, E extends EntityE, I extends IMixE<SD, BD, E>, MS extends MixSIE<SD, BD, E, I, ?>> extends ServerSeInv<SD, BD, E, I, A>
 {
-    public static int[][] FRAME_INT_2D_ARRAY = new int[][]
-    {
-        { 0, 297 },//react
-        { 298, 302 },//noact
-        { 303, 386 }//idle
-    };
-    public static byte[] FRAME_BYTE_ARRAY = new byte[]
-    {
-        0, 0,
-        0, 2,
-        0, 1
-    };
-    public FrameS[][] frames_2d_array;
+	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
+	{
+		{ 0, 297 },//react
+		{ 298, 302 },//noact
+		{ 303, 386 }//idle
+	};
+	public static byte[] FRAME_BYTE_ARRAY = new byte[]
+	{
+		0, 0,
+		0, 2,
+		0, 1
+	};
+	public FrameS[][] frames_2d_array;
 
-    public ServerE22Locker(I i, Inventory inventory)
-    {
-        super(i, inventory);
-    }
+	public ServerE22Locker(I i, Inventory inventory)
+	{
+		super(i, inventory);
+	}
 
-    @Override
-    public void initFrame()
-    {
-        this.frames_2d_array = new FrameS[][]
-        {
-            {
-                new FrameSFLoopFreeRSePlay(this, 0),
-                new FrameSFLoopRSeStand(this, 2),
-                new FrameSTLoop(this, 4)
-            }
-        };
-//        () -> serverentitiesmemory.skinningentities != null && (serverentitiesmemory.statentitiesmemory.stat & 16) == 16 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(0, (byte)16),
-//        () -> serverentitiesmemory.skinningentities != null && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(2),
-//        () -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1)
-    }
+	@Override
+	public void initFrame()
+	{
+		this.frames_2d_array = new FrameS[][]
+		{
+			{
+				new FrameSFLoopFreeRSePlay(this, 0),
+				new FrameSFLoopRSeStand(this, 2),
+				new FrameSTLoop(this, 4)
+			}
+		};
+//		() -> serverentitiesmemory.skinningentities != null && (serverentitiesmemory.statentitiesmemory.stat & 16) == 16 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(0, (byte)16),
+//		() -> serverentitiesmemory.skinningentities != null && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(2),
+//		() -> serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setTLoop(1)
+	}
 
-    @Override
-    public void updateServer()
-    {
-//        if (serverentitiesmemory.skinningentities != null && this.worldserver.getEntityFromUuid(serverentitiesmemory.skinningentities.getUniqueID()) == null)
-//        {
-//            serverentitiesmemory.skinningentities = null;
-//        }
+	@Override
+	public void updateServer()
+	{
+//		if (serverentitiesmemory.skinningentities != null && this.worldserver.getEntityFromUuid(serverentitiesmemory.skinningentities.getUniqueID()) == null)
+//		{
+//			serverentitiesmemory.skinningentities = null;
+//		}
 //
-//        this.renderYawOffset = this.rotationYaw;
-    }
+//		this.renderYawOffset = this.rotationYaw;
+	}
 
-//    @Override
-//    public boolean processInitialInteract(EntityPlayer entityplayer, EnumHand enumhand)
-//    {
-//        serverentitiesmemory.statentitiesmemory.stat ^= 16;
-//        return super.processInitialInteract(entityplayer, enumhand);
-//    }
+//	@Override
+//	public boolean processInitialInteract(EntityPlayer entityplayer, EnumHand enumhand)
+//	{
+//		serverentitiesmemory.statentitiesmemory.stat ^= 16;
+//		return super.processInitialInteract(entityplayer, enumhand);
+//	}
 
-    @Override
-    public FrameS[][] getFrameS2DArray()
-    {
-        return this.frames_2d_array;
-    }
+	@Override
+	public FrameS[][] getFrameS2DArray()
+	{
+		return this.frames_2d_array;
+	}
 
-    @Override
-    public byte[] getFrameByteArray()
-    {
-        return FRAME_BYTE_ARRAY;
-    }
+	@Override
+	public byte[] getFrameByteArray()
+	{
+		return FRAME_BYTE_ARRAY;
+	}
 
-    @Override
-    public int[][] getFrame2DIntArray()
-    {
-        return FRAME_INT_2D_ARRAY;
-    }
+	@Override
+	public int[][] getFrame2DIntArray()
+	{
+		return FRAME_INT_2D_ARRAY;
+	}
 }

@@ -9,23 +9,23 @@ import static com.nali.list.data.SummerData.*;
 @SideOnly(Side.CLIENT)
 public class ClientDaE22Locker implements IClientDaS
 {
-//    public static IClientDaS ICLIENTDAS = new ClientDaE22Locker();
+//	public static IClientDaS ICLIENTDAS = new ClientDaE22Locker();
 
-    @Override
-    public int FrameID()
-    {
-        return FRAME_STEP + 9;
-    }
+	@Override
+	public int FrameID()
+	{
+		return FRAME_STEP + 9;
+	}
 
-    @Override
-    public int StartPart()
-    {
-        return MODEL_STEP + 90;
-    }
+	@Override
+	public int StartPart()
+	{
+		return MODEL_STEP + 90;
+	}
 
-    @Override
-    public int EndPart()
-    {
-        return MODEL_STEP + 97;
-    }
+	@Override
+	public int EndPart()
+	{
+		return MODEL_STEP + 97;
+	}
 }

@@ -9,23 +9,23 @@ import static com.nali.list.data.SummerData.*;
 @SideOnly(Side.CLIENT)
 public class ClientDaIbuki implements IClientDaS
 {
-//    public static IClientDaS ICLIENTDAS = new ClientDaIbuki();
+//	public static IClientDaS ICLIENTDAS = new ClientDaIbuki();
 
-    @Override
-    public int FrameID()
-    {
-        return FRAME_STEP + 12;
-    }
+	@Override
+	public int FrameID()
+	{
+		return FRAME_STEP + 12;
+	}
 
-    @Override
-    public int StartPart()
-    {
-        return MODEL_STEP + 115;
-    }
+	@Override
+	public int StartPart()
+	{
+		return MODEL_STEP + 115;
+	}
 
-    @Override
-    public int EndPart()
-    {
-        return MODEL_STEP + 130;
-    }
+	@Override
+	public int EndPart()
+	{
+		return MODEL_STEP + 130;
+	}
 }

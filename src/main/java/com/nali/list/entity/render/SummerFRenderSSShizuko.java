@@ -9,8 +9,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class SummerFRenderSSShizuko<E extends SummerSSShizuko> extends FRenderSeInv<E>
 {
-    public SummerFRenderSSShizuko(RenderManager rendermanager)
-    {
-        super(rendermanager);
-    }
+	public SummerFRenderSSShizuko(RenderManager rendermanager)
+	{
+		super(rendermanager);
+	}
 }

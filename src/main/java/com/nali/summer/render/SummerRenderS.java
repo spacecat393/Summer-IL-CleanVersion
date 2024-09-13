@@ -12,20 +12,20 @@ import static com.nali.list.data.SummerData.*;
 @SideOnly(Side.CLIENT)
 public class SummerRenderS<BD extends IBothDaSn, RC extends IClientDaS> extends RenderS<BD, RC>
 {
-    public SummerRenderS(RC rc, BD bd)
-    {
-        super(rc, bd);
-    }
+	public SummerRenderS(RC rc, BD bd)
+	{
+		super(rc, bd);
+	}
 
-    @Override
-    public int getTextureID(MemoG rg)
-    {
-        return TEXTURE_STEP + super.getTextureID(rg);
-    }
+	@Override
+	public int getTextureID(MemoG rg)
+	{
+		return TEXTURE_STEP + super.getTextureID(rg);
+	}
 
-    @Override
-    public int getShaderID(MemoG rg)
-    {
-        return SHADER_STEP + super.getShaderID(rg);
-    }
+	@Override
+	public int getShaderID(MemoG rg)
+	{
+		return SHADER_STEP + super.getShaderID(rg);
+	}
 }

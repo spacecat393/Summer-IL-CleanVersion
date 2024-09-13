@@ -18,30 +18,30 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderMYuzu<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, ?, SD, BD, E, I, MR, C>, MR extends MixRenderSe<RC, ?, SD, BD, E, I, MB, C>, C extends ClientSle<RC, ?, SD, BD, E, I, MB, MR>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RC>
 {
-//    public static int ID;
-//    public static DataLoader DATALOADER = RenderHelper.DATALOADER;
-//    public static BothData BOTHDATA = SummerMYuzu.BOTHDATA;
-    public static IClientDaS ICLIENTDAS = new ClientDaMYuzu();
-    public static IBothDaSn IBOTHDASN = BothDaMYuzu.IBOTHDASN;
+//	public static int ID;
+//	public static DataLoader DATALOADER = RenderHelper.DATALOADER;
+//	public static BothData BOTHDATA = SummerMYuzu.BOTHDATA;
+	public static IClientDaS ICLIENTDAS = new ClientDaMYuzu();
+	public static IBothDaSn IBOTHDASN = BothDaMYuzu.IBOTHDASN;
 
-    public RenderMYuzu(RC rc, BD bd)
-    {
-        super(rc, bd);
-//        this.texture_index_int_array[0] = 54;
-//        this.texture_index_int_array[1] = 55;
-//        this.texture_index_int_array[2] = 56;
-//        this.texture_index_int_array[3] = 56;
-//        this.texture_index_int_array[4] = 57;
-//        this.texture_index_int_array[5] = 58;
-//        this.texture_index_int_array[6] = 59;
-//        this.texture_index_int_array[7] = 60;
-//        this.texture_index_int_array[8] = 9;
-    }
+	public RenderMYuzu(RC rc, BD bd)
+	{
+		super(rc, bd);
+//		this.texture_index_int_array[0] = 54;
+//		this.texture_index_int_array[1] = 55;
+//		this.texture_index_int_array[2] = 56;
+//		this.texture_index_int_array[3] = 56;
+//		this.texture_index_int_array[4] = 57;
+//		this.texture_index_int_array[5] = 58;
+//		this.texture_index_int_array[6] = 59;
+//		this.texture_index_int_array[7] = 60;
+//		this.texture_index_int_array[8] = 9;
+	}
 
-//    @Override
-//    public void setGlow()
-//    {
-//        this.glow_byte_array[7 / 8] ^= 128;//Math.pow(2, 7 % 8)
-//        super.setGlow();
-//    }
+//	@Override
+//	public void setGlow()
+//	{
+//		this.glow_byte_array[7 / 8] ^= 128;//Math.pow(2, 7 % 8)
+//		super.setGlow();
+//	}
 }
