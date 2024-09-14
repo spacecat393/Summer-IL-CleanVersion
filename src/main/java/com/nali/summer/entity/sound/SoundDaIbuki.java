@@ -7,6 +7,12 @@ public class SoundDaIbuki implements ISoundDaLe
 	public static ISoundDaLe ISOUNDDALE = new SoundDaIbuki();
 
 	@Override
+	public int EAT()
+	{
+		return -1;
+	}
+
+	@Override
 	public int HURT()
 	{
 		return -1;

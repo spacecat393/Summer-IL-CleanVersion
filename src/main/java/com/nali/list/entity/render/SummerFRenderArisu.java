@@ -7,7 +7,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class SummerFRenderArisu<E extends SummerArisu> extends FRenderSeInv<E>
+public class SummerFRenderArisu
+<
+	E extends SummerArisu
+> extends FRenderSeInv<E>
 {
 	public SummerFRenderArisu(RenderManager rendermanager)
 	{

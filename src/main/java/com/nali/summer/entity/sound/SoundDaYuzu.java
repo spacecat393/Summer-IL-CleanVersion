@@ -10,6 +10,12 @@ public class SoundDaYuzu implements ISoundDaLe
 	public static ISoundDaLe ISOUNDDALE = new SoundDaYuzu();
 
 	@Override
+	public int EAT()
+	{
+		return this.PAT();
+	}
+
+	@Override
 	public int HURT()
 	{
 //		byte time;

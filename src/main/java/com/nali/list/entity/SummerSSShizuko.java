@@ -3,13 +3,14 @@ package com.nali.list.entity;
 import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderSSShizuko;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaSSShizuko;
 import com.nali.summer.da.both.BothDaSeaHouse;
 import com.nali.summer.entity.memo.client.ssshizuko.ClientSSShizuko;
 import com.nali.summer.entity.memo.client.ssshizuko.MixRenderSSShizuko;
-import com.nali.summer.entity.memo.server.ssshizuko.MixAISSShizuko;
+import com.nali.summer.entity.memo.server.ssshizuko.MixSISSShizuko;
 import com.nali.summer.entity.memo.server.ssshizuko.ServerSSShizuko;
 import com.nali.summer.entity.sound.SoundDaSSShizuko;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -20,7 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerSSShizuko extends EntityLeInv
+public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 {
 	public static int eggPrimary = 0xfff0e2;
 	public static int eggSecondary = 0x645353;
@@ -96,7 +97,7 @@ public class SummerSSShizuko extends EntityLeInv
 	@Override
 	public byte[] getAI()
 	{
-		return MixAISSShizuko.AI_BYTE_ARRAY;
+		return MixSISSShizuko.AI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -133,7 +134,7 @@ public class SummerSSShizuko extends EntityLeInv
 	public void newS()
 	{
 		ServerSSShizuko s = new ServerSSShizuko(this, new Inventory(1));
-		MixAISSShizuko a = new MixAISSShizuko(s);
+		MixSISSShizuko a = new MixSISSShizuko(s);
 		s.a = a;
 		a.init();
 		s.initFrame();

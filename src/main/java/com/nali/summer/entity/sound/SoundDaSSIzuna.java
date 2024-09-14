@@ -7,6 +7,12 @@ public class SoundDaSSIzuna implements ISoundDaLe
 	public static ISoundDaLe ISOUNDDALE = new SoundDaSSIzuna();
 
 	@Override
+	public int EAT()
+	{
+		return -1;
+	}
+
+	@Override
 	public int HURT()
 	{
 		return -1;

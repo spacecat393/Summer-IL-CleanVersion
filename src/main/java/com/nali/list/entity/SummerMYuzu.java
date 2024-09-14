@@ -3,12 +3,13 @@ package com.nali.list.entity;
 import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderMYuzu;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaMYuzu;
 import com.nali.summer.entity.memo.client.myuzu.ClientMYuzu;
 import com.nali.summer.entity.memo.client.myuzu.MixRenderMYuzu;
-import com.nali.summer.entity.memo.server.myuzu.MixAIMYuzu;
+import com.nali.summer.entity.memo.server.myuzu.MixSIMYuzu;
 import com.nali.summer.entity.memo.server.myuzu.ServerMYuzu;
 import com.nali.summer.entity.sound.SoundDaMYuzu;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerMYuzu extends EntityLeInv
+public class SummerMYuzu extends EntityLeInv implements IMixESoundDa
 {
 	public static int eggPrimary = 0xfbdad0;
 	public static int eggSecondary = 0xfc6c78;
@@ -71,7 +72,7 @@ public class SummerMYuzu extends EntityLeInv
 	@Override
 	public byte[] getAI()
 	{
-		return MixAIMYuzu.AI_BYTE_ARRAY;
+		return MixSIMYuzu.AI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -108,7 +109,7 @@ public class SummerMYuzu extends EntityLeInv
 	public void newS()
 	{
 		ServerMYuzu s = new ServerMYuzu(this, new Inventory(1));
-		MixAIMYuzu a = new MixAIMYuzu(s);
+		MixSIMYuzu a = new MixSIMYuzu(s);
 		s.a = a;
 		a.init();
 		s.initFrame();

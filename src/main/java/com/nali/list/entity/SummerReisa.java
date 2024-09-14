@@ -3,12 +3,13 @@ package com.nali.list.entity;
 import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderReisa;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaReisa;
 import com.nali.summer.entity.memo.client.reisa.ClientReisa;
 import com.nali.summer.entity.memo.client.reisa.MixRenderReisa;
-import com.nali.summer.entity.memo.server.reisa.MixAIReisa;
+import com.nali.summer.entity.memo.server.reisa.MixSIReisa;
 import com.nali.summer.entity.memo.server.reisa.ServerReisa;
 import com.nali.summer.entity.sound.SoundDaReisa;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerReisa extends EntityLeInv
+public class SummerReisa extends EntityLeInv implements IMixESoundDa
 {
 	public static int eggPrimary = 0x4e466d;
 	public static int eggSecondary = 0xbdb5ff;
@@ -74,7 +75,7 @@ public class SummerReisa extends EntityLeInv
 	@Override
 	public byte[] getAI()
 	{
-		return MixAIReisa.AI_BYTE_ARRAY;
+		return MixSIReisa.AI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -111,7 +112,7 @@ public class SummerReisa extends EntityLeInv
 	public void newS()
 	{
 		ServerReisa s = new ServerReisa(this, new Inventory(1));
-		MixAIReisa a = new MixAIReisa(s);
+		MixSIReisa a = new MixSIReisa(s);
 		s.a = a;
 		a.init();
 		s.initFrame();

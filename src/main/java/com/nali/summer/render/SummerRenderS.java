@@ -10,7 +10,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.nali.list.data.SummerData.*;
 
 @SideOnly(Side.CLIENT)
-public class SummerRenderS<BD extends IBothDaSn, RC extends IClientDaS> extends RenderS<BD, RC>
+public class SummerRenderS
+<
+	BD extends IBothDaSn,
+	RC extends IClientDaS
+> extends RenderS<BD, RC>
 {
 	public SummerRenderS(RC rc, BD bd)
 	{

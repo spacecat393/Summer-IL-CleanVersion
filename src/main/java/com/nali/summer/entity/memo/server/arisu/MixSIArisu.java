@@ -1,50 +1,61 @@
 package com.nali.summer.entity.memo.server.arisu;
 
-import com.nali.list.entity.si.SIEFrame;
-import com.nali.list.entity.si.SILeAttack;
+import com.nali.list.entity.si.*;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixE;
-import com.nali.small.entity.memo.server.ServerLe;
+import com.nali.small.entity.IMixESoundDa;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.server.ServerLeInv;
 import com.nali.small.entity.memo.server.si.MixSIEInv;
 import com.nali.sound.ISoundDaLe;
 import com.nali.summer.da.both.BothDaArisu;
 
-public class MixSIArisu<SD extends ISoundDaLe, BD extends BothDaArisu<SD>, E extends EntityLeInv, I extends IMixE<SD, BD, E>, S extends ServerLe<SD, BD, E, I, ?>> extends MixSIEInv<SD, BD, E, I, S>
+public class MixSIArisu
+<
+	IE extends InvLe,
+	SD extends ISoundDaLe,
+	BD extends BothDaArisu<SD>,
+	E extends EntityLeInv,
+	I extends IMixE<BD, E> & IMixESoundDa<SD>,
+	S extends ServerLeInv<IE, SD, BD, E, I, ?>
+> extends MixSIEInv<BD, E, I, S>
 {
 	public static byte[] SI_BYTE_ARRAY =
 	{
-		AIEArea.ID,
-		AIEOwner.ID,
-		AIEInvOpenInv.ID,
-		AILeEat.ID,
+		SIESound.ID,
 
-		AIEPat.ID,
+		SIEArea.ID,
+		SIEOwner.ID,
+		SIEInvOpenInv.ID,
+		SILeEat.ID,
 
-		AIEInvLockInv.ID,
-		AILeLockDMG.ID,
-		AILeMineTo.ID,
-//		AILeWalkTo.ID,
-		AILeUseTo.ID,
-		AIESit.ID,
-		AILeSetLocation.ID,
-		AILeFollow.ID,
-		AILeRevive.ID,
-		AILeCareOwner.ID,
+		SIEPat.ID,
+
+		SIEInvLockInv.ID,
+		SILeLockDMG.ID,
+		SILeMineTo.ID,
+//		SILeWalkTo.ID,
+		SILeUseTo.ID,
+		SIESit.ID,
+		SILeSetLocation.ID,
+		SILeFollow.ID,
+		SILeRevive.ID,
+		SILeCareOwner.ID,
 		SILeAttack.ID,
-		AILeInvManageItem.ID,
-		AILeInvGetItem.ID,
-		AILeRandomWalk.ID,
-		AILeLookTo.ID,
-		AILeRandomLook.ID,
+		SILeInvManageItem.ID,
+		SILeInvGetItem.ID,
+		SILeRandomWalk.ID,
+		SILeLookTo.ID,
+		SILeRandomLook.ID,
 
 		//frame
 		SIEFrame.ID,
 
-		AILeFindMove.ID,
-		AILeMove.ID,
-		AILeWalkTo.ID,
-		AILeLook.ID,
-		AILeJump.ID
+		SILeFindMove.ID,
+		SILeMove.ID,
+		SILeWalkTo.ID,
+		SILeLook.ID,
+		SILeJump.ID
 	};
 
 	public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -66,5 +77,8 @@ public class MixSIArisu<SD extends ISoundDaLe, BD extends BothDaArisu<SD>, E ext
 		sileattack.attack_frame_int_array = ATTACK_FRAME_INT_ARRAY;
 		sileattack.max_magic_point = 2;
 		sileattack.minimum_distance = 48.0F;
+
+		SIESound<BD, E, I, S, ?> siesound = (SIESound<BD, E, I, S, ?>)this.s.ms.si_map.get(SIESound.ID);
+		siesound.state |= 1;
 	}
 }

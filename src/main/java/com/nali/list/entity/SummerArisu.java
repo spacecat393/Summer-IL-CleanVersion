@@ -3,6 +3,7 @@ package com.nali.list.entity;
 import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderArisu;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
@@ -21,7 +22,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerArisu extends EntityLeInv
+public class SummerArisu extends EntityLeInv implements IMixESoundDa
 {
 	public static int eggPrimary = 0x454D60;
 	public static int eggSecondary = 0xF8E9E4;
@@ -202,7 +203,6 @@ public class SummerArisu extends EntityLeInv
 	@Override
 	public void newC()
 	{
-		InvLe invle = new InvLe();
 		RenderArisu r = new RenderArisu(RenderArisu.ICLIENTDAS, BothDaArisu.IBOTHDASN);
 		ClientArisu c = new ClientArisu(this, r);
 		MixCIArisu mc = new MixCIArisu(c);
@@ -211,20 +211,19 @@ public class SummerArisu extends EntityLeInv
 		c.mb = new MixBoxSleInv(c);
 		c.mr = new MixRenderArisu(c);
 		r.c = c;
-		c.ie = invle;
+		c.ie = new InvLe();
 		this.ibothleinv = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		InvLe invle = new InvLe();
 		ServerArisu s = new ServerArisu(this);
 		MixSIArisu ms = new MixSIArisu(s);
 		s.ms = ms;
 		ms.init();
 		s.initFrame();
-		s.ie = invle;
+		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
 

@@ -1,23 +1,14 @@
 package com.nali.summer.da.both;
 
 import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaNs;
 import com.nali.da.IBothDaSn;
-import com.nali.sound.ISoundDaLe;
-import com.nali.summer.entity.sound.SoundDaIroha;
 
-public class BothDaIroha<SD extends ISoundDaLe> extends IBothDaNs<SD> implements IBothDaSn, IBothDaNe
+public class BothDaIroha implements IBothDaSn, IBothDaNe
 {
-//	public static ISoundDaLe ISOUNDDALE = new IrohaSound();
-	public static BothDaIroha IBOTHDASN = new BothDaIroha(SoundDaIroha.ISOUNDDALE);
+	public static BothDaIroha IBOTHDASN = new BothDaIroha();
 
 	public static byte MAX_FRAME = 1;
 	public static byte MAX_SYNC = 1;
-
-	public BothDaIroha(SD sd)
-	{
-		super(sd);
-	}
 
 	@Override
 	public float Width()

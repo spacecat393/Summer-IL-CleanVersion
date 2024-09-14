@@ -7,10 +7,11 @@ import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.render.s.RenderArisu;
 import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
-import com.nali.small.entity.memo.client.IClientRsInv;
-import com.nali.small.entity.memo.client.IClientSound;
+import com.nali.small.entity.memo.client.IClientERsInv;
+import com.nali.small.entity.memo.client.IClientESound;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
@@ -24,7 +25,19 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.nali.list.data.SummerData.MODEL_STEP;
 
 @SideOnly(Side.CLIENT)
-public class ClientArisu<IE extends InvLe, RC extends IClientDaS, R extends RenderArisu<E, I, MC, MB, MR, ?, SD, BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixE<SD, BD, E>, MC extends MixCIE<RC, R, SD, BD, E, I, MB, MR, ?>, MB extends MixBoxSleInv<RC, R, SD, BD, E, I, MC, MR, ?>, MR extends MixRenderSleInv<IE, RC, R, SD, BD, E, I, MC, MB, ?>> extends ClientLeInv<IE, RC, R, SD, BD, E, I, MC, MB, MR> implements IClientRsInv, IClientSound
+public class ClientArisu
+<
+	IE extends InvLe,
+	RC extends IClientDaS,
+	R extends RenderArisu<IE, E, I, MC, MB, MR, ?, SD, BD, RC>,
+	SD extends ISoundDaLe,
+	BD extends IBothDaNe & IBothDaSn,
+	E extends EntityLivingBase,
+	I extends IMixE<BD, E> & IMixESoundDa<SD>,
+	MC extends MixCIE<RC, R, BD, E, I, MB, MR, ?>,
+	MB extends MixBoxSleInv<RC, R, SD, BD, E, I, MC, MR, ?>,
+	MR extends MixRenderSleInv<IE, RC, R, SD, BD, E, I, MC, MB, ?>
+> extends ClientLeInv<IE, RC, R, SD, BD, E, I, MC, MB, MR> implements IClientERsInv, IClientESound
 {
 	public Sound sound = new NoSound();
 

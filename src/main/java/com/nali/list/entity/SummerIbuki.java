@@ -3,12 +3,13 @@ package com.nali.list.entity;
 import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderIbuki;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaIbuki;
 import com.nali.summer.entity.memo.client.ibuki.ClientIbuki;
 import com.nali.summer.entity.memo.client.ibuki.MixRenderIbuki;
-import com.nali.summer.entity.memo.server.ibuki.MixAIIbuki;
+import com.nali.summer.entity.memo.server.ibuki.MixSIIbuki;
 import com.nali.summer.entity.memo.server.ibuki.ServerIbuki;
 import com.nali.summer.entity.sound.SoundDaIbuki;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerIbuki extends EntityLeInv
+public class SummerIbuki extends EntityLeInv implements IMixESoundDa
 {
 	public static int eggPrimary = 0xfef5cb;
 	public static int eggSecondary = 0xab6402;
@@ -63,7 +64,7 @@ public class SummerIbuki extends EntityLeInv
 	@Override
 	public byte[] getAI()
 	{
-		return MixAIIbuki.AI_BYTE_ARRAY;
+		return MixSIIbuki.AI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -100,7 +101,7 @@ public class SummerIbuki extends EntityLeInv
 	public void newS()
 	{
 		ServerIbuki s = new ServerIbuki(this, new Inventory(1));
-		MixAIIbuki a = new MixAIIbuki(s);
+		MixSIIbuki a = new MixSIIbuki(s);
 		s.a = a;
 		a.init();
 		s.initFrame();

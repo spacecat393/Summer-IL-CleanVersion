@@ -4,16 +4,27 @@ import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
 import com.nali.small.entity.EntityE;
 import com.nali.small.entity.IMixE;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.server.ServerSeInv;
-import com.nali.small.entity.memo.server.ai.MixAIE;
-import com.nali.small.entity.memo.server.ai.frame.FrameS;
-import com.nali.small.entity.memo.server.ai.frame.floop.FrameSFLoopRSeStand;
-import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreeRSePlay;
-import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSTLoop;
+import com.nali.small.entity.inv.InvE;
+import com.nali.small.entity.memo.IBothEInv;
+import com.nali.small.entity.memo.server.IServerS;
+import com.nali.small.entity.memo.server.ServerE;
+import com.nali.small.entity.memo.server.si.MixSIE;
+import com.nali.small.entity.memo.server.si.frame.FrameS;
+import com.nali.small.entity.memo.server.si.frame.floop.FrameSFLoopRSeStand;
+import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeRSePlay;
+import com.nali.small.entity.memo.server.si.frame.tloop.FrameSTLoop;
 
-public class ServerE22Locker<SD, BD extends IBothDaNe & IBothDaSn, E extends EntityE, I extends IMixE<SD, BD, E>, MS extends MixSIE<SD, BD, E, I, ?>> extends ServerSeInv<SD, BD, E, I, A>
+public class ServerE22Locker
+<
+	IE extends InvE,
+	BD extends IBothDaNe & IBothDaSn,
+	E extends EntityE,
+	I extends IMixE<BD, E>,
+	MS extends MixSIE<BD, E, I, ?>
+> extends ServerE<BD, E, I, MS> implements IBothEInv<IE>, IServerS
 {
+	public IE ie;
+
 	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
 	{
 		{ 0, 297 },//react
@@ -28,9 +39,9 @@ public class ServerE22Locker<SD, BD extends IBothDaNe & IBothDaSn, E extends Ent
 	};
 	public FrameS[][] frames_2d_array;
 
-	public ServerE22Locker(I i, Inventory inventory)
+	public ServerE22Locker(I i)
 	{
-		super(i, inventory);
+		super(i);
 	}
 
 	@Override
@@ -83,5 +94,11 @@ public class ServerE22Locker<SD, BD extends IBothDaNe & IBothDaSn, E extends Ent
 	public int[][] getFrame2DIntArray()
 	{
 		return FRAME_INT_2D_ARRAY;
+	}
+
+	@Override
+	public IE getIE()
+	{
+		return this.ie;
 	}
 }

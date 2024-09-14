@@ -3,9 +3,11 @@ package com.nali.list.render.s;
 import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
 import com.nali.da.client.IClientDaS;
-import com.nali.small.entity.IMixLe;
+import com.nali.small.entity.IMixE;
+import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientSle;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
+import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.sound.ISoundDaLe;
 import com.nali.summer.da.both.BothDaSaori;
@@ -16,7 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderSaori<E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, ?, SD, BD, E, I, MR, C>, MR extends MixRenderSe<RC, ?, SD, BD, E, I, MB, C>, C extends ClientSle<RC, ?, SD, BD, E, I, MB, MR>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RC>
+public class RenderSaori<IE extends InvLe, E extends EntityLivingBase, I extends IMixE<SD, BD, E>, MC extends MixCIE<RC, ?, SD, BD, E, I, MB, MR, C>, MB extends MixBoxSleInv<RC, ?, SD, BD, E, I, MC, MR, C>, MR extends MixRenderSe<RC, ?, SD, BD, E, I, MB, C>, C extends ClientSle<RC, ?, SD, BD, E, I, MB, MR>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, RC extends IClientDaS> extends SummerRenderSe<E, I, MB, MR, C, SD, BD, RC>
 {
 //	public static int ID;
 //	public static DataLoader DATALOADER = RenderHelper.DATALOADER;

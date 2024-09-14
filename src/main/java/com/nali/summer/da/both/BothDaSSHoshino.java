@@ -1,23 +1,14 @@
 package com.nali.summer.da.both;
 
 import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaNs;
 import com.nali.da.IBothDaSn;
-import com.nali.sound.ISoundDaLe;
-import com.nali.summer.entity.sound.SoundDaSSHoshino;
 
-public class BothDaSSHoshino<SD extends ISoundDaLe> extends IBothDaNs<SD> implements IBothDaSn, IBothDaNe
+public class BothDaSSHoshino implements IBothDaSn, IBothDaNe
 {
-//	public static ISoundDaLe ISOUNDDALE = new SSHinoSound();
-	public static BothDaSSHoshino IBOTHDASN = new BothDaSSHoshino(SoundDaSSHoshino.ISOUNDDALE);
+	public static BothDaSSHoshino IBOTHDASN = new BothDaSSHoshino();
 
 	public static byte MAX_FRAME = 1;
 	public static byte MAX_SYNC = 1;
-
-	public BothDaSSHoshino(SD sd)
-	{
-		super(sd);
-	}
 
 	@Override
 	public float Width()

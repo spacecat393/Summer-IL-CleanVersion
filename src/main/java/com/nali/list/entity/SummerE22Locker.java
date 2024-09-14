@@ -3,15 +3,14 @@ package com.nali.list.entity;
 import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderE22Locker;
 import com.nali.small.entity.EntityE;
-import com.nali.small.entity.Inventory;
+import com.nali.small.entity.inv.InvE;
 import com.nali.small.entity.memo.IBothE;
-import com.nali.small.entity.memo.IBothEInv;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSeRSe;
 import com.nali.summer.da.both.BothDaE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.ClientE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.MixRenderE22Locker;
-import com.nali.summer.entity.memo.server.e22locker.MixAIE22Locker;
+import com.nali.summer.entity.memo.server.e22locker.MixSIE22Locker;
 import com.nali.summer.entity.memo.server.e22locker.ServerE22Locker;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -46,11 +45,16 @@ public class SummerE22Locker extends EntityE
 		}
 	}
 
-	public IBothEInv ibotheinv;
+	public IBothE ibothe;
 
 	public SummerE22Locker(World world)
 	{
 		super(world);
+	}
+
+	@Override
+	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
+	{
 	}
 
 //	@Override
@@ -63,9 +67,9 @@ public class SummerE22Locker extends EntityE
 //	}
 
 	@Override
-	public byte[] getAI()
+	public byte[] getSI()
 	{
-		return MixAIE22Locker.AI_BYTE_ARRAY;
+		return MixSIE22Locker.SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -138,22 +142,26 @@ public class SummerE22Locker extends EntityE
 	public void newC()
 	{
 		RenderE22Locker r = new RenderE22Locker(RenderE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
-		ClientE22Locker c = new ClientE22Locker(this, r, new Inventory(1));
+		ClientE22Locker c = new ClientE22Locker(this, r);
+		c.mc;
+		mc.init();
 		c.mb = new MixBoxSeRSe(c);
 		c.mr = new MixRenderE22Locker(c);
 		r.c = c;
-		this.ibotheinv = c;
+		c.ie = new InvE();
+		this.ibothe = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		ServerE22Locker s = new ServerE22Locker(this, new Inventory(1));
-		MixAIE22Locker a = new MixAIE22Locker(s);
-		s.a = a;
+		ServerE22Locker s = new ServerE22Locker(this);
+		MixSIE22Locker ms = new MixSIE22Locker(s);
+		s.ms = ms;
 		a.init();
 		s.initFrame();
-		this.ibotheinv = s;
+		s.ie = new InvE();
+		this.ibothe = s;
 	}
 
 	@Override
@@ -171,7 +179,7 @@ public class SummerE22Locker extends EntityE
 	@Override
 	public IBothE getB()
 	{
-		return ibotheinv;
+		return this.ibothe;
 	}
 
 //	@Override

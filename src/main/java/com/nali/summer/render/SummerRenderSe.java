@@ -18,7 +18,17 @@ import static com.nali.list.data.SummerData.SHADER_STEP;
 import static com.nali.list.data.SummerData.TEXTURE_STEP;
 
 @SideOnly(Side.CLIENT)
-public class SummerRenderSe<E extends Entity, I extends IMixE<SD, BD, E>, MC extends MixCIE<RC, ?, SD, BD, E, I, MB, MR, C>, MB extends MixBoxE<RC, ?, SD, BD, E, I, MC, MR, C>, MR extends MixRenderSe<RC, ?, SD, BD, E, I, MC, MB, C>, C extends ClientE<RC, ?, SD, BD, E, I, MC, MB, MR>, SD, BD extends IBothDaNe & IBothDaSn, RC extends IClientDaS> extends RenderSe<E, I, MC, MB, MR, C, SD, BD, RC>
+public class SummerRenderSe
+<
+	E extends Entity,
+	I extends IMixE<BD, E>,
+	MC extends MixCIE<RC, ?, BD, E, I, MB, MR, C>,
+	MB extends MixBoxE<RC, ?, BD, E, I, MC, MR, C>,
+	MR extends MixRenderSe<RC, ?, BD, E, I, MC, MB, C>,
+	C extends ClientE<RC, ?, BD, E, I, MC, MB, MR>,
+	BD extends IBothDaNe & IBothDaSn,
+	RC extends IClientDaS
+> extends RenderSe<E, I, MC, MB, MR, C, BD, RC>
 {
 	public SummerRenderSe(RC rc, BD bd)
 	{

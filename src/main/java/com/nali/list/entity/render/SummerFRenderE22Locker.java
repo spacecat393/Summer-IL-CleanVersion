@@ -7,7 +7,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class SummerFRenderE22Locker<E extends SummerE22Locker> extends FRenderSeInv<E>
+public class SummerFRenderE22Locker
+<
+	E extends SummerE22Locker
+> extends FRenderSeInv<E>
 {
 	public SummerFRenderE22Locker(RenderManager rendermanager)
 	{

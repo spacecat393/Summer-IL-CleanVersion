@@ -3,24 +3,34 @@ package com.nali.summer.entity.memo.server.ssizuna;
 import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
 import com.nali.small.entity.EntityLeInv;
-import com.nali.small.entity.IMixLe;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.server.ServerSleInv;
-import com.nali.small.entity.memo.server.ai.MixAIE;
-import com.nali.small.entity.memo.server.ai.frame.FrameS;
-import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopDie;
-import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreeHardReady;
-import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSleFLoopFreePSrE;
-import com.nali.small.entity.memo.server.ai.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
-import com.nali.small.entity.memo.server.ai.frame.shoot.FrameSleShootReloadPlus;
-import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSTLoop;
-import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSleTLoopAttackStand;
-import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSleTLoopAttackWalk;
-import com.nali.small.entity.memo.server.ai.frame.tloop.FrameSleTLoopWalk;
-import com.nali.small.entity.memo.server.ai.frame.tloopfb.FrameSTLoopFBSit;
+import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixESoundDa;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.server.IServerS;
+import com.nali.small.entity.memo.server.ServerLeInv;
+import com.nali.small.entity.memo.server.si.MixSIE;
+import com.nali.small.entity.memo.server.si.frame.FrameS;
+import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDie;
+import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeHardReady;
+import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSleFLoopFreePSrE;
+import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
+import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShootReloadPlus;
+import com.nali.small.entity.memo.server.si.frame.tloop.FrameSTLoop;
+import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopAttackStand;
+import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopAttackWalk;
+import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopWalk;
+import com.nali.small.entity.memo.server.si.frame.tloopfb.FrameSTLoopFBSit;
 import com.nali.sound.ISoundDaLe;
 
-public class ServerSSIzuna<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLeInv, I extends IMixLe<SD, BD, E>, MS extends MixSIE<SD, BD, E, I, ?>> extends ServerSleInv<SD, BD, E, I, A>
+public class ServerSSIzuna
+<
+	IE extends InvLe,
+	SD extends ISoundDaLe,
+	BD extends IBothDaNe & IBothDaSn,
+	E extends EntityLeInv,
+	I extends IMixE<BD, E> & IMixESoundDa<SD>,
+	MS extends MixSIE<BD, E, I, ?>
+> extends ServerLeInv<IE, SD, BD, E, I, MS> implements IServerS
 {
 	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
 	{
@@ -54,9 +64,9 @@ public class ServerSSIzuna<SD extends ISoundDaLe, BD extends IBothDaNe & IBothDa
 	public FrameS[][] frames_2d_array;
 
 	//	public boolean server_step_reload;
-	public ServerSSIzuna(I i, Inventory inventory)
+	public ServerSSIzuna(I i)
 	{
-		super(i, inventory);
+		super(i);
 	}
 
 	@Override

@@ -3,12 +3,13 @@ package com.nali.list.entity;
 import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderSaori;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaSaori;
 import com.nali.summer.entity.memo.client.saori.ClientSaori;
 import com.nali.summer.entity.memo.client.saori.MixRenderSaori;
-import com.nali.summer.entity.memo.server.saori.MixAISaori;
+import com.nali.summer.entity.memo.server.saori.MixSISaori;
 import com.nali.summer.entity.memo.server.saori.ServerSaori;
 import com.nali.summer.entity.sound.SoundDaSaori;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerSaori extends EntityLeInv
+public class SummerSaori extends EntityLeInv implements IMixESoundDa
 {
 	public static int eggPrimary = 0x283756;
 	public static int eggSecondary = 0x4a73bd;
@@ -86,7 +87,7 @@ public class SummerSaori extends EntityLeInv
 	@Override
 	public byte[] getAI()
 	{
-		return MixAISaori.AI_BYTE_ARRAY;
+		return MixSISaori.AI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -123,7 +124,7 @@ public class SummerSaori extends EntityLeInv
 	public void newS()
 	{
 		ServerSaori s = new ServerSaori(this, new Inventory(1));
-		MixAISaori a = new MixAISaori(s);
+		MixSISaori a = new MixSISaori(s);
 		s.a = a;
 		a.init();
 		s.initFrame();

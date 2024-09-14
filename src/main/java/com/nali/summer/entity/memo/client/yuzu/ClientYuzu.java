@@ -4,10 +4,13 @@ import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
 import com.nali.da.client.IClientDaS;
 import com.nali.list.render.s.RenderYuzu;
-import com.nali.small.entity.IMixLe;
+import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.client.ClientSleInv;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.memo.client.ClientLeInv;
+import com.nali.small.entity.memo.client.IClientERsInv;
+import com.nali.small.entity.memo.client.IClientESound;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.sound.ISoundDaLe;
 import com.nali.sound.Sound;
@@ -20,7 +23,17 @@ import static com.nali.list.data.SummerData.TEXTURE_STEP;
 import static com.nali.system.ClientLoader.G_LIST;
 
 @SideOnly(Side.CLIENT)
-public class ClientYuzu<RC extends IClientDaS, R extends RenderYuzu<E, I, MB, MR, ?, SD, BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, R, SD, BD, E, I, MR, ?>, MR extends MixRenderSleInv<RC, R, SD, BD, E, I, MB, ?>> extends ClientSleInv<RC, R, SD, BD, E, I, MB, MR>
+public class ClientYuzu
+<
+	RC extends IClientDaS,
+	R extends RenderYuzu<E, I, MB, MR, ?, SD, BD, RC>,
+	SD extends ISoundDaLe,
+	BD extends IBothDaNe & IBothDaSn,
+	E extends EntityLivingBase,
+	I extends IMixE<BD, E> & IMixESoundDa<SD>,
+	MB extends MixBoxSleInv<RC, R, SD, BD, E, I, MR, ?>,
+	MR extends MixRenderSleInv<RC, R, SD, BD, E, I, MB, ?>
+> extends ClientLeInv<RC, R, SD, BD, E, I, MB, MR> implements IClientERsInv, IClientESound
 {
 	public static int[] IV_INT_ARRAY = new int[]
 	{

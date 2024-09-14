@@ -3,12 +3,13 @@ package com.nali.list.entity;
 import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderNatsu;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaNatsu;
 import com.nali.summer.entity.memo.client.natsu.ClientNatsu;
 import com.nali.summer.entity.memo.client.natsu.MixRenderNatsu;
-import com.nali.summer.entity.memo.server.natsu.MixAINatsu;
+import com.nali.summer.entity.memo.server.natsu.MixSINatsu;
 import com.nali.summer.entity.memo.server.natsu.ServerNatsu;
 import com.nali.summer.entity.sound.SoundDaNatsu;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerNatsu extends EntityLeInv
+public class SummerNatsu extends EntityLeInv implements IMixESoundDa
 {
 	public static int eggPrimary = 0xF1F6F9;
 	public static int eggSecondary = 0xFB7290;
@@ -63,7 +64,7 @@ public class SummerNatsu extends EntityLeInv
 	@Override
 	public byte[] getAI()
 	{
-		return MixAINatsu.AI_BYTE_ARRAY;
+		return MixSINatsu.AI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -100,7 +101,7 @@ public class SummerNatsu extends EntityLeInv
 	public void newS()
 	{
 		ServerNatsu s = new ServerNatsu(this, new Inventory(1));
-		MixAINatsu a = new MixAINatsu(s);
+		MixSINatsu a = new MixSINatsu(s);
 		s.a = a;
 		a.init();
 		s.initFrame();

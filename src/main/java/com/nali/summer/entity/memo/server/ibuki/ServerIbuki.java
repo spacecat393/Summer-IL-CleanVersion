@@ -1,25 +1,35 @@
 package com.nali.summer.entity.memo.server.ibuki;
 
 import com.nali.small.entity.EntityLeInv;
-import com.nali.small.entity.IMixLe;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.server.ServerSleInv;
-import com.nali.small.entity.memo.server.ai.frame.FrameS;
-import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopDie;
-import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopDieSSle;
-import com.nali.small.entity.memo.server.ai.frame.floop.FrameSleFLoopSSleStart;
-import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSFLoopFreeHardReady;
-import com.nali.small.entity.memo.server.ai.frame.floopfree.FrameSleFLoopFreePSrE;
-import com.nali.small.entity.memo.server.ai.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
-import com.nali.small.entity.memo.server.ai.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalkSSle;
-import com.nali.small.entity.memo.server.ai.frame.shoot.FrameSleShoot;
-import com.nali.small.entity.memo.server.ai.frame.shoot.FrameSleShootSSle;
-import com.nali.small.entity.memo.server.ai.frame.tloop.*;
-import com.nali.small.entity.memo.server.ai.frame.tloopfb.FrameSleTLoopFBSitSSle;
+import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixESoundDa;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.server.IServerS;
+import com.nali.small.entity.memo.server.ServerLeInv;
+import com.nali.small.entity.memo.server.si.frame.FrameS;
+import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDie;
+import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDieSSle;
+import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopSSleStart;
+import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeHardReady;
+import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSleFLoopFreePSrE;
+import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
+import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalkSSle;
+import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShoot;
+import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShootSSle;
+import com.nali.small.entity.memo.server.si.frame.tloop.*;
+import com.nali.small.entity.memo.server.si.frame.tloopfb.FrameSleTLoopFBSitSSle;
 import com.nali.sound.ISoundDaLe;
 import com.nali.summer.da.both.BothDaIbuki;
 
-public class ServerIbuki<SD extends ISoundDaLe, BD extends BothDaIbuki<SD>, E extends EntityLeInv, I extends IMixLe<SD, BD, E>, MS extends MixSIIbuki<SD, BD, E, I, ?>> extends ServerSleInv<SD, BD, E, I, A>
+public class ServerIbuki
+<
+	IE extends InvLe,
+	SD extends ISoundDaLe,
+	BD extends BothDaIbuki<SD>,
+	E extends EntityLeInv,
+	I extends IMixE<BD, E> & IMixESoundDa<SD>,
+	MS extends MixSIIbuki<IE, SD, BD, E, I, ?>
+> extends ServerLeInv<IE, SD, BD, E, I, MS> implements IServerS
 {
 	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
 	{
@@ -67,11 +77,11 @@ public class ServerIbuki<SD extends ISoundDaLe, BD extends BothDaIbuki<SD>, E ex
 		0, 9
 	};
 	public FrameS[][] frames_2d_array;
-//	public AILePlayWithSSle aileplaywithssle;
+//	public SILePlayWithSSle sileplaywithssle;
 
-	public ServerIbuki(I i, Inventory inventory)
+	public ServerIbuki(I i)
 	{
-		super(i, inventory);
+		super(i);
 	}
 
 	@Override
@@ -120,7 +130,7 @@ public class ServerIbuki<SD extends ISoundDaLe, BD extends BothDaIbuki<SD>, E ex
 //		}
 
 //		if (!serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.should_play && (serverentitiesmemory.sync_byte_array[0] & 128) == 128)
-		if (this.a.aileplaywithssle.s2 == null && (this.sync_byte_array[0] & 128) == 128)
+		if (this.ms.sileplaywithssle.s2 == null && (this.sync_byte_array[0] & 128) == 128)
 		{
 //			serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].lock = false;
 			this.sync_byte_array[0] ^= (byte)128;

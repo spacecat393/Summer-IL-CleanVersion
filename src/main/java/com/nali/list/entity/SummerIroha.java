@@ -3,13 +3,13 @@ package com.nali.list.entity;
 import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderIroha;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.Inventory;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.summer.da.both.BothDaIroha;
-import com.nali.summer.da.client.ClientDaIroha;
 import com.nali.summer.entity.memo.client.iroha.ClientIroha;
 import com.nali.summer.entity.memo.client.iroha.MixRenderIroha;
-import com.nali.summer.entity.memo.server.iroha.MixAIIroha;
+import com.nali.summer.entity.memo.server.iroha.MixSIIroha;
 import com.nali.summer.entity.memo.server.iroha.ServerIroha;
 import com.nali.summer.entity.sound.SoundDaIroha;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerIroha extends EntityLeInv
+public class SummerIroha extends EntityLeInv implements IMixESoundDa
 {
 	public static int eggPrimary = 0xadb7c1;
 	public static int eggSecondary = 0xc95b7e;
@@ -64,7 +64,7 @@ public class SummerIroha extends EntityLeInv
 	@Override
 	public byte[] getAI()
 	{
-		return MixAIIroha.AI_BYTE_ARRAY;
+		return MixSIIroha.AI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -101,7 +101,7 @@ public class SummerIroha extends EntityLeInv
 	public void newS()
 	{
 		ServerIroha s = new ServerIroha(this, new Inventory(1));
-		MixAIIroha a = new MixAIIroha(s);
+		MixSIIroha a = new MixSIIroha(s);
 		s.a = a;
 		a.init();
 		s.initFrame();

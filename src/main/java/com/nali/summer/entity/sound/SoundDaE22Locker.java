@@ -5,6 +5,12 @@ import com.nali.sound.ISoundDaLe;
 public class SoundDaE22Locker implements ISoundDaLe
 {
 	@Override
+	public int EAT()
+	{
+		return -1;
+	}
+
+	@Override
 	public int HURT()
 	{
 		return -1;

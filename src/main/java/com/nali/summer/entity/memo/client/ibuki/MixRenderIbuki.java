@@ -6,9 +6,11 @@ import com.nali.da.client.IClientDaS;
 import com.nali.list.render.s.RenderIbuki;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
-import com.nali.small.entity.IMixLe;
+import com.nali.small.entity.IMixE;
+import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.FRenderE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.sound.ISoundDaLe;
@@ -22,7 +24,7 @@ import org.lwjgl.opengl.GL11;
 import static com.nali.system.opengl.memo.client.MemoC.setFloatBuffer;
 
 @SideOnly(Side.CLIENT)
-public class MixRenderIbuki<RC extends IClientDaS, R extends RenderIbuki<E, I, MB, ?, C, SD, BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, R, SD, BD, E, I, ?, C>, C extends ClientSle<RC, R, SD, BD, E, I, MB, ?>> extends MixRenderSleInv<RC, R, SD, BD, E, I, MB, C>
+public class MixRenderIbuki<IE extends InvLe, RC extends IClientDaS, R extends RenderIbuki<E, I, MB, ?, C, SD, BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixE<SD, BD, E>, MC extends MixCIE<RC, R, SD, BD, E, I, MB, ?, C>, MB extends MixBoxSleInv<RC, R, SD, BD, E, I, MC, ?, C>, C extends ClientLeInv<IE, RC, R, SD, BD, E, I, MC, MB, ?> & IClientRsInv> extends MixRenderSleInv<IE, RC, R, SD, BD, E, I, MC, MB, C>
 {
 	public MixRenderIbuki(C c)
 	{

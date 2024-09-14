@@ -6,9 +6,11 @@ import com.nali.da.client.IClientDaS;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.render.RenderS;
-import com.nali.small.entity.IMixLe;
+import com.nali.small.entity.IMixE;
+import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientSle;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.sound.ISoundDaLe;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,7 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class MixRenderIroha<RC extends IClientDaS, R extends RenderS<BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixLe<SD, BD, E>, MB extends MixBoxSle<RC, R, SD, BD, E, I, ?, C>, C extends ClientSle<RC, R, SD, BD, E, I, MB, ?>> extends MixRenderSleInv<RC, R, SD, BD, E, I, MB, C>
+public class MixRenderIroha<IE extends InvLe, RC extends IClientDaS, R extends RenderS<BD, RC>, SD extends ISoundDaLe, BD extends IBothDaNe & IBothDaSn, E extends EntityLivingBase, I extends IMixE<SD, BD, E>, MC extends MixCIE<RC, R, SD, BD, E, I, MB, ?, C>, MB extends MixBoxSleInv<RC, R, SD, BD, E, I, MC, ?, C>, C extends ClientLeInv<IE, RC, R, SD, BD, E, I, MC, MB, ?> & IClientRsInv> extends MixRenderSleInv<IE, RC, R, SD, BD, E, I, MC, MB, C>
 {
 	public MixRenderIroha(C c)
 	{
