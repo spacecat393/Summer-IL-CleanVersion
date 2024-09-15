@@ -4,10 +4,12 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderIbuki;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.IBothLeInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.summer.da.both.BothDaIbuki;
 import com.nali.summer.entity.memo.client.ibuki.ClientIbuki;
+import com.nali.summer.entity.memo.client.ibuki.MixCIIbuki;
 import com.nali.summer.entity.memo.client.ibuki.MixRenderIbuki;
 import com.nali.summer.entity.memo.server.ibuki.MixSIIbuki;
 import com.nali.summer.entity.memo.server.ibuki.ServerIbuki;
@@ -28,6 +30,8 @@ public class SummerIbuki extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.MAX_FRAME/* + BothDaIroha.MAX_FRAME*/];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1/*2*/];
+
+	public IBothLeInv ibothleinv;
 
 	static
 	{
@@ -62,9 +66,9 @@ public class SummerIbuki extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
-	public byte[] getAI()
+	public byte[] getSI()
 	{
-		return MixSIIbuki.AI_BYTE_ARRAY;
+		return MixSIIbuki.SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -90,21 +94,26 @@ public class SummerIbuki extends EntityLeInv implements IMixESoundDa
 	public void newC()
 	{
 		RenderIbuki r = new RenderIbuki(RenderIbuki.ICLIENTDAS, BothDaIbuki.IBOTHDASN);
-		ClientIbuki c = new ClientIbuki(this, r, new Inventory(1));
-		c.mb = new MixBoxSle(c);
+		ClientIbuki c = new ClientIbuki(this, r);
+		MixCIIbuki mc = new MixCIIbuki(c);
+		c.mc = mc;
+		mc.init();
+		c.mb = new MixBoxSleInv(c);
 		c.mr = new MixRenderIbuki(c);
 		r.c = c;
+		c.ie = new InvLe();
 		this.ibothleinv = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		ServerIbuki s = new ServerIbuki(this, new Inventory(1));
-		MixSIIbuki a = new MixSIIbuki(s);
-		s.a = a;
-		a.init();
+		ServerIbuki s = new ServerIbuki(this);
+		MixSIIbuki ms = new MixSIIbuki(s);
+		s.ms = ms;
+		ms.init();
 		s.initFrame();
+		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
 
@@ -118,5 +127,21 @@ public class SummerIbuki extends EntityLeInv implements IMixESoundDa
 	public Object getSD()
 	{
 		return SoundDaIbuki.ISOUNDDALE;
+	}
+
+	@Override
+	public IBothLeInv getB()
+	{
+		return this.ibothleinv;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientIbuki getC()
+	{
+		RenderIbuki r = new RenderIbuki(RenderIbuki.ICLIENTDAS, BothDaIbuki.IBOTHDASN);
+		ClientIbuki c = new ClientIbuki(null, r);
+		r.c = c;
+		c.mr = new MixRenderIbuki(c);
+		return c;
 	}
 }

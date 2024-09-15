@@ -4,10 +4,12 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderIroha;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.IBothLeInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.summer.da.both.BothDaIroha;
 import com.nali.summer.entity.memo.client.iroha.ClientIroha;
+import com.nali.summer.entity.memo.client.iroha.MixCIIroha;
 import com.nali.summer.entity.memo.client.iroha.MixRenderIroha;
 import com.nali.summer.entity.memo.server.iroha.MixSIIroha;
 import com.nali.summer.entity.memo.server.iroha.ServerIroha;
@@ -28,6 +30,8 @@ public class SummerIroha extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaIroha.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIroha.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+
+	public IBothLeInv ibothleinv;
 
 	static
 	{
@@ -62,9 +66,9 @@ public class SummerIroha extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
-	public byte[] getAI()
+	public byte[] getSI()
 	{
-		return MixSIIroha.AI_BYTE_ARRAY;
+		return MixSIIroha.SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -90,21 +94,26 @@ public class SummerIroha extends EntityLeInv implements IMixESoundDa
 	public void newC()
 	{
 		RenderIroha r = new RenderIroha(RenderIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
-		ClientIroha c = new ClientIroha(this, r, new Inventory(1));
-		c.mb = new MixBoxSle(c);
+		ClientIroha c = new ClientIroha(this, r);
+		MixCIIroha mc = new MixCIIroha(c);
+		c.mc = mc;
+		mc.init();
+		c.mb = new MixBoxSleInv(c);
 		c.mr = new MixRenderIroha(c);
 		r.c = c;
+		c.ie = new InvLe();
 		this.ibothleinv = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		ServerIroha s = new ServerIroha(this, new Inventory(1));
-		MixSIIroha a = new MixSIIroha(s);
-		s.a = a;
-		a.init();
+		ServerIroha s = new ServerIroha(this);
+		MixSIIroha ms = new MixSIIroha(s);
+		s.ms = ms;
+		ms.init();
 		s.initFrame();
+		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
 
@@ -120,6 +129,21 @@ public class SummerIroha extends EntityLeInv implements IMixESoundDa
 		return SoundDaIroha.ISOUNDDALE;
 	}
 
+	@Override
+	public IBothLeInv getB()
+	{
+		return this.ibothleinv;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientIroha getC()
+	{
+		RenderIroha r = new RenderIroha(RenderIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
+		ClientIroha c = new ClientIroha(null, r);
+		r.c = c;
+		c.mr = new MixRenderIroha(c);
+		return c;
+	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public Object createObjectRender()

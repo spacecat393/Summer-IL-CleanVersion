@@ -5,6 +5,8 @@ import com.nali.list.render.s.RenderE22Locker;
 import com.nali.small.entity.EntityE;
 import com.nali.small.entity.inv.InvE;
 import com.nali.small.entity.memo.IBothE;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSeRSe;
+import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.summer.da.both.BothDaE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.ClientE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.MixRenderE22Locker;
@@ -143,7 +145,8 @@ public class SummerE22Locker extends EntityE
 	{
 		RenderE22Locker r = new RenderE22Locker(RenderE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
 		ClientE22Locker c = new ClientE22Locker(this, r);
-		c.mc;
+		MixCIE mc = new MixCIE(c);
+		c.mc = mc;
 		mc.init();
 		c.mb = new MixBoxSeRSe(c);
 		c.mr = new MixRenderE22Locker(c);
@@ -158,7 +161,7 @@ public class SummerE22Locker extends EntityE
 		ServerE22Locker s = new ServerE22Locker(this);
 		MixSIE22Locker ms = new MixSIE22Locker(s);
 		s.ms = ms;
-		a.init();
+		ms.init();
 		s.initFrame();
 		s.ie = new InvE();
 		this.ibothe = s;
@@ -171,15 +174,19 @@ public class SummerE22Locker extends EntityE
 	}
 
 	@Override
-	public Object getSD()
-	{
-		return null;
-	}
-
-	@Override
 	public IBothE getB()
 	{
 		return this.ibothe;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientE22Locker getC()
+	{
+		RenderE22Locker r = new RenderE22Locker(RenderE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
+		ClientE22Locker c = new ClientE22Locker(null, r);
+		r.c = c;
+		c.mr = new MixRenderE22Locker(c);
+		return c;
 	}
 
 //	@Override

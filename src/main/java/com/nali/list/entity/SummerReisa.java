@@ -4,10 +4,12 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderReisa;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.IBothLeInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.summer.da.both.BothDaReisa;
 import com.nali.summer.entity.memo.client.reisa.ClientReisa;
+import com.nali.summer.entity.memo.client.reisa.MixCIReisa;
 import com.nali.summer.entity.memo.client.reisa.MixRenderReisa;
 import com.nali.summer.entity.memo.server.reisa.MixSIReisa;
 import com.nali.summer.entity.memo.server.reisa.ServerReisa;
@@ -28,6 +30,8 @@ public class SummerReisa extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaReisa.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaReisa.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+
+	public IBothLeInv ibothleinv;
 
 	static
 	{
@@ -73,9 +77,9 @@ public class SummerReisa extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
-	public byte[] getAI()
+	public byte[] getSI()
 	{
-		return MixSIReisa.AI_BYTE_ARRAY;
+		return MixSIReisa.SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -101,21 +105,26 @@ public class SummerReisa extends EntityLeInv implements IMixESoundDa
 	public void newC()
 	{
 		RenderReisa r = new RenderReisa(RenderReisa.ICLIENTDAS, BothDaReisa.IBOTHDASN);
-		ClientReisa c = new ClientReisa(this, r, new Inventory(1));
-		c.mb = new MixBoxSle(c);
+		ClientReisa c = new ClientReisa(this, r);
+		MixCIReisa mc = new MixCIReisa(c);
+		c.mc = mc;
+		mc.init();
+		c.mb = new MixBoxSleInv(c);
 		c.mr = new MixRenderReisa(c);
 		r.c = c;
+		c.ie = new InvLe();
 		this.ibothleinv = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		ServerReisa s = new ServerReisa(this, new Inventory(1));
-		MixSIReisa a = new MixSIReisa(s);
-		s.a = a;
-		a.init();
+		ServerReisa s = new ServerReisa(this);
+		MixSIReisa ms = new MixSIReisa(s);
+		s.ms = ms;
+		ms.init();
 		s.initFrame();
+		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
 
@@ -131,6 +140,21 @@ public class SummerReisa extends EntityLeInv implements IMixESoundDa
 		return SoundDaReisa.ISOUNDDALE;
 	}
 
+	@Override
+	public IBothLeInv getB()
+	{
+		return this.ibothleinv;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientReisa getC()
+	{
+		RenderReisa r = new RenderReisa(RenderReisa.ICLIENTDAS, BothDaReisa.IBOTHDASN);
+		ClientReisa c = new ClientReisa(null, r);
+		r.c = c;
+		c.mr = new MixRenderReisa(c);
+		return c;
+	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public Object createObjectRender()

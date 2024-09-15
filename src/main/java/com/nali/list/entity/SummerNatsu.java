@@ -4,10 +4,12 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderNatsu;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.IBothLeInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.summer.da.both.BothDaNatsu;
 import com.nali.summer.entity.memo.client.natsu.ClientNatsu;
+import com.nali.summer.entity.memo.client.natsu.MixCINatsu;
 import com.nali.summer.entity.memo.client.natsu.MixRenderNatsu;
 import com.nali.summer.entity.memo.server.natsu.MixSINatsu;
 import com.nali.summer.entity.memo.server.natsu.ServerNatsu;
@@ -28,6 +30,8 @@ public class SummerNatsu extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaNatsu.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaNatsu.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+
+	public IBothLeInv ibothleinv;
 
 	static
 	{
@@ -62,9 +66,9 @@ public class SummerNatsu extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
-	public byte[] getAI()
+	public byte[] getSI()
 	{
-		return MixSINatsu.AI_BYTE_ARRAY;
+		return MixSINatsu.SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -90,21 +94,26 @@ public class SummerNatsu extends EntityLeInv implements IMixESoundDa
 	public void newC()
 	{
 		RenderNatsu r = new RenderNatsu(RenderNatsu.ICLIENTDAS, BothDaNatsu.IBOTHDASN);
-		ClientNatsu c = new ClientNatsu(this, r, new Inventory(1));
-		c.mb = new MixBoxSle(c);
+		ClientNatsu c = new ClientNatsu(this, r);
+		MixCINatsu mc = new MixCINatsu(c);
+		c.mc = mc;
+		mc.init();
+		c.mb = new MixBoxSleInv(c);
 		c.mr = new MixRenderNatsu(c);
 		r.c = c;
+		c.ie = new InvLe();
 		this.ibothleinv = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		ServerNatsu s = new ServerNatsu(this, new Inventory(1));
-		MixSINatsu a = new MixSINatsu(s);
-		s.a = a;
-		a.init();
+		ServerNatsu s = new ServerNatsu(this);
+		MixSINatsu ms = new MixSINatsu(s);
+		s.ms = ms;
+		ms.init();
 		s.initFrame();
+		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
 
@@ -120,6 +129,21 @@ public class SummerNatsu extends EntityLeInv implements IMixESoundDa
 		return SoundDaNatsu.ISOUNDDALE;
 	}
 
+	@Override
+	public IBothLeInv getB()
+	{
+		return this.ibothleinv;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientNatsu getC()
+	{
+		RenderNatsu r = new RenderNatsu(RenderNatsu.ICLIENTDAS, BothDaNatsu.IBOTHDASN);
+		ClientNatsu c = new ClientNatsu(null, r);
+		r.c = c;
+		c.mr = new MixRenderNatsu(c);
+		return c;
+	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public Object createObjectRender()

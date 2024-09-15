@@ -1,9 +1,9 @@
-package com.nali.summer.entity.memo.client.arisu;
+package com.nali.summer.entity.memo.client.myuzu;
 
 import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
 import com.nali.da.client.IClientDaS;
-import com.nali.list.render.s.RenderArisu;
+import com.nali.list.render.s.RenderMYuzu;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
@@ -17,21 +17,21 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class MixCIArisu
+public class MixCIMYuzu
 <
 	IE extends InvLe,
 	RC extends IClientDaS,
-	R extends RenderArisu<IE, E, I, ?, MB, MR, C, SD, BD, RC>,
+	R extends RenderMYuzu<IE, E, I, ?, MB, MR, C, SD, BD, RC>,
 	SD extends ISoundDaLe,
 	BD extends IBothDaNe & IBothDaSn,
 	E extends EntityLivingBase,
 	I extends IMixE<BD, E> & IMixESoundDa<SD>,
 	MB extends MixBoxSleInv<RC, R, SD, BD, E, I, ?, MR, C>,
-	MR extends MixRenderArisu<IE, RC, R, SD, BD, E, I, ?, MB, C>,
+	MR extends MixRenderMYuzu<IE, RC, R, SD, BD, E, I, ?, MB, C>,
 	C extends ClientLeInv<IE, RC, R, SD, BD, E, I, ?, MB, MR> & IClientERsInv
 > extends MixCIE<RC, R, BD, E, I, MB, MR, C>
 {
-	public MixCIArisu(C c)
+	public MixCIMYuzu(C c)
 	{
 		super(c);
 	}
@@ -44,28 +44,15 @@ public class MixCIArisu
 
 		int frame = r.frame_int_array[0];
 
-		if (frame < 205)
-		{
-//			skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
-//			skinningrender.model_byte_array[6 / 8] &= 191;//255 - Math.pow(2, 6 % 8)
-			r.model_byte_array[0] &= 239 & 191;
-		}
-		else
-		{
-//			skinningrender.model_byte_array[4 / 8] |= 16;//Math.pow(2, 4 % 8)
-//			skinningrender.model_byte_array[6 / 8] |= 64;//Math.pow(2, 6 % 8)
-			r.model_byte_array[0] |= 16 | 64;
-		}
-
 		float scale = r.scale;
 		BD bd = i.getBD();
 		E e = i.getE();
-		if (frame > 834 && frame < 861)
+		if (frame < 513)
 		{
 			e.width = bd.Width() * scale;
 			e.height = 0.65F * scale;
 		}
-		else if (frame > 737 && frame < 784)
+		else if (/*frame > 512 && */frame < 564)
 		{
 			e.width = 1.5F * scale;
 			e.height = 0.2F * scale;
@@ -75,5 +62,12 @@ public class MixCIArisu
 			e.width = bd.Width() * scale;
 			e.height = bd.Height() * scale;
 		}
+	}
+
+	@Override
+	public void onReadNBT()
+	{
+		this.c.r.frame_int_array[0] = 110;
+		super.onReadNBT();
 	}
 }

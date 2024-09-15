@@ -4,11 +4,13 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderSSShizuko;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.IBothLeInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.summer.da.both.BothDaSSShizuko;
 import com.nali.summer.da.both.BothDaSeaHouse;
 import com.nali.summer.entity.memo.client.ssshizuko.ClientSSShizuko;
+import com.nali.summer.entity.memo.client.ssshizuko.MixCISSShizuko;
 import com.nali.summer.entity.memo.client.ssshizuko.MixRenderSSShizuko;
 import com.nali.summer.entity.memo.server.ssshizuko.MixSISSShizuko;
 import com.nali.summer.entity.memo.server.ssshizuko.ServerSSShizuko;
@@ -29,6 +31,8 @@ public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSShizuko.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSShizuko.MAX_FRAME + BothDaSeaHouse.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+
+	public IBothLeInv ibothleinv;
 
 	static
 	{
@@ -95,9 +99,9 @@ public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
-	public byte[] getAI()
+	public byte[] getSI()
 	{
-		return MixSISSShizuko.AI_BYTE_ARRAY;
+		return MixSISSShizuko.SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -123,21 +127,26 @@ public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 	public void newC()
 	{
 		RenderSSShizuko r = new RenderSSShizuko(RenderSSShizuko.ICLIENTDAS, BothDaSSShizuko.IBOTHDASN);
-		ClientSSShizuko c = new ClientSSShizuko(this, r, new Inventory(1));
-		c.mb = new MixBoxSle(c);
+		ClientSSShizuko c = new ClientSSShizuko(this, r);
+		MixCISSShizuko mc = new MixCISSShizuko(c);
+		c.mc = mc;
+		mc.init();
+		c.mb = new MixBoxSleInv(c);
 		c.mr = new MixRenderSSShizuko(c);
 		r.c = c;
+		c.ie = new InvLe();
 		this.ibothleinv = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		ServerSSShizuko s = new ServerSSShizuko(this, new Inventory(1));
-		MixSISSShizuko a = new MixSISSShizuko(s);
-		s.a = a;
-		a.init();
+		ServerSSShizuko s = new ServerSSShizuko(this);
+		MixSISSShizuko ms = new MixSISSShizuko(s);
+		s.ms = ms;
+		ms.init();
 		s.initFrame();
+		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
 
@@ -153,6 +162,21 @@ public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 		return SoundDaSSShizuko.ISOUNDDALE;
 	}
 
+	@Override
+	public IBothLeInv getB()
+	{
+		return this.ibothleinv;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientSSShizuko getC()
+	{
+		RenderSSShizuko r = new RenderSSShizuko(RenderSSShizuko.ICLIENTDAS, BothDaSSShizuko.IBOTHDASN);
+		ClientSSShizuko c = new ClientSSShizuko(null, r);
+		r.c = c;
+		c.mr = new MixRenderSSShizuko(c);
+		return c;
+	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public Object createObjectRender()

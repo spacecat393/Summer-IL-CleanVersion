@@ -14,7 +14,7 @@ public class MixSISSShizuko
 <
 	IE extends InvLe,
 	SD extends ISoundDaLe,
-	BD extends BothDaSSShizuko<SD>,
+	BD extends BothDaSSShizuko,
 	E extends EntityLeInv,
 	I extends IMixE<BD, E> & IMixESoundDa<SD>,
 	S extends ServerLeInv<IE, SD, BD, E, I, ?>
@@ -22,10 +22,18 @@ public class MixSISSShizuko
 {
 	public static byte[] SI_BYTE_ARRAY =
 	{
+		SIESound.ID,
+
+		SIEArea.ID,
+		SIEOwner.ID,
+		SIEInvOpenInv.ID,
+		SILeEat.ID,
+
+		SIEPat.ID,
+
 		SIEInvLockInv.ID,
 		SILeLockDMG.ID,
 		SILeMineTo.ID,
-		SILeWalkTo.ID,
 		SILeUseTo.ID,
 		SIESit.ID,
 		SILeSetLocation.ID,
@@ -38,7 +46,15 @@ public class MixSISSShizuko
 		SILeInvGetItem.ID,
 		SILeRandomWalk.ID,
 		SILeLookTo.ID,
-		SILeRandomLook.ID
+		SILeRandomLook.ID,
+
+		SIEFrame.ID,
+
+		SILeFindMove.ID,
+		SILeMove.ID,
+		SILeWalkTo.ID,
+		SIELook.ID,
+		SILeJump.ID
 	};
 
 	public MixSISSShizuko(S s)

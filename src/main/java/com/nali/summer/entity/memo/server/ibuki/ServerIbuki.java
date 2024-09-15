@@ -25,7 +25,7 @@ public class ServerIbuki
 <
 	IE extends InvLe,
 	SD extends ISoundDaLe,
-	BD extends BothDaIbuki<SD>,
+	BD extends BothDaIbuki,
 	E extends EntityLeInv,
 	I extends IMixE<BD, E> & IMixESoundDa<SD>,
 	MS extends MixSIIbuki<IE, SD, BD, E, I, ?>

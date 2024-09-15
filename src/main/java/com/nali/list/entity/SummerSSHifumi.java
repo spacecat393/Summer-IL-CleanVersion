@@ -4,10 +4,12 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderSSHifumi;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.IBothLeInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.summer.da.both.BothDaSSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.ClientSSHifumi;
+import com.nali.summer.entity.memo.client.sshifumi.MixCISSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.MixRenderSSHifumi;
 import com.nali.summer.entity.memo.server.sshifumi.MixSISSHifumi;
 import com.nali.summer.entity.memo.server.sshifumi.ServerSSHifumi;
@@ -28,6 +30,8 @@ public class SummerSSHifumi extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHifumi.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHifumi.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+
+	public IBothLeInv ibothleinv;
 
 	static
 	{
@@ -70,9 +74,9 @@ public class SummerSSHifumi extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
-	public byte[] getAI()
+	public byte[] getSI()
 	{
-		return MixSISSHifumi.AI_BYTE_ARRAY;
+		return MixSISSHifumi.SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -98,21 +102,26 @@ public class SummerSSHifumi extends EntityLeInv implements IMixESoundDa
 	public void newC()
 	{
 		RenderSSHifumi r = new RenderSSHifumi(RenderSSHifumi.ICLIENTDAS, BothDaSSHifumi.IBOTHDASN);
-		ClientSSHifumi c = new ClientSSHifumi(this, r, new Inventory(1));
-		c.mb = new MixBoxSle(c);
+		ClientSSHifumi c = new ClientSSHifumi(this, r);
+		MixCISSHifumi mc = new MixCISSHifumi(c);
+		c.mc = mc;
+		mc.init();
+		c.mb = new MixBoxSleInv(c);
 		c.mr = new MixRenderSSHifumi(c);
 		r.c = c;
+		c.ie = new InvLe();
 		this.ibothleinv = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		ServerSSHifumi s = new ServerSSHifumi(this, new Inventory(1));
-		MixSISSHifumi a = new MixSISSHifumi(s);
-		s.a = a;
-		a.init();
+		ServerSSHifumi s = new ServerSSHifumi(this);
+		MixSISSHifumi ms = new MixSISSHifumi(s);
+		s.ms = ms;
+		ms.init();
 		s.initFrame();
+		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
 
@@ -128,6 +137,21 @@ public class SummerSSHifumi extends EntityLeInv implements IMixESoundDa
 		return SoundDaSSHifumi.ISOUNDDALE;
 	}
 
+	@Override
+	public IBothLeInv getB()
+	{
+		return this.ibothleinv;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientSSHifumi getC()
+	{
+		RenderSSHifumi r = new RenderSSHifumi(RenderSSHifumi.ICLIENTDAS, BothDaSSHifumi.IBOTHDASN);
+		ClientSSHifumi c = new ClientSSHifumi(null, r);
+		r.c = c;
+		c.mr = new MixRenderSSHifumi(c);
+		return c;
+	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public Object createObjectRender()

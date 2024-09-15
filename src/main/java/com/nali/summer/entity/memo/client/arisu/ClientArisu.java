@@ -39,8 +39,6 @@ public class ClientArisu
 	MR extends MixRenderSleInv<IE, RC, R, SD, BD, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, RC, R, SD, BD, E, I, MC, MB, MR> implements IClientERsInv, IClientESound
 {
-	public Sound sound = new NoSound();
-
 	public static byte[] CI_BYTE_ARRAY =
 	{
 		CIEFrame.ID,
@@ -71,6 +69,8 @@ public class ClientArisu
 		0.0F, -1.1F * 0.5F, 0.12F * 0.5F,
 		0.0F, -1.05F * 0.5F, 0.12F * 0.5F
 	};
+
+	public Sound sound = new NoSound();
 
 	public ClientArisu(I i, R r)
 	{

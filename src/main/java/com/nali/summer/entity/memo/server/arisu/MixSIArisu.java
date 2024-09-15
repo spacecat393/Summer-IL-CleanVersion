@@ -14,7 +14,7 @@ public class MixSIArisu
 <
 	IE extends InvLe,
 	SD extends ISoundDaLe,
-	BD extends BothDaArisu<SD>,
+	BD extends BothDaArisu,
 	E extends EntityLeInv,
 	I extends IMixE<BD, E> & IMixESoundDa<SD>,
 	S extends ServerLeInv<IE, SD, BD, E, I, ?>
@@ -34,7 +34,6 @@ public class MixSIArisu
 		SIEInvLockInv.ID,
 		SILeLockDMG.ID,
 		SILeMineTo.ID,
-//		SILeWalkTo.ID,
 		SILeUseTo.ID,
 		SIESit.ID,
 		SILeSetLocation.ID,
@@ -48,13 +47,12 @@ public class MixSIArisu
 		SILeLookTo.ID,
 		SILeRandomLook.ID,
 
-		//frame
 		SIEFrame.ID,
 
 		SILeFindMove.ID,
 		SILeMove.ID,
 		SILeWalkTo.ID,
-		SILeLook.ID,
+		SIELook.ID,
 		SILeJump.ID
 	};
 

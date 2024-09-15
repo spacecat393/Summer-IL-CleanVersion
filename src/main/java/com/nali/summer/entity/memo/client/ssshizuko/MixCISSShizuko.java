@@ -1,9 +1,9 @@
-package com.nali.summer.entity.memo.client.arisu;
+package com.nali.summer.entity.memo.client.ssshizuko;
 
 import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
 import com.nali.da.client.IClientDaS;
-import com.nali.list.render.s.RenderArisu;
+import com.nali.list.render.s.RenderSSShizuko;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
@@ -16,22 +16,24 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Arrays;
+
 @SideOnly(Side.CLIENT)
-public class MixCIArisu
+public class MixCISSShizuko
 <
 	IE extends InvLe,
 	RC extends IClientDaS,
-	R extends RenderArisu<IE, E, I, ?, MB, MR, C, SD, BD, RC>,
+	R extends RenderSSShizuko<IE, E, I, ?, MB, MR, C, SD, BD, RC>,
 	SD extends ISoundDaLe,
 	BD extends IBothDaNe & IBothDaSn,
 	E extends EntityLivingBase,
 	I extends IMixE<BD, E> & IMixESoundDa<SD>,
 	MB extends MixBoxSleInv<RC, R, SD, BD, E, I, ?, MR, C>,
-	MR extends MixRenderArisu<IE, RC, R, SD, BD, E, I, ?, MB, C>,
+	MR extends MixRenderSSShizuko<IE, RC, R, SD, BD, E, I, ?, MB, C>,
 	C extends ClientLeInv<IE, RC, R, SD, BD, E, I, ?, MB, MR> & IClientERsInv
 > extends MixCIE<RC, R, BD, E, I, MB, MR, C>
 {
-	public MixCIArisu(C c)
+	public MixCISSShizuko(C c)
 	{
 		super(c);
 	}
@@ -39,41 +41,36 @@ public class MixCIArisu
 	@Override
 	public void updateBox()
 	{
+		super.updateBox();
+
 		R r = this.c.r;
 		I i = this.c.i;
 
 		int frame = r.frame_int_array[0];
 
-		if (frame < 205)
+		if (frame > 481 && frame < 533)
 		{
-//			skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
-//			skinningrender.model_byte_array[6 / 8] &= 191;//255 - Math.pow(2, 6 % 8)
-			r.model_byte_array[0] &= 239 & 191;
+			Arrays.fill(r.seahouserender.model_byte_array, (byte)255);
+		}
+		else if (frame > 532 && frame < 751)
+		{
+			r.seahouserender.model_byte_array[0 / 8] |= 1;//Math.pow(2, 0 % 8)
+//			sszukorender.seahouserender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
+//			sszukorender.seahouserender.model_byte_array[2 / 8] &= 251;//255 - Math.pow(2, 2 % 8)
+			r.seahouserender.model_byte_array[0] &= 253 & 251;
 		}
 		else
 		{
-//			skinningrender.model_byte_array[4 / 8] |= 16;//Math.pow(2, 4 % 8)
-//			skinningrender.model_byte_array[6 / 8] |= 64;//Math.pow(2, 6 % 8)
-			r.model_byte_array[0] |= 16 | 64;
+			Arrays.fill(r.seahouserender.model_byte_array, (byte)0);
 		}
 
-		float scale = r.scale;
-		BD bd = i.getBD();
-		E e = i.getE();
-		if (frame > 834 && frame < 861)
-		{
-			e.width = bd.Width() * scale;
-			e.height = 0.65F * scale;
-		}
-		else if (frame > 737 && frame < 784)
-		{
-			e.width = 1.5F * scale;
-			e.height = 0.2F * scale;
-		}
-		else
-		{
-			e.width = bd.Width() * scale;
-			e.height = bd.Height() * scale;
-		}
+		r.seahouserender.frame_int_array[0] = i.getE().getDataManager().get(i.getIntegerDataParameterArray()[1]);
+	}
+
+	@Override
+	public void onReadNBT()
+	{
+		Arrays.fill(this.c.r.seahouserender.model_byte_array, (byte)0);
+		super.onReadNBT();
 	}
 }

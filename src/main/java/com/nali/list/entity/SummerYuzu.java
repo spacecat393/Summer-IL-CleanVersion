@@ -4,10 +4,12 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderYuzu;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.IBothLeInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.summer.da.both.BothDaYuzu;
 import com.nali.summer.entity.memo.client.yuzu.ClientYuzu;
+import com.nali.summer.entity.memo.client.yuzu.MixCIYuzu;
 import com.nali.summer.entity.memo.client.yuzu.MixRenderYuzu;
 import com.nali.summer.entity.memo.server.yuzu.MixSIYuzu;
 import com.nali.summer.entity.memo.server.yuzu.ServerYuzu;
@@ -28,6 +30,8 @@ public class SummerYuzu extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaYuzu.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaYuzu.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+
+	public IBothLeInv ibothleinv;
 
 	static
 	{
@@ -62,9 +66,9 @@ public class SummerYuzu extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
-	public byte[] getAI()
+	public byte[] getSI()
 	{
-		return MixSIYuzu.AI_BYTE_ARRAY;
+		return MixSIYuzu.SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -90,21 +94,26 @@ public class SummerYuzu extends EntityLeInv implements IMixESoundDa
 	public void newC()
 	{
 		RenderYuzu r = new RenderYuzu(RenderYuzu.ICLIENTDAS, BothDaYuzu.IBOTHDASN);
-		ClientYuzu c = new ClientYuzu(this, r, new Inventory(1));
-		c.mb = new MixBoxSle(c);
+		ClientYuzu c = new ClientYuzu(this, r);
+		MixCIYuzu mc = new MixCIYuzu(c);
+		c.mc = mc;
+		mc.init();
+		c.mb = new MixBoxSleInv(c);
 		c.mr = new MixRenderYuzu(c);
 		r.c = c;
+		c.ie = new InvLe();
 		this.ibothleinv = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		ServerYuzu s = new ServerYuzu(this, new Inventory(1));
-		MixSIYuzu a = new MixSIYuzu(s);
-		s.a = a;
-		a.init();
+		ServerYuzu s = new ServerYuzu(this);
+		MixSIYuzu ms = new MixSIYuzu(s);
+		s.ms = ms;
+		ms.init();
 		s.initFrame();
+		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
 
@@ -118,6 +127,22 @@ public class SummerYuzu extends EntityLeInv implements IMixESoundDa
 	public Object getSD()
 	{
 		return SoundDaYuzu.ISOUNDDALE;
+	}
+
+	@Override
+	public IBothLeInv getB()
+	{
+		return this.ibothleinv;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientYuzu getC()
+	{
+		RenderYuzu r = new RenderYuzu(RenderYuzu.ICLIENTDAS, BothDaYuzu.IBOTHDASN);
+		ClientYuzu c = new ClientYuzu(null, r);
+		r.c = c;
+		c.mr = new MixRenderYuzu(c);
+		return c;
 	}
 //	@Override
 //	@SideOnly(Side.CLIENT)

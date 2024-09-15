@@ -11,7 +11,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Arrays;
 
 @SideOnly(Side.CLIENT)
-public class RenderSeaHouse<BD extends IBothDaSn, RC extends IClientDaS> extends SummerRenderS<BD, RC>
+public class RenderSeaHouse
+<
+	BD extends IBothDaSn,
+	RC extends IClientDaS
+> extends SummerRenderS<BD, RC>
 {
 //	public static int ID;
 //	public static DataLoader DATALOADER = RenderHelper.DATALOADER;

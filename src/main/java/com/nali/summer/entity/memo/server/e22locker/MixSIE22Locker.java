@@ -1,7 +1,6 @@
 package com.nali.summer.entity.memo.server.e22locker;
 
-import com.nali.list.entity.si.SIEInvLockInv;
-import com.nali.list.entity.si.SIEPlayWithRSe;
+import com.nali.list.entity.si.*;
 import com.nali.small.entity.EntityE;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.memo.server.ServerE;
@@ -18,9 +17,16 @@ public class MixSIE22Locker
 {
 	public static byte[] SI_BYTE_ARRAY =
 	{
+		SIEArea.ID,
+		SIEOwner.ID,
+		SIEInvOpenInv.ID,
+
 		SIEInvLockInv.ID,
-		SIEPlayWithRSe.ID//Play-1
-//		SIESit.ID
+		SIEPlayWithRSe.ID,//Play-1
+
+		SIEFrame.ID,
+
+		SIELook.ID
 	};
 
 	public MixSIE22Locker(S s)

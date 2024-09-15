@@ -4,10 +4,12 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderSSIzuna;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.IBothLeInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.summer.da.both.BothDaSSIzuna;
 import com.nali.summer.entity.memo.client.ssizuna.ClientSSIzuna;
+import com.nali.summer.entity.memo.client.ssizuna.MixCISSIzuna;
 import com.nali.summer.entity.memo.client.ssizuna.MixRenderSSIzuna;
 import com.nali.summer.entity.memo.server.ssizuna.MixSISSIzuna;
 import com.nali.summer.entity.memo.server.ssizuna.ServerSSIzuna;
@@ -28,6 +30,8 @@ public class SummerSSIzuna extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSIzuna.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSIzuna.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+
+	public IBothLeInv ibothleinv;
 
 	static
 	{
@@ -85,9 +89,9 @@ public class SummerSSIzuna extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
-	public byte[] getAI()
+	public byte[] getSI()
 	{
-		return MixSISSIzuna.AI_BYTE_ARRAY;
+		return MixSISSIzuna.SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -113,21 +117,26 @@ public class SummerSSIzuna extends EntityLeInv implements IMixESoundDa
 	public void newC()
 	{
 		RenderSSIzuna r = new RenderSSIzuna(RenderSSIzuna.ICLIENTDAS, BothDaSSIzuna.IBOTHDASN);
-		ClientSSIzuna c = new ClientSSIzuna(this, r, new Inventory(1));
-		c.mb = new MixBoxSle(c);
+		ClientSSIzuna c = new ClientSSIzuna(this, r);
+		MixCISSIzuna mc = new MixCISSIzuna(c);
+		c.mc = mc;
+		mc.init();
+		c.mb = new MixBoxSleInv(c);
 		c.mr = new MixRenderSSIzuna(c);
 		r.c = c;
+		c.ie = new InvLe();
 		this.ibothleinv = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		ServerSSIzuna s = new ServerSSIzuna(this, new Inventory(1));
-		MixSISSIzuna a = new MixSISSIzuna(s);
-		s.a = a;
-		a.init();
+		ServerSSIzuna s = new ServerSSIzuna(this);
+		MixSISSIzuna ms = new MixSISSIzuna(s);
+		s.ms = ms;
+		ms.init();
 		s.initFrame();
+		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
 
@@ -143,6 +152,21 @@ public class SummerSSIzuna extends EntityLeInv implements IMixESoundDa
 		return SoundDaSSIzuna.ISOUNDDALE;
 	}
 
+	@Override
+	public IBothLeInv getB()
+	{
+		return this.ibothleinv;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientSSIzuna getC()
+	{
+		RenderSSIzuna r = new RenderSSIzuna(RenderSSIzuna.ICLIENTDAS, BothDaSSIzuna.IBOTHDASN);
+		ClientSSIzuna c = new ClientSSIzuna(null, r);
+		r.c = c;
+		c.mr = new MixRenderSSIzuna(c);
+		return c;
+	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public Object createObjectRender()

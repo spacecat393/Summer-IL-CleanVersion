@@ -57,12 +57,6 @@ public class SummerArisu extends EntityLeInv implements IMixESoundDa
 //		Nali.LOGGER.info("New " + this + " C " + this.world.isRemote);
 	}
 
-	@Override
-	public IBothLeInv getB()
-	{
-		return this.ibothleinv;
-	}
-
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public void updateClient()
@@ -237,6 +231,12 @@ public class SummerArisu extends EntityLeInv implements IMixESoundDa
 	public Object getSD()
 	{
 		return SoundDaArisu.ISOUNDDALE;
+	}
+
+	@Override
+	public IBothLeInv getB()
+	{
+		return this.ibothleinv;
 	}
 
 	@SideOnly(Side.CLIENT)

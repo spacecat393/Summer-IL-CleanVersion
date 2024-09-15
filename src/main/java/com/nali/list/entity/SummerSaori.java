@@ -4,10 +4,12 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.render.s.RenderSaori;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
-import com.nali.small.entity.Inventory;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
+import com.nali.small.entity.inv.InvLe;
+import com.nali.small.entity.memo.IBothLeInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.summer.da.both.BothDaSaori;
 import com.nali.summer.entity.memo.client.saori.ClientSaori;
+import com.nali.summer.entity.memo.client.saori.MixCISaori;
 import com.nali.summer.entity.memo.client.saori.MixRenderSaori;
 import com.nali.summer.entity.memo.server.saori.MixSISaori;
 import com.nali.summer.entity.memo.server.saori.ServerSaori;
@@ -28,6 +30,8 @@ public class SummerSaori extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSaori.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSaori.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+
+	public IBothLeInv ibothleinv;
 
 	static
 	{
@@ -85,9 +89,9 @@ public class SummerSaori extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
-	public byte[] getAI()
+	public byte[] getSI()
 	{
-		return MixSISaori.AI_BYTE_ARRAY;
+		return MixSISaori.SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -113,21 +117,26 @@ public class SummerSaori extends EntityLeInv implements IMixESoundDa
 	public void newC()
 	{
 		RenderSaori r = new RenderSaori(RenderSaori.ICLIENTDAS, BothDaSaori.IBOTHDASN);
-		ClientSaori c = new ClientSaori(this, r, new Inventory(1));
-		c.mb = new MixBoxSle(c);
+		ClientSaori c = new ClientSaori(this, r);
+		MixCISaori mc = new MixCISaori(c);
+		c.mc = mc;
+		mc.init();
+		c.mb = new MixBoxSleInv(c);
 		c.mr = new MixRenderSaori(c);
 		r.c = c;
+		c.ie = new InvLe();
 		this.ibothleinv = c;
 	}
 
 	@Override
 	public void newS()
 	{
-		ServerSaori s = new ServerSaori(this, new Inventory(1));
-		MixSISaori a = new MixSISaori(s);
-		s.a = a;
-		a.init();
+		ServerSaori s = new ServerSaori(this);
+		MixSISaori ms = new MixSISaori(s);
+		s.ms = ms;
+		ms.init();
 		s.initFrame();
+		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
 
@@ -143,6 +152,21 @@ public class SummerSaori extends EntityLeInv implements IMixESoundDa
 		return SoundDaSaori.ISOUNDDALE;
 	}
 
+	@Override
+	public IBothLeInv getB()
+	{
+		return this.ibothleinv;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientSaori getC()
+	{
+		RenderSaori r = new RenderSaori(RenderSaori.ICLIENTDAS, BothDaSaori.IBOTHDASN);
+		ClientSaori c = new ClientSaori(null, r);
+		r.c = c;
+		c.mr = new MixRenderSaori(c);
+		return c;
+	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public Object createObjectRender()
