@@ -1,18 +1,21 @@
 package com.nali.list.entity;
 
 import com.nali.da.IBothDaNe;
+import com.nali.list.entity.ci.CIEFrame;
+import com.nali.list.entity.ci.CIESound;
+import com.nali.list.entity.si.*;
 import com.nali.list.render.s.RenderSSShizuko;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
+import com.nali.small.entity.memo.server.si.MixSIEInv;
 import com.nali.summer.da.both.BothDaSSShizuko;
 import com.nali.summer.da.both.BothDaSeaHouse;
 import com.nali.summer.entity.memo.client.ssshizuko.ClientSSShizuko;
 import com.nali.summer.entity.memo.client.ssshizuko.MixCISSShizuko;
 import com.nali.summer.entity.memo.client.ssshizuko.MixRenderSSShizuko;
-import com.nali.summer.entity.memo.server.ssshizuko.MixSISSShizuko;
 import com.nali.summer.entity.memo.server.ssshizuko.ServerSSShizuko;
 import com.nali.summer.entity.sound.SoundDaSSShizuko;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -31,6 +34,9 @@ public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSShizuko.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSShizuko.MAX_FRAME + BothDaSeaHouse.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+
+	public static byte[] CI_BYTE_ARRAY;
+	public static byte[] SI_BYTE_ARRAY;
 
 	public IBothLeInv ibothleinv;
 
@@ -57,6 +63,61 @@ public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 		super(world);
 	}
 
+	public static void initID()
+	{
+		CI_BYTE_ARRAY = new byte[]
+		{
+			CIEFrame.ID,
+			CIESound.ID
+		};
+
+		SI_BYTE_ARRAY = new byte[]
+		{
+			SIESound.ID,
+
+			SIEArea.ID,
+			SIEOwner.ID,
+			SIEInvOpenInv.ID,
+			SILeEat.ID,
+
+			SIEPat.ID,
+
+			SIEInvLockInv.ID,
+			SILeLockDMG.ID,
+			SILeMineTo.ID,
+			SILeUseTo.ID,
+			SIESit.ID,
+			SILeSetLocation.ID,
+			SILeFollow.ID,
+			SILeRevive.ID,
+			SILeProtect.ID,
+//		SILeCareOwner.ID,
+//		SILeAttack.ID,
+			SILeInvManageItem.ID,
+			SILeInvGetItem.ID,
+			SILeRandomWalk.ID,
+			SILeLookTo.ID,
+			SILeRandomLook.ID,
+
+			SIEFrame.ID,
+
+			SILeFindMove.ID,
+			SILeMove.ID,
+			SILeWalkTo.ID,
+			SIELook.ID,
+			SILeJump.ID
+		};
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientSSShizuko getC()
+	{
+		RenderSSShizuko r = new RenderSSShizuko(RenderSSShizuko.ICLIENTDAS, BothDaSSShizuko.IBOTHDASN);
+		ClientSSShizuko c = new ClientSSShizuko(null, r);
+		r.c = c;
+		c.mr = new MixRenderSSShizuko(c);
+		return c;
+	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public void initFakeFrame()
@@ -99,9 +160,15 @@ public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
+	public byte[] getCI()
+	{
+		return CI_BYTE_ARRAY;
+	}
+
+	@Override
 	public byte[] getSI()
 	{
-		return MixSISSShizuko.SI_BYTE_ARRAY;
+		return SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -142,7 +209,8 @@ public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 	public void newS()
 	{
 		ServerSSShizuko s = new ServerSSShizuko(this);
-		MixSISSShizuko ms = new MixSISSShizuko(s);
+//		MixSISSShizuko ms = new MixSISSShizuko(s);
+		MixSIEInv ms = new MixSIEInv(s);
 		s.ms = ms;
 		ms.init();
 		s.initFrame();
@@ -166,16 +234,6 @@ public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 	public IBothLeInv getB()
 	{
 		return this.ibothleinv;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public static ClientSSShizuko getC()
-	{
-		RenderSSShizuko r = new RenderSSShizuko(RenderSSShizuko.ICLIENTDAS, BothDaSSShizuko.IBOTHDASN);
-		ClientSSShizuko c = new ClientSSShizuko(null, r);
-		r.c = c;
-		c.mr = new MixRenderSSShizuko(c);
-		return c;
 	}
 //	@Override
 //	@SideOnly(Side.CLIENT)

@@ -1,6 +1,9 @@
 package com.nali.list.entity;
 
 import com.nali.da.IBothDaNe;
+import com.nali.list.entity.ci.CIEFrame;
+import com.nali.list.entity.ci.CIESound;
+import com.nali.list.entity.si.*;
 import com.nali.list.render.s.RenderNatsu;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixESoundDa;
@@ -31,6 +34,9 @@ public class SummerNatsu extends EntityLeInv implements IMixESoundDa
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaNatsu.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
+	public static byte[] CI_BYTE_ARRAY;
+	public static byte[] SI_BYTE_ARRAY;
+
 	public IBothLeInv ibothleinv;
 
 	static
@@ -56,6 +62,62 @@ public class SummerNatsu extends EntityLeInv implements IMixESoundDa
 		super(world);
 	}
 
+	public static void initID()
+	{
+		CI_BYTE_ARRAY = new byte[]
+		{
+			CIEFrame.ID,
+			CIESound.ID
+		};
+
+		SI_BYTE_ARRAY = new byte[]
+		{
+			SIESound.ID,
+
+			SIEArea.ID,
+			SIEOwner.ID,
+			SIEInvOpenInv.ID,
+			SILeEat.ID,
+
+			SIEPat.ID,
+
+			SIEInvLockInv.ID,
+			SILeLockDMG.ID,
+			SILeMineTo.ID,
+			SILeUseTo.ID,
+			SIESit.ID,
+			SILeSetLocation.ID,
+			SILeFollow.ID,
+			SILeRevive.ID,
+			SILeHeal.ID,
+			SILeCareOwner.ID,
+			SILeAttack.ID,
+			SILeInvManageItem.ID,
+			SILeInvGetItem.ID,
+			SILeRandomWalk.ID,
+			SILeLookTo.ID,
+			SILeRandomLook.ID,
+
+			SIEFrame.ID,
+
+			SILeFindMove.ID,
+			SILeMove.ID,
+			SILeWalkTo.ID,
+			SIELook.ID,
+			SILeJump.ID
+		};
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientNatsu getC()
+	{
+		RenderNatsu r = new RenderNatsu(RenderNatsu.ICLIENTDAS, BothDaNatsu.IBOTHDASN);
+		ClientNatsu c = new ClientNatsu(null, r);
+		r.c = c;
+		c.mr = new MixRenderNatsu(c);
+		return c;
+	}
+
 	@Override
 	public void applyEntityAttributes()
 	{
@@ -66,9 +128,15 @@ public class SummerNatsu extends EntityLeInv implements IMixESoundDa
 	}
 
 	@Override
+	public byte[] getCI()
+	{
+		return CI_BYTE_ARRAY;
+	}
+
+	@Override
 	public byte[] getSI()
 	{
-		return MixSINatsu.SI_BYTE_ARRAY;
+		return SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -133,16 +201,6 @@ public class SummerNatsu extends EntityLeInv implements IMixESoundDa
 	public IBothLeInv getB()
 	{
 		return this.ibothleinv;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public static ClientNatsu getC()
-	{
-		RenderNatsu r = new RenderNatsu(RenderNatsu.ICLIENTDAS, BothDaNatsu.IBOTHDASN);
-		ClientNatsu c = new ClientNatsu(null, r);
-		r.c = c;
-		c.mr = new MixRenderNatsu(c);
-		return c;
 	}
 //	@Override
 //	@SideOnly(Side.CLIENT)

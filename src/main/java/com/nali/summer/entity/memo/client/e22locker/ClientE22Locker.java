@@ -3,7 +3,6 @@ package com.nali.summer.entity.memo.client.e22locker;
 import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
 import com.nali.da.client.IClientDaS;
-import com.nali.list.entity.ci.CIEFrame;
 import com.nali.render.RenderS;
 import com.nali.small.entity.EntityE;
 import com.nali.small.entity.IMixE;
@@ -35,11 +34,6 @@ public class ClientE22Locker
 {
 	public IE ie;
 
-	public static byte[] CI_BYTE_ARRAY =
-	{
-		CIEFrame.ID
-	};
-
 	public static int[] IV_INT_ARRAY = new int[]
 	{
 		5+90 + MODEL_STEP, 523,
@@ -65,12 +59,6 @@ public class ClientE22Locker
 	public ClientE22Locker(I i, R r)
 	{
 		super(i, r);
-	}
-
-	@Override
-	public byte[] getCI()
-	{
-		return CI_BYTE_ARRAY;
 	}
 
 //	@Override

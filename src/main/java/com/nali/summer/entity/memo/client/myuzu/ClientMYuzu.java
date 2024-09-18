@@ -3,8 +3,6 @@ package com.nali.summer.entity.memo.client.myuzu;
 import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
 import com.nali.da.client.IClientDaS;
-import com.nali.list.entity.ci.CIEFrame;
-import com.nali.list.entity.ci.CIESound;
 import com.nali.list.render.s.RenderMYuzu;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixESoundDa;
@@ -39,12 +37,6 @@ public class ClientMYuzu
 	MR extends MixRenderSleInv<IE, RC, R, SD, BD, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, RC, R, SD, BD, E, I, MC, MB, MR> implements IClientERsInv, IClientESound
 {
-	public static byte[] CI_BYTE_ARRAY =
-	{
-		CIEFrame.ID,
-		CIESound.ID
-	};
-
 	public static int[] IV_INT_ARRAY = new int[]
 	{
 		5+81 + MODEL_STEP, 11946,
@@ -96,11 +88,5 @@ public class ClientMYuzu
 	public float[] getTransformFloatArray()
 	{
 		return TRANSFORM_FLOAT_ARRAY;
-	}
-
-	@Override
-	public byte[] getCI()
-	{
-		return CI_BYTE_ARRAY;
 	}
 }

@@ -1,16 +1,18 @@
 package com.nali.list.entity;
 
 import com.nali.da.IBothDaNe;
+import com.nali.list.entity.ci.CIEFrame;
+import com.nali.list.entity.si.*;
 import com.nali.list.render.s.RenderE22Locker;
 import com.nali.small.entity.EntityE;
 import com.nali.small.entity.inv.InvE;
 import com.nali.small.entity.memo.IBothE;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSeRSe;
 import com.nali.small.entity.memo.client.ci.MixCIE;
+import com.nali.small.entity.memo.server.si.MixSIEInv;
 import com.nali.summer.da.both.BothDaE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.ClientE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.MixRenderE22Locker;
-import com.nali.summer.entity.memo.server.e22locker.MixSIE22Locker;
 import com.nali.summer.entity.memo.server.e22locker.ServerE22Locker;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -28,6 +30,9 @@ public class SummerE22Locker extends EntityE
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaE22Locker.MAX_SYNC];
 	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaE22Locker.MAX_FRAME];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+
+	public static byte[] CI_BYTE_ARRAY;
+	public static byte[] SI_BYTE_ARRAY;
 
 	static
 	{
@@ -54,6 +59,38 @@ public class SummerE22Locker extends EntityE
 		super(world);
 	}
 
+	public static void initID()
+	{
+		CI_BYTE_ARRAY = new byte[]
+		{
+			CIEFrame.ID
+		};
+
+		SI_BYTE_ARRAY = new byte[]
+		{
+			SIEArea.ID,
+			SIEOwner.ID,
+			SIEInvOpenInv.ID,
+
+			SIEInvLockInv.ID,
+			SIEPlayWithRSe.ID,//Play-1
+
+			SIEFrame.ID,
+
+			SIELook.ID
+		};
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static ClientE22Locker getC()
+	{
+		RenderE22Locker r = new RenderE22Locker(RenderE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
+		ClientE22Locker c = new ClientE22Locker(null, r);
+		r.c = c;
+		c.mr = new MixRenderE22Locker(c);
+		return c;
+	}
+
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
@@ -69,9 +106,15 @@ public class SummerE22Locker extends EntityE
 //	}
 
 	@Override
+	public byte[] getCI()
+	{
+		return CI_BYTE_ARRAY;
+	}
+
+	@Override
 	public byte[] getSI()
 	{
-		return MixSIE22Locker.SI_BYTE_ARRAY;
+		return SI_BYTE_ARRAY;
 	}
 
 	@Override
@@ -159,7 +202,8 @@ public class SummerE22Locker extends EntityE
 	public void newS()
 	{
 		ServerE22Locker s = new ServerE22Locker(this);
-		MixSIE22Locker ms = new MixSIE22Locker(s);
+//		MixSIE22Locker ms = new MixSIE22Locker(s);
+		MixSIEInv ms = new MixSIEInv(s);
 		s.ms = ms;
 		ms.init();
 		s.initFrame();
@@ -177,16 +221,6 @@ public class SummerE22Locker extends EntityE
 	public IBothE getB()
 	{
 		return this.ibothe;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public static ClientE22Locker getC()
-	{
-		RenderE22Locker r = new RenderE22Locker(RenderE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
-		ClientE22Locker c = new ClientE22Locker(null, r);
-		r.c = c;
-		c.mr = new MixRenderE22Locker(c);
-		return c;
 	}
 
 //	@Override

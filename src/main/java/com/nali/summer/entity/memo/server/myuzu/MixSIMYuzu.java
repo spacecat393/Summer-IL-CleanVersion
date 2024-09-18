@@ -20,42 +20,6 @@ public class MixSIMYuzu
 	S extends ServerLeInv<IE, SD, BD, E, I, ?>
 > extends MixSIEInv<BD, E, I, S>
 {
-	public static byte[] SI_BYTE_ARRAY =
-	{
-		SIESound.ID,
-
-		SIEArea.ID,
-		SIEOwner.ID,
-		SIEInvOpenInv.ID,
-		SILeEat.ID,
-
-		SIEPat.ID,
-
-		SIEInvLockInv.ID,
-		SILeLockDMG.ID,
-		SILeMineTo.ID,
-		SILeUseTo.ID,
-		SIESit.ID,
-		SILeSetLocation.ID,
-		SILeFollow.ID,
-		SILeRevive.ID,
-		SILeCareOwner.ID,
-		SILeAttack.ID,
-		SILeInvManageItem.ID,
-		SILeInvGetItem.ID,
-		SILeRandomWalk.ID,
-		SILeLookTo.ID,
-		SILeRandomLook.ID,
-
-		SIEFrame.ID,
-
-		SILeFindMove.ID,
-		SILeMove.ID,
-		SILeWalkTo.ID,
-		SIELook.ID,
-		SILeJump.ID
-	};
-
 	public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
 	{
 		622
