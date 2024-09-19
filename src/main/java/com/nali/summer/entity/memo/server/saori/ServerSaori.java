@@ -32,7 +32,7 @@ public class ServerSaori
 	{
 		{ 890, 942 },
 		{ 492, 592 },
-		{ 688, 704 },
+		{ 688, 704 },//2 start attack
 		{ 593, 608 },
 		{ 609, 646 },
 		{ 358, 491 },
@@ -40,23 +40,24 @@ public class ServerSaori
 		{ 241, 357 },
 		{ 647, 687 },
 		{ 0, 240 },
-		{ 705, 723 },
-		{ 724, 742 },
-		{ 743, 788 },
-		{ 789, 889 }//skill
+		{ 705, 723 },//10 loop attack
+		{ 724, 742 },//11 end attack
+		{ 743, 788 },//12 reload
+		{ 789, 889 }//13 skill
 	//			{ 980, 1013 }//delay attack
 	};
 	public static byte[] FRAME_BYTE_ARRAY = new byte[]
 	{
-		0, 0,
-		0, 1,
-		0, 3, 4,
-		0, 2, 10, 13, 2, 13,
-		0, 3,
-		0, 5,
-		0, 6,
-		0, 7,
-		0, 9
+		0, 0, //0
+		0, 1, //2
+		0, 3, 4, //4
+		0, 2, 2, 10, 13, 11, 12, //7 frameId size startAttack (loop skill) end reload
+		0, 3, //14
+		0, 5, //16
+		0, 6, //18
+		0, 7, //20
+		0, 8, //22
+		0, 9 //24
 	};
 	public FrameS[][] frames_2d_array;
 
@@ -75,13 +76,13 @@ public class ServerSaori
 				new FrameSleFLoopDie(this, 0),
 				new FrameSTLoopSit(this, 2),
 				new FrameSleFLoopOffSetAttackEndWalk(this, 4),
-				new FrameSleShootAttackPlus(this, 7),//?
-				new FrameSleTLoopAttackWalk(this, 13),
-				new FrameSleTLoopWalk(this, 15),
-				new FrameSFLoopFreeHardReady(this, 17),
-				new FrameSleFLoopFreePSrE(this, 19),
-				new FrameSleTLoopAttackStand(this, 21),
-				new FrameSTLoop(this, 23)
+				new FrameSleShootAttackPlus(this, 7),
+				new FrameSleTLoopAttackWalk(this, 14),
+				new FrameSleTLoopWalk(this, 16),
+				new FrameSFLoopFreeHardReady(this, 18),
+				new FrameSleFLoopFreePSrE(this, 20),
+				new FrameSleTLoopAttackStand(this, 22),
+				new FrameSTLoop(this, 24)
 			}
 		};
 //		() -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),

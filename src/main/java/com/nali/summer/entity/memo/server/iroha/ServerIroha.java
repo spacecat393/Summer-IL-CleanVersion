@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.server.iroha;
 
 import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
+import com.nali.list.entity.SummerIroha;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixESoundDa;
@@ -10,7 +11,6 @@ import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerLeInv;
 import com.nali.small.entity.memo.server.si.MixSIE;
 import com.nali.small.entity.memo.server.si.frame.FrameS;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopAttackStand;
 import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDie;
 import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDieRSe;
 import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopRSeStart;
@@ -21,10 +21,7 @@ import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSe
 import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalkRSe;
 import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShoot;
 import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShootRSe;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSTLoop;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSTLoopRSeSSleStand;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopAttackWalk;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopWalk;
+import com.nali.small.entity.memo.server.si.frame.tloop.*;
 import com.nali.small.entity.memo.server.si.frame.tloopfb.FrameSTLoopFBSit;
 import com.nali.small.entity.memo.server.si.frame.tloopfb.FrameSTLoopFBSitRSe;
 import com.nali.sound.ISoundDaLe;
@@ -50,7 +47,7 @@ public class ServerIroha
 		{ 51, 142 },
 		{ 258, 320 },
 		{ 207, 257 },
-		{ 372, 422 },
+		{ 372, 422 },// 9 n-idle
 		{ 0, 50 },
 		{ 533, 566 },
 		{ 567, 583 },
@@ -68,24 +65,24 @@ public class ServerIroha
 	};
 	public static byte[] FRAME_BYTE_ARRAY = new byte[]
 	{
-		0, 14,
-		0, 19,
-		0, 18,
-		0, 16, 17,
-		0, 20, 21, 22, 23,
-		0, 15,
+		0, 14, //0
+		0, 19, //2
+		0, 18, //4
+		0, 16, 17, //6
+		0, 20, 21, 22, 23, //9
+		0, 15, //14
 
-		0, 0,
-		0, 1,
-		0, 3, 4,
-		0, 2, 11, 12, 13,
-		0, 3,
-		0, 5,
-		0, 6,
-		0, 7,
-		0, 8,
-		0, 9,
-		0, 10
+		0, 0, //16
+		0, 1, //18
+		0, 3, 4, //20
+		0, 2, 11, 12, 13, //23
+		0, 3, //28
+		0, 5, //30
+		0, 6, //32
+		0, 7, //34
+		0, 8, //36
+		0, 9, //38
+		0, 10 //40
 	};
 	public FrameS[][] frames_2d_array;
 
@@ -105,7 +102,7 @@ public class ServerIroha
 				new FrameSTLoopFBSitRSe(this, 4),
 				new FrameSleFLoopOffSetAttackEndWalkRSe(this, 6),
 				new FrameSleShootRSe(this, 9),
-				new FrameSTLoopRSeSSleStand(this, 14),
+				new FrameSTLoopPWStand(this, 14, SummerIroha.PW_BYTE_ARRAY),
 
 				new FrameSleFLoopDie(this, 16),
 				new FrameSTLoopFBSit(this, 18),
@@ -116,7 +113,7 @@ public class ServerIroha
 				new FrameSleFLoopFreePE(this, 32),
 				new FrameSFLoopFreeHardReady(this, 34),
 				new FrameSFLoopFreeSoftReady(this, 36),
-				new FrameSleFLoopAttackStand(this, 38),
+				new FrameSleTLoopAttackStand(this, 38),
 				new FrameSTLoop(this, 40)
 			}
 		};

@@ -1,5 +1,6 @@
 package com.nali.summer.entity.memo.server.ibuki;
 
+import com.nali.list.entity.SummerIbuki;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixESoundDa;
@@ -64,6 +65,7 @@ public class ServerIbuki
 		0, 17,
 		0, 15, 16,
 		0, 19, 20, 21, 22,
+		0, 14,
 
 		0, 0,
 		0, 1,
@@ -95,18 +97,18 @@ public class ServerIbuki
 				new FrameSleTLoopFBSitSSle(this, 4),
 				new FrameSleFLoopOffSetAttackEndWalkSSle(this, 6),
 				new FrameSleShootSSle(this, 9),
-				new FrameSleTLoopSSleRSeStand(this, 14),
+				new FrameSTLoopPWStand(this, 14, SummerIbuki.PW_BYTE_ARRAY),
 
-				new FrameSleFLoopDie(this, /*0+*/19),
-				new FrameSTLoopSit(this, 2+19),
-				new FrameSleFLoopOffSetAttackEndWalk(this, 4+19),
-				new FrameSleShoot(this, 7+19),
-				new FrameSleTLoopAttackWalk(this, 12+19),
-				new FrameSleTLoopWalk(this, 14+19),
-				new FrameSFLoopFreeHardReady(this, 16+19),
-				new FrameSleFLoopFreePSrE(this, 18+19),
-				new FrameSleTLoopAttackStand(this, 20+19),
-				new FrameSTLoop(this, 22+19)
+				new FrameSleFLoopDie(this, /*0+*/16),
+				new FrameSTLoopSit(this, 2+16),
+				new FrameSleFLoopOffSetAttackEndWalk(this, 4+16),
+				new FrameSleShoot(this, 7+16),
+				new FrameSleTLoopAttackWalk(this, 12+16),
+				new FrameSleTLoopWalk(this, 14+16),
+				new FrameSFLoopFreeHardReady(this, 16+16),
+				new FrameSleFLoopFreePSrE(this, 18+16),
+				new FrameSleTLoopAttackStand(this, 20+16),
+				new FrameSTLoop(this, 22+16)
 			}
 		};
 //		() -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),

@@ -47,16 +47,16 @@ public class ServerSSHoshino
 	};
 	public static byte[] FRAME_BYTE_ARRAY = new byte[]
 	{
-		0, 2, 0, 13,
-		0, 1,
-		0, 3, 4,
-		0, 2, 10, 11, 12,
-		0, 3,
-		0, 5,
-		0, 6,
-		0, 7,
-		0, 8,
-		0, 9
+		0, 2, 0, 13, //0
+		0, 1, //4
+		0, 3, 4, //6
+		0, 2, 10, 11, 12, //9
+		0, 3, //14
+		0, 5, //16
+		0, 6, //18
+		0, 7, //20
+		0, 8, //22
+		0, 9 //24
 	};
 	public FrameS[][] frames_2d_array;
 
@@ -72,16 +72,16 @@ public class ServerSSHoshino
 		this.frames_2d_array = new FrameS[][]
 		{
 			{
-				new FrameSleFLoopDiePlus(this, 0/*, 2*/),
-				new FrameSTLoopSit(this, 3+1+2),
-				new FrameSleFLoopOffSetAttackEndWalk(this, 5+1+2),
-				new FrameSleShoot(this, 8+1+2),
-				new FrameSleTLoopAttackWalk(this, 13+1+2),
-				new FrameSleTLoopWalk(this, 15+1+2),
-				new FrameSFLoopFreeHardReady(this, 17+1+2),
-				new FrameSleFLoopFreePSrE(this, 19+1+2),
-				new FrameSleTLoopAttackStand(this, 21+1+2),
-				new FrameSTLoop(this, 23+1+2)
+				new FrameSleFLoopDiePlus(this, 0),
+				new FrameSTLoopSit(this, 4),
+				new FrameSleFLoopOffSetAttackEndWalk(this, 6),
+				new FrameSleShoot(this, 9),
+				new FrameSleTLoopAttackWalk(this, 14),
+				new FrameSleTLoopWalk(this, 16),
+				new FrameSFLoopFreeHardReady(this, 18),
+				new FrameSleFLoopFreePSrE(this, 20),
+				new FrameSleTLoopAttackStand(this, 22),
+				new FrameSTLoop(this, 24)
 			}
 		};
 //		() ->

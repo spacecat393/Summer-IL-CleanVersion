@@ -36,6 +36,7 @@ public class SummerIbuki extends EntityLeInv implements IMixESoundDa
 
 	public static byte[] CI_BYTE_ARRAY;
 	public static byte[] SI_BYTE_ARRAY;
+	public static byte[] PW_BYTE_ARRAY;
 
 	public IBothLeInv ibothleinv;
 
@@ -105,6 +106,12 @@ public class SummerIbuki extends EntityLeInv implements IMixESoundDa
 			SILeWalkTo.ID,
 			SIELook.ID,
 			SILeJump.ID
+		};
+
+		PW_BYTE_ARRAY = new byte[]
+		{
+			SILePlayWithSSle.ID,
+			SIEPlayWithRSe.ID
 		};
 	}
 

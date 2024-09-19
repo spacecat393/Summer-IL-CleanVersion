@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.server.e22locker;
 
 import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
+import com.nali.list.entity.si.SILePlayWithSSe;
 import com.nali.small.entity.EntityE;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.inv.InvE;
@@ -50,7 +51,7 @@ public class ServerE22Locker
 		this.frames_2d_array = new FrameS[][]
 		{
 			{
-				new FrameSFLoopFreeRSePlay(this, 0),
+				new FrameSFLoopFreeRSePlay(this, 0, SILePlayWithSSe.ID),
 				new FrameSFLoopRSeStand(this, 2),
 				new FrameSTLoop(this, 4)
 			}

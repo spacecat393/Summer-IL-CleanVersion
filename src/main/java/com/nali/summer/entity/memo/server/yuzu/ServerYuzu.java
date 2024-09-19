@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.server.yuzu;
 
 import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
+import com.nali.list.entity.SummerYuzu;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixESoundDa;
@@ -78,7 +79,7 @@ public class ServerYuzu
 			{
 				new FrameSleFLoopDie(this, 0),
 				new FrameSleFLoopSSeRSePlay(this, 2),
-				new FrameSleTLoopSSeRSeStand(this, 4),
+				new FrameSTLoopPWStand(this, 4, SummerYuzu.PW_BYTE_ARRAY),
 				new FrameSTLoopSit(this, 6),
 				new FrameSleFLoopOffSetAttackEndWalk(this, 8),
 				new FrameSleShoot(this, 11),
