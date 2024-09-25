@@ -119,7 +119,7 @@ public class SummerIbuki extends EntityLeInv implements IMixESoundDa
 	public static ClientIbuki getC()
 	{
 		RenderIbuki r = new RenderIbuki(RenderIbuki.ICLIENTDAS, BothDaIbuki.IBOTHDASN);
-		ClientIbuki c = new ClientIbuki(null, r);
+		ClientIbuki c = new ClientIbuki(r);
 		r.c = c;
 		c.mr = new MixRenderIbuki(c);
 		return c;

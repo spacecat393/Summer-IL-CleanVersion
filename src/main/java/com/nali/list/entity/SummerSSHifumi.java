@@ -111,7 +111,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixESoundDa
 	public static ClientSSHifumi getC()
 	{
 		RenderSSHifumi r = new RenderSSHifumi(RenderSSHifumi.ICLIENTDAS, BothDaSSHifumi.IBOTHDASN);
-		ClientSSHifumi c = new ClientSSHifumi(null, r);
+		ClientSSHifumi c = new ClientSSHifumi(r);
 		r.c = c;
 		c.mr = new MixRenderSSHifumi(c);
 		return c;

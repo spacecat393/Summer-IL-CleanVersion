@@ -111,7 +111,7 @@ public class SummerSSIzuna extends EntityLeInv implements IMixESoundDa
 	public static ClientSSIzuna getC()
 	{
 		RenderSSIzuna r = new RenderSSIzuna(RenderSSIzuna.ICLIENTDAS, BothDaSSIzuna.IBOTHDASN);
-		ClientSSIzuna c = new ClientSSIzuna(null, r);
+		ClientSSIzuna c = new ClientSSIzuna(r);
 		r.c = c;
 		c.mr = new MixRenderSSIzuna(c);
 		return c;

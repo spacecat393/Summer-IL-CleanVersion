@@ -67,6 +67,11 @@ public class ClientIroha
 		super(i, r);
 	}
 
+	public ClientIroha(R r)
+	{
+		super(r);
+	}
+
 	@Override
 	public Sound getSound()
 	{

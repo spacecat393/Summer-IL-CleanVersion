@@ -112,7 +112,7 @@ public class SummerArisu extends EntityLeInv implements IMixESoundDa
 	public static ClientArisu getC()
 	{
 		RenderArisu r = new RenderArisu(RenderArisu.ICLIENTDAS, BothDaArisu.IBOTHDASN);
-		ClientArisu c = new ClientArisu(null, r);
+		ClientArisu c = new ClientArisu(r);
 		r.c = c;
 		c.mr = new MixRenderArisu(c);
 		return c;

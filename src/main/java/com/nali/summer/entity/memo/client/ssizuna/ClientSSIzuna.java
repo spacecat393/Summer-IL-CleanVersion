@@ -66,6 +66,11 @@ public class ClientSSIzuna
 		super(i, r);
 	}
 
+	public ClientSSIzuna(R r)
+	{
+		super(r);
+	}
+
 	@Override
 	public Sound getSound()
 	{

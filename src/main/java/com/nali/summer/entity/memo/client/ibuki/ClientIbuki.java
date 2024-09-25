@@ -66,6 +66,11 @@ public class ClientIbuki
 		super(i, r);
 	}
 
+	public ClientIbuki(R r)
+	{
+		super(r);
+	}
+
 	@Override
 	public Sound getSound()
 	{

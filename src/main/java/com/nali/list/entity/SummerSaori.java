@@ -111,7 +111,7 @@ public class SummerSaori extends EntityLeInv implements IMixESoundDa
 	public static ClientSaori getC()
 	{
 		RenderSaori r = new RenderSaori(RenderSaori.ICLIENTDAS, BothDaSaori.IBOTHDASN);
-		ClientSaori c = new ClientSaori(null, r);
+		ClientSaori c = new ClientSaori(r);
 		r.c = c;
 		c.mr = new MixRenderSaori(c);
 		return c;

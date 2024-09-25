@@ -113,7 +113,7 @@ public class SummerSSShizuko extends EntityLeInv implements IMixESoundDa
 	public static ClientSSShizuko getC()
 	{
 		RenderSSShizuko r = new RenderSSShizuko(RenderSSShizuko.ICLIENTDAS, BothDaSSShizuko.IBOTHDASN);
-		ClientSSShizuko c = new ClientSSShizuko(null, r);
+		ClientSSShizuko c = new ClientSSShizuko(r);
 		r.c = c;
 		c.mr = new MixRenderSSShizuko(c);
 		return c;

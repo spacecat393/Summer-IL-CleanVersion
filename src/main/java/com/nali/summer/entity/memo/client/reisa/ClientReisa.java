@@ -66,6 +66,11 @@ public class ClientReisa
 		super(i, r);
 	}
 
+	public ClientReisa(R r)
+	{
+		super(r);
+	}
+
 	@Override
 	public Sound getSound()
 	{

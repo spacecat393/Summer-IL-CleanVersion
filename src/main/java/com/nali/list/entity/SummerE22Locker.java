@@ -85,7 +85,7 @@ public class SummerE22Locker extends EntityE
 	public static ClientE22Locker getC()
 	{
 		RenderE22Locker r = new RenderE22Locker(RenderE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
-		ClientE22Locker c = new ClientE22Locker(null, r);
+		ClientE22Locker c = new ClientE22Locker(r);
 		r.c = c;
 		c.mr = new MixRenderE22Locker(c);
 		return c;

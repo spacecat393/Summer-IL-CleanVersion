@@ -119,7 +119,7 @@ public class SummerIroha extends EntityLeInv implements IMixESoundDa
 	public static ClientIroha getC()
 	{
 		RenderIroha r = new RenderIroha(RenderIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
-		ClientIroha c = new ClientIroha(null, r);
+		ClientIroha c = new ClientIroha(r);
 		r.c = c;
 		c.mr = new MixRenderIroha(c);
 		return c;

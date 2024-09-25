@@ -61,6 +61,10 @@ public class ClientE22Locker
 		super(i, r);
 	}
 
+	public ClientE22Locker(R r)
+	{
+		super(r);
+	}
 //	@Override
 //	public void initFakeFrame()
 //	{

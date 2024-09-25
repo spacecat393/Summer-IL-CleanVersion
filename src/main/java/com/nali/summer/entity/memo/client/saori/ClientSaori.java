@@ -66,6 +66,11 @@ public class ClientSaori
 		super(i, r);
 	}
 
+	public ClientSaori(R r)
+	{
+		super(r);
+	}
+
 	@Override
 	public Sound getSound()
 	{

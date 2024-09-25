@@ -111,7 +111,7 @@ public class SummerSSHoshino extends EntityLeInv implements IMixESoundDa
 	public static ClientSSHoshino getC()
 	{
 		RenderSSHoshino r = new RenderSSHoshino(RenderSSHoshino.ICLIENTDAS, BothDaSSHoshino.IBOTHDASN);
-		ClientSSHoshino c = new ClientSSHoshino(null, r);
+		ClientSSHoshino c = new ClientSSHoshino(r);
 		r.c = c;
 		c.mr = new MixRenderSSHoshino(c);
 		return c;

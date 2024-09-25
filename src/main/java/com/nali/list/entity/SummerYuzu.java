@@ -119,7 +119,7 @@ public class SummerYuzu extends EntityLeInv implements IMixESoundDa
 	public static ClientYuzu getC()
 	{
 		RenderYuzu r = new RenderYuzu(RenderYuzu.ICLIENTDAS, BothDaYuzu.IBOTHDASN);
-		ClientYuzu c = new ClientYuzu(null, r);
+		ClientYuzu c = new ClientYuzu(r);
 		r.c = c;
 		c.mr = new MixRenderYuzu(c);
 		return c;

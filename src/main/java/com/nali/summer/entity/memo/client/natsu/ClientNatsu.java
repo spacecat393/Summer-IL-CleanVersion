@@ -66,6 +66,11 @@ public class ClientNatsu
 		super(i, r);
 	}
 
+	public ClientNatsu(R r)
+	{
+		super(r);
+	}
+
 	@Override
 	public Sound getSound()
 	{

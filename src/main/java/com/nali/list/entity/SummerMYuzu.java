@@ -111,7 +111,7 @@ public class SummerMYuzu extends EntityLeInv implements IMixESoundDa
 	public static ClientMYuzu getC()
 	{
 		RenderMYuzu r = new RenderMYuzu(RenderMYuzu.ICLIENTDAS, BothDaMYuzu.IBOTHDASN);
-		ClientMYuzu c = new ClientMYuzu(null, r);
+		ClientMYuzu c = new ClientMYuzu(r);
 		r.c = c;
 		c.mr = new MixRenderMYuzu(c);
 		return c;

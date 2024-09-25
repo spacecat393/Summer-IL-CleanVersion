@@ -66,6 +66,11 @@ public class ClientSSHifumi
 		super(i, r);
 	}
 
+	public ClientSSHifumi(R r)
+	{
+		super(r);
+	}
+
 	@Override
 	public Sound getSound()
 	{

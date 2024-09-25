@@ -111,7 +111,7 @@ public class SummerReisa extends EntityLeInv implements IMixESoundDa
 	public static ClientReisa getC()
 	{
 		RenderReisa r = new RenderReisa(RenderReisa.ICLIENTDAS, BothDaReisa.IBOTHDASN);
-		ClientReisa c = new ClientReisa(null, r);
+		ClientReisa c = new ClientReisa(r);
 		r.c = c;
 		c.mr = new MixRenderReisa(c);
 		return c;

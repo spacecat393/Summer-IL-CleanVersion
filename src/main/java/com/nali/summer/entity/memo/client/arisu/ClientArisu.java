@@ -69,6 +69,10 @@ public class ClientArisu
 		super(i, r);
 	}
 
+	public ClientArisu(R r)
+	{
+		super(r);
+	}
 //	@Override
 //	public void initFakeFrame()
 //	{

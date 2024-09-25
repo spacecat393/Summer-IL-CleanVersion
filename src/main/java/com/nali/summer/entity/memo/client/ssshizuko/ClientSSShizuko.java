@@ -66,6 +66,11 @@ public class ClientSSShizuko
 		super(i, r);
 	}
 
+	public ClientSSShizuko(R r)
+	{
+		super(r);
+	}
+
 	@Override
 	public Sound getSound()
 	{

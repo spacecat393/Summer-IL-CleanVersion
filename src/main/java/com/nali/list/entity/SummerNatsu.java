@@ -112,7 +112,7 @@ public class SummerNatsu extends EntityLeInv implements IMixESoundDa
 	public static ClientNatsu getC()
 	{
 		RenderNatsu r = new RenderNatsu(RenderNatsu.ICLIENTDAS, BothDaNatsu.IBOTHDASN);
-		ClientNatsu c = new ClientNatsu(null, r);
+		ClientNatsu c = new ClientNatsu(r);
 		r.c = c;
 		c.mr = new MixRenderNatsu(c);
 		return c;

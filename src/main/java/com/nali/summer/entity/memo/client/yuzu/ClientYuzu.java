@@ -65,6 +65,11 @@ public class ClientYuzu
 		super(i, r);
 	}
 
+	public ClientYuzu(R r)
+	{
+		super(r);
+	}
+
 //	@Override
 //	public void initFakeFrame()
 //	{

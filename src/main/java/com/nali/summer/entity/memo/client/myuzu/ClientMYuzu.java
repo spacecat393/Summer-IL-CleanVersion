@@ -66,6 +66,11 @@ public class ClientMYuzu
 		super(i, r);
 	}
 
+	public ClientMYuzu(R r)
+	{
+		super(r);
+	}
+
 	@Override
 	public Sound getSound()
 	{

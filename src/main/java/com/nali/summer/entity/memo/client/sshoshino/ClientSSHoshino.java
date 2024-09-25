@@ -66,6 +66,11 @@ public class ClientSSHoshino
 		super(i, r);
 	}
 
+	public ClientSSHoshino(R r)
+	{
+		super(r);
+	}
+
 	@Override
 	public Sound getSound()
 	{
