@@ -6,6 +6,7 @@ import com.nali.da.client.IClientDaS;
 import com.nali.list.render.s.RenderIbuki;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
+import com.nali.render.RenderS;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
@@ -22,8 +23,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
-
-import static com.nali.system.opengl.memo.client.MemoC.setFloatBuffer;
 
 @SideOnly(Side.CLIENT)
 public class MixRenderIbuki
@@ -116,7 +115,7 @@ public class MixRenderIbuki
 				c_mat4[2], c_mat4[6], c_mat4[10], 0,
 				0, 0, 0, 1.0F
 			};
-			setFloatBuffer(mat4);
+			RenderS.setFloatBuffer(mat4);
 //			GL11.glTranslated(-0.25F, -0.5F, -0.5F);
 //			GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
 //			GL11.glMultMatrix(OpenGLCurrentMemory.OPENGL_FLOATBUFFER);
