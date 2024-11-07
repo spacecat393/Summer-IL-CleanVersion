@@ -11,6 +11,6 @@
 		"credits": "",
 		"logoFile": "logo.png",
 		"screenshots": [],
-		"dependencies": ["mixinbooter", "nali", "small"]
+		"dependencies": []
 	}
 ]

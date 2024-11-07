@@ -9,5 +9,5 @@ public class SummerData
 		FRAME_STEP,
 		SOUND_STEP,
 		MAX_BONE = 220 * 16;
-//	public static byte STATE = 0;//preload
+	public static byte ORDINAL = 2;
 }
