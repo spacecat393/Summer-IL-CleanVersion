@@ -6,7 +6,6 @@ import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
 import com.nali.list.render.s.RenderYuzu;
 import com.nali.small.entity.EntityLeInv;
-import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
@@ -16,7 +15,6 @@ import com.nali.summer.entity.memo.client.yuzu.MixCIYuzu;
 import com.nali.summer.entity.memo.client.yuzu.MixRenderYuzu;
 import com.nali.summer.entity.memo.server.yuzu.MixSIYuzu;
 import com.nali.summer.entity.memo.server.yuzu.ServerYuzu;
-import com.nali.summer.entity.sound.SoundDaYuzu;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -25,7 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerYuzu extends EntityLeInv implements IMixESoundDa
+public class SummerYuzu extends EntityLeInv
 {
 	public static int eggPrimary = 0xfbdad0;
 	public static int eggSecondary = 0xfc6c78;
@@ -196,12 +194,6 @@ public class SummerYuzu extends EntityLeInv implements IMixESoundDa
 	public IBothDaNe getBD()
 	{
 		return BothDaYuzu.IBOTHDASN;
-	}
-
-	@Override
-	public Object getSD()
-	{
-		return SoundDaYuzu.ISOUNDDALE;
 	}
 
 	@Override

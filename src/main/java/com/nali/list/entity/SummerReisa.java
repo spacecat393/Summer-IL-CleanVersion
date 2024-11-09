@@ -6,7 +6,6 @@ import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
 import com.nali.list.render.s.RenderReisa;
 import com.nali.small.entity.EntityLeInv;
-import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
@@ -16,7 +15,6 @@ import com.nali.summer.entity.memo.client.reisa.MixCIReisa;
 import com.nali.summer.entity.memo.client.reisa.MixRenderReisa;
 import com.nali.summer.entity.memo.server.reisa.MixSIReisa;
 import com.nali.summer.entity.memo.server.reisa.ServerReisa;
-import com.nali.summer.entity.sound.SoundDaReisa;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -25,7 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerReisa extends EntityLeInv implements IMixESoundDa
+public class SummerReisa extends EntityLeInv
 {
 	public static int eggPrimary = 0x4e466d;
 	public static int eggSecondary = 0xbdb5ff;
@@ -198,12 +196,6 @@ public class SummerReisa extends EntityLeInv implements IMixESoundDa
 	public IBothDaNe getBD()
 	{
 		return BothDaReisa.IBOTHDASN;
-	}
-
-	@Override
-	public Object getSD()
-	{
-		return SoundDaReisa.ISOUNDDALE;
 	}
 
 	@Override

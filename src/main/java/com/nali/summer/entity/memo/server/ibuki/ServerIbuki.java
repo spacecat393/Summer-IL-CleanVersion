@@ -3,7 +3,6 @@ package com.nali.summer.entity.memo.server.ibuki;
 import com.nali.list.entity.SummerIbuki;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixE;
-import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerLeInv;
@@ -19,18 +18,16 @@ import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShoot;
 import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShootSSle;
 import com.nali.small.entity.memo.server.si.frame.tloop.*;
 import com.nali.small.entity.memo.server.si.frame.tloopfb.FrameSleTLoopFBSitSSle;
-import com.nali.sound.ISoundDaLe;
 import com.nali.summer.da.both.BothDaIbuki;
 
 public class ServerIbuki
 <
 	IE extends InvLe,
-	SD extends ISoundDaLe,
 	BD extends BothDaIbuki,
 	E extends EntityLeInv,
-	I extends IMixE<BD, E> & IMixESoundDa<SD>,
-	MS extends MixSIIbuki<IE, SD, BD, E, I, ?>
-> extends ServerLeInv<IE, SD, BD, E, I, MS> implements IServerS
+	I extends IMixE<BD, E>,
+	MS extends MixSIIbuki<IE, BD, E, I, ?>
+> extends ServerLeInv<IE, BD, E, I, MS> implements IServerS
 {
 	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
 	{

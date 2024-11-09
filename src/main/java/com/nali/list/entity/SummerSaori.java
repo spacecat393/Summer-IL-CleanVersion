@@ -6,7 +6,6 @@ import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
 import com.nali.list.render.s.RenderSaori;
 import com.nali.small.entity.EntityLeInv;
-import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
@@ -16,7 +15,6 @@ import com.nali.summer.entity.memo.client.saori.MixCISaori;
 import com.nali.summer.entity.memo.client.saori.MixRenderSaori;
 import com.nali.summer.entity.memo.server.saori.MixSISaori;
 import com.nali.summer.entity.memo.server.saori.ServerSaori;
-import com.nali.summer.entity.sound.SoundDaSaori;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -25,7 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerSaori extends EntityLeInv implements IMixESoundDa
+public class SummerSaori extends EntityLeInv
 {
 	public static int eggPrimary = 0x283756;
 	public static int eggSecondary = 0x4a73bd;
@@ -210,12 +208,6 @@ public class SummerSaori extends EntityLeInv implements IMixESoundDa
 	public IBothDaNe getBD()
 	{
 		return BothDaSaori.IBOTHDASN;
-	}
-
-	@Override
-	public Object getSD()
-	{
-		return SoundDaSaori.ISOUNDDALE;
 	}
 
 	@Override

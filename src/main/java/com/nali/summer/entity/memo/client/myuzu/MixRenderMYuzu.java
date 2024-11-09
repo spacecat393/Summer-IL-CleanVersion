@@ -7,14 +7,12 @@ import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.render.RenderS;
 import com.nali.small.entity.IMixE;
-import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
 import com.nali.small.entity.memo.client.IClientERsInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
-import com.nali.sound.ISoundDaLe;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,14 +23,13 @@ public class MixRenderMYuzu
 	IE extends InvLe,
 	RC extends IClientDaS,
 	R extends RenderS<BD, RC>,
-	SD extends ISoundDaLe,
 	BD extends IBothDaNe & IBothDaSn,
 	E extends EntityLivingBase,
-	I extends IMixE<BD, E> & IMixESoundDa<SD>,
+	I extends IMixE<BD, E>,
 	MC extends MixCIE<RC, R, BD, E, I, MB, ?, C>,
-	MB extends MixBoxSleInv<RC, R, SD, BD, E, I, MC, ?, C>,
-	C extends ClientLeInv<IE, RC, R, SD, BD, E, I, MC, MB, ?> & IClientERsInv
-> extends MixRenderSleInv<IE, RC, R, SD, BD, E, I, MC, MB, C>
+	MB extends MixBoxSleInv<RC, R, BD, E, I, MC, ?, C>,
+	C extends ClientLeInv<IE, RC, R, BD, E, I, MC, MB, ?> & IClientERsInv
+> extends MixRenderSleInv<IE, RC, R, BD, E, I, MC, MB, C>
 {
 	public MixRenderMYuzu(C c)
 	{

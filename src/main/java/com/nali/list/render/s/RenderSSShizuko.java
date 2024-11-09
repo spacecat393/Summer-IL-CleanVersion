@@ -4,14 +4,12 @@ import com.nali.da.IBothDaNe;
 import com.nali.da.IBothDaSn;
 import com.nali.da.client.IClientDaS;
 import com.nali.small.entity.IMixE;
-import com.nali.small.entity.IMixESoundDa;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
 import com.nali.small.entity.memo.client.IClientERsInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
-import com.nali.sound.ISoundDaLe;
 import com.nali.summer.da.both.BothDaSSShizuko;
 import com.nali.summer.da.both.BothDaSeaHouse;
 import com.nali.summer.da.client.ClientDaSSShizuko;
@@ -25,12 +23,11 @@ public class RenderSSShizuko
 <
 	IE extends InvLe,
 	E extends EntityLivingBase,
-	I extends IMixE<BD, E> & IMixESoundDa<SD>,
+	I extends IMixE<BD, E>,
 	MC extends MixCIE<RC, ?, BD, E, I, MB, MR, C>,
-	MB extends MixBoxSleInv<RC, ?, SD, BD, E, I, MC, MR, C>,
+	MB extends MixBoxSleInv<RC, ?, BD, E, I, MC, MR, C>,
 	MR extends MixRenderSe<RC, ?, BD, E, I, MC, MB, C>,
-	C extends ClientLeInv<IE, RC, ?, SD, BD, E, I, MC, MB, MR> & IClientERsInv,
-	SD extends ISoundDaLe,
+	C extends ClientLeInv<IE, RC, ?, BD, E, I, MC, MB, MR> & IClientERsInv,
 	BD extends IBothDaNe & IBothDaSn,
 	RC extends IClientDaS
 > extends SummerRenderSe<E, I, MC, MB, MR, C, BD, RC>
