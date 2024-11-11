@@ -75,7 +75,6 @@ public class SummerYuzu extends EntityLeInv
 
 			SIEArea.ID,
 			SIEOwner.ID,
-			SIEInvOpenInv.ID,
 			SILeEat.ID,
 
 			SIEPat.ID,

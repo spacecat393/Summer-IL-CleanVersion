@@ -8,6 +8,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class SoundIbuki extends Sound
 {
 	@Override
+	public void set()
+	{
+		setE(this.source);
+	}
+
+	@Override
 	public int getSoundBuffer(byte b)
 	{
 		return -1;

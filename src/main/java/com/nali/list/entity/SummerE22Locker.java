@@ -70,7 +70,6 @@ public class SummerE22Locker extends EntityE
 		{
 			SIEArea.ID,
 			SIEOwner.ID,
-			SIEInvOpenInv.ID,
 
 			SIEInvLockInv.ID,
 			SIEPlayWithRSe.ID,//Play-1

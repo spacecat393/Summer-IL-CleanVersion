@@ -1,17 +1,25 @@
 package com.nali.summer.entity.sound;
 
+import com.nali.NaliAL;
+import com.nali.NaliConfig;
 import com.nali.small.entity.EntityRefSound;
 import com.nali.sound.Sound;
-import net.minecraft.client.Minecraft;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.openal.AL10;
 
 import static com.nali.list.data.SummerData.SOUND_STEP;
 
 @SideOnly(Side.CLIENT)
 public class SoundYuzu extends Sound
 {
+	@Override
+	public void set()
+	{
+		setE(this.source);
+	}
+
 	@Override
 	public int getSoundBuffer(byte b)
 	{
