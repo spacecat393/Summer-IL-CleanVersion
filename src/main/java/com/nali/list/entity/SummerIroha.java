@@ -1,15 +1,21 @@
 package com.nali.list.entity;
 
-import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaE;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
-import com.nali.list.render.s.RenderIroha;
+import com.nali.list.render.RenderIroha;
+import com.nali.math.M4x4;
+import com.nali.math.Quaternion;
+import com.nali.render.RenderS;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
-import com.nali.summer.da.both.BothDaIroha;
+import com.nali.list.da.BothDaIroha;
+import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
 import com.nali.summer.entity.memo.client.iroha.ClientIroha;
 import com.nali.summer.entity.memo.client.iroha.MixCIIroha;
 import com.nali.summer.entity.memo.client.iroha.MixRenderIroha;
@@ -23,7 +29,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerIroha extends EntityLeInv
+import static com.nali.list.data.SummerData.MODEL_STEP;
+import static com.nali.small.entity.memo.client.render.FRenderSeMath.interpolateRotation;
+
+public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 {
 	public static int eggPrimary = 0xadb7c1;
 	public static int eggSecondary = 0xc95b7e;
@@ -37,6 +46,29 @@ public class SummerIroha extends EntityLeInv
 	public static byte[] PW_BYTE_ARRAY;
 
 	public IBothLeInv ibothleinv;
+
+	public static int[] IV_INT_ARRAY = new int[]
+	{
+		8+130 + MODEL_STEP, 837,
+		8+130 + MODEL_STEP, 2145,
+		8+130 + MODEL_STEP, 10171,
+		8+130 + MODEL_STEP, 6617,
+		8+130 + MODEL_STEP, 5653,
+		10+130 + MODEL_STEP, 39,
+		5+130 + MODEL_STEP, 26084
+	};
+	public static float[] ROTATION_FLOAT_ARRAY = new float[]
+	{
+		0.0F, 0.0F,
+		0.0F, 0.0F
+	};
+	public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
+	{
+		0.0F, -0.55F * 0.5F, 0.0F,
+		0.0F, -1.0F * 0.5F, 0.09F * 0.5F,
+		0.0F, -1.2F * 0.5F, 0.11F * 0.5F,
+		0.0F, -1.15F * 0.5F, 0.11F * 0.5F
+	};
 
 	static
 	{
@@ -115,7 +147,7 @@ public class SummerIroha extends EntityLeInv
 	@SideOnly(Side.CLIENT)
 	public static ClientIroha getC()
 	{
-		RenderIroha r = new RenderIroha(RenderIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
+		RenderIroha r = new RenderIroha();
 		ClientIroha c = new ClientIroha(r);
 		r.c = c;
 		c.mr = new MixRenderIroha(c);
@@ -165,7 +197,7 @@ public class SummerIroha extends EntityLeInv
 	@Override
 	public void newC()
 	{
-		RenderIroha r = new RenderIroha(RenderIroha.ICLIENTDAS, BothDaIroha.IBOTHDASN);
+		RenderIroha r = new RenderIroha();
 		ClientIroha c = new ClientIroha(this, r);
 		MixCIIroha mc = new MixCIIroha(c);
 		c.mc = mc;
@@ -190,9 +222,9 @@ public class SummerIroha extends EntityLeInv
 	}
 
 	@Override
-	public IBothDaNe getBD()
+	public IBothDaE getBD()
 	{
-		return BothDaIroha.IBOTHDASN;
+		return BothDaIroha.IDA;
 	}
 
 	@Override
@@ -221,4 +253,62 @@ public class SummerIroha extends EntityLeInv
 //	{
 //		return ClientIrohaMemory.IV_INT_ARRAY;
 //	}
+
+	@Override
+	public int[] getIVIntArray()
+	{
+		return IV_INT_ARRAY;
+	}
+
+	@Override
+	public float[] getRotationFloatArray()
+	{
+		return ROTATION_FLOAT_ARRAY;
+	}
+
+	@Override
+	public float[] getTransformFloatArray()
+	{
+		return TRANSFORM_FLOAT_ARRAY;
+	}
+
+	@Override
+	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
+	{
+		float head_rot = (float)Math.toRadians(interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
+		float body_rot = (float)Math.toRadians(interpolateRotation(this.prevRenderYawOffset, this.renderYawOffset, partial_ticks));
+		float net_head_yaw = head_rot - body_rot;
+
+		if (head_pitch > 1.04719755119659774615F)
+		{
+			head_pitch = 1.04719755119659774615F;
+		}
+		else if (head_pitch < -1.04719755119659774615F)
+		{
+			head_pitch = -1.04719755119659774615F;
+		}
+
+		setAnimation(skinning_float_array, frame_int_array, head_pitch, head_rot, net_head_yaw);
+	}
+
+	public static void setAnimation(float[] skinning_float_array, int[] frame_int_array, float head_pitch, float body_rot, float net_head_yaw)
+	{
+		M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, body_rot).getM4x4();
+
+		if (frame_int_array[0] > 257)
+		{
+			M4x4 head_m4x4 = new Quaternion(0, 0, net_head_yaw).getM4x4();
+
+			head_m4x4.multiply(skinning_float_array, 5 * 16);
+		}
+		else
+		{
+			M4x4 head_m4x4 = new Quaternion(-head_pitch, 0, net_head_yaw).getM4x4();
+
+			head_m4x4.multiply(skinning_float_array, 20 * 16);
+		}
+
+		body_m4x4.multiply(skinning_float_array, 0);
+	}
 }

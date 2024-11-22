@@ -1,15 +1,19 @@
 package com.nali.list.entity;
 
-import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaE;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
-import com.nali.list.render.s.RenderMYuzu;
+import com.nali.list.render.RenderMYuzu;
+import com.nali.math.M4x4;
+import com.nali.math.Quaternion;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
-import com.nali.summer.da.both.BothDaMYuzu;
+import com.nali.list.da.BothDaMYuzu;
 import com.nali.summer.entity.memo.client.myuzu.ClientMYuzu;
 import com.nali.summer.entity.memo.client.myuzu.MixCIMYuzu;
 import com.nali.summer.entity.memo.client.myuzu.MixRenderMYuzu;
@@ -23,7 +27,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerMYuzu extends EntityLeInv
+import static com.nali.list.data.SummerData.MODEL_STEP;
+import static com.nali.small.entity.memo.client.render.FRenderSeMath.interpolateRotation;
+
+public class SummerMYuzu extends EntityLeInv implements IMixES, IMixESInv
 {
 	public static int eggPrimary = 0xfbdad0;
 	public static int eggSecondary = 0xfc6c78;
@@ -36,6 +43,28 @@ public class SummerMYuzu extends EntityLeInv
 	public static byte[] SI_BYTE_ARRAY;
 
 	public IBothLeInv ibothleinv;
+
+	public static int[] IV_INT_ARRAY = new int[]
+	{
+		5+81 + MODEL_STEP, 11946,
+		5+81 + MODEL_STEP, 10846,
+		1+81 + MODEL_STEP, 557,
+		5+81 + MODEL_STEP, 13404,
+		5+81 + MODEL_STEP, 9960,
+		8+81 + MODEL_STEP, 69
+	};
+	public static float[] ROTATION_FLOAT_ARRAY = new float[]
+	{
+		0.0F, 0.0F,
+		0.0F, 0.0F
+	};
+	public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
+	{
+		0.0F, -0.55F * 0.5F, 0.0F,
+		0.0F, -1.0F * 0.5F, 0.09F * 0.5F,
+		0.0F, -1.1F * 0.5F, 0.11F * 0.5F,
+		0.0F, -1.05F * 0.5F, 0.11F * 0.5F
+	};
 
 	static
 	{
@@ -107,7 +136,7 @@ public class SummerMYuzu extends EntityLeInv
 	@SideOnly(Side.CLIENT)
 	public static ClientMYuzu getC()
 	{
-		RenderMYuzu r = new RenderMYuzu(RenderMYuzu.ICLIENTDAS, BothDaMYuzu.IBOTHDASN);
+		RenderMYuzu r = new RenderMYuzu();
 		ClientMYuzu c = new ClientMYuzu(r);
 		r.c = c;
 		c.mr = new MixRenderMYuzu(c);
@@ -164,7 +193,7 @@ public class SummerMYuzu extends EntityLeInv
 	@Override
 	public void newC()
 	{
-		RenderMYuzu r = new RenderMYuzu(RenderMYuzu.ICLIENTDAS, BothDaMYuzu.IBOTHDASN);
+		RenderMYuzu r = new RenderMYuzu();
 		ClientMYuzu c = new ClientMYuzu(this, r);
 		MixCIMYuzu mc = new MixCIMYuzu(c);
 		c.mc = mc;
@@ -189,9 +218,9 @@ public class SummerMYuzu extends EntityLeInv
 	}
 
 	@Override
-	public IBothDaNe getBD()
+	public IBothDaE getBD()
 	{
-		return BothDaMYuzu.IBOTHDASN;
+		return BothDaMYuzu.IDA;
 	}
 
 	@Override
@@ -220,4 +249,47 @@ public class SummerMYuzu extends EntityLeInv
 //	{
 //		return ClientMYuzuMemory.IV_INT_ARRAY;
 //	}
+
+	@Override
+	public int[] getIVIntArray()
+	{
+		return IV_INT_ARRAY;
+	}
+
+	@Override
+	public float[] getRotationFloatArray()
+	{
+		return ROTATION_FLOAT_ARRAY;
+	}
+
+	@Override
+	public float[] getTransformFloatArray()
+	{
+		return TRANSFORM_FLOAT_ARRAY;
+	}
+
+	@Override
+	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
+	{
+		float head_rot = (float)Math.toRadians(interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
+		float body_rot = (float)Math.toRadians(interpolateRotation(this.prevRenderYawOffset, this.renderYawOffset, partial_ticks));
+		float net_head_yaw = head_rot - body_rot;
+
+		if (head_pitch > 1.04719755119659774615F)
+		{
+			head_pitch = 1.04719755119659774615F;
+		}
+		else if (head_pitch < -1.04719755119659774615F)
+		{
+			head_pitch = -1.04719755119659774615F;
+		}
+
+		M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, body_rot).getM4x4();
+		M4x4 head_m4x4 = new Quaternion(-head_pitch, 0, net_head_yaw).getM4x4();
+
+		head_m4x4.multiply(skinning_float_array, 7*16);
+
+		body_m4x4.multiply(skinning_float_array, 0);
+	}
 }

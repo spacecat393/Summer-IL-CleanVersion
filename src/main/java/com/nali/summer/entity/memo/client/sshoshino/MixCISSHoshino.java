@@ -1,13 +1,12 @@
 package com.nali.summer.entity.memo.client.sshoshino;
 
-import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaSn;
-import com.nali.da.client.IClientDaS;
-import com.nali.list.render.s.RenderSSHoshino;
+import com.nali.list.da.BothDaSSHoshino;
+import com.nali.list.render.RenderSSHoshino;
 import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
-import com.nali.small.entity.memo.client.IClientERsInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,15 +17,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MixCISSHoshino
 <
 	IE extends InvLe,
-	RC extends IClientDaS,
-	R extends RenderSSHoshino<IE, E, I, ?, MB, MR, C, BD, RC>,
-	BD extends IBothDaNe & IBothDaSn,
+	R extends RenderSSHoshino<IE, E, I, ?, MB, MR, C>,
 	E extends EntityLivingBase,
-	I extends IMixE<BD, E>,
-	MB extends MixBoxSleInv<RC, R, BD, E, I, ?, MR, C>,
-	MR extends MixRenderSSHoshino<IE, RC, R, BD, E, I, ?, MB, C>,
-	C extends ClientLeInv<IE, RC, R, BD, E, I, ?, MB, MR> & IClientERsInv
-> extends MixCIE<RC, R, BD, E, I, MB, MR, C>
+	I extends IMixE<BothDaSSHoshino, E> & IMixES & IMixESInv,
+	MB extends MixBoxSleInv<BothDaSSHoshino, R, E, I, ?, MR, C>,
+	MR extends MixRenderSSHoshino<IE, BothDaSSHoshino, R, E, I, ?, MB, C>,
+	C extends ClientLeInv<IE, BothDaSSHoshino, R, E, I, ?, MB, MR>
+> extends MixCIE<BothDaSSHoshino, R, E, I, MB, MR, C>
 {
 	public MixCISSHoshino(C c)
 	{
@@ -65,9 +62,8 @@ public class MixCISSHoshino
 		}
 		else
 		{
-			BD bd = i.getBD();
-			e.width = bd.Width() * scale;
-			e.height = bd.Height() * scale;
+			e.width = BothDaSSHoshino.IDA.E_Width() * scale;
+			e.height = BothDaSSHoshino.IDA.E_Height() * scale;
 		}
 
 		r.model_byte_array[6 / 8] &= 191;//255 - Math.pow(2, 6 % 8)

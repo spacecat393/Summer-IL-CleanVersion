@@ -1,7 +1,7 @@
 package com.nali.summer.render;
 
-import com.nali.da.IBothDaSn;
-import com.nali.da.client.IClientDaS;
+import com.nali.da.IBothDaO;
+import com.nali.da.IBothDaS;
 import com.nali.render.RenderS;
 import com.nali.system.opengl.memo.client.MemoG;
 import net.minecraftforge.fml.relauncher.Side;
@@ -12,13 +12,12 @@ import static com.nali.list.data.SummerData.*;
 @SideOnly(Side.CLIENT)
 public class SummerRenderS
 <
-	BD extends IBothDaSn,
-	RC extends IClientDaS
-> extends RenderS<BD, RC>
+	BD extends IBothDaO & IBothDaS
+> extends RenderS<BD>
 {
-	public SummerRenderS(RC rc, BD bd)
+	public SummerRenderS(BD bd)
 	{
-		super(rc, bd);
+		super(bd);
 	}
 
 	@Override

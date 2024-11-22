@@ -1,5 +1,6 @@
 package com.nali.summer.entity.memo.server.yuzu;
 
+import com.nali.da.IBothDaE;
 import com.nali.list.entity.SummerE22Locker;
 import com.nali.list.entity.si.*;
 import com.nali.small.entity.EntityLeInv;
@@ -7,12 +8,12 @@ import com.nali.small.entity.IMixE;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.ServerLeInv;
 import com.nali.small.entity.memo.server.si.MixSIEInv;
-import com.nali.summer.da.both.BothDaYuzu;
+import com.nali.list.da.BothDaYuzu;
 
 public class MixSIYuzu
 <
 	IE extends InvLe,
-	BD extends BothDaYuzu,
+	BD extends IBothDaE,
 	E extends EntityLeInv,
 	I extends IMixE<BD, E>,
 	S extends ServerLeInv<IE, BD, E, I, ?>

@@ -1,13 +1,12 @@
 package com.nali.summer.entity.memo.client.myuzu;
 
-import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaSn;
-import com.nali.da.client.IClientDaS;
-import com.nali.list.render.s.RenderMYuzu;
+import com.nali.list.da.BothDaMYuzu;
+import com.nali.list.render.RenderMYuzu;
 import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
-import com.nali.small.entity.memo.client.IClientERsInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,15 +17,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MixCIMYuzu
 <
 	IE extends InvLe,
-	RC extends IClientDaS,
-	R extends RenderMYuzu<IE, E, I, ?, MB, MR, C, BD, RC>,
-	BD extends IBothDaNe & IBothDaSn,
+	R extends RenderMYuzu<IE, E, I, ?, MB, MR, C>,
 	E extends EntityLivingBase,
-	I extends IMixE<BD, E>,
-	MB extends MixBoxSleInv<RC, R, BD, E, I, ?, MR, C>,
-	MR extends MixRenderMYuzu<IE, RC, R, BD, E, I, ?, MB, C>,
-	C extends ClientLeInv<IE, RC, R, BD, E, I, ?, MB, MR> & IClientERsInv
-> extends MixCIE<RC, R, BD, E, I, MB, MR, C>
+	I extends IMixE<BothDaMYuzu, E> & IMixES & IMixESInv,
+	MB extends MixBoxSleInv<BothDaMYuzu, R, E, I, ?, MR, C>,
+	MR extends MixRenderMYuzu<IE, BothDaMYuzu, R, E, I, ?, MB, C>,
+	C extends ClientLeInv<IE, BothDaMYuzu, R, E, I, ?, MB, MR>
+> extends MixCIE<BothDaMYuzu, R, E, I, MB, MR, C>
 {
 	public MixCIMYuzu(C c)
 	{
@@ -42,11 +39,10 @@ public class MixCIMYuzu
 		int frame = r.frame_int_array[0];
 
 		float scale = r.scale;
-		BD bd = i.getBD();
 		E e = i.getE();
 		if (frame < 513)
 		{
-			e.width = bd.Width() * scale;
+			e.width = BothDaMYuzu.IDA.E_Width() * scale;
 			e.height = 0.65F * scale;
 		}
 		else if (/*frame > 512 && */frame < 564)
@@ -56,8 +52,8 @@ public class MixCIMYuzu
 		}
 		else
 		{
-			e.width = bd.Width() * scale;
-			e.height = bd.Height() * scale;
+			e.width = BothDaMYuzu.IDA.E_Width() * scale;
+			e.height = BothDaMYuzu.IDA.E_Height() * scale;
 		}
 	}
 

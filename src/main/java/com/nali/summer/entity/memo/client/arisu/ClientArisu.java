@@ -1,67 +1,34 @@
 package com.nali.summer.entity.memo.client.arisu;
 
-import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaSn;
-import com.nali.da.client.IClientDaS;
-import com.nali.list.render.s.RenderArisu;
-import com.nali.small.entity.EntityRefSound;
+import com.nali.list.da.BothDaArisu;
+import com.nali.list.render.RenderArisu;
 import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
-import com.nali.small.entity.memo.client.IClientERsInv;
 import com.nali.small.entity.memo.client.IClientESound;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
-import com.nali.sound.Sound;
-import com.nali.summer.entity.sound.SoundArisu;
+import com.nali.sound.SoundE;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import static com.nali.list.data.SummerData.MODEL_STEP;
 
 @SideOnly(Side.CLIENT)
 public class ClientArisu
 <
 	IE extends InvLe,
-	RC extends IClientDaS,
-	R extends RenderArisu<IE, E, I, MC, MB, MR, ?, BD, RC>,
-	BD extends IBothDaNe & IBothDaSn,
+	R extends RenderArisu<IE, E, I, MC, MB, MR, ?>,
 	E extends EntityLivingBase,
-	I extends IMixE<BD, E>,
-	MC extends MixCIE<RC, R, BD, E, I, MB, MR, ?>,
-	MB extends MixBoxSleInv<RC, R, BD, E, I, MC, MR, ?>,
-	MR extends MixRenderSleInv<IE, RC, R, BD, E, I, MC, MB, ?>
-> extends ClientLeInv<IE, RC, R, BD, E, I, MC, MB, MR> implements IClientERsInv, IClientESound
+	I extends IMixE<BothDaArisu, E> & IMixES & IMixESInv,
+	MC extends MixCIE<BothDaArisu, R, E, I, MB, MR, ?>,
+	MB extends MixBoxSleInv<BothDaArisu, R, E, I, MC, MR, ?>,
+	MR extends MixRenderSleInv<IE, BothDaArisu, R, E, I, MC, MB, ?>
+> extends ClientLeInv<IE, BothDaArisu, R, E, I, MC, MB, MR> implements IClientESound
 {
-//	@SideOnly(Side.CLIENT)
-	public static int[] IV_INT_ARRAY = new int[]
-	{
-		5+25 + MODEL_STEP, 8547,
-		5+25 + MODEL_STEP, 9270,
-		/*0+*/25 + MODEL_STEP, 2078,
-		5+25 + MODEL_STEP, 268,
-		5+25 + MODEL_STEP, 519,
-		8+25 + MODEL_STEP, 39
-	};
-//	@SideOnly(Side.CLIENT)
-	public static float[] ROTATION_FLOAT_ARRAY = new float[]
-	{
-		0.0F, 0.0F,
-		0.0F, 0.0F
-	};
-//	@SideOnly(Side.CLIENT)
-	public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
-	{
-		0.0F, -0.55F * 0.5F, 0.0F,
-		0.0F, -1.0F * 0.5F, 0.05F * 0.5F,
-		0.0F, -1.1F * 0.5F, 0.12F * 0.5F,
-		0.0F, -1.05F * 0.5F, 0.12F * 0.5F
-	};
-
-	public SoundArisu soundarisu = new SoundArisu();
+	public SoundE sounde = new SoundE();
 
 	public ClientArisu(I i, R r)
 	{
@@ -96,38 +63,8 @@ public class ClientArisu
 //	}
 
 	@Override
-	public SoundArisu getSound()
+	public SoundE getSound()
 	{
-		return this.soundarisu;
-	}
-
-	@Override
-	public int[] getIVIntArray()
-	{
-		return IV_INT_ARRAY;
-	}
-
-	@Override
-	public float[] getRotationFloatArray()
-	{
-		return ROTATION_FLOAT_ARRAY;
-	}
-
-	@Override
-	public float[] getTransformFloatArray()
-	{
-		return TRANSFORM_FLOAT_ARRAY;
-	}
-
-	@Override
-	public void getHurtSound(DamageSource damagesource)
-	{
-		this.getSound().play(this.getSound().getSoundBuffer(EntityRefSound.HURT));
-	}
-
-	@Override
-	public void getDeathSound()
-	{
-		this.getSound().play(this.getSound().getSoundBuffer(EntityRefSound.DEATH));
+		return this.sounde;
 	}
 }

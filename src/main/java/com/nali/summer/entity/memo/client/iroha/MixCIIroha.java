@@ -1,13 +1,12 @@
 package com.nali.summer.entity.memo.client.iroha;
 
-import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaSn;
-import com.nali.da.client.IClientDaS;
-import com.nali.list.render.s.RenderIroha;
+import com.nali.list.da.BothDaIroha;
+import com.nali.list.render.RenderIroha;
 import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
-import com.nali.small.entity.memo.client.IClientERsInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,15 +17,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MixCIIroha
 <
 	IE extends InvLe,
-	RC extends IClientDaS,
-	R extends RenderIroha<IE, E, I, ?, MB, MR, C, BD, RC>,
-	BD extends IBothDaNe & IBothDaSn,
+	R extends RenderIroha<IE, E, I, ?, MB, MR, C>,
 	E extends EntityLivingBase,
-	I extends IMixE<BD, E>,
-	MB extends MixBoxSleInv<RC, R, BD, E, I, ?, MR, C>,
-	MR extends MixRenderIroha<IE, RC, R, BD, E, I, ?, MB, C>,
-	C extends ClientLeInv<IE, RC, R, BD, E, I, ?, MB, MR> & IClientERsInv
-> extends MixCIE<RC, R, BD, E, I, MB, MR, C>
+	I extends IMixE<BothDaIroha, E> & IMixES & IMixESInv,
+	MB extends MixBoxSleInv<BothDaIroha, R, E, I, ?, MR, C>,
+	MR extends MixRenderIroha<IE, BothDaIroha, R, E, I, ?, MB, C>,
+	C extends ClientLeInv<IE, BothDaIroha, R, E, I, ?, MB, MR>
+> extends MixCIE<BothDaIroha, R, E, I, MB, MR, C>
 {
 	public MixCIIroha(C c)
 	{
@@ -53,9 +50,8 @@ public class MixCIIroha
 		}
 		else
 		{
-			BD bd = i.getBD();
-			e.width = bd.Width() * scale;
-			e.height = bd.Height() * scale;
+			e.width = BothDaIroha.IDA.E_Width() * scale;
+			e.height = BothDaIroha.IDA.E_Height() * scale;
 //			skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
 //			skinningrender.model_byte_array[5 / 8] &= 223;//255 - Math.pow(2, 5 % 8)
 			r.model_byte_array[0] &= 239 & 223;

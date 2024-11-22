@@ -1,9 +1,10 @@
 package com.nali.summer.render;
 
-import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaSn;
-import com.nali.da.client.IClientDaS;
+import com.nali.da.IBothDaE;
+import com.nali.da.IBothDaO;
+import com.nali.da.IBothDaS;
 import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixES;
 import com.nali.small.entity.memo.client.ClientE;
 import com.nali.small.entity.memo.client.box.mix.MixBoxE;
 import com.nali.small.entity.memo.client.ci.MixCIE;
@@ -21,18 +22,17 @@ import static com.nali.list.data.SummerData.TEXTURE_STEP;
 public class SummerRenderSe
 <
 	E extends Entity,
-	I extends IMixE<BD, E>,
-	MC extends MixCIE<RC, ?, BD, E, I, MB, MR, C>,
-	MB extends MixBoxE<RC, ?, BD, E, I, MC, MR, C>,
-	MR extends MixRenderSe<RC, ?, BD, E, I, MC, MB, C>,
-	C extends ClientE<RC, ?, BD, E, I, MC, MB, MR>,
-	BD extends IBothDaNe & IBothDaSn,
-	RC extends IClientDaS
-> extends RenderSe<E, I, MC, MB, MR, C, BD, RC>
+	I extends IMixE<BD, E> & IMixES,
+	MC extends MixCIE<BD, ?, E, I, MB, MR, C>,
+	MB extends MixBoxE<BD, ?, E, I, MC, MR, C>,
+	MR extends MixRenderSe<BD, ?, E, I, MC, MB, C>,
+	C extends ClientE<BD, ?, E, I, MC, MB, MR>,
+	BD extends IBothDaE & IBothDaO & IBothDaS
+> extends RenderSe<E, I, MC, MB, MR, C, BD>
 {
-	public SummerRenderSe(RC rc, BD bd)
+	public SummerRenderSe(BD bd)
 	{
-		super(rc, bd);
+		super(bd);
 	}
 
 	@Override

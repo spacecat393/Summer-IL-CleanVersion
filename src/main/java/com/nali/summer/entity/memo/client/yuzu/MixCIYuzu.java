@@ -1,13 +1,12 @@
 package com.nali.summer.entity.memo.client.yuzu;
 
-import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaSn;
-import com.nali.da.client.IClientDaS;
-import com.nali.list.render.s.RenderYuzu;
+import com.nali.list.da.BothDaYuzu;
+import com.nali.list.render.RenderYuzu;
 import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
-import com.nali.small.entity.memo.client.IClientERsInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,15 +20,13 @@ import static com.nali.system.ClientLoader.G_LIST;
 public class MixCIYuzu
 <
 	IE extends InvLe,
-	RC extends IClientDaS,
-	R extends RenderYuzu<IE, E, I, ?, MB, MR, C, BD, RC>,
-	BD extends IBothDaNe & IBothDaSn,
+	R extends RenderYuzu<IE, E, I, ?, MB, MR, C>,
 	E extends EntityLivingBase,
-	I extends IMixE<BD, E>,
-	MB extends MixBoxSleInv<RC, R, BD, E, I, ?, MR, C>,
-	MR extends MixRenderYuzu<IE, RC, R, BD, E, I, ?, MB, C>,
-	C extends ClientLeInv<IE, RC, R, BD, E, I, ?, MB, MR> & IClientERsInv
-> extends MixCIE<RC, R, BD, E, I, MB, MR, C>
+	I extends IMixE<BothDaYuzu, E> & IMixES & IMixESInv,
+	MB extends MixBoxSleInv<BothDaYuzu, R, E, I, ?, MR, C>,
+	MR extends MixRenderYuzu<IE, BothDaYuzu, R, E, I, ?, MB, C>,
+	C extends ClientLeInv<IE, BothDaYuzu, R, E, I, ?, MB, MR>
+> extends MixCIE<BothDaYuzu, R, E, I, MB, MR, C>
 {
 	public MixCIYuzu(C c)
 	{
@@ -45,38 +42,25 @@ public class MixCIYuzu
 		int frame = r.frame_int_array[0];
 
 		float scale = r.scale;
-		RC rc = r.rc;
-//		RST rst = this.r.rst;
 		if (frame > 195 && frame < 222)
 		{
-//			skinningrender.texture_index_int_array[8] = 66;
-//			skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].ebo, 66);
-//			skinningrender.texture_map.put(((OpenGLObjectMemory)skinningrender.dataloader.object_array[rc.StartPart() + 8]).ebo, 66);
-			r.texture_map.put(G_LIST.get(rc.StartPart() + 8).ebo, 66 + TEXTURE_STEP);
+			r.texture_map.put(G_LIST.get(BothDaYuzu.IDA.O_StartPart() + 8).ebo, 66 + TEXTURE_STEP);
 		}
 		else if ((frame > 221 && frame < 250) || (frame > 354 && frame < 429))
 		{
-//			skinningrender.texture_index_int_array[8] = 67;
-//			skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].ebo, 67);
-			r.texture_map.put(G_LIST.get(rc.StartPart() + 8).ebo, 67 + TEXTURE_STEP);
+			r.texture_map.put(G_LIST.get(BothDaYuzu.IDA.O_StartPart() + 8).ebo, 67 + TEXTURE_STEP);
 		}
 		else if (frame > 249 && frame < 266)
 		{
-//			skinningrender.texture_index_int_array[8] = 68;
-//			skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].ebo, 68);
-			r.texture_map.put(G_LIST.get(rc.StartPart() + 8).ebo, 68 + TEXTURE_STEP);
+			r.texture_map.put(G_LIST.get(BothDaYuzu.IDA.O_StartPart() + 8).ebo, 68 + TEXTURE_STEP);
 		}
 		else if (frame > 301 && frame < 355)
 		{
-//			skinningrender.texture_index_int_array[8] = 69;
-//			skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].ebo, 69);
-			r.texture_map.put(G_LIST.get(rc.StartPart() + 8).ebo, 69 + TEXTURE_STEP);
+			r.texture_map.put(G_LIST.get(BothDaYuzu.IDA.O_StartPart() + 8).ebo, 69 + TEXTURE_STEP);
 		}
 		else
 		{
-//			skinningrender.texture_index_int_array[8] = 9;
-//			skinningrender.texture_map.put(skinningrender.dataloader.openglobjectmemory_array[rc.StartPart() + 8].ebo, 9);
-			r.texture_map.put(G_LIST.get(rc.StartPart() + 8).ebo, 9 + TEXTURE_STEP);
+			r.texture_map.put(G_LIST.get(BothDaYuzu.IDA.O_StartPart() + 8).ebo, 9 + TEXTURE_STEP);
 		}
 
 		E e = i.getE();
@@ -87,9 +71,8 @@ public class MixCIYuzu
 		}
 		else
 		{
-			BD bd = i.getBD();
-			e.width = bd.Width() * scale;
-			e.height = bd.Height() * scale;
+			e.width = BothDaYuzu.IDA.E_Width() * scale;
+			e.height = BothDaYuzu.IDA.E_Height() * scale;
 		}
 	}
 }

@@ -1,13 +1,12 @@
 package com.nali.summer.entity.memo.client.sshifumi;
 
-import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaSn;
-import com.nali.da.client.IClientDaS;
-import com.nali.list.render.s.RenderSSHifumi;
+import com.nali.list.da.BothDaSSHifumi;
+import com.nali.list.render.RenderSSHifumi;
 import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
-import com.nali.small.entity.memo.client.IClientERsInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,15 +17,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MixCISSHifumi
 <
 	IE extends InvLe,
-	RC extends IClientDaS,
-	R extends RenderSSHifumi<IE, E, I, ?, MB, MR, C, BD, RC>,
-	BD extends IBothDaNe & IBothDaSn,
+	R extends RenderSSHifumi<IE, E, I, ?, MB, MR, C>,
 	E extends EntityLivingBase,
-	I extends IMixE<BD, E>,
-	MB extends MixBoxSleInv<RC, R, BD, E, I, ?, MR, C>,
-	MR extends MixRenderSSHifumi<IE, RC, R, BD, E, I, ?, MB, C>,
-	C extends ClientLeInv<IE, RC, R, BD, E, I, ?, MB, MR> & IClientERsInv
-> extends MixCIE<RC, R, BD, E, I, MB, MR, C>
+	I extends IMixE<BothDaSSHifumi, E> & IMixES & IMixESInv,
+	MB extends MixBoxSleInv<BothDaSSHifumi, R, E, I, ?, MR, C>,
+	MR extends MixRenderSSHifumi<IE, BothDaSSHifumi, R, E, I, ?, MB, C>,
+	C extends ClientLeInv<IE, BothDaSSHifumi, R, E, I, ?, MB, MR>
+> extends MixCIE<BothDaSSHifumi, R, E, I, MB, MR, C>
 {
 	public MixCISSHifumi(C c)
 	{
@@ -44,15 +41,15 @@ public class MixCISSHifumi
 
 		if (frame > 267 && frame < 284)
 		{
-//			this.width = bothdata.Width() * scale;
-//			this.height = bothdata.Height() * scale;
+//			this.width = bothdata.E_Width() * scale;
+//			this.height = bothdata.E_Height() * scale;
 			r.model_byte_array[0] &= 255-1 & 255-2 & 255-4 & 255-8 & 255-16/* & 255-32*/ & 255-64;
 			r.model_byte_array[1] &= 255-8 & 255-16;
 		}
 		else
 		{
-//			this.width = bothdata.Width() * scale;
-//			this.height = bothdata.Height() * scale;
+//			this.width = bothdata.E_Width() * scale;
+//			this.height = bothdata.E_Height() * scale;
 //			skinningrender.model_byte_array[0 / 8] |= 1;//Math.pow(2, 0 % 8)
 //			skinningrender.model_byte_array[1 / 8] |= 2;//Math.pow(2, 1 % 8)
 //			skinningrender.model_byte_array[2 / 8] |= 4;//Math.pow(2, 2 % 8)
@@ -78,9 +75,8 @@ public class MixCISSHifumi
 		}
 		else
 		{
-			BD bd = i.getBD();
-			e.width = bd.Width() * scale;
-			e.height = bd.Height() * scale;
+			e.width = BothDaSSHifumi.IDA.E_Width() * scale;
+			e.height = BothDaSSHifumi.IDA.E_Height() * scale;
 //			skinningrender.model_byte_array[8 / 8] &= 254;//255 - Math.pow(2, 8 % 8)
 //			skinningrender.model_byte_array[9 / 8] &= 253;//255 - Math.pow(2, 9 % 8)
 //			skinningrender.model_byte_array[10 / 8] &= 251;//255 - Math.pow(2, 10 % 8)

@@ -1,13 +1,12 @@
 package com.nali.summer.entity.memo.client.ibuki;
 
-import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaSn;
-import com.nali.da.client.IClientDaS;
-import com.nali.list.render.s.RenderIbuki;
+import com.nali.list.da.BothDaIbuki;
+import com.nali.list.render.RenderIbuki;
 import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
-import com.nali.small.entity.memo.client.IClientERsInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,15 +17,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MixCIIbuki
 <
 	IE extends InvLe,
-	RC extends IClientDaS,
-	R extends RenderIbuki<IE, E, I, ?, MB, MR, C, BD, RC>,
-	BD extends IBothDaNe & IBothDaSn,
+	R extends RenderIbuki<IE, E, I, ?, MB, MR, C>,
 	E extends EntityLivingBase,
-	I extends IMixE<BD, E>,
-	MB extends MixBoxSleInv<RC, R, BD, E, I, ?, MR, C>,
-	MR extends MixRenderIbuki<IE, RC, R, BD, E, I, ?, MB, C>,
-	C extends ClientLeInv<IE, RC, R, BD, E, I, ?, MB, MR> & IClientERsInv
-> extends MixCIE<RC, R, BD, E, I, MB, MR, C>
+	I extends IMixE<BothDaIbuki, E> & IMixES & IMixESInv,
+	MB extends MixBoxSleInv<BothDaIbuki, R, E, I, ?, MR, C>,
+	MR extends MixRenderIbuki<IE, R, E, I, ?, MB, C>,
+	C extends ClientLeInv<IE, BothDaIbuki, R, E, I, ?, MB, MR>
+> extends MixCIE<BothDaIbuki, R, E, I, MB, MR, C>
 {
 	public int eyes_tick;
 
@@ -73,9 +70,8 @@ public class MixCIIbuki
 		}
 		else
 		{
-			BD bd = i.getBD();
-			e.width = bd.Width() * scale;
-			e.height = bd.Height() * scale;
+			e.width = BothDaIbuki.IDA.E_Width() * scale;
+			e.height = BothDaIbuki.IDA.E_Height() * scale;
 		}
 	}
 //	@Override

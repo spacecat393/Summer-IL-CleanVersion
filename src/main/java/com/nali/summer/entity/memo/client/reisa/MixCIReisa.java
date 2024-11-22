@@ -1,13 +1,12 @@
 package com.nali.summer.entity.memo.client.reisa;
 
-import com.nali.da.IBothDaNe;
-import com.nali.da.IBothDaSn;
-import com.nali.da.client.IClientDaS;
-import com.nali.list.render.s.RenderReisa;
+import com.nali.list.da.BothDaReisa;
+import com.nali.list.render.RenderReisa;
 import com.nali.small.entity.IMixE;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
-import com.nali.small.entity.memo.client.IClientERsInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,15 +17,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MixCIReisa
 <
 	IE extends InvLe,
-	RC extends IClientDaS,
-	R extends RenderReisa<IE, E, I, ?, MB, MR, C, BD, RC>,
-	BD extends IBothDaNe & IBothDaSn,
+	R extends RenderReisa<IE, E, I, ?, MB, MR, C>,
 	E extends EntityLivingBase,
-	I extends IMixE<BD, E>,
-	MB extends MixBoxSleInv<RC, R, BD, E, I, ?, MR, C>,
-	MR extends MixRenderReisa<IE, RC, R, BD, E, I, ?, MB, C>,
-	C extends ClientLeInv<IE, RC, R, BD, E, I, ?, MB, MR> & IClientERsInv
-> extends MixCIE<RC, R, BD, E, I, MB, MR, C>
+	I extends IMixE<BothDaReisa, E> & IMixES & IMixESInv,
+	MB extends MixBoxSleInv<BothDaReisa, R, E, I, ?, MR, C>,
+	MR extends MixRenderReisa<IE, BothDaReisa, R, E, I, ?, MB, C>,
+	C extends ClientLeInv<IE, BothDaReisa, R, E, I, ?, MB, MR>
+> extends MixCIE<BothDaReisa, R, E, I, MB, MR, C>
 {
 	public int eyes_tick;
 
@@ -75,9 +72,8 @@ public class MixCIReisa
 		}
 		else
 		{
-			BD bd = i.getBD();
-			e.width = bd.Width() * scale;
-			e.height = bd.Height() * scale;
+			e.width = BothDaReisa.IDA.E_Width() * scale;
+			e.height = BothDaReisa.IDA.E_Height() * scale;
 		}
 
 //		skinningrender.model_byte_array[3 / 8] &= 255-8;//255 - Math.pow(2, 3 % 8)

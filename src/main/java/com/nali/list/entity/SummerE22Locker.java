@@ -1,16 +1,19 @@
 package com.nali.list.entity;
 
-import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaE;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.si.*;
-import com.nali.list.render.s.RenderE22Locker;
+import com.nali.list.render.RenderE22Locker;
+import com.nali.math.Quaternion;
 import com.nali.small.entity.EntityE;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvE;
 import com.nali.small.entity.memo.IBothE;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSeRSe;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.server.si.MixSIEInv;
-import com.nali.summer.da.both.BothDaE22Locker;
+import com.nali.list.da.BothDaE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.ClientE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.MixRenderE22Locker;
 import com.nali.summer.entity.memo.server.e22locker.ServerE22Locker;
@@ -22,7 +25,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerE22Locker extends EntityE
+import static com.nali.list.data.SummerData.MODEL_STEP;
+import static com.nali.small.entity.memo.client.render.FRenderSeMath.interpolateRotation;
+
+public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 {
 	public static int eggPrimary = 0x1a69a7;
 	public static int eggSecondary = 0xffffff;
@@ -33,6 +39,30 @@ public class SummerE22Locker extends EntityE
 
 	public static byte[] CI_BYTE_ARRAY;
 	public static byte[] SI_BYTE_ARRAY;
+
+	public IBothE ibothe;
+
+	public static int[] IV_INT_ARRAY = new int[]
+	{
+		5+90 + MODEL_STEP, 523,
+		5+90 + MODEL_STEP, 560,
+		5+90 + MODEL_STEP, 12,
+		5+90 + MODEL_STEP, 451,
+		5+90 + MODEL_STEP, 451,
+		4+90 + MODEL_STEP, 99
+	};
+	public static float[] ROTATION_FLOAT_ARRAY = new float[]
+	{
+		0.0F, 0.0F,
+		0.0F, 0.0F
+	};
+	public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
+	{
+		0.0F, -0.65F * 0.5F, 0.0F,
+		0.1F, -1.8F * 0.5F, 0.07F * 0.5F,
+		0.1F, -1.85F * 0.5F, 0.09F * 0.5F,
+		0.1F, -1.8F * 0.5F, 0.09F * 0.5F
+	};
 
 	static
 	{
@@ -51,8 +81,6 @@ public class SummerE22Locker extends EntityE
 			FLOAT_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerE22Locker.class, DataSerializers.FLOAT);
 		}
 	}
-
-	public IBothE ibothe;
 
 	public SummerE22Locker(World world)
 	{
@@ -83,7 +111,7 @@ public class SummerE22Locker extends EntityE
 	@SideOnly(Side.CLIENT)
 	public static ClientE22Locker getC()
 	{
-		RenderE22Locker r = new RenderE22Locker(RenderE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
+		RenderE22Locker r = new RenderE22Locker();
 		ClientE22Locker c = new ClientE22Locker(r);
 		r.c = c;
 		c.mr = new MixRenderE22Locker(c);
@@ -185,7 +213,7 @@ public class SummerE22Locker extends EntityE
 	@Override
 	public void newC()
 	{
-		RenderE22Locker r = new RenderE22Locker(RenderE22Locker.ICLIENTDAS, BothDaE22Locker.IBOTHDASN);
+		RenderE22Locker r = new RenderE22Locker();
 		ClientE22Locker c = new ClientE22Locker(this, r);
 		MixCIE mc = new MixCIE(c);
 		c.mc = mc;
@@ -211,9 +239,9 @@ public class SummerE22Locker extends EntityE
 	}
 
 	@Override
-	public IBothDaNe getBD()
+	public IBothDaE getBD()
 	{
-		return BothDaE22Locker.IBOTHDASN;
+		return BothDaE22Locker.IDA;
 	}
 
 	@Override
@@ -243,4 +271,30 @@ public class SummerE22Locker extends EntityE
 //	{
 //		return ClientE22LockerMemory.IV_INT_ARRAY;
 //	}
+
+	@Override
+	public int[] getIVIntArray()
+	{
+		return IV_INT_ARRAY;
+	}
+
+	@Override
+	public float[] getRotationFloatArray()
+	{
+		return ROTATION_FLOAT_ARRAY;
+	}
+
+	@Override
+	public float[] getTransformFloatArray()
+	{
+		return TRANSFORM_FLOAT_ARRAY;
+	}
+
+	@Override
+	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
+	{
+		float head_rot = (float)Math.toRadians(interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+
+		new Quaternion(0, 0, head_rot).getM4x4().multiply(skinning_float_array, 0);
+	}
 }

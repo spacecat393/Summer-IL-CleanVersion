@@ -1,15 +1,19 @@
 package com.nali.list.entity;
 
-import com.nali.da.IBothDaNe;
+import com.nali.da.IBothDaE;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
-import com.nali.list.render.s.RenderSSHifumi;
+import com.nali.list.render.RenderSSHifumi;
+import com.nali.math.M4x4;
+import com.nali.math.Quaternion;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.IMixES;
+import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
-import com.nali.summer.da.both.BothDaSSHifumi;
+import com.nali.list.da.BothDaSSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.ClientSSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.MixCISSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.MixRenderSSHifumi;
@@ -23,7 +27,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SummerSSHifumi extends EntityLeInv
+import static com.nali.list.data.SummerData.MODEL_STEP;
+import static com.nali.small.entity.memo.client.render.FRenderSeMath.interpolateRotation;
+
+public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 {
 	public static int eggPrimary = 0xBE9478;
 	public static int eggSecondary = 0xFFF6AE;
@@ -36,6 +43,28 @@ public class SummerSSHifumi extends EntityLeInv
 	public static byte[] SI_BYTE_ARRAY;
 
 	public IBothLeInv ibothleinv;
+
+	public static int[] IV_INT_ARRAY = new int[]
+	{
+		/*0+0 + */MODEL_STEP, 9046,
+		/*0+0 + */MODEL_STEP, 2581,
+		4/*+0*/ + MODEL_STEP, 1275,
+		/*0+0 + */MODEL_STEP, 9224,
+		/*0+0 + */MODEL_STEP, 7860,
+		12/*+0*/ + MODEL_STEP, 69
+	};
+	public static float[] ROTATION_FLOAT_ARRAY = new float[]
+	{
+		0.0F, 0.0F,
+		0.0F, 0.0F
+	};
+	public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
+	{
+		0.0F, -0.55F * 0.5F, 0.0F,
+		0.0F, -1.0F * 0.5F, 0.01F * 0.5F,
+		0.0F, -1.2F * 0.5F, 0.14F * 0.5F,
+		0.0F, -1.15F * 0.5F, 0.14F * 0.5F
+	};
 
 	static
 	{
@@ -107,7 +136,7 @@ public class SummerSSHifumi extends EntityLeInv
 	@SideOnly(Side.CLIENT)
 	public static ClientSSHifumi getC()
 	{
-		RenderSSHifumi r = new RenderSSHifumi(RenderSSHifumi.ICLIENTDAS, BothDaSSHifumi.IBOTHDASN);
+		RenderSSHifumi r = new RenderSSHifumi();
 		ClientSSHifumi c = new ClientSSHifumi(r);
 		r.c = c;
 		c.mr = new MixRenderSSHifumi(c);
@@ -164,7 +193,7 @@ public class SummerSSHifumi extends EntityLeInv
 	@Override
 	public void newC()
 	{
-		RenderSSHifumi r = new RenderSSHifumi(RenderSSHifumi.ICLIENTDAS, BothDaSSHifumi.IBOTHDASN);
+		RenderSSHifumi r = new RenderSSHifumi();
 		ClientSSHifumi c = new ClientSSHifumi(this, r);
 		MixCISSHifumi mc = new MixCISSHifumi(c);
 		c.mc = mc;
@@ -189,9 +218,9 @@ public class SummerSSHifumi extends EntityLeInv
 	}
 
 	@Override
-	public IBothDaNe getBD()
+	public IBothDaE getBD()
 	{
-		return BothDaSSHifumi.IBOTHDASN;
+		return BothDaSSHifumi.IDA;
 	}
 
 	@Override
@@ -220,4 +249,58 @@ public class SummerSSHifumi extends EntityLeInv
 //	{
 //		return ClientSSHimiMemory.IV_INT_ARRAY;
 //	}
+
+	@Override
+	public int[] getIVIntArray()
+	{
+		return IV_INT_ARRAY;
+	}
+
+	@Override
+	public float[] getRotationFloatArray()
+	{
+		return ROTATION_FLOAT_ARRAY;
+	}
+
+	@Override
+	public float[] getTransformFloatArray()
+	{
+		return TRANSFORM_FLOAT_ARRAY;
+	}
+
+	@Override
+	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
+	{
+		float head_rot = (float)Math.toRadians(interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
+		float body_rot = (float)Math.toRadians(interpolateRotation(this.prevRenderYawOffset, this.renderYawOffset, partial_ticks));
+		float net_head_yaw = head_rot - body_rot;
+
+		if (head_pitch > 1.04719755119659774615F)
+		{
+			head_pitch = 1.04719755119659774615F;
+		}
+		else if (head_pitch < -1.04719755119659774615F)
+		{
+			head_pitch = -1.04719755119659774615F;
+		}
+
+		M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, body_rot).getM4x4();
+//		M4x4 inverse_body_m4x4 = new Quaternion(0.0F, skinningrender.body_rot, 0.0F).getM4x4();
+
+		if (frame_int_array[0] < 379)
+		{
+			M4x4 head_m4x4 = new Quaternion(0, 0, net_head_yaw).getM4x4();
+
+			head_m4x4.multiply(skinning_float_array, 16 * 16);
+		}
+		else
+		{
+			M4x4 head_m4x4 = new Quaternion(-head_pitch, 0, net_head_yaw).getM4x4();
+
+			head_m4x4.multiply(skinning_float_array, 74 * 16);
+		}
+
+		body_m4x4.multiply(skinning_float_array, 0);
+	}
 }
