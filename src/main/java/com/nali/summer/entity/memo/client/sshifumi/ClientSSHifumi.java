@@ -28,11 +28,12 @@ public class ClientSSHifumi
 	MR extends MixRenderSleInv<IE, BothDaSSHifumi, R, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, BothDaSSHifumi, R, E, I, MC, MB, MR> implements IClientESound
 {
-	public SoundE sounde = new SoundE();
+	public SoundE sounde;
 
-	public ClientSSHifumi(I i, R r)
+	public ClientSSHifumi(I i, R r, SoundE sounde)
 	{
 		super(i, r);
+		this.sounde = sounde;
 	}
 
 	public ClientSSHifumi(R r)

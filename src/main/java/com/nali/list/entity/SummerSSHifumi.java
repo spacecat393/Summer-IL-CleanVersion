@@ -14,6 +14,7 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.list.da.BothDaSSHifumi;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.sshifumi.ClientSSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.MixCISSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.MixRenderSSHifumi;
@@ -194,7 +195,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderSSHifumi r = new RenderSSHifumi();
-		ClientSSHifumi c = new ClientSSHifumi(this, r);
+		ClientSSHifumi c = new ClientSSHifumi(this, r, new SoundE());
 		MixCISSHifumi mc = new MixCISSHifumi(c);
 		c.mc = mc;
 		mc.init();

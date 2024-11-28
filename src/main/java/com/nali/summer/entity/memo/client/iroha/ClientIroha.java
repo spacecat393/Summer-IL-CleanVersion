@@ -28,11 +28,12 @@ public class ClientIroha
 	MR extends MixRenderSleInv<IE, BothDaIroha, R, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, BothDaIroha, R, E, I, MC, MB, MR> implements IClientESound
 {
-	public SoundE sounde = new SoundE();
+	public SoundE sounde;
 
-	public ClientIroha(I i, R r)
+	public ClientIroha(I i, R r, SoundE sounde)
 	{
 		super(i, r);
+		this.sounde = sounde;
 	}
 
 	public ClientIroha(R r)

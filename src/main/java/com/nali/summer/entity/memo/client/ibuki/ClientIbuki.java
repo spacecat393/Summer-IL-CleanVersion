@@ -28,11 +28,12 @@ public class ClientIbuki
 	MR extends MixRenderSleInv<IE, BothDaIbuki, R, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, BothDaIbuki, R, E, I, MC, MB, MR> implements IClientESound
 {
-	public SoundE sounde = new SoundE();
+	public SoundE sounde;
 
-	public ClientIbuki(I i, R r)
+	public ClientIbuki(I i, R r, SoundE sounde)
 	{
 		super(i, r);
+		this.sounde = sounde;
 	}
 
 	public ClientIbuki(R r)

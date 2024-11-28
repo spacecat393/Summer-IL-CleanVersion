@@ -14,6 +14,7 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.list.da.BothDaNatsu;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.natsu.ClientNatsu;
 import com.nali.summer.entity.memo.client.natsu.MixCINatsu;
 import com.nali.summer.entity.memo.client.natsu.MixRenderNatsu;
@@ -188,7 +189,7 @@ public class SummerNatsu extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderNatsu r = new RenderNatsu();
-		ClientNatsu c = new ClientNatsu(this, r);
+		ClientNatsu c = new ClientNatsu(this, r, new SoundE());
 		MixCINatsu mc = new MixCINatsu(c);
 		c.mc = mc;
 		mc.init();

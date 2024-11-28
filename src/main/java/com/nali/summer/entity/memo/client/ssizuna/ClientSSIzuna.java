@@ -29,11 +29,12 @@ public class ClientSSIzuna
 	MR extends MixRenderSleInv<IE, BothDaSSIzuna, R, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, BothDaSSIzuna, R, E, I, MC, MB, MR> implements IClientESound
 {
-	public SoundE sounde = new SoundE();
+	public SoundE sounde;
 
-	public ClientSSIzuna(I i, R r)
+	public ClientSSIzuna(I i, R r, SoundE sounde)
 	{
 		super(i, r);
+		this.sounde = sounde;
 	}
 
 	public ClientSSIzuna(R r)

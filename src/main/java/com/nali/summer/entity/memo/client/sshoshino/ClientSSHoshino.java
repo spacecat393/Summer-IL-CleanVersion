@@ -28,11 +28,12 @@ public class ClientSSHoshino
 	MR extends MixRenderSleInv<IE, BothDaSSHoshino, R, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, BothDaSSHoshino, R, E, I, MC, MB, MR> implements IClientESound
 {
-	public SoundE sounde = new SoundE();
+	public SoundE sounde;
 
-	public ClientSSHoshino(I i, R r)
+	public ClientSSHoshino(I i, R r, SoundE sounde)
 	{
 		super(i, r);
+		this.sounde = sounde;
 	}
 
 	public ClientSSHoshino(R r)

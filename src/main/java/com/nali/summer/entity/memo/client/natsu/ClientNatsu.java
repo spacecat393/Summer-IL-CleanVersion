@@ -28,11 +28,12 @@ public class ClientNatsu
 	MR extends MixRenderSleInv<IE, BothDaNatsu, R, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, BothDaNatsu, R, E, I, MC, MB, MR> implements IClientESound
 {
-	public SoundE sounde = new SoundE();
+	public SoundE sounde;
 
-	public ClientNatsu(I i, R r)
+	public ClientNatsu(I i, R r, SoundE sounde)
 	{
 		super(i, r);
+		this.sounde = sounde;
 	}
 
 	public ClientNatsu(R r)

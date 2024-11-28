@@ -28,11 +28,12 @@ public class ClientSaori
 	MR extends MixRenderSleInv<IE, BothDaSaori, R, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, BothDaSaori, R, E, I, MC, MB, MR> implements IClientESound
 {
-	public SoundE sounde = new SoundE();
+	public SoundE sounde;
 
-	public ClientSaori(I i, R r)
+	public ClientSaori(I i, R r, SoundE sounde)
 	{
 		super(i, r);
+		this.sounde = sounde;
 	}
 
 	public ClientSaori(R r)

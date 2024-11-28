@@ -14,6 +14,7 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.list.da.BothDaYuzu;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.yuzu.ClientYuzu;
 import com.nali.summer.entity.memo.client.yuzu.MixCIYuzu;
 import com.nali.summer.entity.memo.client.yuzu.MixRenderYuzu;
@@ -195,7 +196,7 @@ public class SummerYuzu extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderYuzu r = new RenderYuzu();
-		ClientYuzu c = new ClientYuzu(this, r);
+		ClientYuzu c = new ClientYuzu(this, r, new SoundE());
 		MixCIYuzu mc = new MixCIYuzu(c);
 		c.mc = mc;
 		mc.init();

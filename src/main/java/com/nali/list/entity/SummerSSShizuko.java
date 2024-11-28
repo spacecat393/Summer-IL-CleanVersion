@@ -16,6 +16,7 @@ import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.server.si.MixSIEInv;
 import com.nali.list.da.BothDaSSShizuko;
 import com.nali.list.da.BothDaSeaHouse;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.ssshizuko.ClientSSShizuko;
 import com.nali.summer.entity.memo.client.ssshizuko.MixCISSShizuko;
 import com.nali.summer.entity.memo.client.ssshizuko.MixRenderSSShizuko;
@@ -220,7 +221,7 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderSSShizuko r = new RenderSSShizuko();
-		ClientSSShizuko c = new ClientSSShizuko(this, r);
+		ClientSSShizuko c = new ClientSSShizuko(this, r, new SoundE());
 		MixCISSShizuko mc = new MixCISSShizuko(c);
 		c.mc = mc;
 		mc.init();

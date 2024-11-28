@@ -14,6 +14,7 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.list.da.BothDaSSHoshino;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.sshoshino.ClientSSHoshino;
 import com.nali.summer.entity.memo.client.sshoshino.MixCISSHoshino;
 import com.nali.summer.entity.memo.client.sshoshino.MixRenderSSHoshino;
@@ -187,7 +188,7 @@ public class SummerSSHoshino extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderSSHoshino r = new RenderSSHoshino();
-		ClientSSHoshino c = new ClientSSHoshino(this, r);
+		ClientSSHoshino c = new ClientSSHoshino(this, r, new SoundE());
 		MixCISSHoshino mc = new MixCISSHoshino(c);
 		c.mc = mc;
 		mc.init();

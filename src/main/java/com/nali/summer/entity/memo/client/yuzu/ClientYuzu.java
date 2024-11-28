@@ -28,11 +28,12 @@ public class ClientYuzu
 	MR extends MixRenderSleInv<IE, BothDaYuzu, R, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, BothDaYuzu, R, E, I, MC, MB, MR> implements IClientESound
 {
-	public SoundE sounde = new SoundE();
+	public SoundE sounde;
 
-	public ClientYuzu(I i, R r)
+	public ClientYuzu(I i, R r, SoundE sounde)
 	{
 		super(i, r);
+		this.sounde = sounde;
 	}
 
 	public ClientYuzu(R r)

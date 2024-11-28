@@ -16,6 +16,7 @@ import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.list.da.BothDaIroha;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.iroha.ClientIroha;
 import com.nali.summer.entity.memo.client.iroha.MixCIIroha;
 import com.nali.summer.entity.memo.client.iroha.MixRenderIroha;
@@ -198,7 +199,7 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderIroha r = new RenderIroha();
-		ClientIroha c = new ClientIroha(this, r);
+		ClientIroha c = new ClientIroha(this, r, new SoundE());
 		MixCIIroha mc = new MixCIIroha(c);
 		c.mc = mc;
 		mc.init();

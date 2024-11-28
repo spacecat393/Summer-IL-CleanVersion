@@ -14,6 +14,7 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.list.da.BothDaIbuki;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.ibuki.ClientIbuki;
 import com.nali.summer.entity.memo.client.ibuki.MixCIIbuki;
 import com.nali.summer.entity.memo.client.ibuki.MixRenderIbuki;
@@ -195,7 +196,7 @@ public class SummerIbuki extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderIbuki r = new RenderIbuki();
-		ClientIbuki c = new ClientIbuki(this, r);
+		ClientIbuki c = new ClientIbuki(this, r, new SoundE());
 		MixCIIbuki mc = new MixCIIbuki(c);
 		c.mc = mc;
 		mc.init();

@@ -14,6 +14,7 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.list.da.BothDaSaori;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.saori.ClientSaori;
 import com.nali.summer.entity.memo.client.saori.MixCISaori;
 import com.nali.summer.entity.memo.client.saori.MixRenderSaori;
@@ -209,7 +210,7 @@ public class SummerSaori extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderSaori r = new RenderSaori();
-		ClientSaori c = new ClientSaori(this, r);
+		ClientSaori c = new ClientSaori(this, r, new SoundE());
 		MixCISaori mc = new MixCISaori(c);
 		c.mc = mc;
 		mc.init();

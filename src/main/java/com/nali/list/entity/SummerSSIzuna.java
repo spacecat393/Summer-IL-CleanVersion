@@ -15,6 +15,7 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.list.da.BothDaSSIzuna;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.ssizuna.ClientSSIzuna;
 import com.nali.summer.entity.memo.client.ssizuna.MixCISSIzuna;
 import com.nali.summer.entity.memo.client.ssizuna.MixRenderSSIzuna;
@@ -210,7 +211,7 @@ public class SummerSSIzuna extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderSSIzuna r = new RenderSSIzuna();
-		ClientSSIzuna c = new ClientSSIzuna(this, r);
+		ClientSSIzuna c = new ClientSSIzuna(this, r, new SoundE());
 		MixCISSIzuna mc = new MixCISSIzuna(c);
 		c.mc = mc;
 		mc.init();

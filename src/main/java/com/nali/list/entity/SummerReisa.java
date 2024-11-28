@@ -14,6 +14,7 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.list.da.BothDaReisa;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.reisa.ClientReisa;
 import com.nali.summer.entity.memo.client.reisa.MixCIReisa;
 import com.nali.summer.entity.memo.client.reisa.MixRenderReisa;
@@ -197,7 +198,7 @@ public class SummerReisa extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderReisa r = new RenderReisa();
-		ClientReisa c = new ClientReisa(this, r);
+		ClientReisa c = new ClientReisa(this, r, new SoundE());
 		MixCIReisa mc = new MixCIReisa(c);
 		c.mc = mc;
 		mc.init();

@@ -28,11 +28,12 @@ public class ClientReisa
 	MR extends MixRenderSleInv<IE, BothDaReisa, R, E, I, MC, MB, ?>
 > extends ClientLeInv<IE, BothDaReisa, R, E, I, MC, MB, MR> implements IClientESound
 {
-	public SoundE sounde = new SoundE();
+	public SoundE sounde;
 
-	public ClientReisa(I i, R r)
+	public ClientReisa(I i, R r, SoundE sounde)
 	{
 		super(i, r);
+		this.sounde = sounde;
 	}
 
 	public ClientReisa(R r)

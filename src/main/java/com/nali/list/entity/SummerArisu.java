@@ -14,6 +14,7 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.list.da.BothDaArisu;
+import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.arisu.ClientArisu;
 import com.nali.summer.entity.memo.client.arisu.MixCIArisu;
 import com.nali.summer.entity.memo.client.arisu.MixRenderArisu;
@@ -290,7 +291,7 @@ public class SummerArisu extends EntityLeInv implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderArisu r = new RenderArisu();
-		ClientArisu c = new ClientArisu(this, r);
+		ClientArisu c = new ClientArisu(this, r, new SoundE());
 		MixCIArisu mc = new MixCIArisu(c);
 		c.mc = mc;
 		mc.init();
