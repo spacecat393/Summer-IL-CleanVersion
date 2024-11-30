@@ -9,6 +9,7 @@ import com.nali.small.entity.memo.IBothEInv;
 import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerE;
 import com.nali.small.entity.memo.server.si.MixSIE;
+import com.nali.small.entity.memo.server.si.SIData;
 import com.nali.small.entity.memo.server.si.frame.FrameS;
 import com.nali.small.entity.memo.server.si.frame.floop.FrameSFLoopRSeStand;
 import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeRSePlay;
@@ -42,6 +43,21 @@ public class ServerE22Locker
 	public ServerE22Locker(I i)
 	{
 		super(i);
+	}
+
+	@Override
+	public void writeFile(SIData siData)
+	{
+	}
+
+	@Override
+	public void readFile(SIData siData)
+	{
+	}
+
+	@Override
+	public void initFile()
+	{
 	}
 
 	@Override

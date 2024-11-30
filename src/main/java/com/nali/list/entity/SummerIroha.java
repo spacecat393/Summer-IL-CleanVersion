@@ -9,6 +9,7 @@ import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.render.RenderS;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.EntityMath;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
@@ -31,7 +32,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static com.nali.list.data.SummerData.MODEL_STEP;
-import static com.nali.small.entity.memo.client.render.FRenderSeMath.interpolateRotation;
 
 public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 {
@@ -276,9 +276,9 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 	@Override
 	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
 	{
-		float head_rot = (float)Math.toRadians(interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYawHead, this.rotationYawHead, partial_ticks));
 		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
-		float body_rot = (float)Math.toRadians(interpolateRotation(this.prevRenderYawOffset, this.renderYawOffset, partial_ticks));
+		float body_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
 		float net_head_yaw = head_rot - body_rot;
 
 		if (head_pitch > 1.04719755119659774615F)

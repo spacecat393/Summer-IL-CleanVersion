@@ -8,6 +8,7 @@ import com.nali.list.render.RenderSSHifumi;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.EntityMath;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
@@ -29,7 +30,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static com.nali.list.data.SummerData.MODEL_STEP;
-import static com.nali.small.entity.memo.client.render.FRenderSeMath.interpolateRotation;
 
 public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 {
@@ -272,9 +272,9 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 	@Override
 	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
 	{
-		float head_rot = (float)Math.toRadians(interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYawHead, this.rotationYawHead, partial_ticks));
 		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
-		float body_rot = (float)Math.toRadians(interpolateRotation(this.prevRenderYawOffset, this.renderYawOffset, partial_ticks));
+		float body_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
 		float net_head_yaw = head_rot - body_rot;
 
 		if (head_pitch > 1.04719755119659774615F)
@@ -285,20 +285,19 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 		{
 			head_pitch = -1.04719755119659774615F;
 		}
+//		float body_rot = head_rot;
+//		float net_head_yaw = head_rot - body_rot;
 
 		M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, body_rot).getM4x4();
-//		M4x4 inverse_body_m4x4 = new Quaternion(0.0F, skinningrender.body_rot, 0.0F).getM4x4();
 
 		if (frame_int_array[0] < 379)
 		{
 			M4x4 head_m4x4 = new Quaternion(0, 0, net_head_yaw).getM4x4();
-
 			head_m4x4.multiply(skinning_float_array, 16 * 16);
 		}
 		else
 		{
 			M4x4 head_m4x4 = new Quaternion(-head_pitch, 0, net_head_yaw).getM4x4();
-
 			head_m4x4.multiply(skinning_float_array, 74 * 16);
 		}
 

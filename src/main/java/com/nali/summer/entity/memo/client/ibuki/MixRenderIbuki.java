@@ -5,6 +5,7 @@ import com.nali.list.da.BothDaIroha;
 import com.nali.list.entity.SummerIroha;
 import com.nali.list.render.RenderIbuki;
 import com.nali.render.RenderS;
+import com.nali.small.entity.EntityMath;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -20,7 +21,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
-import static com.nali.small.entity.memo.client.render.FRenderSeMath.interpolateRotation;
 import static com.nali.system.BothLoader.F2_LIST;
 
 @SideOnly(Side.CLIENT)
@@ -78,9 +78,9 @@ public class MixRenderIbuki
 			r.iroharender.initSkinning(BothDaIroha.IDA/*openglanimationmemory*/);
 			//s0-a
 			E e = this.c.i.getE();
-			float head_rot = (float)Math.toRadians(interpolateRotation(e.prevRotationYaw, e.rotationYaw, partialTicks));
+			float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(e.prevRotationYawHead, e.rotationYawHead, partialTicks));
 			float head_pitch = (float)Math.toRadians(e.prevRotationPitch + (e.rotationPitch - e.prevRotationPitch) * partialTicks);
-			float body_rot = (float)Math.toRadians(interpolateRotation(e.prevRenderYawOffset, e.renderYawOffset, partialTicks));
+			float body_rot = (float)Math.toRadians(EntityMath.interpolateRotation(e.prevRotationYaw, e.rotationYaw, partialTicks));
 			float net_head_yaw = head_rot - body_rot;
 
 			if (head_pitch > 1.04719755119659774615F)

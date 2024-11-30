@@ -6,6 +6,7 @@ import com.nali.list.entity.si.*;
 import com.nali.list.render.RenderE22Locker;
 import com.nali.math.Quaternion;
 import com.nali.small.entity.EntityE;
+import com.nali.small.entity.EntityMath;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvE;
@@ -26,7 +27,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static com.nali.list.data.SummerData.MODEL_STEP;
-import static com.nali.small.entity.memo.client.render.FRenderSeMath.interpolateRotation;
 
 public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 {
@@ -293,7 +293,7 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 	@Override
 	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
 	{
-		float head_rot = (float)Math.toRadians(interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
 
 		new Quaternion(0, 0, head_rot).getM4x4().multiply(skinning_float_array, 0);
 	}
