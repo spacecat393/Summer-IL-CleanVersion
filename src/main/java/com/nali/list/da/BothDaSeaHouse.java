@@ -10,8 +10,6 @@ public class BothDaSeaHouse implements IBothDaS, IBothDaO
 {
 	public static BothDaSeaHouse IDA = new BothDaSeaHouse();
 
-	public static byte MAX_FRAME = 1;
-
 	@Override
 	public int O_StartPart()
 	{
@@ -27,7 +25,7 @@ public class BothDaSeaHouse implements IBothDaS, IBothDaO
 	@Override
 	public byte S_MaxFrame()
 	{
-		return MAX_FRAME;
+		return 1;
 	}
 
 	@Override

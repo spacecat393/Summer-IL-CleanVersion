@@ -36,8 +36,8 @@ public class SummerArisu extends EntityLeInv implements IMixES, IMixESInv
 	public static int eggPrimary = 0x454D60;
 	public static int eggSecondary = 0xF8E9E4;
 
-	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaArisu.MAX_SYNC];
-	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaArisu.MAX_FRAME];
+	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaArisu.IDA.E_MaxSync()];
+	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaArisu.IDA.S_MaxFrame()];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
 	public static byte[] CI_BYTE_ARRAY;

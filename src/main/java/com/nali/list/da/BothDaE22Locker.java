@@ -11,9 +11,6 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS
 {
 	public static BothDaE22Locker IDA = new BothDaE22Locker();
 
-	public static byte MAX_FRAME = 1;
-	public static byte MAX_SYNC = 0;
-
 	@Override
 	public float E_Width()
 	{
@@ -35,7 +32,7 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS
 	@Override
 	public byte E_MaxSync()
 	{
-		return MAX_SYNC;
+		return 0;
 	}
 
 	@Override
@@ -53,7 +50,7 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS
 	@Override
 	public byte S_MaxFrame()
 	{
-		return MAX_FRAME;
+		return 1;
 	}
 
 	@Override

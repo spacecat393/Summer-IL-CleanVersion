@@ -5,7 +5,7 @@
 306 406 cutin 1
 407 487 wait
 488 504 moving !noused
-505 521 ?
+505 521 ?attack end
 522 559 call
 560 576 attack start
 577 643 attacking

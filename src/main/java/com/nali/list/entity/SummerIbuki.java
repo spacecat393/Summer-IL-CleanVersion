@@ -36,8 +36,8 @@ public class SummerIbuki extends EntityLeInv implements IMixES, IMixESInv
 	public static int eggPrimary = 0xfef5cb;
 	public static int eggSecondary = 0xab6402;
 
-	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.MAX_SYNC];
-	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.MAX_FRAME/* + BothDaIroha.MAX_FRAME*/];
+	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.IDA.E_MaxSync()];
+	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIbuki.IDA.S_MaxFrame()/* + BothDaIroha.MAX_FRAME*/];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1/*2*/];
 
 	public static byte[] CI_BYTE_ARRAY;

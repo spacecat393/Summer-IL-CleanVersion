@@ -38,7 +38,7 @@ public class ServerIbuki
 {
 	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
 	{
-		{ 297, 347 },
+		{ 297, 347, 347-297+2 },
 		{ 348, 431 },
 		{ 474, 486 },//start attack
 		{ 1265, 1281 },//loop move
@@ -130,18 +130,12 @@ public class ServerIbuki
 	@Override
 	public void updateServer()
 	{
-//		if (serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities != null && ((WorldServer)this.world).getEntityFromUuid(serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities.getUniqueID()) == null)
+		//sync tank
+//		if (this.ms.sileplaywithssle.s2 == null && (this.sync_byte_array[0] & 128) == 128)
 //		{
-//			serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.playwith_skinningentities = null;
+//			this.sync_byte_array[0] ^= (byte)128;
+//			this.i.getE().getDataManager().set(this.i.getByteDataParameterArray()[0], this.sync_byte_array[0]);
 //		}
-
-//		if (!serverentitiesmemory.entitiesaimemory.skinningentitiesplaywith.should_play && (serverentitiesmemory.sync_byte_array[0] & 128) == 128)
-		if (this.ms.sileplaywithssle.s2 == null && (this.sync_byte_array[0] & 128) == 128)
-		{
-//			serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].lock = false;
-			this.sync_byte_array[0] ^= (byte)128;
-			this.i.getE().getDataManager().set(this.i.getByteDataParameterArray()[0], this.sync_byte_array[0]);
-		}
 	}
 
 //	@Override

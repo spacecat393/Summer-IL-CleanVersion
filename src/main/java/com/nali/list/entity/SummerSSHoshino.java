@@ -36,8 +36,8 @@ public class SummerSSHoshino extends EntityLeInv implements IMixES, IMixESInv
 	public static int eggPrimary = 0xfef4f4;
 	public static int eggSecondary = 0xffbac2;
 
-	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHoshino.MAX_SYNC];
-	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHoshino.MAX_FRAME];
+	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHoshino.IDA.E_MaxSync()];
+	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHoshino.IDA.S_MaxFrame()];
 	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
 	public static byte[] CI_BYTE_ARRAY;

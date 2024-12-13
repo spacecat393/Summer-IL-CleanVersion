@@ -13,9 +13,6 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
 {
 	public static BothDaYuzu IDA = new BothDaYuzu();
 
-	public static byte MAX_FRAME = 1;
-	public static byte MAX_SYNC = 1;
-
 	@Override
 	public float E_Width()
 	{
@@ -37,7 +34,7 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
 	@Override
 	public byte E_MaxSync()
 	{
-		return MAX_SYNC;
+		return 1;
 	}
 
 	@Override
@@ -55,7 +52,7 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
 	@Override
 	public byte S_MaxFrame()
 	{
-		return MAX_FRAME;
+		return 1;
 	}
 
 	@Override

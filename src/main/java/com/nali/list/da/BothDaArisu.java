@@ -12,9 +12,6 @@ public class BothDaArisu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
 {
 	public static BothDaArisu IDA = new BothDaArisu();
 
-	public static byte MAX_FRAME = 1;
-	public static byte MAX_SYNC = 1;
-
 	@Override
 	public float E_Width()
 	{
@@ -36,7 +33,13 @@ public class BothDaArisu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
 	@Override
 	public byte E_MaxSync()
 	{
-		return MAX_SYNC;
+		return (byte)
+		(
+			4 +//scale
+			1 +//inv
+			this.S_MaxFrame() * 6//frame(byte) time(short) future_frame(byte) future_time(short)
+//			this.S_MaxFrame() * 4//time(short) future_time(short)
+		);
 	}
 
 	@Override
@@ -54,7 +57,7 @@ public class BothDaArisu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
 	@Override
 	public byte S_MaxFrame()
 	{
-		return MAX_FRAME;
+		return 1;
 	}
 
 	@Override
