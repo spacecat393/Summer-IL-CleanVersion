@@ -38,7 +38,7 @@ public class MixCIReisa
 		R r = this.c.r;
 		I i = this.c.i;
 
-		int frame = r.frame_int_array[0];
+		short key = r.key_short_array[0];
 
 		E e = i.getE();
 		if (e.ticksExisted % 200 == 0)
@@ -55,7 +55,7 @@ public class MixCIReisa
 			r.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
 		}
 
-		if (frame > 125 && frame < 227)
+		if (key > 125 && key < 227)
 		{
 			r.model_byte_array[6 / 8] |= 64;//Math.pow(2, 6 % 8)
 		}
@@ -65,7 +65,7 @@ public class MixCIReisa
 		}
 
 		float scale = r.scale;
-		if (frame > 600 && frame < 652)
+		if (key > 600 && key < 652)
 		{
 			e.width = 1.5F * scale;
 			e.height = 0.2F * scale;

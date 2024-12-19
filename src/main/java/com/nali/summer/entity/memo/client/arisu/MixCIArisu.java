@@ -36,9 +36,9 @@ public class MixCIArisu
 		R r = this.c.r;
 		I i = this.c.i;
 
-		int frame = r.frame_int_array[0];
+		short key = r.key_short_array[0];
 
-		if (frame < 205)
+		if (key < 205)
 		{
 //			skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
 //			skinningrender.model_byte_array[6 / 8] &= 191;//255 - Math.pow(2, 6 % 8)
@@ -53,12 +53,12 @@ public class MixCIArisu
 
 		float scale = r.scale;
 		E e = i.getE();
-		if (frame > 834 && frame < 861)
+		if (key > 834 && key < 861)
 		{
 			e.width = BothDaArisu.IDA.E_Width() * scale;
 			e.height = 0.65F * scale;
 		}
-		else if (frame > 737 && frame < 784)
+		else if (key > 737 && key < 784)
 		{
 			e.width = 1.5F * scale;
 			e.height = 0.2F * scale;

@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memo.server.sshifumi;
 
 import com.nali.da.IBothDaE;
-import com.nali.da.IBothDaNE;
+import com.nali.da.IBothDaNe;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.network.message.ClientMessage;
 import com.nali.network.NetworkRegistry;
@@ -11,62 +11,62 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerLeInv;
 import com.nali.small.entity.memo.server.si.MixSIE;
-import com.nali.small.entity.memo.server.si.frame.FrameS;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopAttackStand;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDie;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeHardReady;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeSoftReady;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSleFLoopFreePE;
-import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
-import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShoot;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSTLoop;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopAttackWalk;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopWalk;
-import com.nali.small.entity.memo.server.si.frame.tloopfb.FrameSTLoopFBSit;
+import com.nali.small.entity.memo.server.si.frame.KeyS;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopAttackStand;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopDie;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeHardReady;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeSoftReady;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySleFLoopFreePE;
+import com.nali.small.entity.memo.server.si.frame.floopoffset.KeySleFLoopOffSetAttackEndWalk;
+import com.nali.small.entity.memo.server.si.frame.shoot.KeySleShoot;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySTLoop;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopAttackWalk;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopWalk;
+import com.nali.small.entity.memo.server.si.frame.tloopfb.KeySTLoopFBSit;
 import com.nali.system.bytes.ByteWriter;
 import net.minecraft.util.DamageSource;
 
 public class ServerSSHifumi
 <
 	IE extends InvLe,
-	BD extends IBothDaE & IBothDaNE,
+	BD extends IBothDaE & IBothDaNe,
 	E extends EntityLeInv,
 	I extends IMixE<BD, E>,
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLeInv<IE, BD, E, I, MS> implements IServerS
 {
-	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		{ 285, 327 },
-		{ 591, 641 },
-		{ 180, 197 },
-		{ 68, 118 },
-		{ 119, 179 },
-		{ 506, 539 },
-		{ 422, 504 },
-		{ 0, 67 },
-		{ 540, 590 },
-		{ 251, 283 },
-		{ 379, 421 },
-		{ 198, 232 },
-		{ 233, 250 },
-		{ 328, 378 }
+		285, 327,
+		591, 641,
+		180, 197,
+		68, 118,
+		119, 179,
+		506, 539,
+		422, 504,
+		0, 67,
+		540, 590,
+		251, 283,
+		379, 421,
+		198, 232,
+		233, 250,
+		328, 378
 	};
-	public static byte[] FRAME_BYTE_ARRAY = new byte[]
+	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
-		0, 0,
-		0, 1,
-		0, 3, 4,
-		0, 2, 11, 12, 13,
-		0, 3,
-		0, 5,
-		0, 6,
-		0, 7,
-		0, 8,
-		0, 9,
-		0, 10
+		0, 0*2,
+		0, 1*2,
+		0, 3*2, 4*2,
+		0, 2*2, 11*2, 12*2, 13*2,
+		0, 3*2,
+		0, 5*2,
+		0, 6*2,
+		0, 7*2,
+		0, 8*2,
+		0, 9*2,
+		0, 10*2
 	};
-	public FrameS[][] frames_2d_array;
+	public KeyS[][] keys_2d_array;
 
 	public ServerSSHifumi(I i)
 	{
@@ -74,22 +74,22 @@ public class ServerSSHifumi
 	}
 
 	@Override
-	public void initFrame()
+	public void initKey()
 	{
-		this.frames_2d_array = new FrameS[][]
+		this.keys_2d_array = new KeyS[][]
 		{
 			{
-				new FrameSleFLoopDie(this, 0),
-				new FrameSTLoopFBSit(this, 2),
-				new FrameSleFLoopOffSetAttackEndWalk(this, 4),
-				new FrameSleShoot(this, 7),
-				new FrameSleTLoopAttackWalk(this, 12),
-				new FrameSleTLoopWalk(this, 14),
-				new FrameSleFLoopFreePE(this, 16),
-				new FrameSFLoopFreeHardReady(this, 18),
-				new FrameSFLoopFreeSoftReady(this, 20),
-				new FrameSleFLoopAttackStand(this, 22),
-				new FrameSTLoop(this, 24)
+				new KeySleFLoopDie(this, (byte)0),
+				new KeySTLoopFBSit(this, (byte)2),
+				new KeySleFLoopOffSetAttackEndWalk(this, (byte)4),
+				new KeySleShoot(this, (byte)7),
+				new KeySleTLoopAttackWalk(this, (byte)12),
+				new KeySleTLoopWalk(this, (byte)14),
+				new KeySleFLoopFreePE(this, (byte)16),
+				new KeySFLoopFreeHardReady(this, (byte)18),
+				new KeySFLoopFreeSoftReady(this, (byte)20),
+				new KeySleFLoopAttackStand(this, (byte)22),
+				new KeySTLoop(this, (byte)24)
 			}
 		};
 //		() -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
@@ -112,21 +112,21 @@ public class ServerSSHifumi
 	}
 
 	@Override
-	public FrameS[][] getFrameS2DArray()
+	public KeyS[][] getKeyS2DArray()
 	{
-		return this.frames_2d_array;
+		return this.keys_2d_array;
 	}
 
 	@Override
-	public byte[] getFrameByteArray()
+	public byte[] getKeyDataByteArray()
 	{
-		return FRAME_BYTE_ARRAY;
+		return KEY_DATA_BYTE_ARRAY;
 	}
 
 	@Override
-	public int[][] getFrame2DIntArray()
+	public short[] getFixKeyShortArray()
 	{
-		return FRAME_INT_2D_ARRAY;
+		return FIX_KEY_SHORT_ARRAY;
 	}
 
 	@Override
@@ -134,7 +134,7 @@ public class ServerSSHifumi
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_HURT(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_HURT(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 
@@ -143,7 +143,7 @@ public class ServerSSHifumi
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_DEATH(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_DEATH(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 }

@@ -36,11 +36,11 @@ public class MixCISaori
 		R r = this.c.r;
 		I i = this.c.i;
 
-		int frame = r.frame_int_array[0];
+		short key = r.key_short_array[0];
 
 		float scale = r.scale;
 		E e = i.getE();
-		if (frame > 889 && frame < 943)
+		if (key > 889 && key < 943)
 		{
 			e.width = 1.5F * scale;
 			e.height = 0.2F * scale;

@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memo.server.ibuki;
 
 import com.nali.da.IBothDaE;
-import com.nali.da.IBothDaNE;
+import com.nali.da.IBothDaNe;
 import com.nali.list.entity.SummerIbuki;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.network.message.ClientMessage;
@@ -11,78 +11,77 @@ import com.nali.small.entity.IMixE;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerLeInv;
-import com.nali.small.entity.memo.server.si.frame.FrameS;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDie;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDieSSle;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopSSleStart;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeHardReady;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSleFLoopFreePSrE;
-import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
-import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalkSSle;
-import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShoot;
-import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShootSSle;
+import com.nali.small.entity.memo.server.si.frame.KeyS;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopDie;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopDieSSle;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopSSleStart;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeHardReady;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySleFLoopFreePSrE;
+import com.nali.small.entity.memo.server.si.frame.floopoffset.KeySleFLoopOffSetAttackEndWalk;
+import com.nali.small.entity.memo.server.si.frame.floopoffset.KeySleFLoopOffSetAttackEndWalkSSle;
+import com.nali.small.entity.memo.server.si.frame.shoot.KeySleShoot;
+import com.nali.small.entity.memo.server.si.frame.shoot.KeySleShootSSle;
 import com.nali.small.entity.memo.server.si.frame.tloop.*;
-import com.nali.small.entity.memo.server.si.frame.tloopfb.FrameSleTLoopFBSitSSle;
-import com.nali.list.da.BothDaIbuki;
+import com.nali.small.entity.memo.server.si.frame.tloopfb.KeySleTLoopFBSitSSle;
 import com.nali.system.bytes.ByteWriter;
 import net.minecraft.util.DamageSource;
 
 public class ServerIbuki
 <
 	IE extends InvLe,
-	BD extends IBothDaE & IBothDaNE,
+	BD extends IBothDaE & IBothDaNe,
 	E extends EntityLeInv,
 	I extends IMixE<BD, E>,
 	MS extends MixSIIbuki<IE, BD, E, I, ?>
 > extends ServerLeInv<IE, BD, E, I, MS> implements IServerS
 {
-	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		{ 297, 347, 347-297+2 },
-		{ 348, 431 },
-		{ 474, 486 },//start attack
-		{ 1265, 1281 },//loop move
-		{ 1282, 1312 },//end move
-		{ 263, 296 },//cafe walk
-		{ 585, 622 },
-		{ 101, 262 },
-		{ 432, 473 },
-		{ 0, 100 },
-		{ 487, 517 },
-		{ 518, 528 },
-		{ 529, 584 },
-		{ 623, 656 },// 13 start ride
-		{ 1214, 1264 },// 14 loop ride
-		{ 657, 707 },// 15 loop ride-move
-		{ 878, 919 },// 16 end ride-move
-		{ 1163, 1213 },// 17 ride-panic
-		{ 827, 877 },// 18 ride-destroy
-		{ 708, 724 },// 19 start ride-attack
-		{ 725, 758 },// 20 loop ride-attack
-		{ 759, 775 },// 21 end ride-attack
-		{ 776, 826 }// 22 ride-reload
+		297, 347, 347-297+2,
+		348, 431,
+		474, 486,//start attack
+		1265, 1281,//loop move
+		1282, 1312,//end move
+		263, 296,//cafe walk
+		585, 622,
+		101, 262,
+		432, 473,
+		0, 100,
+		487, 517,
+		518, 528,
+		529, 584,
+		623, 656,// 13 start ride
+		1214, 1264,// 14 loop ride
+		657, 707,// 15 loop ride-move
+		878, 919,// 16 end ride-move
+		1163, 1213,// 17 ride-panic
+		827, 877,// 18 ride-destroy
+		708, 724,// 19 start ride-attack
+		725, 758,// 20 loop ride-attack
+		759, 775,// 21 end ride-attack
+		776, 826// 22 ride-reload
 	};
-	public static byte[] FRAME_BYTE_ARRAY = new byte[]
+	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
-		0, 13,
-		0, 18,
-		0, 17,
-		0, 15, 16,
-		0, 19, 20, 21, 22,
-		0, 14,
+		0, 13*2,
+		0, 18*2,
+		0, 17*2,
+		0, 15*2, 16*2,
+		0, 19*2, 20*2, 21*2, 22*2,
+		0, 14*2,
 
-		0, 0,
-		0, 1,
-		0, 3, 4,
-		0, 2, 10, 11, 12,
-		0, 3,
-		0, 5,
-		0, 6,
-		0, 7,
-		0, 8,
-		0, 9
+		0, 0*2,
+		0, 1*2,
+		0, 3*2, 4*2,
+		0, 2*2, 10*2, 11*2, 12*2,
+		0, 3*2,
+		0, 5*2,
+		0, 6*2,
+		0, 7*2,
+		0, 8*2,
+		0, 9*2
 	};
-	public FrameS[][] frames_2d_array;
+	public KeyS[][] keys_2d_array;
 //	public SILePlayWithSSle sileplaywithssle;
 
 	public ServerIbuki(I i)
@@ -91,28 +90,28 @@ public class ServerIbuki
 	}
 
 	@Override
-	public void initFrame()
+	public void initKey()
 	{
-		this.frames_2d_array = new FrameS[][]
+		this.keys_2d_array = new KeyS[][]
 		{
 			{
-				new FrameSleFLoopSSleStart(this, 0),
-				new FrameSleFLoopDieSSle(this, 2),
-				new FrameSleTLoopFBSitSSle(this, 4),
-				new FrameSleFLoopOffSetAttackEndWalkSSle(this, 6),
-				new FrameSleShootSSle(this, 9),
-				new FrameSTLoopPWStand(this, 14, SummerIbuki.PW_BYTE_ARRAY),
+				new KeySleFLoopSSleStart(this, (byte)0),
+				new KeySleFLoopDieSSle(this, (byte)2),
+				new KeySleTLoopFBSitSSle(this, (byte)4),
+				new KeySleFLoopOffSetAttackEndWalkSSle(this, (byte)6),
+				new KeySleShootSSle(this, (byte)9),
+				new KeySTLoopPWStand(this, (byte)14, SummerIbuki.PW_BYTE_ARRAY),
 
-				new FrameSleFLoopDie(this, /*0+*/16),
-				new FrameSTLoopSit(this, 2+16),
-				new FrameSleFLoopOffSetAttackEndWalk(this, 4+16),
-				new FrameSleShoot(this, 7+16),
-				new FrameSleTLoopAttackWalk(this, 12+16),
-				new FrameSleTLoopWalk(this, 14+16),
-				new FrameSFLoopFreeHardReady(this, 16+16),
-				new FrameSleFLoopFreePSrE(this, 18+16),
-				new FrameSleTLoopAttackStand(this, 20+16),
-				new FrameSTLoop(this, 22+16)
+				new KeySleFLoopDie(this, /*0+*/(byte)16),
+				new KeySTLoopSit(this, (byte)(2+16)),
+				new KeySleFLoopOffSetAttackEndWalk(this, (byte)(4+16)),
+				new KeySleShoot(this, (byte)(7+16)),
+				new KeySleTLoopAttackWalk(this, (byte)(12+16)),
+				new KeySleTLoopWalk(this, (byte)(14+16)),
+				new KeySFLoopFreeHardReady(this, (byte)(16+16)),
+				new KeySleFLoopFreePSrE(this, (byte)(18+16)),
+				new KeySleTLoopAttackStand(this, (byte)(20+16)),
+				new KeySTLoop(this, (byte)(22+16))
 			}
 		};
 //		() -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
@@ -173,21 +172,21 @@ public class ServerIbuki
 //	}
 
 	@Override
-	public FrameS[][] getFrameS2DArray()
+	public KeyS[][] getKeyS2DArray()
 	{
-		return this.frames_2d_array;
+		return this.keys_2d_array;
 	}
 
 	@Override
-	public byte[] getFrameByteArray()
+	public byte[] getKeyDataByteArray()
 	{
-		return FRAME_BYTE_ARRAY;
+		return KEY_DATA_BYTE_ARRAY;
 	}
 
 	@Override
-	public int[][] getFrame2DIntArray()
+	public short[] getFixKeyShortArray()
 	{
-		return FRAME_INT_2D_ARRAY;
+		return FIX_KEY_SHORT_ARRAY;
 	}
 
 	@Override
@@ -195,7 +194,7 @@ public class ServerIbuki
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_HURT(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_HURT(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 
@@ -204,7 +203,7 @@ public class ServerIbuki
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_DEATH(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_DEATH(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 }

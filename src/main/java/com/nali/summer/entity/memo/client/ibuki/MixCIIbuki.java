@@ -38,7 +38,7 @@ public class MixCIIbuki
 		R r = this.c.r;
 		I i = this.c.i;
 
-		int frame = r.frame_int_array[0];
+		short key = r.key_short_array[0];
 
 		E e = i.getE();
 		if (e.ticksExisted % 200 == 0)
@@ -63,7 +63,7 @@ public class MixCIIbuki
 
 		float scale = r.scale;
 
-		if (frame > 296 && frame < 348)
+		if (key > 296 && key < 348)
 		{
 			e.width = 1.5F * scale;
 			e.height = 0.2F * scale;

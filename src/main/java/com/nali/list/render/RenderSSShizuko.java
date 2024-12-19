@@ -27,7 +27,8 @@ public class RenderSSShizuko
 	C extends ClientLeInv<IE, BothDaSSShizuko, ?, E, I, MC, MB, MR>
 > extends SummerRenderSe<E, I, MC, MB, MR, C, BothDaSSShizuko>
 {
-	public RenderSeaHouse seahouserender;
+	//seahouserender -> entity
+//	public RenderSeaHouse seahouserender;
 //	public byte[] model_byte_array;
 
 	public RenderSSShizuko()
@@ -46,7 +47,7 @@ public class RenderSSShizuko
 //		this.texture_index_int_array[9] = 32;
 //		this.texture_index_int_array[10] = 32;
 //		this.texture_index_int_array[11] = 31;
-		this.seahouserender = new RenderSeaHouse();
+//		this.seahouserender = new RenderSeaHouse();
 	}
 
 //	@Override
@@ -56,29 +57,29 @@ public class RenderSSShizuko
 //		super.setGlow();
 //	}
 
-	@Override
-	public void updateLightCoord()
-	{
-		super.updateLightCoord();
-		this.seahouserender.lig_b = this.lig_b;
-		this.seahouserender.lig_s = this.lig_s;
-	}
-
-	@Override
-	public void initSkinning(BothDaSSShizuko bd/*MemoAnimation memoanimation*/)
-	{
-		super.initSkinning(bd/*memoanimation*/);
-//		this.seahouserender.initSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).FrameID()]);
-		this.seahouserender.initSkinning(BothDaSeaHouse.IDA/*this.rst.memoanimation_list.get(this.seahouserender.rc.FrameID())*/);
-	}
-
-	@Override
-	public void setSkinning(BothDaSSShizuko bd/*MemoAnimation memoanimation*/)
-	{
-		super.setSkinning(bd/*memoanimation*/);
-//		this.seahouserender.setSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).FrameID()]);
-		this.seahouserender.setSkinning(BothDaSeaHouse.IDA/*this.rst.memoanimation_list.get(this.seahouserender.rc.FrameID())*/);
-	}
+//	@Override
+//	public void updateLightCoord()
+//	{
+//		super.updateLightCoord();
+//		this.seahouserender.lig_b = this.lig_b;
+//		this.seahouserender.lig_s = this.lig_s;
+//	}
+//
+//	@Override
+//	public void initSkinning(BothDaSSShizuko bd/*MemoAnimation memoanimation*/)
+//	{
+//		super.initSkinning(bd/*memoanimation*/);
+////		this.seahouserender.initSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).FrameID()]);
+//		this.seahouserender.initSkinning(BothDaSeaHouse.IDA/*this.rst.memoanimation_list.get(this.seahouserender.rc.FrameID())*/);
+//	}
+//
+//	@Override
+//	public void setSkinning(BothDaSSShizuko bd/*MemoAnimation memoanimation*/)
+//	{
+//		super.setSkinning(bd/*memoanimation*/);
+////		this.seahouserender.setSkinning((OpenGLAnimationMemory)this.dataloader.object_array[((SkinningClientData)this.seahouserender.clientdata).FrameID()]);
+//		this.seahouserender.setSkinning(BothDaSeaHouse.IDA/*this.rst.memoanimation_list.get(this.seahouserender.rc.FrameID())*/);
+//	}
 
 //	@Override
 //	public void draw(int index)

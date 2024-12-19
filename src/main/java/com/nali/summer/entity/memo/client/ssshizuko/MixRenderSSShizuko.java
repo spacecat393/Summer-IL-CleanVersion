@@ -36,17 +36,17 @@ public class MixRenderSSShizuko
 		this.shadow_size = 0.25F;
 	}
 
-	@Override
-	public void doRender(FRenderE<E> rendere, double ox, double oy, double oz, float partialTicks)
-	{
-		super.doRender(rendere, ox, oy, oz, partialTicks);
-		GL11.glPushMatrix();
-		GL11.glTranslated(ox, oy, oz);
-		R r = this.c.r;
-		float s = r.scale;
-		GL11.glScaled(s, s, s);
-		GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
-		r.seahouserender.draw(BothDaSeaHouse.IDA/*ox, oy, oz*/);
-		GL11.glPopMatrix();
-	}
+//	@Override
+//	public void doRender(FRenderE<E> rendere, double ox, double oy, double oz, float partialTicks)
+//	{
+//		super.doRender(rendere, ox, oy, oz, partialTicks);
+//		GL11.glPushMatrix();
+//		GL11.glTranslated(ox, oy, oz);
+//		R r = this.c.r;
+//		float s = r.scale;
+//		GL11.glScaled(s, s, s);
+//		GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
+//		r.seahouserender.draw(BothDaSeaHouse.IDA/*ox, oy, oz*/);
+//		GL11.glPopMatrix();
+//	}
 }

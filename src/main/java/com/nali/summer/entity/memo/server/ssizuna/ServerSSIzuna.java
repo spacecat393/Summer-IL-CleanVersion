@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memo.server.ssizuna;
 
 import com.nali.da.IBothDaE;
-import com.nali.da.IBothDaNE;
+import com.nali.da.IBothDaNe;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.network.message.ClientMessage;
 import com.nali.network.NetworkRegistry;
@@ -11,60 +11,60 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerLeInv;
 import com.nali.small.entity.memo.server.si.MixSIE;
-import com.nali.small.entity.memo.server.si.frame.FrameS;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDie;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeHardReady;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSleFLoopFreePSrE;
-import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
-import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShootReloadPlus;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSTLoop;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopAttackStand;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopAttackWalk;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopWalk;
-import com.nali.small.entity.memo.server.si.frame.tloopfb.FrameSTLoopFBSit;
+import com.nali.small.entity.memo.server.si.frame.KeyS;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopDie;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeHardReady;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySleFLoopFreePSrE;
+import com.nali.small.entity.memo.server.si.frame.floopoffset.KeySleFLoopOffSetAttackEndWalk;
+import com.nali.small.entity.memo.server.si.frame.shoot.KeySleShootReloadPlus;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySTLoop;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopAttackStand;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopAttackWalk;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopWalk;
+import com.nali.small.entity.memo.server.si.frame.tloopfb.KeySTLoopFBSit;
 import com.nali.system.bytes.ByteWriter;
 import net.minecraft.util.DamageSource;
 
 public class ServerSSIzuna
 <
 	IE extends InvLe,
-	BD extends IBothDaE & IBothDaNE,
+	BD extends IBothDaE & IBothDaNe,
 	E extends EntityLeInv,
 	I extends IMixE<BD, E>,
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLeInv<IE, BD, E, I, MS> implements IServerS
 {
-	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		{ 264, 314 },
-		{ 315, 350 },
-		{ 470, 483 },
-		{ 612, 628 },
-		{ 629, 659 },
-		{ 232, 263 },
-		{ 432, 469 },
-		{ 81, 231 },
-		{ 660, 690 },
-		{ 0, 80 },
-		{ 484, 499 },
-		{ 500, 513 },
-		{ 514, 562 },
-		{ 563, 611 }
+		264, 314,
+		315, 350,
+		470, 483,
+		612, 628,
+		629, 659,
+		232, 263,
+		432, 469,
+		81, 231,
+		660, 690,
+		0, 80,
+		484, 499,
+		500, 513,
+		514, 562,
+		563, 611
 	};
-	public static byte[] FRAME_BYTE_ARRAY = new byte[]
+	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
-		0, 0,
-		0, 1,
-		0, 3, 4,
-		0, 2, 10, 11, 2, 13, 12,
-		0, 3,
-		0, 5,
-		0, 6,
-		0, 7,
-		0, 8,
-		0, 9
+		0, 0*2,
+		0, 1*2,
+		0, 3*2, 4*2,
+		0, 2*2, 10*2, 11*2, 2, 13*2, 12*2,
+		0, 3*2,
+		0, 5*2,
+		0, 6*2,
+		0, 7*2,
+		0, 8*2,
+		0, 9*2
 	};
-	public FrameS[][] frames_2d_array;
+	public KeyS[][] keys_2d_array;
 
 	//	public boolean server_step_reload;
 	public ServerSSIzuna(I i)
@@ -73,21 +73,21 @@ public class ServerSSIzuna
 	}
 
 	@Override
-	public void initFrame()
+	public void initKey()
 	{
-		this.frames_2d_array = new FrameS[][]
+		this.keys_2d_array = new KeyS[][]
 		{
 			{
-				new FrameSleFLoopDie(this, 0),
-				new FrameSTLoopFBSit(this, 2),
-				new FrameSleFLoopOffSetAttackEndWalk(this, 4),
-				new FrameSleShootReloadPlus(this, 7/*, (byte)2*/),
-				new FrameSleTLoopAttackWalk(this, 13+1+2),
-				new FrameSleTLoopWalk(this, 15+1+2),
-				new FrameSFLoopFreeHardReady(this, 17+1+2),
-				new FrameSleFLoopFreePSrE(this, 19+1+2),
-				new FrameSleTLoopAttackStand(this, 21+1+2),
-				new FrameSTLoop(this, 23+1+2)
+				new KeySleFLoopDie(this, (byte)0),
+				new KeySTLoopFBSit(this, (byte)2),
+				new KeySleFLoopOffSetAttackEndWalk(this, (byte)4),
+				new KeySleShootReloadPlus(this, (byte)7/*, (byte)2*/),
+				new KeySleTLoopAttackWalk(this, (byte)(13+1+2)),
+				new KeySleTLoopWalk(this, (byte)(15+1+2)),
+				new KeySFLoopFreeHardReady(this, (byte)(17+1+2)),
+				new KeySleFLoopFreePSrE(this, (byte)(19+1+2)),
+				new KeySleTLoopAttackStand(this, (byte)(21+1+2)),
+				new KeySTLoop(this, (byte)(23+1+2))
 			}
 		};
 //		() -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
@@ -128,21 +128,21 @@ public class ServerSSIzuna
 	}
 
 	@Override
-	public FrameS[][] getFrameS2DArray()
+	public KeyS[][] getKeyS2DArray()
 	{
-		return this.frames_2d_array;
+		return this.keys_2d_array;
 	}
 
 	@Override
-	public byte[] getFrameByteArray()
+	public byte[] getKeyDataByteArray()
 	{
-		return FRAME_BYTE_ARRAY;
+		return KEY_DATA_BYTE_ARRAY;
 	}
 
 	@Override
-	public int[][] getFrame2DIntArray()
+	public short[] getFixKeyShortArray()
 	{
-		return FRAME_INT_2D_ARRAY;
+		return FIX_KEY_SHORT_ARRAY;
 	}
 
 	@Override
@@ -150,7 +150,7 @@ public class ServerSSIzuna
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_HURT(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_HURT(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 
@@ -159,7 +159,7 @@ public class ServerSSIzuna
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_DEATH(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_DEATH(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 }

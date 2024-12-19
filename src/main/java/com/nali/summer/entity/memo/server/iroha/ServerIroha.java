@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memo.server.iroha;
 
 import com.nali.da.IBothDaE;
-import com.nali.da.IBothDaNE;
+import com.nali.da.IBothDaNe;
 import com.nali.list.entity.SummerIroha;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.network.message.ClientMessage;
@@ -12,81 +12,81 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerLeInv;
 import com.nali.small.entity.memo.server.si.MixSIE;
-import com.nali.small.entity.memo.server.si.frame.FrameS;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDie;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDieRSe;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopRSeStart;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeHardReady;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeSoftReady;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSleFLoopFreePE;
-import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
-import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalkRSe;
-import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShoot;
-import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShootRSe;
+import com.nali.small.entity.memo.server.si.frame.KeyS;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopDie;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopDieRSe;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopRSeStart;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeHardReady;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeSoftReady;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySleFLoopFreePE;
+import com.nali.small.entity.memo.server.si.frame.floopoffset.KeySleFLoopOffSetAttackEndWalk;
+import com.nali.small.entity.memo.server.si.frame.floopoffset.KeySleFLoopOffSetAttackEndWalkRSe;
+import com.nali.small.entity.memo.server.si.frame.shoot.KeySleShoot;
+import com.nali.small.entity.memo.server.si.frame.shoot.KeySleShootRSe;
 import com.nali.small.entity.memo.server.si.frame.tloop.*;
-import com.nali.small.entity.memo.server.si.frame.tloopfb.FrameSTLoopFBSit;
-import com.nali.small.entity.memo.server.si.frame.tloopfb.FrameSTLoopFBSitRSe;
+import com.nali.small.entity.memo.server.si.frame.tloopfb.KeySTLoopFBSit;
+import com.nali.small.entity.memo.server.si.frame.tloopfb.KeySTLoopFBSitRSe;
 import com.nali.system.bytes.ByteWriter;
 import net.minecraft.util.DamageSource;
 
 public class ServerIroha
 <
 	IE extends InvLe,
-	BD extends IBothDaE & IBothDaNE,
+	BD extends IBothDaE & IBothDaNe,
 	E extends EntityLeInv,
 	I extends IMixE<BD, E>,
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLeInv<IE, BD, E, I, MS> implements IServerS
 {
-	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		{ 321, 371 },
-		{ 635, 685 },
-		{ 516, 532 },//start attack
-		{ 423, 473 },//loop move
-		{ 474, 515 },//end move
-		{ 143, 206 },//cafe walk
-		{ 51, 142 },
-		{ 258, 320 },
-		{ 207, 257 },
-		{ 372, 422 },// 9 n-idle
-		{ 0, 50 },
-		{ 533, 566 },
-		{ 567, 583 },
-		{ 584, 634 },
-		{ 686, 719 },// 14 start ride
-		{ 720, 770 },// 15 loop ride
-		{ 1034, 1084 },// 16 loop ride-move
-		{ 941, 982 },// 17 end ride-move
-		{ 983, 1033 },// 18 ride-panic
-		{ 890, 940 },// 19 ride-destroy
-		{ 771, 787 },// 20 start ride-attack
-		{ 788, 821 },// 21 loop ride-attack
-		{ 822, 838 },// 22 end ride-attack
-		{ 839, 889 }// 23 ride-reload
+		321, 371,
+		635, 685,
+		516, 532,//start attack
+		423, 473,//loop move
+		474, 515,//end move
+		143, 206,//cafe walk
+		51, 142,
+		258, 320,
+		207, 257,
+		372, 422,// 9 n-idle
+		0, 50,
+		533, 566,
+		567, 583,
+		584, 634,
+		686, 719,// 14 start ride
+		720, 770,// 15 loop ride
+		1034, 1084,// 16 loop ride-move
+		941, 982,// 17 end ride-move
+		983, 1033,// 18 ride-panic
+		890, 940,// 19 ride-destroy
+		771, 787,// 20 start ride-attack
+		788, 821,// 21 loop ride-attack
+		822, 838,// 22 end ride-attack
+		839, 889// 23 ride-reload
 	};
-	public static byte[] FRAME_BYTE_ARRAY = new byte[]
+	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
-		0, 14, //0
-		0, 19, //2
-		0, 18, //4
-		0, 16, 17, //6
-		0, 20, 21, 22, 23, //9
-		0, 15, //14
+		0, 14*2, //0
+		0, 19*2, //2
+		0, 18*2, //4
+		0, 16*2, 17*2, //6
+		0, 20*2, 21*2, 22*2, 23*2, //9
+		0, 15*2, //14
 
-		0, 0, //16
-		0, 1, //18
-		0, 3, 4, //20
-		0, 2, 11, 12, 13, //23
-		0, 3, //28
-		0, 5, //30
-		0, 6, //32
-		0, 7, //34
-		0, 8, //36
-		0, 9, //38
-		0, 10 //40
+		0, 0*2, //16
+		0, 1*2, //18
+		0, 3*2, 4*2, //20
+		0, 2*2, 11*2, 12*2, 13*2, //23
+		0, 3*2, //28
+		0, 5*2, //30
+		0, 6*2, //32
+		0, 7*2, //34
+		0, 8*2, //36
+		0, 9*2, //38
+		0, 10*2 //40
 	};
-	public FrameS[][] frames_2d_array;
+	public KeyS[][] keys_2d_array;
 
 	public ServerIroha(I i)
 	{
@@ -94,29 +94,29 @@ public class ServerIroha
 	}
 
 	@Override
-	public void initFrame()
+	public void initKey()
 	{
-		this.frames_2d_array = new FrameS[][]
+		this.keys_2d_array = new KeyS[][]
 		{
 			{
-				new FrameSleFLoopRSeStart(this, 0),
-				new FrameSleFLoopDieRSe(this, 2),
-				new FrameSTLoopFBSitRSe(this, 4),
-				new FrameSleFLoopOffSetAttackEndWalkRSe(this, 6),
-				new FrameSleShootRSe(this, 9),
-				new FrameSTLoopPWStand(this, 14, SummerIroha.PW_BYTE_ARRAY),
+				new KeySleFLoopRSeStart(this, (byte)0),
+				new KeySleFLoopDieRSe(this, (byte)2),
+				new KeySTLoopFBSitRSe(this, (byte)4),
+				new KeySleFLoopOffSetAttackEndWalkRSe(this, (byte)6),
+				new KeySleShootRSe(this, (byte)9),
+				new KeySTLoopPWStand(this, (byte)14, SummerIroha.PW_BYTE_ARRAY),
 
-				new FrameSleFLoopDie(this, 16),
-				new FrameSTLoopFBSit(this, 18),
-				new FrameSleFLoopOffSetAttackEndWalk(this, 20),
-				new FrameSleShoot(this, 23),
-				new FrameSleTLoopAttackWalk(this, 28),
-				new FrameSleTLoopWalk(this, 30),
-				new FrameSleFLoopFreePE(this, 32),
-				new FrameSFLoopFreeHardReady(this, 34),
-				new FrameSFLoopFreeSoftReady(this, 36),
-				new FrameSleTLoopAttackStand(this, 38),
-				new FrameSTLoop(this, 40)
+				new KeySleFLoopDie(this, (byte)16),
+				new KeySTLoopFBSit(this, (byte)18),
+				new KeySleFLoopOffSetAttackEndWalk(this, (byte)20),
+				new KeySleShoot(this, (byte)23),
+				new KeySleTLoopAttackWalk(this, (byte)28),
+				new KeySleTLoopWalk(this, (byte)30),
+				new KeySleFLoopFreePE(this, (byte)32),
+				new KeySFLoopFreeHardReady(this, (byte)34),
+				new KeySFLoopFreeSoftReady(this, (byte)36),
+				new KeySleTLoopAttackStand(this, (byte)38),
+				new KeySTLoop(this, (byte)40)
 			}
 		};
 //		() ->
@@ -240,21 +240,21 @@ public class ServerIroha
 	}
 
 	@Override
-	public FrameS[][] getFrameS2DArray()
+	public KeyS[][] getKeyS2DArray()
 	{
-		return this.frames_2d_array;
+		return this.keys_2d_array;
 	}
 
 	@Override
-	public byte[] getFrameByteArray()
+	public byte[] getKeyDataByteArray()
 	{
-		return FRAME_BYTE_ARRAY;
+		return KEY_DATA_BYTE_ARRAY;
 	}
 
 	@Override
-	public int[][] getFrame2DIntArray()
+	public short[] getFixKeyShortArray()
 	{
-		return FRAME_INT_2D_ARRAY;
+		return FIX_KEY_SHORT_ARRAY;
 	}
 
 	@Override
@@ -262,7 +262,7 @@ public class ServerIroha
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_HURT(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_HURT(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 
@@ -271,7 +271,7 @@ public class ServerIroha
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_DEATH(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_DEATH(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 }

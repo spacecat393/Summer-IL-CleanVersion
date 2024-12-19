@@ -36,9 +36,9 @@ public class MixCISSHoshino
 		R r = this.c.r;
 		I i = this.c.i;
 
-		int frame = r.frame_int_array[0];
+		short key = r.key_short_array[0];
 
-		if (frame < 409)
+		if (key < 409)
 		{
 //			skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
 //			skinningrender.model_byte_array[5 / 8] &= 223;//255 - Math.pow(2, 5 % 8)
@@ -55,7 +55,7 @@ public class MixCISSHoshino
 
 		float scale = r.scale;
 		E e = i.getE();
-		if (frame > 408 && frame < 507)
+		if (key > 408 && key < 507)
 		{
 			e.width = 1.5F * scale;
 			e.height = 0.2F * scale;

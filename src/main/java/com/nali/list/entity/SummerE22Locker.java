@@ -34,8 +34,8 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 	public static int eggSecondary = 0xffffff;
 
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaE22Locker.IDA.E_MaxSync()];
-	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaE22Locker.IDA.S_MaxFrame()];
-	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+//	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaE22Locker.IDA.S_MaxFrame()];
+//	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
 	public static byte[] CI_BYTE_ARRAY;
 	public static byte[] SI_BYTE_ARRAY;
@@ -71,15 +71,15 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 			BYTE_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerE22Locker.class, DataSerializers.BYTE);
 		}
 
-		for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
-		{
-			INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerE22Locker.class, DataSerializers.VARINT);
-		}
-
-		for (int i = 0; i < FLOAT_DATAPARAMETER_ARRAY.length; ++i)
-		{
-			FLOAT_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerE22Locker.class, DataSerializers.FLOAT);
-		}
+//		for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
+//		{
+//			INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerE22Locker.class, DataSerializers.VARINT);
+//		}
+//
+//		for (int i = 0; i < FLOAT_DATAPARAMETER_ARRAY.length; ++i)
+//		{
+//			FLOAT_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerE22Locker.class, DataSerializers.FLOAT);
+//		}
 	}
 
 	public SummerE22Locker(World world)
@@ -102,7 +102,7 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 			SIEInvLockInv.ID,
 			SIEPlayWithRSe.ID,//Play-1
 
-			SIEFrame.ID,
+			SIEKey.ID,
 
 			SIELook.ID
 		};
@@ -197,17 +197,17 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 //		return false;
 //	}
 
-	@Override
-	public DataParameter<Integer>[] getIntegerDataParameterArray()
-	{
-		return INTEGER_DATAPARAMETER_ARRAY;
-	}
-
-	@Override
-	public DataParameter<Float>[] getFloatDataParameterArray()
-	{
-		return FLOAT_DATAPARAMETER_ARRAY;
-	}
+//	@Override
+//	public DataParameter<Integer>[] getIntegerDataParameterArray()
+//	{
+//		return INTEGER_DATAPARAMETER_ARRAY;
+//	}
+//
+//	@Override
+//	public DataParameter<Float>[] getFloatDataParameterArray()
+//	{
+//		return FLOAT_DATAPARAMETER_ARRAY;
+//	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -233,7 +233,7 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 		MixSIEInv ms = new MixSIEInv(s);
 		s.ms = ms;
 		ms.init();
-		s.initFrame();
+		s.initKey();
 		s.ie = new InvE();
 		this.ibothe = s;
 	}
@@ -291,7 +291,7 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 	}
 
 	@Override
-	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
+	public void mulFrame(float[] skinning_float_array, short[] key_short_array, float partial_ticks)
 	{
 		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
 

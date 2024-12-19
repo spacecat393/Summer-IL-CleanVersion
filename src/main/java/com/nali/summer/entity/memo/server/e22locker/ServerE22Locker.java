@@ -10,10 +10,10 @@ import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerE;
 import com.nali.small.entity.memo.server.si.MixSIE;
 import com.nali.small.entity.memo.server.si.SIData;
-import com.nali.small.entity.memo.server.si.frame.FrameS;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSFLoopRSeStand;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeRSePlay;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSTLoop;
+import com.nali.small.entity.memo.server.si.frame.KeyS;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySFLoopRSeStand;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeRSePlay;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySTLoop;
 
 public class ServerE22Locker
 <
@@ -26,19 +26,19 @@ public class ServerE22Locker
 {
 	public IE ie;
 
-	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		{ 0, 297 },//react
-		{ 298, 302 },//noact
-		{ 303, 386 }//idle
+		0, 297,//react
+		298, 302,//noact
+		303, 386//idle
 	};
-	public static byte[] FRAME_BYTE_ARRAY = new byte[]
+	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
-		0, 0,
-		0, 2,
-		0, 1
+		0, 0*2,
+		0, 2*2,
+		0, 1*2
 	};
-	public FrameS[][] frames_2d_array;
+	public KeyS[][] keys_2d_array;
 
 	public ServerE22Locker(I i)
 	{
@@ -61,14 +61,14 @@ public class ServerE22Locker
 	}
 
 	@Override
-	public void initFrame()
+	public void initKey()
 	{
-		this.frames_2d_array = new FrameS[][]
+		this.keys_2d_array = new KeyS[][]
 		{
 			{
-				new FrameSFLoopFreeRSePlay(this, 0, SILePlayWithSSe.ID),
-				new FrameSFLoopRSeStand(this, 2),
-				new FrameSTLoop(this, 4)
+				new KeySFLoopFreeRSePlay(this, (byte)0, SILePlayWithSSe.ID),
+				new KeySFLoopRSeStand(this, (byte)2),
+				new KeySTLoop(this, (byte)4)
 			}
 		};
 //		() -> serverentitiesmemory.skinningentities != null && (serverentitiesmemory.statentitiesmemory.stat & 16) == 16 && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoopFree(0, (byte)16),
@@ -95,21 +95,21 @@ public class ServerE22Locker
 //	}
 
 	@Override
-	public FrameS[][] getFrameS2DArray()
+	public KeyS[][] getKeyS2DArray()
 	{
-		return this.frames_2d_array;
+		return this.keys_2d_array;
 	}
 
 	@Override
-	public byte[] getFrameByteArray()
+	public byte[] getKeyDataByteArray()
 	{
-		return FRAME_BYTE_ARRAY;
+		return KEY_DATA_BYTE_ARRAY;
 	}
 
 	@Override
-	public int[][] getFrame2DIntArray()
+	public short[] getFixKeyShortArray()
 	{
-		return FRAME_INT_2D_ARRAY;
+		return FIX_KEY_SHORT_ARRAY;
 	}
 
 	@Override

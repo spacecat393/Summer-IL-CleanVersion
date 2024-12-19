@@ -36,9 +36,9 @@ public class MixCISSIzuna
 		R r = this.c.r;
 		I i = this.c.i;
 
-		int frame = r.frame_int_array[0];
+		short key = r.key_short_array[0];
 
-		if (frame < 264 || (frame > 562 && frame < 612))
+		if (key < 264 || (key > 562 && key < 612))
 		{
 			r.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
 		}
@@ -49,12 +49,12 @@ public class MixCISSIzuna
 
 		float scale = r.scale;
 		E e = i.getE();
-		if (frame > 314 && frame < 351)
+		if (key > 314 && key < 351)
 		{
 			e.width = BothDaSSIzuna.IDA.E_Width() * scale;
 			e.height = 0.65F * scale;
 		}
-		else if (frame > 263 && frame < 315)
+		else if (key > 263 && key < 315)
 		{
 			e.width = 1.5F * scale;
 			e.height = 0.2F * scale;

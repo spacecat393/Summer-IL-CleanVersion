@@ -37,8 +37,8 @@ public class SummerNatsu extends EntityLeInv implements IMixES, IMixESInv
 	public static int eggSecondary = 0xFB7290;
 
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaNatsu.IDA.E_MaxSync()];
-	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaNatsu.IDA.S_MaxFrame()];
-	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+//	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaNatsu.IDA.S_MaxFrame()];
+//	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
 	public static byte[] CI_BYTE_ARRAY;
 	public static byte[] SI_BYTE_ARRAY;
@@ -74,15 +74,15 @@ public class SummerNatsu extends EntityLeInv implements IMixES, IMixESInv
 			BYTE_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerNatsu.class, DataSerializers.BYTE);
 		}
 
-		for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
-		{
-			INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerNatsu.class, DataSerializers.VARINT);
-		}
-
-		for (int i = 0; i < FLOAT_DATAPARAMETER_ARRAY.length; ++i)
-		{
-			FLOAT_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerNatsu.class, DataSerializers.FLOAT);
-		}
+//		for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
+//		{
+//			INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerNatsu.class, DataSerializers.VARINT);
+//		}
+//
+//		for (int i = 0; i < FLOAT_DATAPARAMETER_ARRAY.length; ++i)
+//		{
+//			FLOAT_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerNatsu.class, DataSerializers.FLOAT);
+//		}
 	}
 
 	public SummerNatsu(World world)
@@ -125,7 +125,7 @@ public class SummerNatsu extends EntityLeInv implements IMixES, IMixESInv
 			SILeLookTo.ID,
 			SILeRandomLook.ID,
 
-			SIEFrame.ID,
+			SIEKey.ID,
 
 			SILeFindMove.ID,
 			SILeMove.ID,
@@ -172,17 +172,17 @@ public class SummerNatsu extends EntityLeInv implements IMixES, IMixESInv
 		return BYTE_DATAPARAMETER_ARRAY;
 	}
 
-	@Override
-	public DataParameter<Integer>[] getIntegerDataParameterArray()
-	{
-		return INTEGER_DATAPARAMETER_ARRAY;
-	}
-
-	@Override
-	public DataParameter<Float>[] getFloatDataParameterArray()
-	{
-		return FLOAT_DATAPARAMETER_ARRAY;
-	}
+//	@Override
+//	public DataParameter<Integer>[] getIntegerDataParameterArray()
+//	{
+//		return INTEGER_DATAPARAMETER_ARRAY;
+//	}
+//
+//	@Override
+//	public DataParameter<Float>[] getFloatDataParameterArray()
+//	{
+//		return FLOAT_DATAPARAMETER_ARRAY;
+//	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -207,7 +207,7 @@ public class SummerNatsu extends EntityLeInv implements IMixES, IMixESInv
 		MixSINatsu ms = new MixSINatsu(s);
 		s.ms = ms;
 		ms.init();
-		s.initFrame();
+		s.initKey();
 		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
@@ -264,7 +264,7 @@ public class SummerNatsu extends EntityLeInv implements IMixES, IMixESInv
 	}
 
 	@Override
-	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
+	public void mulFrame(float[] skinning_float_array, short[] key_short_array, float partial_ticks)
 	{
 		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYawHead, this.rotationYawHead, partial_ticks));
 		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);

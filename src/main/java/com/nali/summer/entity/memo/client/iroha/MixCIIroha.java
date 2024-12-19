@@ -36,11 +36,11 @@ public class MixCIIroha
 		R r = this.c.r;
 		I i = this.c.i;
 
-		int frame = r.frame_int_array[0];
+		short key = r.key_short_array[0];
 
 		float scale = r.scale;
 		E e = i.getE();
-		if (frame > 257)
+		if (key > 257)
 		{
 			e.width = 1.7F * scale;
 			e.height = 1.5F * scale;

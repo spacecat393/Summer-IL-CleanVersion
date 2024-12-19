@@ -36,16 +36,16 @@ public class MixCIMYuzu
 		R r = this.c.r;
 		I i = this.c.i;
 
-		int frame = r.frame_int_array[0];
+		short key = r.key_short_array[0];
 
 		float scale = r.scale;
 		E e = i.getE();
-		if (frame < 513)
+		if (key < 513)
 		{
 			e.width = BothDaMYuzu.IDA.E_Width() * scale;
 			e.height = 0.65F * scale;
 		}
-		else if (/*frame > 512 && */frame < 564)
+		else if (/*frame > 512 && */key < 564)
 		{
 			e.width = 1.5F * scale;
 			e.height = 0.2F * scale;
@@ -60,7 +60,7 @@ public class MixCIMYuzu
 	@Override
 	public void onReadNBT()
 	{
-		this.c.r.frame_int_array[0] = 110;
+		this.c.r.key_short_array[0] = 110;
 		super.onReadNBT();
 	}
 }

@@ -39,22 +39,22 @@ public class MixCIYuzu
 		R r = this.c.r;
 		I i = this.c.i;
 
-		int frame = r.frame_int_array[0];
+		short key = r.key_short_array[0];
 
 		float scale = r.scale;
-		if (frame > 195 && frame < 222)
+		if (key > 195 && key < 222)
 		{
 			r.texture_map.put(G_LIST.get(BothDaYuzu.IDA.O_StartPart() + 8).ebo, 66 + TEXTURE_STEP);
 		}
-		else if ((frame > 221 && frame < 250) || (frame > 354 && frame < 429))
+		else if ((key > 221 && key < 250) || (key > 354 && key < 429))
 		{
 			r.texture_map.put(G_LIST.get(BothDaYuzu.IDA.O_StartPart() + 8).ebo, 67 + TEXTURE_STEP);
 		}
-		else if (frame > 249 && frame < 266)
+		else if (key > 249 && key < 266)
 		{
 			r.texture_map.put(G_LIST.get(BothDaYuzu.IDA.O_StartPart() + 8).ebo, 68 + TEXTURE_STEP);
 		}
-		else if (frame > 301 && frame < 355)
+		else if (key > 301 && key < 355)
 		{
 			r.texture_map.put(G_LIST.get(BothDaYuzu.IDA.O_StartPart() + 8).ebo, 69 + TEXTURE_STEP);
 		}
@@ -64,7 +64,7 @@ public class MixCIYuzu
 		}
 
 		E e = i.getE();
-		if (frame > 716 && frame < 768)
+		if (key > 716 && key < 768)
 		{
 			e.width = 1.5F * scale;
 			e.height = 0.2F * scale;

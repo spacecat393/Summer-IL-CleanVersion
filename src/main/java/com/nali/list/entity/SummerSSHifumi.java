@@ -37,8 +37,8 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 	public static int eggSecondary = 0xFFF6AE;
 
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHifumi.IDA.E_MaxSync()];
-	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHifumi.IDA.S_MaxFrame()];
-	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+//	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHifumi.IDA.S_MaxFrame()];
+//	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
 	public static byte[] CI_BYTE_ARRAY;
 	public static byte[] SI_BYTE_ARRAY;
@@ -74,15 +74,15 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 			BYTE_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSHifumi.class, DataSerializers.BYTE);
 		}
 
-		for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
-		{
-			INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSHifumi.class, DataSerializers.VARINT);
-		}
-
-		for (int i = 0; i < FLOAT_DATAPARAMETER_ARRAY.length; ++i)
-		{
-			FLOAT_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSHifumi.class, DataSerializers.FLOAT);
-		}
+//		for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
+//		{
+//			INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSHifumi.class, DataSerializers.VARINT);
+//		}
+//
+//		for (int i = 0; i < FLOAT_DATAPARAMETER_ARRAY.length; ++i)
+//		{
+//			FLOAT_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerSSHifumi.class, DataSerializers.FLOAT);
+//		}
 	}
 
 	public SummerSSHifumi(World world)
@@ -124,7 +124,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 			SILeLookTo.ID,
 			SILeRandomLook.ID,
 
-			SIEFrame.ID,
+			SIEKey.ID,
 
 			SILeFindMove.ID,
 			SILeMove.ID,
@@ -178,17 +178,17 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 		return BYTE_DATAPARAMETER_ARRAY;
 	}
 
-	@Override
-	public DataParameter<Integer>[] getIntegerDataParameterArray()
-	{
-		return INTEGER_DATAPARAMETER_ARRAY;
-	}
-
-	@Override
-	public DataParameter<Float>[] getFloatDataParameterArray()
-	{
-		return FLOAT_DATAPARAMETER_ARRAY;
-	}
+//	@Override
+//	public DataParameter<Integer>[] getIntegerDataParameterArray()
+//	{
+//		return INTEGER_DATAPARAMETER_ARRAY;
+//	}
+//
+//	@Override
+//	public DataParameter<Float>[] getFloatDataParameterArray()
+//	{
+//		return FLOAT_DATAPARAMETER_ARRAY;
+//	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -213,7 +213,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 		MixSISSHifumi ms = new MixSISSHifumi(s);
 		s.ms = ms;
 		ms.init();
-		s.initFrame();
+		s.initKey();
 		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
@@ -270,7 +270,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 	}
 
 	@Override
-	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
+	public void mulFrame(float[] skinning_float_array, short[] key_short_array, float partial_ticks)
 	{
 		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYawHead, this.rotationYawHead, partial_ticks));
 		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
@@ -290,7 +290,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 
 		M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, body_rot).getM4x4();
 
-		if (frame_int_array[0] < 379)
+		if (key_short_array[0] < 379)
 		{
 			M4x4 head_m4x4 = new Quaternion(0, 0, net_head_yaw).getM4x4();
 			head_m4x4.multiply(skinning_float_array, 16 * 16);

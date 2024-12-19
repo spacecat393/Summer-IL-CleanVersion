@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memo.server.ssshizuko;
 
 import com.nali.da.IBothDaE;
-import com.nali.da.IBothDaNE;
+import com.nali.da.IBothDaNe;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.network.message.ClientMessage;
 import com.nali.network.NetworkRegistry;
@@ -11,62 +11,62 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerLeInv;
 import com.nali.small.entity.memo.server.si.MixSIE;
-import com.nali.small.entity.memo.server.si.frame.FrameS;
-import com.nali.small.entity.memo.server.si.frame.FrameSleProtect;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDie;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeHardReady;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSleFLoopFreePSrE;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSTLoop;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSTLoopSit;
-import com.nali.small.entity.memo.server.si.frame.tloop.FrameSleTLoopWalk;
+import com.nali.small.entity.memo.server.si.frame.KeyS;
+import com.nali.small.entity.memo.server.si.frame.KeySleProtect;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopDie;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeHardReady;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySleFLoopFreePSrE;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySTLoop;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySTLoopSit;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopWalk;
 import com.nali.system.bytes.ByteWriter;
 import net.minecraft.util.DamageSource;
 
 public class ServerSSShizuko
 <
 	IE extends InvLe,
-	BD extends IBothDaE & IBothDaNE,
+	BD extends IBothDaE & IBothDaNe,
 	E extends EntityLeInv,
 	I extends IMixE<BD, E>,
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLeInv<IE, BD, E, I, MS> implements IServerS
 {
-	public static int[][] /*SSZUKO_*/FRAME_INT_2D_ARRAY = new int[][]
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		{ 0, 222 },// 0 cafe idle <- need frame
-		{ 0, 222 },// 1 cafe idle
-		{ 381, 481 },// 2 cafe walk
-		{ 482, 532 },// 3 t-start 50
-		{ 223, 380 },// 4 cafe react
-		{ 0, 222 }, // 5 cafe idle
-		{ 533, 610 },// 6 spawn
-		{ 611, 704 },// 7 idle
-		{ 705, 725 },// 8 act
-		{ 726, 750 },// 9 end
+		0, 222,// 0 cafe idle <- need frame
+		0, 222,// 1 cafe idle
+		381, 481,// 2 cafe walk
+		482, 532,// 3 t-start 50
+		223, 380,// 4 cafe react
+		0, 222, // 5 cafe idle
+		533, 610,// 6 spawn
+		611, 704,// 7 idle
+		705, 725,// 8 act
+		726, 750,// 9 end
 
 		//SeaHouse
-		{ 0, 50 }, // 10
-		{ 0, 0 }, // 11
-		{ 51, 128 },// 12 spawn
-		{ 129, 222 },// 13 idle
-		{ 223, 243 },// 14 act
-		{ 244, 269 }// 15 end
+		0, 50, // 10
+		0, 0, // 11
+		51, 128,// 12 spawn
+		129, 222,// 13 idle
+		223, 243,// 14 act
+		244, 269// 15 end
 	};
-	public static byte[] FRAME_BYTE_ARRAY = new byte[]
+	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
-		0, 0, //0
-		0, 6, 7, 8, 9, //2
-		0, 1, //7
-		0, 2, //9
-		0, 3, //11
-		0, 4, //13
-		0, 5, //15
+		0, 0*2, //0
+		0, 6*2, 7*2, 8*2, 9*2, //2
+		0, 1*2, //7
+		0, 2*2, //9
+		0, 3*2, //11
+		0, 4*2, //13
+		0, 5*2, //15
 
-		1, 12, 13, 14, 15, //17
-		1, 10, //22
-		1, 11 //24
+		1, 12*2, 13*2, 14*2, 15*2, //17
+		1, 10*2, //22
+		1, 11*2 //24
 	};
-	public FrameS[][] frames_2d_array;
+	public KeyS[][] keys_2d_array;
 
 	public ServerSSShizuko(I i)
 	{
@@ -74,23 +74,23 @@ public class ServerSSShizuko
 	}
 
 	@Override
-	public void initFrame()
+	public void initKey()
 	{
-		this.frames_2d_array = new FrameS[][]
+		this.keys_2d_array = new KeyS[][]
 		{
 			{
-				new FrameSleFLoopDie(this, 0),
-				new FrameSleProtect(this, 2),
-				new FrameSTLoopSit(this, 7),
-				new FrameSleTLoopWalk(this, 9),
-				new FrameSFLoopFreeHardReady(this, 11),
-				new FrameSleFLoopFreePSrE(this, 13),
-				new FrameSTLoop(this, 15)
+				new KeySleFLoopDie(this, (byte)0),
+				new KeySleProtect(this, (byte)2),
+				new KeySTLoopSit(this, (byte)7),
+				new KeySleTLoopWalk(this, (byte)9),
+				new KeySFLoopFreeHardReady(this, (byte)11),
+				new KeySleFLoopFreePSrE(this, (byte)13),
+				new KeySTLoop(this, (byte)15)
 			},
 			{
-				new FrameSleProtect(this, 17),
-				new FrameSFLoopFreeHardReady(this, 22),
-				new FrameSTLoop(this, 24)
+				new KeySleProtect(this, (byte)17),
+				new KeySFLoopFreeHardReady(this, (byte)22),
+				new KeySTLoop(this, (byte)24)
 			}
 		};
 //		{
@@ -115,21 +115,21 @@ public class ServerSSShizuko
 	}
 
 	@Override
-	public FrameS[][] getFrameS2DArray()
+	public KeyS[][] getKeyS2DArray()
 	{
-		return this.frames_2d_array;
+		return this.keys_2d_array;
 	}
 
 	@Override
-	public byte[] getFrameByteArray()
+	public byte[] getKeyDataByteArray()
 	{
-		return FRAME_BYTE_ARRAY;
+		return KEY_DATA_BYTE_ARRAY;
 	}
 
 	@Override
-	public int[][] getFrame2DIntArray()
+	public short[] getFixKeyShortArray()
 	{
-		return FRAME_INT_2D_ARRAY;
+		return FIX_KEY_SHORT_ARRAY;
 	}
 
 	@Override
@@ -137,7 +137,7 @@ public class ServerSSShizuko
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_HURT(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_HURT(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 
@@ -146,7 +146,7 @@ public class ServerSSShizuko
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_DEATH(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_DEATH(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 }

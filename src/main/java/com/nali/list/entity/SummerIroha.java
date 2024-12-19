@@ -39,8 +39,8 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 	public static int eggSecondary = 0xc95b7e;
 
 	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaIroha.IDA.E_MaxSync()];
-	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIroha.IDA.S_MaxFrame()];
-	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
+//	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaIroha.IDA.S_MaxFrame()];
+//	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 
 	public static byte[] CI_BYTE_ARRAY;
 	public static byte[] SI_BYTE_ARRAY;
@@ -78,15 +78,15 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 			BYTE_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerIroha.class, DataSerializers.BYTE);
 		}
 
-		for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
-		{
-			INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerIroha.class, DataSerializers.VARINT);
-		}
-
-		for (int i = 0; i < FLOAT_DATAPARAMETER_ARRAY.length; ++i)
-		{
-			FLOAT_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerIroha.class, DataSerializers.FLOAT);
-		}
+//		for (int i = 0; i < INTEGER_DATAPARAMETER_ARRAY.length; ++i)
+//		{
+//			INTEGER_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerIroha.class, DataSerializers.VARINT);
+//		}
+//
+//		for (int i = 0; i < FLOAT_DATAPARAMETER_ARRAY.length; ++i)
+//		{
+//			FLOAT_DATAPARAMETER_ARRAY[i] = EntityDataManager.createKey(SummerIroha.class, DataSerializers.FLOAT);
+//		}
 	}
 
 	public SummerIroha(World world)
@@ -129,7 +129,7 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 			SILeLookTo.ID,
 			SILeRandomLook.ID,
 
-			SIEFrame.ID,
+			SIEKey.ID,
 
 			SILeFindMove.ID,
 			SILeMove.ID,
@@ -182,17 +182,17 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 		return BYTE_DATAPARAMETER_ARRAY;
 	}
 
-	@Override
-	public DataParameter<Integer>[] getIntegerDataParameterArray()
-	{
-		return INTEGER_DATAPARAMETER_ARRAY;
-	}
-
-	@Override
-	public DataParameter<Float>[] getFloatDataParameterArray()
-	{
-		return FLOAT_DATAPARAMETER_ARRAY;
-	}
+//	@Override
+//	public DataParameter<Integer>[] getIntegerDataParameterArray()
+//	{
+//		return INTEGER_DATAPARAMETER_ARRAY;
+//	}
+//
+//	@Override
+//	public DataParameter<Float>[] getFloatDataParameterArray()
+//	{
+//		return FLOAT_DATAPARAMETER_ARRAY;
+//	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -217,7 +217,7 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 		MixSIIroha ms = new MixSIIroha(s);
 		s.ms = ms;
 		ms.init();
-		s.initFrame();
+		s.initKey();
 		s.ie = new InvLe();
 		this.ibothleinv = s;
 	}
@@ -274,7 +274,7 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 	}
 
 	@Override
-	public void mulFrame(float[] skinning_float_array, int[] frame_int_array, float partial_ticks)
+	public void mulFrame(float[] skinning_float_array, short[] key_short_array, float partial_ticks)
 	{
 		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYawHead, this.rotationYawHead, partial_ticks));
 		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
@@ -290,14 +290,14 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 			head_pitch = -1.04719755119659774615F;
 		}
 
-		setAnimation(skinning_float_array, frame_int_array, head_pitch, head_rot, net_head_yaw);
+		setAnimation(skinning_float_array, key_short_array, head_pitch, head_rot, net_head_yaw);
 	}
 
-	public static void setAnimation(float[] skinning_float_array, int[] frame_int_array, float head_pitch, float body_rot, float net_head_yaw)
+	public static void setAnimation(float[] skinning_float_array, short[] key_short_array, float head_pitch, float body_rot, float net_head_yaw)
 	{
 		M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, body_rot).getM4x4();
 
-		if (frame_int_array[0] > 257)
+		if (key_short_array[0] > 257)
 		{
 			M4x4 head_m4x4 = new Quaternion(0, 0, net_head_yaw).getM4x4();
 

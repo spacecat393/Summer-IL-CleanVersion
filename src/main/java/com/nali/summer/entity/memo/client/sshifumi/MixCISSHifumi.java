@@ -36,10 +36,10 @@ public class MixCISSHifumi
 		R r = this.c.r;
 		I i = this.c.i;
 
-		int frame = r.frame_int_array[0];
+		short key = r.key_short_array[0];
 		float scale = r.scale;
 
-		if (frame > 267 && frame < 284)
+		if (key > 267 && key < 284)
 		{
 //			this.width = bothdata.E_Width() * scale;
 //			this.height = bothdata.E_Height() * scale;
@@ -63,7 +63,7 @@ public class MixCISSHifumi
 		}
 
 		E e = i.getE();
-		if (frame < 379 || (frame > 590 && frame < 642))
+		if (key < 379 || (key > 590 && key < 642))
 		{
 			e.width = 1.7F * scale;
 			e.height = 1.5F * scale;
@@ -90,7 +90,7 @@ public class MixCISSHifumi
 	@Override
 	public void onReadNBT()
 	{
-		this.c.r.frame_int_array[0] = 379;
+		this.c.r.key_short_array[0] = 379;
 		super.onReadNBT();
 	}
 }

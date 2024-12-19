@@ -1,15 +1,12 @@
 package com.nali.list.da;
 
-import com.nali.da.IBothDaE;
-import com.nali.da.IBothDaNE;
-import com.nali.da.IBothDaO;
-import com.nali.da.IBothDaS;
+import com.nali.da.*;
 import net.minecraft.server.MinecraftServer;
 
 import static com.nali.list.data.SummerData.*;
 import static com.nali.list.data.SummerData.SOUND_STEP;
 
-public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
+public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBothDaNe
 {
 	public static BothDaYuzu IDA = new BothDaYuzu();
 
@@ -34,7 +31,12 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
 	@Override
 	public byte E_MaxSync()
 	{
-		return 1;
+		return (byte)
+		(
+			4 +//scale
+			1 +//inv
+			this.S_MaxFrame() * 2
+		);
 	}
 
 	@Override
@@ -62,14 +64,22 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
 	}
 
 	@Override
-	public int NE_EAT()
+	public byte Se_SyncIndex()
+	{
+		return
+			4 +
+			1;
+	}
+
+	@Override
+	public int Ne_EAT()
 	{
 		byte time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
 		return this.getDefault(time);
 	}
 
 	@Override
-	public int NE_HURT()
+	public int Ne_HURT()
 	{
 		byte time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
 		if (time > 85)
@@ -87,7 +97,7 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
 	}
 
 	@Override
-	public int NE_DEATH()
+	public int Ne_DEATH()
 	{
 		byte time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
 		if (time > 85)
@@ -101,21 +111,21 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaNE
 	}
 
 	@Override
-	public int NE_PAT()
+	public int Ne_PAT()
 	{
 		byte time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
 		return this.getDefault(time);
 	}
 
 	@Override
-	public int NE_SOFT_READY()
+	public int Ne_SOFT_READY()
 	{
 		byte time = (byte)(MinecraftServer.getCurrentTimeMillis() % 255);
 		return this.getDefault(time);
 	}
 
 	@Override
-	public int NE_HARD_READY()
+	public int Ne_HARD_READY()
 	{
 		return SOUND_STEP + 12;
 	}

@@ -3,11 +3,12 @@ package com.nali.list.da;
 import com.nali.da.IBothDaE;
 import com.nali.da.IBothDaO;
 import com.nali.da.IBothDaS;
+import com.nali.da.IBothDaSe;
 
 import static com.nali.list.data.SummerData.FRAME_STEP;
 import static com.nali.list.data.SummerData.MODEL_STEP;
 
-public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS
+public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe
 {
 	public static BothDaE22Locker IDA = new BothDaE22Locker();
 
@@ -32,7 +33,12 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS
 	@Override
 	public byte E_MaxSync()
 	{
-		return 0;
+		return (byte)
+		(
+			4 +//scale
+			1 +//inv
+			this.S_MaxFrame() * 2
+		);
 	}
 
 	@Override
@@ -57,5 +63,13 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS
 	public int S_FrameID()
 	{
 		return FRAME_STEP + 9;
+	}
+
+	@Override
+	public byte Se_SyncIndex()
+	{
+		return
+			4 +
+			1;
 	}
 }

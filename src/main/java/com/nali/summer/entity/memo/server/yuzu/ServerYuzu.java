@@ -1,7 +1,7 @@
 package com.nali.summer.entity.memo.server.yuzu;
 
 import com.nali.da.IBothDaE;
-import com.nali.da.IBothDaNE;
+import com.nali.da.IBothDaNe;
 import com.nali.list.entity.SummerYuzu;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.network.message.ClientMessage;
@@ -12,13 +12,13 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerLeInv;
 import com.nali.small.entity.memo.server.si.MixSIE;
-import com.nali.small.entity.memo.server.si.frame.FrameS;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopDie;
-import com.nali.small.entity.memo.server.si.frame.floop.FrameSleFLoopSSeRSePlay;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSFLoopFreeHardReady;
-import com.nali.small.entity.memo.server.si.frame.floopfree.FrameSleFLoopFreePSrE;
-import com.nali.small.entity.memo.server.si.frame.floopoffset.FrameSleFLoopOffSetAttackEndWalk;
-import com.nali.small.entity.memo.server.si.frame.shoot.FrameSleShoot;
+import com.nali.small.entity.memo.server.si.frame.KeyS;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopDie;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopSSeRSePlay;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeHardReady;
+import com.nali.small.entity.memo.server.si.frame.floopfree.KeySleFLoopFreePSrE;
+import com.nali.small.entity.memo.server.si.frame.floopoffset.KeySleFLoopOffSetAttackEndWalk;
+import com.nali.small.entity.memo.server.si.frame.shoot.KeySleShoot;
 import com.nali.small.entity.memo.server.si.frame.tloop.*;
 import com.nali.system.bytes.ByteWriter;
 import net.minecraft.util.DamageSource;
@@ -26,47 +26,47 @@ import net.minecraft.util.DamageSource;
 public class ServerYuzu
 <
 	IE extends InvLe,
-	BD extends IBothDaE & IBothDaNE,
+	BD extends IBothDaE & IBothDaNe,
 	E extends EntityLeInv,
 	I extends IMixE<BD, E>,
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLeInv<IE, BD, E, I, MS> implements IServerS
 {
-	public static int[][] FRAME_INT_2D_ARRAY = new int[][]
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		{ 717, 767 },
-		{ 526, 592 },
-		{ 627, 643 },
-		{ 844, 859 },
-		{ 860, 893 },
-		{ 113, 143 },
-		{ 806, 843 },
-		{ 34, 112 },
-		{ 593, 626 },
-		{ 0, 33 },
-		{ 644, 664 },
-		{ 703, 716 },
-		{ 768, 805 },
-		{ 665, 702 },//delay attack
-		{ 144, 441 },//locker react
-		{ 442, 525 }//locker idle
+		717, 767,
+		526, 592,
+		627, 643,
+		844, 859,
+		860, 893,
+		113, 143,
+		806, 843,
+		34, 112,
+		593, 626,
+		0, 33,
+		644, 664,
+		703, 716,
+		768, 805,
+		665, 702,//delay attack
+		144, 441,//locker react
+		442, 525//locker idle
 	};
-	public static byte[] FRAME_BYTE_ARRAY = new byte[]
+	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
-		0, 0,
-		0, 14,
-		0, 15,
-		0, 1,
-		0, 3, 4,
-		0, 2, 10, 11, 12,
-		0, 3,
-		0, 5,
-		0, 6,
-		0, 7,
-		0, 8,
-		0, 9
+		0, 0*2,
+		0, 14*2,
+		0, 15*2,
+		0, 1*2,
+		0, 3*2, 4*2,
+		0, 2*2, 10*2, 11*2, 12*2,
+		0, 3*2,
+		0, 5*2,
+		0, 6*2,
+		0, 7*2,
+		0, 8*2,
+		0, 9*2
 	};
-	public FrameS[][] frames_2d_array;
+	public KeyS[][] keys_2d_array;
 
 	public ServerYuzu(I i)
 	{
@@ -74,23 +74,23 @@ public class ServerYuzu
 	}
 
 	@Override
-	public void initFrame()
+	public void initKey()
 	{
-		this.frames_2d_array = new FrameS[][]
+		this.keys_2d_array = new KeyS[][]
 		{
 			{
-				new FrameSleFLoopDie(this, 0),
-				new FrameSleFLoopSSeRSePlay(this, 2),
-				new FrameSTLoopPWStand(this, 4, SummerYuzu.PW_BYTE_ARRAY),
-				new FrameSTLoopSit(this, 6),
-				new FrameSleFLoopOffSetAttackEndWalk(this, 8),
-				new FrameSleShoot(this, 11),
-				new FrameSleTLoopAttackWalk(this, 16),
-				new FrameSleTLoopWalk(this, 18),
-				new FrameSFLoopFreeHardReady(this, 20),
-				new FrameSleFLoopFreePSrE(this, 22),
-				new FrameSleTLoopAttackStand(this, 24),
-				new FrameSTLoop(this, 26)
+				new KeySleFLoopDie(this, (byte)0),
+				new KeySleFLoopSSeRSePlay(this, (byte)2),
+				new KeySTLoopPWStand(this, (byte)4, SummerYuzu.PW_BYTE_ARRAY),
+				new KeySTLoopSit(this, (byte)6),
+				new KeySleFLoopOffSetAttackEndWalk(this, (byte)8),
+				new KeySleShoot(this, (byte)11),
+				new KeySleTLoopAttackWalk(this, (byte)16),
+				new KeySleTLoopWalk(this, (byte)18),
+				new KeySFLoopFreeHardReady(this, (byte)20),
+				new KeySleFLoopFreePSrE(this, (byte)22),
+				new KeySleTLoopAttackStand(this, (byte)24),
+				new KeySTLoop(this, (byte)26)
 			}
 		};
 //		() -> this.isZeroMove() && serverentitiesmemory.entitiesaimemory.skinningentitiesliveframe_array[0].setFLoop(0),
@@ -114,21 +114,21 @@ public class ServerYuzu
 	}
 
 	@Override
-	public FrameS[][] getFrameS2DArray()
+	public KeyS[][] getKeyS2DArray()
 	{
-		return this.frames_2d_array;
+		return this.keys_2d_array;
 	}
 
 	@Override
-	public byte[] getFrameByteArray()
+	public byte[] getKeyDataByteArray()
 	{
-		return FRAME_BYTE_ARRAY;
+		return KEY_DATA_BYTE_ARRAY;
 	}
 
 	@Override
-	public int[][] getFrame2DIntArray()
+	public short[] getFixKeyShortArray()
 	{
-		return FRAME_INT_2D_ARRAY;
+		return FIX_KEY_SHORT_ARRAY;
 	}
 
 	@Override
@@ -136,7 +136,7 @@ public class ServerYuzu
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_HURT(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_HURT(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 
@@ -145,7 +145,7 @@ public class ServerYuzu
 	{
 		byte[] byte_array = new byte[1 + 8 + 1 + 4];
 		this.setCCI(byte_array, CIESound.ID);
-		ByteWriter.set(byte_array, this.i.getBD().NE_DEATH(), 1 + 8 + 1);
+		ByteWriter.set(byte_array, this.i.getBD().Ne_DEATH(), 1 + 8 + 1);
 		NetworkRegistry.I.sendToAll(new ClientMessage(byte_array));
 	}
 }
