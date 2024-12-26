@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.arisu;
 
 import com.nali.list.da.BothDaArisu;
 import com.nali.list.render.RenderArisu;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -21,7 +22,7 @@ public class ClientArisu
 <
 	IE extends InvLe,
 	R extends RenderArisu<IE, E, I, MC, MB, MR, ?>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaArisu, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaArisu, R, E, I, MB, MR, ?>,
 	MB extends MixBoxSleInv<BothDaArisu, R, E, I, MC, MR, ?>,

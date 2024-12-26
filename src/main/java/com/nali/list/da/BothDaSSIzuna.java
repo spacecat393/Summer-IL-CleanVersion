@@ -7,7 +7,7 @@ import static com.nali.list.data.SummerData.MODEL_STEP;
 
 public class BothDaSSIzuna implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBothDaNe
 {
-	public static BothDaSSIzuna IDA = new BothDaSSIzuna();
+	public static BothDaSSIzuna IDA;
 
 	@Override
 	public float E_Width()
@@ -33,6 +33,7 @@ public class BothDaSSIzuna implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, I
 		return (byte)
 		(
 			4 +//scale
+			4 +//rotation_yaw_head
 			1 +//inv
 			this.S_MaxFrame() * 2
 		);
@@ -66,6 +67,7 @@ public class BothDaSSIzuna implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, I
 	public byte Se_SyncIndex()
 	{
 		return
+			4 +
 			4 +
 			1;
 	}

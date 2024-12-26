@@ -272,7 +272,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 	@Override
 	public void mulFrame(float[] skinning_float_array, short[] key_short_array, float partial_ticks)
 	{
-		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYawHead, this.rotationYawHead, partial_ticks));
+		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prev_rotation_yaw_head, this.rotation_yaw_head, partial_ticks));
 		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
 		float body_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
 		float net_head_yaw = head_rot - body_rot;
@@ -290,7 +290,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 
 		M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, body_rot).getM4x4();
 
-		if (key_short_array[0] < 379)
+		if (key_short_array[0] < 371)
 		{
 			M4x4 head_m4x4 = new Quaternion(0, 0, net_head_yaw).getM4x4();
 			head_m4x4.multiply(skinning_float_array, 16 * 16);

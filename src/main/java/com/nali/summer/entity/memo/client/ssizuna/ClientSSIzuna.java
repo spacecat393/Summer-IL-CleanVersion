@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.ssizuna;
 
 import com.nali.list.da.BothDaSSIzuna;
 import com.nali.list.render.RenderSSIzuna;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -22,7 +23,7 @@ public class ClientSSIzuna
 <
 	IE extends InvLe,
 	R extends RenderSSIzuna<IE, E, I, MC, MB, MR, ?>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaSSIzuna, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaSSIzuna, R, E, I, MB, MR, ?>,
 	MB extends MixBoxSleInv<BothDaSSIzuna, R, E, I, MC, MR, ?>,

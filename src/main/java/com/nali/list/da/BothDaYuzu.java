@@ -8,7 +8,7 @@ import static com.nali.list.data.SummerData.SOUND_STEP;
 
 public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBothDaNe
 {
-	public static BothDaYuzu IDA = new BothDaYuzu();
+	public static BothDaYuzu IDA;
 
 	@Override
 	public float E_Width()
@@ -34,6 +34,7 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBot
 		return (byte)
 		(
 			4 +//scale
+			4 +//rotation_yaw_head
 			1 +//inv
 			this.S_MaxFrame() * 2
 		);
@@ -67,6 +68,7 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBot
 	public byte Se_SyncIndex()
 	{
 		return
+			4 +
 			4 +
 			1;
 	}

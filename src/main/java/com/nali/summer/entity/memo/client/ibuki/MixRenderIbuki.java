@@ -1,34 +1,22 @@
 package com.nali.summer.entity.memo.client.ibuki;
 
 import com.nali.list.da.BothDaIbuki;
-import com.nali.list.da.BothDaIroha;
-import com.nali.list.entity.SummerIroha;
 import com.nali.list.render.RenderIbuki;
-import com.nali.render.RenderS;
-import com.nali.small.entity.EntityMath;
-import com.nali.small.entity.IMixE;
-import com.nali.small.entity.IMixES;
-import com.nali.small.entity.IMixESInv;
+import com.nali.small.entity.*;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
-import com.nali.small.entity.memo.client.render.FRenderE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
-import com.nali.system.opengl.memo.MemoF2;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
-
-import static com.nali.system.BothLoader.F2_LIST;
 
 @SideOnly(Side.CLIENT)
 public class MixRenderIbuki
 <
 	IE extends InvLe,
 	R extends RenderIbuki<IE, E, I, MC, MB, ?, C>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaIbuki, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaIbuki, R, E, I, MB, ?, C>,
 	MB extends MixBoxSleInv<BothDaIbuki, R, E, I, MC, ?, C>,

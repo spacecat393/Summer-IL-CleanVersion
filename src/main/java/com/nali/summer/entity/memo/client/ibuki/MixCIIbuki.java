@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.ibuki;
 
 import com.nali.list.da.BothDaIbuki;
 import com.nali.list.render.RenderIbuki;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -18,7 +19,7 @@ public class MixCIIbuki
 <
 	IE extends InvLe,
 	R extends RenderIbuki<IE, E, I, ?, MB, MR, C>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaIbuki, E> & IMixES & IMixESInv,
 	MB extends MixBoxSleInv<BothDaIbuki, R, E, I, ?, MR, C>,
 	MR extends MixRenderIbuki<IE, R, E, I, ?, MB, C>,

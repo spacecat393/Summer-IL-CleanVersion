@@ -4,6 +4,7 @@ import com.nali.da.IBothDaE;
 import com.nali.da.IBothDaO;
 import com.nali.da.IBothDaS;
 import com.nali.render.RenderS;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -22,7 +23,7 @@ public class MixRenderArisu
 	IE extends InvLe,
 	BD extends IBothDaE & IBothDaO & IBothDaS,
 	R extends RenderS<BD>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BD, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BD, R, E, I, MB, ?, C>,
 	MB extends MixBoxSleInv<BD, R, E, I, MC, ?, C>,

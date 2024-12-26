@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.iroha;
 
 import com.nali.list.da.BothDaIroha;
 import com.nali.list.render.RenderIroha;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -21,7 +22,7 @@ public class ClientIroha
 <
 	IE extends InvLe,
 	R extends RenderIroha<IE, E, I, MC, MB, MR, ?>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaIroha, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaIroha, R, E, I, MB, MR, ?>,
 	MB extends MixBoxSleInv<BothDaIroha, R, E, I, MC, MR, ?>,

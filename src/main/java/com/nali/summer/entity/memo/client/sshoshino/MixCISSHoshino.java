@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.sshoshino;
 
 import com.nali.list.da.BothDaSSHoshino;
 import com.nali.list.render.RenderSSHoshino;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -18,7 +19,7 @@ public class MixCISSHoshino
 <
 	IE extends InvLe,
 	R extends RenderSSHoshino<IE, E, I, ?, MB, MR, C>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaSSHoshino, E> & IMixES & IMixESInv,
 	MB extends MixBoxSleInv<BothDaSSHoshino, R, E, I, ?, MR, C>,
 	MR extends MixRenderSSHoshino<IE, BothDaSSHoshino, R, E, I, ?, MB, C>,

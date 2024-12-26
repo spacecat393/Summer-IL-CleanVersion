@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.myuzu;
 
 import com.nali.list.da.BothDaMYuzu;
 import com.nali.list.render.RenderMYuzu;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -21,7 +22,7 @@ public class ClientMYuzu
 <
 	IE extends InvLe,
 	R extends RenderMYuzu<IE, E, I, MC, MB, MR, ?>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaMYuzu, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaMYuzu, R, E, I, MB, MR, ?>,
 	MB extends MixBoxSleInv<BothDaMYuzu, R, E, I, MC, MR, ?>,

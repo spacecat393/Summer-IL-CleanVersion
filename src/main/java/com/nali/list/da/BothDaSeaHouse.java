@@ -8,7 +8,7 @@ import static com.nali.list.data.SummerData.MODEL_STEP;
 
 public class BothDaSeaHouse implements IBothDaS, IBothDaO
 {
-	public static BothDaSeaHouse IDA = new BothDaSeaHouse();
+	public static BothDaSeaHouse IDA;
 
 	@Override
 	public int O_StartPart()

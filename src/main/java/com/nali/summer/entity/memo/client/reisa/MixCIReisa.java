@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.reisa;
 
 import com.nali.list.da.BothDaReisa;
 import com.nali.list.render.RenderReisa;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -18,7 +19,7 @@ public class MixCIReisa
 <
 	IE extends InvLe,
 	R extends RenderReisa<IE, E, I, ?, MB, MR, C>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaReisa, E> & IMixES & IMixESInv,
 	MB extends MixBoxSleInv<BothDaReisa, R, E, I, ?, MR, C>,
 	MR extends MixRenderReisa<IE, BothDaReisa, R, E, I, ?, MB, C>,

@@ -1,6 +1,7 @@
 package com.nali.list.render;
 
 import com.nali.list.da.BothDaIbuki;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -20,7 +21,7 @@ import java.util.Arrays;
 public class RenderIbuki
 <
 	IE extends InvLe,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaIbuki, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaIbuki, ?, E, I, MB, MR, C>,
 	MB extends MixBoxSleInv<BothDaIbuki, ?, E, I, MC, MR, C>,

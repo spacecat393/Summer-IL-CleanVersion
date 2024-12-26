@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.sshifumi;
 
 import com.nali.list.da.BothDaSSHifumi;
 import com.nali.list.render.RenderSSHifumi;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -21,7 +22,7 @@ public class ClientSSHifumi
 <
 	IE extends InvLe,
 	R extends RenderSSHifumi<IE, E, I, MC, MB, MR, ?>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaSSHifumi, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaSSHifumi, R, E, I, MB, MR, ?>,
 	MB extends MixBoxSleInv<BothDaSSHifumi, R, E, I, MC, MR, ?>,

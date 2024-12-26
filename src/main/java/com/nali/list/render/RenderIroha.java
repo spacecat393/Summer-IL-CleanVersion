@@ -1,6 +1,7 @@
 package com.nali.list.render;
 
 import com.nali.list.da.BothDaIroha;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -20,7 +21,7 @@ import java.util.Arrays;
 public class RenderIroha
 <
 	IE extends InvLe,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaIroha, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaIroha, ?, E, I, MB, MR, C>,
 	MB extends MixBoxSleInv<BothDaIroha, ?, E, I, MC, MR, C>,

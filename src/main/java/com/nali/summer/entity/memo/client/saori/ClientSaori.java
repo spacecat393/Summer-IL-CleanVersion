@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.saori;
 
 import com.nali.list.da.BothDaSaori;
 import com.nali.list.render.RenderSaori;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -21,7 +22,7 @@ public class ClientSaori
 <
 	IE extends InvLe,
 	R extends RenderSaori<IE, E, I, MC, MB, MR, ?>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaSaori, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaSaori, R, E, I, MB, MR, ?>,
 	MB extends MixBoxSleInv<BothDaSaori, R, E, I, MC, MR, ?>,

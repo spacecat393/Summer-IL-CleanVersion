@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.natsu;
 
 import com.nali.list.da.BothDaNatsu;
 import com.nali.list.render.RenderNatsu;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -18,7 +19,7 @@ public class MixCINatsu
 <
 	IE extends InvLe,
 	R extends RenderNatsu<IE, E, I, ?, MB, MR, C>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaNatsu, E> & IMixES & IMixESInv,
 	MB extends MixBoxSleInv<BothDaNatsu, R, E, I, ?, MR, C>,
 	MR extends MixRenderNatsu<IE, BothDaNatsu, R, E, I, ?, MB, C>,

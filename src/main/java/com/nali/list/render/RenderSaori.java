@@ -1,6 +1,7 @@
 package com.nali.list.render;
 
 import com.nali.list.da.BothDaSaori;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -18,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class RenderSaori
 <
 	IE extends InvLe,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaSaori, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaSaori, ?, E, I, MB, MR, C>,
 	MB extends MixBoxSleInv<BothDaSaori, ?, E, I, MC, MR, C>,

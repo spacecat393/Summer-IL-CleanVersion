@@ -3,6 +3,7 @@ package com.nali.summer.entity.memo.client.ssshizuko;
 import com.nali.list.da.BothDaSSShizuko;
 import com.nali.list.da.BothDaSeaHouse;
 import com.nali.list.render.RenderSSShizuko;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -22,7 +23,7 @@ public class MixRenderSSShizuko
 <
 	IE extends InvLe,
 	R extends RenderSSShizuko<IE, E, I, MC, MB, ?, C>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaSSShizuko, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaSSShizuko, R, E, I, MB, ?, C>,
 	MB extends MixBoxSleInv<BothDaSSShizuko, R, E, I, MC, ?, C>,

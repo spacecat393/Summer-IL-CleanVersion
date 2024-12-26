@@ -10,7 +10,7 @@ import static com.nali.list.data.SummerData.MODEL_STEP;
 
 public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe
 {
-	public static BothDaE22Locker IDA = new BothDaE22Locker();
+	public static BothDaE22Locker IDA;
 
 	@Override
 	public float E_Width()
@@ -36,6 +36,7 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe
 		return (byte)
 		(
 			4 +//scale
+//			4 +//rotation_yaw_head
 			1 +//inv
 			this.S_MaxFrame() * 2
 		);
@@ -70,6 +71,7 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe
 	{
 		return
 			4 +
+//			4 +
 			1;
 	}
 }

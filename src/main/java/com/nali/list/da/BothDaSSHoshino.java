@@ -7,7 +7,7 @@ import static com.nali.list.data.SummerData.MODEL_STEP;
 
 public class BothDaSSHoshino implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBothDaNe
 {
-	public static BothDaSSHoshino IDA = new BothDaSSHoshino();
+	public static BothDaSSHoshino IDA;
 
 	@Override
 	public float E_Width()
@@ -33,6 +33,7 @@ public class BothDaSSHoshino implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe,
 		return (byte)
 		(
 			4 +//scale
+			4 +//rotation_yaw_head
 			1 +//inv
 			this.S_MaxFrame() * 2
 		);
@@ -66,6 +67,7 @@ public class BothDaSSHoshino implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe,
 	public byte Se_SyncIndex()
 	{
 		return
+			4 +
 			4 +
 			1;
 	}

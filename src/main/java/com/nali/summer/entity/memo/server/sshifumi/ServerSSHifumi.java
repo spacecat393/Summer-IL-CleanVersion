@@ -37,20 +37,20 @@ public class ServerSSHifumi
 {
 	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		285, 327,
-		591, 641,
-		180, 197,
-		68, 118,
-		119, 179,
-		506, 539,
-		422, 504,
-		0, 67,
-		540, 590,
-		251, 283,
-		379, 421,
-		198, 232,
-		233, 250,
-		328, 378
+		278, 319,//Tank_Vital_Destroy|
+		580, 629,//Tank_Vital_Panic
+		178, 193,//Attack_Start
+		67, 117,//Tank_Move_Ing
+		118, 177,//Tank_Move_End_Normal
+		495, 528,//Cafe_Walk
+		412, 494,//Cafe_Reaction
+		0, 66,//Tank_Appearance
+		529, 579,//Tactical_Start
+		245, 277,//Tank_Vital_Retreat
+		371, 411,//Cafe_Idle
+		194, 227,//Attack_Ing
+		228, 244,//Attack_End
+		320, 370//Normal_Reload
 	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{

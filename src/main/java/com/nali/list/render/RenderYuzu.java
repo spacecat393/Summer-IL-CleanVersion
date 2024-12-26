@@ -3,6 +3,7 @@ package com.nali.list.render;
 import com.nali.da.IBothDaE;
 import com.nali.da.IBothDaO;
 import com.nali.da.IBothDaS;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -28,7 +29,7 @@ import static com.nali.system.ClientLoader.G_LIST;
 public class RenderYuzu
 <
 	IE extends InvLe,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaYuzu, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaYuzu, ?, E, I, MB, MR, C>,
 	MB extends MixBoxSleInv<BothDaYuzu, ?, E, I, MC, MR, C>,

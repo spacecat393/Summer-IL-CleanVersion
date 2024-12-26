@@ -2,6 +2,7 @@ package com.nali.summer.entity.memo.client.sshifumi;
 
 import com.nali.list.da.BothDaSSHifumi;
 import com.nali.list.render.RenderSSHifumi;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -18,7 +19,7 @@ public class MixCISSHifumi
 <
 	IE extends InvLe,
 	R extends RenderSSHifumi<IE, E, I, ?, MB, MR, C>,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaSSHifumi, E> & IMixES & IMixESInv,
 	MB extends MixBoxSleInv<BothDaSSHifumi, R, E, I, ?, MR, C>,
 	MR extends MixRenderSSHifumi<IE, BothDaSSHifumi, R, E, I, ?, MB, C>,
@@ -39,7 +40,7 @@ public class MixCISSHifumi
 		short key = r.key_short_array[0];
 		float scale = r.scale;
 
-		if (key > 267 && key < 284)
+		if (key > 261 && key < 278)
 		{
 //			this.width = bothdata.E_Width() * scale;
 //			this.height = bothdata.E_Height() * scale;
@@ -63,7 +64,7 @@ public class MixCISSHifumi
 		}
 
 		E e = i.getE();
-		if (key < 379 || (key > 590 && key < 642))
+		if (key < 371 || (key > 579 && key < 630))
 		{
 			e.width = 1.7F * scale;
 			e.height = 1.5F * scale;
@@ -90,7 +91,7 @@ public class MixCISSHifumi
 	@Override
 	public void onReadNBT()
 	{
-		this.c.r.key_short_array[0] = 379;
+		this.c.r.key_short_array[0] = 371;
 		super.onReadNBT();
 	}
 }

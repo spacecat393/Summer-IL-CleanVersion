@@ -1,5 +1,6 @@
 package com.nali.list.render;
 
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
@@ -20,7 +21,7 @@ import java.util.Arrays;
 public class RenderArisu
 <
 	IE extends InvLe,
-	E extends EntityLivingBase,
+	E extends EntityLe,
 	I extends IMixE<BothDaArisu, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaArisu, ?, E, I, MB, MR, C>,
 	MB extends MixBoxSleInv<BothDaArisu, ?, E, I, MC, MR, C>,
