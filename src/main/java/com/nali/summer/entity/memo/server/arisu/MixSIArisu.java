@@ -19,8 +19,7 @@ public class MixSIArisu
 {
 	public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
 	{
-		603,
-		650
+		436
 	};
 
 	public MixSIArisu(S s)

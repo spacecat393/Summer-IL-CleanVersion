@@ -20,7 +20,8 @@ public class MixSISSHifumi
 {
 	public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
 	{
-		203
+		137
+//		222//skill
 	};
 
 	public MixSISSHifumi(S s)

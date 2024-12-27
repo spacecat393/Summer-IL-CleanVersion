@@ -40,7 +40,7 @@ public class MixCISSHifumi
 		short key = r.key_short_array[0];
 		float scale = r.scale;
 
-		if (key > 261 && key < 278)
+		if (key > 465 && key < 482)
 		{
 //			this.width = bothdata.E_Width() * scale;
 //			this.height = bothdata.E_Height() * scale;
@@ -64,10 +64,10 @@ public class MixCISSHifumi
 		}
 
 		E e = i.getE();
-		if (key < 371 || (key > 579 && key < 630))
+		if (key < 575)
 		{
-			e.width = 1.7F * scale;
-			e.height = 1.5F * scale;
+			e.width = 4.0F * scale;
+			e.height = 2.5F * scale;
 //			skinningrender.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
 //			skinningrender.model_byte_array[9 / 8] |= 2;//Math.pow(2, 9 % 8)
 //			skinningrender.model_byte_array[10 / 8] |= 4;//Math.pow(2, 10 % 8)

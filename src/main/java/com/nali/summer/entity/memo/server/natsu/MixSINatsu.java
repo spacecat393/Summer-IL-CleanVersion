@@ -20,15 +20,16 @@ public class MixSINatsu
 {
 	public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
 	{
-		698,
-		701,
-		703,
-		707,
-		711
+		473,
+		476,
+		478,
+		480,
+		482,
+		486
 	};
 	public static int[] HEAL_FRAME_INT_ARRAY = new int[]
 	{
-		868
+		620
 	};
 
 	public MixSINatsu(S s)

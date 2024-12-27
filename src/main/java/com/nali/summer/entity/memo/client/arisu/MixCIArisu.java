@@ -54,20 +54,21 @@ public class MixCIArisu
 
 		float scale = r.scale;
 		E e = i.getE();
-		if (key > 834 && key < 861)
+		if (key > 583 && key < 615)
 		{
-			e.width = BothDaArisu.IDA.E_Width() * scale;
+//			e.width = BothDaArisu.IDA.E_Width() * scale;
 			e.height = 0.65F * scale;
 		}
-		else if (key > 737 && key < 784)
-		{
-			e.width = 1.5F * scale;
-			e.height = 0.2F * scale;
-		}
+//		else if (key > 737 && key < 784)
+//		{
+//			e.width = 1.5F * scale;
+//			e.height = 0.2F * scale;
+//		}
 		else
 		{
-			e.width = BothDaArisu.IDA.E_Width() * scale;
+//			e.width = BothDaArisu.IDA.E_Width() * scale;
 			e.height = BothDaArisu.IDA.E_Height() * scale;
 		}
+		e.width = BothDaArisu.IDA.E_Width() * scale;
 	}
 }

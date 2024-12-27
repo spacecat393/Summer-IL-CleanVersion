@@ -17,10 +17,7 @@ import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeHardRea
 import com.nali.small.entity.memo.server.si.frame.floopfree.KeySleFLoopFreePSrE;
 import com.nali.small.entity.memo.server.si.frame.floopoffset.KeySleFLoopOffSetAttackEndWalk;
 import com.nali.small.entity.memo.server.si.frame.shoot.KeySleShoot;
-import com.nali.small.entity.memo.server.si.frame.tloop.KeySTLoop;
-import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopAttackStand;
-import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopAttackWalk;
-import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopWalk;
+import com.nali.small.entity.memo.server.si.frame.tloop.*;
 import com.nali.small.entity.memo.server.si.frame.tloopfb.KeySTLoopFBSit;
 import com.nali.system.bytes.ByteWriter;
 import net.minecraft.util.DamageSource;
@@ -36,19 +33,19 @@ public class ServerArisu
 {
 	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		738, 783,
-		835, 860,
-		560, 576,
-		932, 948,
-		949, 999,
-		173, 204,
-		522, 559,
-		81, 172,
-		861, 931,
-		0, 80,
-		577, 643,
-		644, 660,
-		687, 737
+		570, 614,//Vital_Death*
+		205, 285,//Formation_Idle*
+		394, 409,//Attack_Start*
+		640, 655,//Move_Ing*
+		656, 706,//Move_End*
+		173, 204,//Cafe_Walk*
+		286, 322,//Callsign*
+		81, 172,//Cafe_Reaction*
+		323, 393,//Normal_Idle*
+		0, 80,//Cafe_Idle*
+		410, 476,//Attack_Ing*
+		477, 518,//Attack_Delay-Attack_End*
+		519, 569//Reload*
 	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
@@ -77,7 +74,7 @@ public class ServerArisu
 		{
 			{
 				new KeySleFLoopDie(this, (byte)0),
-				new KeySTLoopFBSit(this, (byte)2),
+				new KeySTLoopSit(this, (byte)2),
 				new KeySleFLoopOffSetAttackEndWalk(this, (byte)4),
 				new KeySleShoot(this, (byte)7),
 				new KeySleTLoopAttackWalk(this, (byte)12),

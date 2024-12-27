@@ -33,20 +33,20 @@ public class ServerNatsu
 {
 	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		766, 822,
-		405, 488,
-		684, 696,
-		489, 509,
-		510, 535,
-		185, 225,
-		1029, 1066,
-		68, 184,
-		536, 569,
-		0, 66,
-		697, 712,
-		713, 723,
-		570, 607,
-		823, 868
+		537, 592,//Vital_Death
+		225, 307,//Formation_Idle
+		426, 438,//Attack_Start
+		380, 400,//Move_Ing
+		401, 425,//End_Normal
+		184, 224,//Cafe_Walk
+		308, 346,//Callsign
+		67, 183,//Cafe_Reaction
+		347, 379,//Normal_Idle
+		0, 66,//Cafe_Idle
+		439, 487,//Attack_Delay-Attack_Ing
+		488, 498,//Attack_End
+		499, 535,//Normal_Reload
+		593, 638//Public
 	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{

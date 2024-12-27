@@ -18,7 +18,7 @@ public class BothDaSaori implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 	@Override
 	public float E_Height()
 	{
-		return 0.85F;
+		return 0.95F;
 	}
 
 	@Override

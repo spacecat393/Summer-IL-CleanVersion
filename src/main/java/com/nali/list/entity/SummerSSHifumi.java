@@ -290,7 +290,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 
 		M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, body_rot).getM4x4();
 
-		if (key_short_array[0] < 371)
+		if (key_short_array[0] < 575)
 		{
 			M4x4 head_m4x4 = new Quaternion(0, 0, net_head_yaw).getM4x4();
 			head_m4x4.multiply(skinning_float_array, 16 * 16);

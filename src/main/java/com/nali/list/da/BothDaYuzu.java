@@ -19,7 +19,7 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBot
 	@Override
 	public float E_Height()
 	{
-		return 0.85F;
+		return 0.95F;
 	}
 
 	@Override

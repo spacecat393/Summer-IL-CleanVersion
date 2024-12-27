@@ -12,7 +12,7 @@ import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerLeInv;
 import com.nali.small.entity.memo.server.si.MixSIE;
 import com.nali.small.entity.memo.server.si.frame.KeyS;
-import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopAttackStand;
+import com.nali.small.entity.memo.server.si.frame.floop.KeySFLoopSit;
 import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopDie;
 import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeHardReady;
 import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeSoftReady;
@@ -20,9 +20,9 @@ import com.nali.small.entity.memo.server.si.frame.floopfree.KeySleFLoopFreePE;
 import com.nali.small.entity.memo.server.si.frame.floopoffset.KeySleFLoopOffSetAttackEndWalk;
 import com.nali.small.entity.memo.server.si.frame.shoot.KeySleShoot;
 import com.nali.small.entity.memo.server.si.frame.tloop.KeySTLoop;
+import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopAttackStand;
 import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopAttackWalk;
 import com.nali.small.entity.memo.server.si.frame.tloop.KeySleTLoopWalk;
-import com.nali.small.entity.memo.server.si.frame.tloopfb.KeySTLoopFBSit;
 import com.nali.system.bytes.ByteWriter;
 import net.minecraft.util.DamageSource;
 
@@ -37,20 +37,20 @@ public class ServerSSHifumi
 {
 	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
-		278, 319,//Tank_Vital_Destroy|
-		580, 629,//Tank_Vital_Panic
-		178, 193,//Attack_Start
-		67, 117,//Tank_Move_Ing
-		118, 177,//Tank_Move_End_Normal
-		495, 528,//Cafe_Walk
-		412, 494,//Cafe_Reaction
-		0, 66,//Tank_Appearance
-		529, 579,//Tactical_Start
-		245, 277,//Tank_Vital_Retreat
-		371, 411,//Cafe_Idle
-		194, 227,//Attack_Ing
-		228, 244,//Attack_End
-		320, 370//Normal_Reload
+		482, 523,//Tank_Vital_Destroy*
+		450, 481,//Tank_Vital_Retreat*
+		118, 133,//Attack_Start*
+		340, 389,//Tank_Move_Ing*
+		390, 449,//Tank_Move_End*
+		699, 732,//Cafe_Walk*
+		616, 698,//Cafe_Reaction*
+		0, 66,//Tank_Appearance*
+		733, 783,//Tactical_Start*
+		67, 117,//Attack_Delay*
+		575, 615,//Cafe_Idle*
+		134, 167,//Attack_Ing*
+		168, 184,//Attack_End*
+		289, 339//Normal_Reload*
 	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
@@ -80,7 +80,8 @@ public class ServerSSHifumi
 		{
 			{
 				new KeySleFLoopDie(this, (byte)0),
-				new KeySTLoopFBSit(this, (byte)2),
+//				new KeySTLoopFBSit(this, (byte)2),
+				new KeySFLoopSit(this, (byte)2),
 				new KeySleFLoopOffSetAttackEndWalk(this, (byte)4),
 				new KeySleShoot(this, (byte)7),
 				new KeySleTLoopAttackWalk(this, (byte)12),
@@ -88,7 +89,7 @@ public class ServerSSHifumi
 				new KeySleFLoopFreePE(this, (byte)16),
 				new KeySFLoopFreeHardReady(this, (byte)18),
 				new KeySFLoopFreeSoftReady(this, (byte)20),
-				new KeySleFLoopAttackStand(this, (byte)22),
+				new KeySleTLoopAttackStand(this, (byte)22),
 				new KeySTLoop(this, (byte)24)
 			}
 		};

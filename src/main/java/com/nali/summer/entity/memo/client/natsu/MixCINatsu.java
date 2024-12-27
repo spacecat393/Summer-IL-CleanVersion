@@ -39,7 +39,7 @@ public class MixCINatsu
 
 		short key = r.key_short_array[0];
 
-		if (key > 255)
+		if (key > 224)
 		{
 			r.model_byte_array[0 / 8] |= 1;//Math.pow(2, 0 % 8)
 			r.model_byte_array[10 / 8] |= 4;//Math.pow(2, 10 % 8)
@@ -50,16 +50,22 @@ public class MixCINatsu
 			r.model_byte_array[10 / 8] &= 251;//255 - Math.pow(2, 10 % 8)
 		}
 
-		r.model_byte_array[8 / 8] = (byte)((key > 313 && key < 338) || (key > 341 && key < 383) || (key > 827 && key < 850)
+//		r.model_byte_array[8 / 8] = (byte)((key > 313 && key < 338) || (key > 341 && key < 383) || (key > 827 && key < 850)
+//			? r.model_byte_array[8 / 8] | 1//Math.pow(2, 8 % 8)
+//			: r.model_byte_array[8 / 8] & 254);//255 - Math.pow(2, 8 % 8)
+		r.model_byte_array[8 / 8] = (byte)((key > 598 && key < 619)
 			? r.model_byte_array[8 / 8] | 1//Math.pow(2, 8 % 8)
 			: r.model_byte_array[8 / 8] & 254);//255 - Math.pow(2, 8 % 8)
-		r.model_byte_array[9 / 8] = (byte)((key > -1 && key < 226) || (key > 306 && key < 388) || (key > 868 && key < 1029)
+//		r.model_byte_array[9 / 8] = (byte)((key > -1 && key < 226) || (key > 306 && key < 388) || (key > 868 && key < 1029)
+//			? r.model_byte_array[9 / 8] | 2//Math.pow(2, 9 % 8)
+//			: r.model_byte_array[9 / 8] & 253);//255 - Math.pow(2, 9 % 8)
+		r.model_byte_array[9 / 8] = (byte)(key < 225
 			? r.model_byte_array[9 / 8] | 2//Math.pow(2, 9 % 8)
 			: r.model_byte_array[9 / 8] & 253);//255 - Math.pow(2, 9 % 8)
 
 		float scale = r.scale;
 		E e = i.getE();
-		if (key > 765 && key < 823)
+		if (key > 536 && key < 593)
 		{
 			e.width = 1.5F * scale;
 			e.height = 0.2F * scale;
