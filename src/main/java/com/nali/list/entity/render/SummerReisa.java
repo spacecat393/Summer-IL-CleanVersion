@@ -1,18 +1,17 @@
 package com.nali.list.entity.render;
 
-import com.nali.list.entity.SummerIroha;
 import com.nali.small.entity.memo.client.render.FRenderSeInv;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class SummerFRenderIroha
+public class SummerReisa
 <
-	E extends SummerIroha
+	E extends com.nali.list.entity.SummerReisa
 > extends FRenderSeInv<E>
 {
-	public SummerFRenderIroha(RenderManager rendermanager)
+	public SummerReisa(RenderManager rendermanager)
 	{
 		super(rendermanager);
 	}
