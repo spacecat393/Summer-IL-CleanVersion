@@ -1,10 +1,10 @@
 package com.nali.list.entity;
 
 import com.nali.da.IBothDaE;
+import com.nali.list.da.BothDaMYuzu;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
-import com.nali.list.render.RenderMYuzu;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.small.entity.EntityLeInv;
@@ -14,13 +14,13 @@ import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
-import com.nali.list.da.BothDaMYuzu;
 import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.myuzu.ClientMYuzu;
 import com.nali.summer.entity.memo.client.myuzu.MixCIMYuzu;
 import com.nali.summer.entity.memo.client.myuzu.MixRenderMYuzu;
 import com.nali.summer.entity.memo.server.myuzu.MixSIMYuzu;
 import com.nali.summer.entity.memo.server.myuzu.ServerMYuzu;
+import com.nali.summer.render.entity.RenderMYuzu;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

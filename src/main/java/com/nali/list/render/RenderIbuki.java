@@ -11,7 +11,6 @@ import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.summer.render.SummerRenderSe;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -62,16 +61,6 @@ public class RenderIbuki
 		if ((this.model_byte_array[i / 8] >> i % 8 & 1) == 1)
 		{
 			super.draw(index);
-		}
-	}
-
-	@Override
-	public void drawLater(int index)
-	{
-		int i = index - BothDaIbuki.IDA.O_StartPart();
-		if ((this.model_byte_array[i / 8] >> i % 8 & 1) == 1)
-		{
-			super.drawLater(index);
 		}
 	}
 

@@ -1,6 +1,7 @@
 package com.nali.list.render;
 
 import com.nali.list.da.BothDaSeaHouse;
+import com.nali.small.render.IRenderS;
 import com.nali.summer.render.SummerRenderS;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -8,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Arrays;
 
 @SideOnly(Side.CLIENT)
-public class RenderSeaHouse extends SummerRenderS<BothDaSeaHouse>
+public class RenderSeaHouse extends SummerRenderS<BothDaSeaHouse> implements IRenderS<BothDaSeaHouse, RenderSeaHouse>
 {
 	public byte[] model_byte_array;
 
@@ -33,12 +34,12 @@ public class RenderSeaHouse extends SummerRenderS<BothDaSeaHouse>
 	}
 
 	@Override
-	public void drawLater(int index)
+	public void drawLater(RenderSeaHouse r, int index)
 	{
 		int i = index - BothDaSeaHouse.IDA.O_StartPart();
 		if ((this.model_byte_array[i / 8] >> i % 8 & 1) == 1)
 		{
-			super.drawLater(index);
+			IRenderS.super.drawLater(r, index);
 		}
 	}
 }

@@ -8,6 +8,7 @@ import com.nali.small.entity.memo.client.ClientLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
+import com.nali.small.render.IRenderS;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -15,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MixRenderIbuki
 <
 	IE extends InvLe,
-	R extends RenderIbuki<IE, E, I, MC, MB, ?, C>,
+	R extends RenderIbuki<IE, E, I, MC, MB, ?, C> & IRenderS<BothDaIbuki, R>,
 	E extends EntityLe,
 	I extends IMixE<BothDaIbuki, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaIbuki, R, E, I, MB, ?, C>,

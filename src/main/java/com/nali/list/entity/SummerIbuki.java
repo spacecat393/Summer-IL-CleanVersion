@@ -1,10 +1,10 @@
 package com.nali.list.entity;
 
 import com.nali.da.IBothDaE;
+import com.nali.list.da.BothDaIbuki;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
-import com.nali.list.render.RenderIbuki;
 import com.nali.math.M4x4;
 import com.nali.math.Quaternion;
 import com.nali.small.entity.EntityLeInv;
@@ -14,13 +14,13 @@ import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
-import com.nali.list.da.BothDaIbuki;
 import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.ibuki.ClientIbuki;
 import com.nali.summer.entity.memo.client.ibuki.MixCIIbuki;
 import com.nali.summer.entity.memo.client.ibuki.MixRenderIbuki;
 import com.nali.summer.entity.memo.server.ibuki.MixSIIbuki;
 import com.nali.summer.entity.memo.server.ibuki.ServerIbuki;
+import com.nali.summer.render.entity.RenderIbuki;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;

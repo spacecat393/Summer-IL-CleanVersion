@@ -1,5 +1,6 @@
 package com.nali.list.render;
 
+import com.nali.list.da.BothDaArisu;
 import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
@@ -9,9 +10,7 @@ import com.nali.small.entity.memo.client.ClientLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
-import com.nali.list.da.BothDaArisu;
 import com.nali.summer.render.SummerRenderSe;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -54,16 +53,6 @@ public class RenderArisu
 		if ((this.model_byte_array[i / 8] >> i % 8 & 1) == 1)
 		{
 			super.draw(index);
-		}
-	}
-
-	@Override
-	public void drawLater(int index)
-	{
-		int i = index - BothDaArisu.IDA.O_StartPart();
-		if ((this.model_byte_array[i / 8] >> i % 8 & 1) == 1)
-		{
-			super.drawLater(index);
 		}
 	}
 

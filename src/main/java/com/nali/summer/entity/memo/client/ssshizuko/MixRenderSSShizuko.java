@@ -1,7 +1,6 @@
 package com.nali.summer.entity.memo.client.ssshizuko;
 
 import com.nali.list.da.BothDaSSShizuko;
-import com.nali.list.da.BothDaSeaHouse;
 import com.nali.list.render.RenderSSShizuko;
 import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
@@ -11,18 +10,16 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
-import com.nali.small.entity.memo.client.render.FRenderE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
-import net.minecraft.entity.EntityLivingBase;
+import com.nali.small.render.IRenderS;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class MixRenderSSShizuko
 <
 	IE extends InvLe,
-	R extends RenderSSShizuko<IE, E, I, MC, MB, ?, C>,
+	R extends RenderSSShizuko<IE, E, I, MC, MB, ?, C> & IRenderS<BothDaSSShizuko, R>,
 	E extends EntityLe,
 	I extends IMixE<BothDaSSShizuko, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaSSShizuko, R, E, I, MB, ?, C>,

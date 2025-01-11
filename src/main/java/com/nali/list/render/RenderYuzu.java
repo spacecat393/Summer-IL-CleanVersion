@@ -1,8 +1,6 @@
 package com.nali.list.render;
 
-import com.nali.da.IBothDaE;
-import com.nali.da.IBothDaO;
-import com.nali.da.IBothDaS;
+import com.nali.list.da.BothDaYuzu;
 import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
@@ -12,10 +10,8 @@ import com.nali.small.entity.memo.client.ClientLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
-import com.nali.list.da.BothDaYuzu;
 import com.nali.summer.render.SummerRenderSe;
 import com.nali.system.opengl.memo.client.MemoG;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

@@ -10,7 +10,7 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
-import net.minecraft.entity.EntityLivingBase;
+import com.nali.small.render.IRenderS;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MixCISSHoshino
 <
 	IE extends InvLe,
-	R extends RenderSSHoshino<IE, E, I, ?, MB, MR, C>,
+	R extends RenderSSHoshino<IE, E, I, ?, MB, MR, C> & IRenderS<BothDaSSHoshino, R>,
 	E extends EntityLe,
 	I extends IMixE<BothDaSSHoshino, E> & IMixES & IMixESInv,
 	MB extends MixBoxSleInv<BothDaSSHoshino, R, E, I, ?, MR, C>,

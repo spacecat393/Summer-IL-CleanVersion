@@ -12,8 +12,8 @@ import com.nali.small.entity.memo.client.IClientESound;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
+import com.nali.small.render.IRenderS;
 import com.nali.sound.SoundE;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ClientSSHifumi
 <
 	IE extends InvLe,
-	R extends RenderSSHifumi<IE, E, I, MC, MB, MR, ?>,
+	R extends RenderSSHifumi<IE, E, I, MC, MB, MR, ?> & IRenderS<BothDaSSHifumi, R>,
 	E extends EntityLe,
 	I extends IMixE<BothDaSSHifumi, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BothDaSSHifumi, R, E, I, MB, MR, ?>,
