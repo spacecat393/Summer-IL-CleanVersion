@@ -128,10 +128,10 @@ public class SummerArisu extends EntityLeInv implements IMixES, IMixESInv
 			SIEKey.ID,
 
 			SILeFindMove.ID,
-			SILeMove.ID,
+			//SILeMove.ID,
 			SILeWalkTo.ID,
-			SIELook.ID,
-			SILeJump.ID
+			SILeLook.ID,
+			//SILeJump.ID
 		};
 	}
 
