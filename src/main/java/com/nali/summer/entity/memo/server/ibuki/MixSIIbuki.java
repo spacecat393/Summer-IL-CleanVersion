@@ -8,7 +8,11 @@ import com.nali.small.entity.IMixE;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.ServerLeInv;
 import com.nali.small.entity.memo.server.si.MixSIEInv;
-import com.nali.list.da.BothDaIbuki;
+import com.nali.small.entity.memo.server.si.SI;
+import com.nali.small.entity.memo.server.si.SILeLook;
+import com.nali.small.entity.memo.server.si.path.SILeFindMove;
+import com.nali.small.entity.memo.server.si.path.SILeMineTo;
+import com.nali.small.entity.memo.server.si.play.SILePlayWithSSle;
 
 public class MixSIIbuki
 <
@@ -30,7 +34,39 @@ public class MixSIIbuki
 
 	public MixSIIbuki(S s)
 	{
-		super(s);
+		super(s, new SI[]
+		{
+			new SIESound(s),
+
+			new SIEArea(s),
+			new SIEOwner(s),
+			new SILeEat(s),
+
+			new SIEPat(s),
+
+			new SIEInvLockInv(s),
+			new SILeLockDMG(s),
+			new SILeMineTo(s),
+			new SILeUseTo(s),
+			new SIESit(s),
+			new SIESetLocation(s),
+			new SILeFollow(s),
+			new SILeRevive(s),
+			new SILePlayWithSSle(s),
+			new SILeCareOwner(s),
+			new SILeAttack(s),
+			new SILeInvManageItem(s),
+			new SILeInvGetItem(s),
+			new SILeRandomWalk(s),
+			new SILeLookTo(s),
+			new SILeRandomLook(s),
+
+			new SIEKey(s),
+
+			new SILeFindMove(s),
+			new SIEWalkTo(s),
+			new SILeLook(s),
+		});
 	}
 
 	@Override

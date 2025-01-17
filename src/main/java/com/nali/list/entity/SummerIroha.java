@@ -14,6 +14,10 @@ import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
+import com.nali.small.entity.memo.server.si.SILeLook;
+import com.nali.small.entity.memo.server.si.path.SILeFindMove;
+import com.nali.small.entity.memo.server.si.path.SILeMineTo;
+import com.nali.small.entity.memo.server.si.play.SILePlayWithSSle;
 import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.iroha.ClientIroha;
 import com.nali.summer.entity.memo.client.iroha.MixCIIroha;
@@ -115,7 +119,7 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 			SILeMineTo.ID,
 			SILeUseTo.ID,
 			SIESit.ID,
-			SILeSetLocation.ID,
+			SIESetLocation.ID,
 			SILeFollow.ID,
 			SILeRevive.ID,
 			SIEPlayWithRSe.ID,//Play-1
@@ -131,7 +135,7 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 
 			SILeFindMove.ID,
 			//SILeMove.ID,
-			SILeWalkTo.ID,
+			SIEWalkTo.ID,
 			SILeLook.ID,
 			//SILeJump.ID
 		};
@@ -158,7 +162,7 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.05D);
+		//this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.05D);
 		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(40.0D);
 	}
 

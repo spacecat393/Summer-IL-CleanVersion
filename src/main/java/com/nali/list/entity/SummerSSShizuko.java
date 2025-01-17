@@ -16,6 +16,10 @@ import com.nali.small.entity.memo.IBothLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.server.si.MixSIEInv;
+import com.nali.small.entity.memo.server.si.SI;
+import com.nali.small.entity.memo.server.si.SILeLook;
+import com.nali.small.entity.memo.server.si.path.SILeFindMove;
+import com.nali.small.entity.memo.server.si.path.SILeMineTo;
 import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.ssshizuko.ClientSSShizuko;
 import com.nali.summer.entity.memo.client.ssshizuko.MixRenderSSShizuko;
@@ -113,7 +117,7 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 			SILeMineTo.ID,
 			SILeUseTo.ID,
 			SIESit.ID,
-			SILeSetLocation.ID,
+			SIESetLocation.ID,
 			SILeFollow.ID,
 			SILeRevive.ID,
 			SILeProtect.ID,
@@ -129,7 +133,7 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 
 			SILeFindMove.ID,
 			//SILeMove.ID,
-			SILeWalkTo.ID,
+			SIEWalkTo.ID,
 			SILeLook.ID,
 			//SILeJump.ID
 		};
@@ -181,7 +185,7 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.05D);
+		//this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.05D);
 		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(20.0D);
 	}
 
@@ -237,7 +241,39 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 	{
 		ServerSSShizuko s = new ServerSSShizuko(this);
 //		MixSISSShizuko ms = new MixSISSShizuko(s);
-		MixSIEInv ms = new MixSIEInv(s);
+		MixSIEInv ms = new MixSIEInv(s, new SI[]
+		{
+			new SIESound(s),
+
+			new SIEArea(s),
+			new SIEOwner(s),
+			new SILeEat(s),
+
+			new SIEPat(s),
+
+			new SIEInvLockInv(s),
+			new SILeLockDMG(s),
+			new SILeMineTo(s),
+			new SILeUseTo(s),
+			new SIESit(s),
+			new SIESetLocation(s),
+			new SILeFollow(s),
+			new SILeRevive(s),
+			new SILeProtect(s),
+			new SILeCareOwner(s),
+			new SILeAttack(s),
+			new SILeInvManageItem(s),
+			new SILeInvGetItem(s),
+			new SILeRandomWalk(s),
+			new SILeLookTo(s),
+			new SILeRandomLook(s),
+
+			new SIEKey(s),
+
+			new SILeFindMove(s),
+			new SIEWalkTo(s),
+			new SILeLook(s),
+		});
 		s.ms = ms;
 		ms.init();
 		s.initKey();
