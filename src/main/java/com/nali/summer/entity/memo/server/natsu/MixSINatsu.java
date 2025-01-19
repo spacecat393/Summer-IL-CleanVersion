@@ -50,19 +50,19 @@ public class MixSINatsu
 			new SIEInvLockInv(s),
 			new SILeLockDMG(s),
 			new SILeMineTo(s),
-			new SILeUseTo(s),
+			new SIEUseTo(s),
 			new SIESit(s),
 			new SIESetLocation(s),
-			new SILeFollow(s),
-			new SILeRevive(s),
-			new SILeHeal(s),
-			new SILeCareOwner(s),
+			new SIEFollow(s),
+			new SIERevive(s),
+			new SIEHeal(s),
+			new SIECareOwner(s),
 			new SILeAttack(s),
 			new SILeInvManageItem(s),
-			new SILeInvGetItem(s),
-			new SILeRandomWalk(s),
-			new SILeLookTo(s),
-			new SILeRandomLook(s),
+			new SIEInvGetItem(s),
+			new SIERandomWalk(s),
+			new SIELookTo(s),
+			new SIERandomLook(s),
 
 			new SIEKey(s),
 
@@ -81,6 +81,6 @@ public class MixSINatsu
 //		sileattack.max_magic_point = 16;
 		sileattack.minimum_distance = 8.0F;
 
-		((SILeHeal<BD, E, I, S, ?>)this.s.ms.si_map.get(SILeHeal.ID)).heal_frame_int_array = HEAL_FRAME_INT_ARRAY;
+		((SIEHeal<BD, E, I, S, ?>)this.s.ms.si_map.get(SIEHeal.ID)).heal_frame_int_array = HEAL_FRAME_INT_ARRAY;
 	}
 }
