@@ -13,7 +13,6 @@ import com.nali.small.entity.memo.server.si.frame.KeyS;
 import com.nali.small.entity.memo.server.si.frame.floop.KeySFLoopRSeStand;
 import com.nali.small.entity.memo.server.si.frame.floopfree.KeySFLoopFreeRSePlay;
 import com.nali.small.entity.memo.server.si.frame.tloop.KeySTLoop;
-import com.nali.small.entity.memo.server.si.play.SILePlayWithSSe;
 
 public class ServerE22Locker
 <
@@ -66,7 +65,7 @@ public class ServerE22Locker
 		this.keys_2d_array = new KeyS[][]
 		{
 			{
-				new KeySFLoopFreeRSePlay(this, (byte)0, SILePlayWithSSe.ID),
+				new KeySFLoopFreeRSePlay(this, (byte)0),
 				new KeySFLoopRSeStand(this, (byte)2),
 				new KeySTLoop(this, (byte)4)
 			}

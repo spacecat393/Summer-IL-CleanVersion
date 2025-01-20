@@ -17,7 +17,6 @@ import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.server.si.SILeLook;
 import com.nali.small.entity.memo.server.si.path.SILeFindMove;
 import com.nali.small.entity.memo.server.si.path.SILeMineTo;
-import com.nali.small.entity.memo.server.si.play.SILePlayWithSSle;
 import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.iroha.ClientIroha;
 import com.nali.summer.entity.memo.client.iroha.MixCIIroha;
@@ -46,7 +45,6 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 
 	public static byte[] CI_BYTE_ARRAY;
 	public static byte[] SI_BYTE_ARRAY;
-	public static byte[] PW_BYTE_ARRAY;
 
 	public IBothLeInv ibothleinv;
 
@@ -138,12 +136,6 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 			SIEWalkTo.ID,
 			SILeLook.ID,
 			//SILeJump.ID
-		};
-
-		PW_BYTE_ARRAY = new byte[]
-		{
-			SIEPlayWithRSe.ID,
-			SILePlayWithSSle.ID
 		};
 	}
 

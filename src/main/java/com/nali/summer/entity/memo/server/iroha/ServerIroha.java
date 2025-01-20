@@ -2,7 +2,6 @@ package com.nali.summer.entity.memo.server.iroha;
 
 import com.nali.da.IBothDaE;
 import com.nali.da.IBothDaNe;
-import com.nali.list.entity.SummerIroha;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.network.message.ClientMessage;
 import com.nali.network.NetworkRegistry;
@@ -104,7 +103,7 @@ public class ServerIroha
 				new KeySTLoopFBSitRSe(this, (byte)4),
 				new KeySleFLoopOffSetAttackEndWalkRSe(this, (byte)6),
 				new KeySleShootRSe(this, (byte)9),
-				new KeySTLoopPWStand(this, (byte)14, SummerIroha.PW_BYTE_ARRAY),
+				new KeySTLoopPWStand(this, (byte)14),
 
 				new KeySleFLoopDie(this, (byte)16),
 				new KeySTLoopFBSit(this, (byte)18),

@@ -29,6 +29,7 @@ public class RenderSSHifumi
 	@Override
 	public void drawLater(RenderSSHifumi<IE, E, I, MC, MB, MR, C> r, int index)
 	{
+//		this.c.i.getE();
 		int i = index - BothDaSSHifumi.IDA.O_StartPart();
 		if ((this.model_byte_array[i / 8] >> i % 8 & 1) == 1)
 		{

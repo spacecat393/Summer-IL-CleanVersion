@@ -2,7 +2,6 @@ package com.nali.summer.entity.memo.server.ibuki;
 
 import com.nali.da.IBothDaE;
 import com.nali.da.IBothDaNe;
-import com.nali.list.entity.SummerIbuki;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.network.message.ClientMessage;
 import com.nali.network.NetworkRegistry;
@@ -100,7 +99,7 @@ public class ServerIbuki
 				new KeySleTLoopFBSitSSle(this, (byte)4),
 				new KeySleFLoopOffSetAttackEndWalkSSle(this, (byte)6),
 				new KeySleShootSSle(this, (byte)9),
-				new KeySTLoopPWStand(this, (byte)14, SummerIbuki.PW_BYTE_ARRAY),
+				new KeySTLoopPWStand(this, (byte)14),
 
 				new KeySleFLoopDie(this, /*0+*/(byte)16),
 				new KeySTLoopSit(this, (byte)(2+16)),

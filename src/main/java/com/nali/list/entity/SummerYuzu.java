@@ -46,7 +46,6 @@ public class SummerYuzu extends EntityLeInv implements IMixES, IMixESInv
 
 	public static byte[] CI_BYTE_ARRAY;
 	public static byte[] SI_BYTE_ARRAY;
-	public static byte[] PW_BYTE_ARRAY;
 
 	public IBothLeInv ibothleinv;
 
@@ -137,12 +136,6 @@ public class SummerYuzu extends EntityLeInv implements IMixES, IMixESInv
 			SIEWalkTo.ID,
 			SILeLook.ID,
 			//SILeJump.ID
-		};
-
-		PW_BYTE_ARRAY = new byte[]
-		{
-			SILePlayWithSSe.ID,
-			SIEPlayWithRSe.ID
 		};
 	}
 

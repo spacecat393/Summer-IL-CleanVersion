@@ -2,7 +2,6 @@ package com.nali.summer.entity.memo.server.yuzu;
 
 import com.nali.da.IBothDaE;
 import com.nali.da.IBothDaNe;
-import com.nali.list.entity.SummerYuzu;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.network.message.ClientMessage;
 import com.nali.network.NetworkRegistry;
@@ -81,7 +80,7 @@ public class ServerYuzu
 			{
 				new KeySleFLoopDie(this, (byte)0),
 				new KeySleFLoopSSeRSePlay(this, (byte)2),
-				new KeySTLoopPWStand(this, (byte)4, SummerYuzu.PW_BYTE_ARRAY),
+				new KeySTLoopPWStand(this, (byte)4),
 				new KeySTLoopSit(this, (byte)6),
 				new KeySleFLoopOffSetAttackEndWalk(this, (byte)8),
 				new KeySleShoot(this, (byte)11),
