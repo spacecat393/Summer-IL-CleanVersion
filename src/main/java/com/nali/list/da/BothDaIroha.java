@@ -42,13 +42,13 @@ public class BothDaIroha implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP + 130;
+		return MODEL_STEP + 131;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 141;
+		return MODEL_STEP + 142;
 	}
 
 	@Override

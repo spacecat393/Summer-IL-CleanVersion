@@ -13,13 +13,13 @@ public class BothDaSeaHouse implements IBothDaS, IBothDaO
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP + 34;
+		return MODEL_STEP + 35;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 37;
+		return MODEL_STEP + 38;
 	}
 
 	@Override

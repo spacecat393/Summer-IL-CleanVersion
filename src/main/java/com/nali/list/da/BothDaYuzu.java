@@ -43,13 +43,13 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBot
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP + 97;
+		return MODEL_STEP + 98;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 106;
+		return MODEL_STEP + 107;
 	}
 
 	@Override

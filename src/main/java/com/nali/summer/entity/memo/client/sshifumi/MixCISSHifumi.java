@@ -72,7 +72,7 @@ public class MixCISSHifumi
 //			skinningrender.model_byte_array[9 / 8] |= 2;//Math.pow(2, 9 % 8)
 //			skinningrender.model_byte_array[10 / 8] |= 4;//Math.pow(2, 10 % 8)
 			r.model_byte_array[0] |= 128;
-			r.model_byte_array[1] |= 1 | 2 | 4;
+			r.model_byte_array[1] |= 1 | 2 | 4 | 32;//13%8
 		}
 		else
 		{
@@ -82,7 +82,7 @@ public class MixCISSHifumi
 //			skinningrender.model_byte_array[9 / 8] &= 253;//255 - Math.pow(2, 9 % 8)
 //			skinningrender.model_byte_array[10 / 8] &= 251;//255 - Math.pow(2, 10 % 8)
 			r.model_byte_array[0] &= 255-128;
-			r.model_byte_array[1] &= 255-1 & 255-2 & 255-4;
+			r.model_byte_array[1] &= 255-1 & 255-2 & 255-4 & 255-32;
 		}
 
 //		skinningrender.model_byte_array[5 / 8] &= 255-32;//255 - Math.pow(2, 5 % 8)

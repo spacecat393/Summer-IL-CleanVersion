@@ -42,13 +42,13 @@ public class BothDaSSShizuko implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe,
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP + 37;
+		return MODEL_STEP + 38;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 49;
+		return MODEL_STEP + 50;
 	}
 
 	@Override

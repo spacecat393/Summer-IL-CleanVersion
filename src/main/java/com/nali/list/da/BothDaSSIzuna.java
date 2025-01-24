@@ -42,13 +42,13 @@ public class BothDaSSIzuna implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, I
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP + 49;
+		return MODEL_STEP + 50;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 58;
+		return MODEL_STEP + 59;
 	}
 
 	@Override

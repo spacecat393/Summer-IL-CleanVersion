@@ -42,13 +42,13 @@ public class BothDaNatsu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP + 13;
+		return MODEL_STEP + 14;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 25;
+		return MODEL_STEP + 26;
 	}
 
 	@Override

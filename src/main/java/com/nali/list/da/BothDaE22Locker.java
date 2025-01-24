@@ -45,13 +45,13 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP + 90;
+		return MODEL_STEP + 91;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 97;
+		return MODEL_STEP + 98;
 	}
 
 	@Override

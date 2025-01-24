@@ -45,13 +45,13 @@ public class BothDaArisu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP + 25;
+		return MODEL_STEP + 26;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 34;
+		return MODEL_STEP + 35;
 	}
 
 	@Override

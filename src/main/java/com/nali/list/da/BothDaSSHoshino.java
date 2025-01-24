@@ -42,13 +42,13 @@ public class BothDaSSHoshino implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe,
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP + 69;
+		return MODEL_STEP + 70;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 81;
+		return MODEL_STEP + 82;
 	}
 
 	@Override

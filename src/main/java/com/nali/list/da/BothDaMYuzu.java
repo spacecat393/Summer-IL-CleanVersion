@@ -42,13 +42,13 @@ public class BothDaMYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP + 81;
+		return MODEL_STEP + 82;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 90;
+		return MODEL_STEP + 91;
 	}
 
 	@Override

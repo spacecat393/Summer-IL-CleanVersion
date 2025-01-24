@@ -48,15 +48,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 
 	public IBothLeInv ibothleinv;
 
-	public static int[] IV_INT_ARRAY = new int[]
-	{
-		/*0+0 + */MODEL_STEP, 9046,
-		/*0+0 + */MODEL_STEP, 2581,
-		4/*+0*/ + MODEL_STEP, 1275,
-		/*0+0 + */MODEL_STEP, 9224,
-		/*0+0 + */MODEL_STEP, 7860,
-		12/*+0*/ + MODEL_STEP, 69
-	};
+	public static int[] IV_INT_ARRAY;
 	public static float[] ROTATION_FLOAT_ARRAY = new float[]
 	{
 		0.0F, 0.0F,
@@ -134,6 +126,16 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 			SIEWalkTo.ID,
 			SILeLook.ID,
 			//SILeJump.ID
+		};
+
+		IV_INT_ARRAY = new int[]
+		{
+			/*0+0 + */MODEL_STEP, 9046,
+			/*0+0 + */MODEL_STEP, 2581,
+			4/*+0*/ + MODEL_STEP, 1275,
+			/*0+0 + */MODEL_STEP, 9224,
+			/*0+0 + */MODEL_STEP, 7860,
+			11/*+0*/ + MODEL_STEP, 39
 		};
 	}
 
