@@ -42,13 +42,13 @@ public class BothDaSSHifumi implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, 
 	@Override
 	public int O_StartPart()
 	{
-		return MODEL_STEP/* + 0*/;
+		return MODEL_STEP/* + 0*//* + 2*/;
 	}
 
 	@Override
 	public int O_EndPart()
 	{
-		return MODEL_STEP + 14;
+		return MODEL_STEP + 14/* - 11*/;
 	}
 
 	@Override
