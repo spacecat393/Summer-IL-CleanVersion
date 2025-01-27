@@ -6,7 +6,7 @@ import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
 import com.nali.math.M4x4;
-import com.nali.math.Quaternion;
+import com.nali.math.V4;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.EntityMath;
 import com.nali.small.entity.IMixES;
@@ -289,21 +289,24 @@ public class SummerIroha extends EntityLeInv implements IMixES, IMixESInv
 
 	public static void setAnimation(float[] skinning_float_array, short[] key_short_array, float head_pitch, float body_rot, float net_head_yaw)
 	{
-		M4x4 body_m4x4 = new Quaternion(0.0F, 0.0F, body_rot).getM4x4();
+		V4.q(V4.TV4_FLOAT_ARRAY, 0.0F, 0.0F, body_rot);
+		float[] body_m4x4 = V4.getM4X4(V4.TV4_FLOAT_ARRAY);
 
 		if (key_short_array[0] > 257)
 		{
-			M4x4 head_m4x4 = new Quaternion(0, 0, net_head_yaw).getM4x4();
+			V4.q(V4.TV4_FLOAT_ARRAY, 0, 0, net_head_yaw);
+			float[] head_m4x4 = V4.getM4X4(V4.TV4_FLOAT_ARRAY);
 
-			head_m4x4.multiply(skinning_float_array, 5 * 16);
+			M4x4.m(head_m4x4, skinning_float_array, 0, 5 * 16);
 		}
 		else
 		{
-			M4x4 head_m4x4 = new Quaternion(-head_pitch, 0, net_head_yaw).getM4x4();
+			V4.q(V4.TV4_FLOAT_ARRAY, -head_pitch, 0, net_head_yaw);
+			float[] head_m4x4 = V4.getM4X4(V4.TV4_FLOAT_ARRAY);
 
-			head_m4x4.multiply(skinning_float_array, 20 * 16);
+			M4x4.m(head_m4x4, skinning_float_array, 0, 20 * 16);
 		}
 
-		body_m4x4.multiply(skinning_float_array, 0);
+		M4x4.m(body_m4x4, skinning_float_array, 0, 0);
 	}
 }

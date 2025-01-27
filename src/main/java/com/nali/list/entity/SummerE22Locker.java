@@ -5,7 +5,8 @@ import com.nali.list.da.BothDaE22Locker;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.si.*;
 import com.nali.list.render.RenderE22Locker;
-import com.nali.math.Quaternion;
+import com.nali.math.M4x4;
+import com.nali.math.V4;
 import com.nali.small.entity.EntityE;
 import com.nali.small.entity.EntityMath;
 import com.nali.small.entity.IMixES;
@@ -315,6 +316,8 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 	{
 		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
 
-		new Quaternion(0, 0, head_rot).getM4x4().multiply(skinning_float_array, 0);
+		V4.q(V4.TV4_FLOAT_ARRAY, 0, 0, head_rot);
+		float[] head_m4x4 = V4.getM4X4(V4.TV4_FLOAT_ARRAY);
+		M4x4.m(head_m4x4, skinning_float_array, 0, 0);
 	}
 }
