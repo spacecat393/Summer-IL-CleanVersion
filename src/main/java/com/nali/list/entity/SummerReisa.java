@@ -5,6 +5,7 @@ import com.nali.list.da.BothDaReisa;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
+import com.nali.list.render.RenderReisa;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
 import com.nali.small.entity.EntityLeInv;
@@ -23,7 +24,6 @@ import com.nali.summer.entity.memo.client.reisa.MixCIReisa;
 import com.nali.summer.entity.memo.client.reisa.MixRenderReisa;
 import com.nali.summer.entity.memo.server.reisa.MixSIReisa;
 import com.nali.summer.entity.memo.server.reisa.ServerReisa;
-import com.nali.summer.render.entity.RenderReisa;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -137,15 +137,15 @@ public class SummerReisa extends EntityLeInv implements IMixES, IMixESInv
 		};
 	}
 
-	@SideOnly(Side.CLIENT)
-	public static ClientReisa getC()
-	{
-		RenderReisa r = new RenderReisa();
-		ClientReisa c = new ClientReisa(r);
-		r.c = c;
-		c.mr = new MixRenderReisa(c);
-		return c;
-	}
+//	@SideOnly(Side.CLIENT)
+//	public static ClientReisa getC()
+//	{
+//		RenderReisa r = new RenderReisa();
+//		ClientReisa c = new ClientReisa(r);
+//		r.c = c;
+//		c.mr = new MixRenderReisa(c);
+//		return c;
+//	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public void initFakeFrame()

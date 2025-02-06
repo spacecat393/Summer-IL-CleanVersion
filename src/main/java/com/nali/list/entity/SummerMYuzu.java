@@ -5,6 +5,7 @@ import com.nali.list.da.BothDaMYuzu;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
+import com.nali.list.render.RenderMYuzu;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
 import com.nali.small.entity.EntityLeInv;
@@ -23,7 +24,6 @@ import com.nali.summer.entity.memo.client.myuzu.MixCIMYuzu;
 import com.nali.summer.entity.memo.client.myuzu.MixRenderMYuzu;
 import com.nali.summer.entity.memo.server.myuzu.MixSIMYuzu;
 import com.nali.summer.entity.memo.server.myuzu.ServerMYuzu;
-import com.nali.summer.render.entity.RenderMYuzu;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -137,15 +137,15 @@ public class SummerMYuzu extends EntityLeInv implements IMixES, IMixESInv
 		};
 	}
 
-	@SideOnly(Side.CLIENT)
-	public static ClientMYuzu getC()
-	{
-		RenderMYuzu r = new RenderMYuzu();
-		ClientMYuzu c = new ClientMYuzu(r);
-		r.c = c;
-		c.mr = new MixRenderMYuzu(c);
-		return c;
-	}
+//	@SideOnly(Side.CLIENT)
+//	public static ClientMYuzu getC()
+//	{
+//		RenderMYuzu r = new RenderMYuzu();
+//		ClientMYuzu c = new ClientMYuzu(r);
+//		r.c = c;
+//		c.mr = new MixRenderMYuzu(c);
+//		return c;
+//	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public void initFakeFrame()

@@ -117,15 +117,15 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 		};
 	}
 
-	@SideOnly(Side.CLIENT)
-	public static ClientE22Locker getC()
-	{
-		RenderE22Locker r = new RenderE22Locker();
-		ClientE22Locker c = new ClientE22Locker(r);
-		r.c = c;
-		c.mr = new MixRenderE22Locker(c);
-		return c;
-	}
+//	@SideOnly(Side.CLIENT)
+//	public static ClientE22Locker getC()
+//	{
+//		RenderE22Locker r = new RenderE22Locker();
+//		ClientE22Locker c = new ClientE22Locker(r);
+//		r.c = c;
+//		c.mr = new MixRenderE22Locker(c);
+//		return c;
+//	}
 
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbttagcompound)

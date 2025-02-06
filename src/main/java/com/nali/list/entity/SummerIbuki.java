@@ -5,6 +5,7 @@ import com.nali.list.da.BothDaIbuki;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
+import com.nali.list.render.RenderIbuki;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
 import com.nali.small.entity.EntityLeInv;
@@ -24,7 +25,6 @@ import com.nali.summer.entity.memo.client.ibuki.MixCIIbuki;
 import com.nali.summer.entity.memo.client.ibuki.MixRenderIbuki;
 import com.nali.summer.entity.memo.server.ibuki.MixSIIbuki;
 import com.nali.summer.entity.memo.server.ibuki.ServerIbuki;
-import com.nali.summer.render.entity.RenderIbuki;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -139,15 +139,15 @@ public class SummerIbuki extends EntityLeInv implements IMixES, IMixESInv
 		};
 	}
 
-	@SideOnly(Side.CLIENT)
-	public static ClientIbuki getC()
-	{
-		RenderIbuki r = new RenderIbuki();
-		ClientIbuki c = new ClientIbuki(r);
-		r.c = c;
-		c.mr = new MixRenderIbuki(c);
-		return c;
-	}
+//	@SideOnly(Side.CLIENT)
+//	public static ClientIbuki getC()
+//	{
+//		RenderIbuki r = new RenderIbuki();
+//		ClientIbuki c = new ClientIbuki(r);
+//		r.c = c;
+//		c.mr = new MixRenderIbuki(c);
+//		return c;
+//	}
 
 	@Override
 	public void applyEntityAttributes()

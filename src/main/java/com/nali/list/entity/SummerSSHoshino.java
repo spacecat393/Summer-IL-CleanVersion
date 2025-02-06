@@ -5,6 +5,7 @@ import com.nali.list.da.BothDaSSHoshino;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
+import com.nali.list.render.RenderSSHoshino;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
 import com.nali.small.entity.EntityLeInv;
@@ -23,7 +24,6 @@ import com.nali.summer.entity.memo.client.sshoshino.MixCISSHoshino;
 import com.nali.summer.entity.memo.client.sshoshino.MixRenderSSHoshino;
 import com.nali.summer.entity.memo.server.sshoshino.MixSISSHoshino;
 import com.nali.summer.entity.memo.server.sshoshino.ServerSSHoshino;
-import com.nali.summer.render.entity.RenderSSHoshino;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -137,15 +137,15 @@ public class SummerSSHoshino extends EntityLeInv implements IMixES, IMixESInv
 		};
 	}
 
-	@SideOnly(Side.CLIENT)
-	public static ClientSSHoshino getC()
-	{
-		RenderSSHoshino r = new RenderSSHoshino();
-		ClientSSHoshino c = new ClientSSHoshino(r);
-		r.c = c;
-		c.mr = new MixRenderSSHoshino(c);
-		return c;
-	}
+//	@SideOnly(Side.CLIENT)
+//	public static ClientSSHoshino getC()
+//	{
+//		RenderSSHoshino r = new RenderSSHoshino();
+//		ClientSSHoshino c = new ClientSSHoshino(r);
+//		r.c = c;
+//		c.mr = new MixRenderSSHoshino(c);
+//		return c;
+//	}
 
 	@Override
 	public void applyEntityAttributes()

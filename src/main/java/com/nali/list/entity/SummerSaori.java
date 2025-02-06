@@ -5,6 +5,7 @@ import com.nali.list.da.BothDaSaori;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
+import com.nali.list.render.RenderSaori;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
 import com.nali.small.entity.EntityLeInv;
@@ -23,7 +24,6 @@ import com.nali.summer.entity.memo.client.saori.MixCISaori;
 import com.nali.summer.entity.memo.client.saori.MixRenderSaori;
 import com.nali.summer.entity.memo.server.saori.MixSISaori;
 import com.nali.summer.entity.memo.server.saori.ServerSaori;
-import com.nali.summer.render.entity.RenderSaori;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -137,15 +137,15 @@ public class SummerSaori extends EntityLeInv implements IMixES, IMixESInv
 		};
 	}
 
-	@SideOnly(Side.CLIENT)
-	public static ClientSaori getC()
-	{
-		RenderSaori r = new RenderSaori();
-		ClientSaori c = new ClientSaori(r);
-		r.c = c;
-		c.mr = new MixRenderSaori(c);
-		return c;
-	}
+//	@SideOnly(Side.CLIENT)
+//	public static ClientSaori getC()
+//	{
+//		RenderSaori r = new RenderSaori();
+//		ClientSaori c = new ClientSaori(r);
+//		r.c = c;
+//		c.mr = new MixRenderSaori(c);
+//		return c;
+//	}
 //	@Override
 //	public AxisAlignedBB getMouthAxisAlignedBB()
 //	{

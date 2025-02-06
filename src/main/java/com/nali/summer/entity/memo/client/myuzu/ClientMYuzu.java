@@ -12,7 +12,6 @@ import com.nali.small.entity.memo.client.IClientESound;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSleInv;
-import com.nali.small.render.IRenderS;
 import com.nali.sound.SoundE;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -21,13 +20,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ClientMYuzu
 <
 	IE extends InvLe,
-	R extends RenderMYuzu<IE, E, I, MC, MB, MR, ?> & IRenderS<BothDaMYuzu, R>,
+	BD extends BothDaMYuzu,
+	R extends RenderMYuzu<IE, E, I, MC, MB, MR, ?, BD, R>,
 	E extends EntityLe,
-	I extends IMixE<BothDaMYuzu, E> & IMixES & IMixESInv,
-	MC extends MixCIE<BothDaMYuzu, R, E, I, MB, MR, ?>,
-	MB extends MixBoxSleInv<BothDaMYuzu, R, E, I, MC, MR, ?>,
-	MR extends MixRenderSleInv<IE, BothDaMYuzu, R, E, I, MC, MB, ?>
-> extends ClientLeInv<IE, BothDaMYuzu, R, E, I, MC, MB, MR> implements IClientESound
+	I extends IMixE<BD, E> & IMixES & IMixESInv,
+	MC extends MixCIE<BD, R, E, I, MB, MR, ?>,
+	MB extends MixBoxSleInv<BD, R, E, I, MC, MR, ?>,
+	MR extends MixRenderSleInv<IE, BD, R, E, I, MC, MB, ?>
+> extends ClientLeInv<IE, BD, R, E, I, MC, MB, MR> implements IClientESound
 {
 	public SoundE sounde;
 

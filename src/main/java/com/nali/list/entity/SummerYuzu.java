@@ -5,6 +5,7 @@ import com.nali.list.da.BothDaYuzu;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
+import com.nali.list.render.RenderYuzu;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
 import com.nali.small.entity.EntityLeInv;
@@ -24,7 +25,6 @@ import com.nali.summer.entity.memo.client.yuzu.MixCIYuzu;
 import com.nali.summer.entity.memo.client.yuzu.MixRenderYuzu;
 import com.nali.summer.entity.memo.server.yuzu.MixSIYuzu;
 import com.nali.summer.entity.memo.server.yuzu.ServerYuzu;
-import com.nali.summer.render.entity.RenderYuzu;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -139,15 +139,15 @@ public class SummerYuzu extends EntityLeInv implements IMixES, IMixESInv
 		};
 	}
 
-	@SideOnly(Side.CLIENT)
-	public static ClientYuzu getC()
-	{
-		RenderYuzu r = new RenderYuzu();
-		ClientYuzu c = new ClientYuzu(r);
-		r.c = c;
-		c.mr = new MixRenderYuzu(c);
-		return c;
-	}
+//	@SideOnly(Side.CLIENT)
+//	public static ClientYuzu getC()
+//	{
+//		RenderYuzu r = new RenderYuzu();
+//		ClientYuzu c = new ClientYuzu(r);
+//		r.c = c;
+//		c.mr = new MixRenderYuzu(c);
+//		return c;
+//	}
 
 	@Override
 	public void applyEntityAttributes()

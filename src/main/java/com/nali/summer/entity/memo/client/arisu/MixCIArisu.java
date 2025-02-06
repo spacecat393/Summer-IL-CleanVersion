@@ -10,7 +10,6 @@ import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.client.ClientLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
-import com.nali.small.render.IRenderS;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -18,13 +17,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MixCIArisu
 <
 	IE extends InvLe,
-	R extends RenderArisu<IE, E, I, ?, MB, MR, C> & IRenderS<BothDaArisu, R>,
+	BD extends BothDaArisu,
+	R extends RenderArisu<IE, E, I, ?, MB, MR, C, BD, R>,
 	E extends EntityLe,
-	I extends IMixE<BothDaArisu, E> & IMixES & IMixESInv,
-	MB extends MixBoxSleInv<BothDaArisu, R, E, I, ?, MR, C>,
-	MR extends MixRenderArisu<IE, BothDaArisu, R, E, I, ?, MB, C>,
-	C extends ClientLeInv<IE, BothDaArisu, R, E, I, ?, MB, MR>
-> extends MixCIE<BothDaArisu, R, E, I, MB, MR, C>
+	I extends IMixE<BD, E> & IMixES & IMixESInv,
+	MB extends MixBoxSleInv<BD, R, E, I, ?, MR, C>,
+	MR extends MixRenderArisu<IE, BD, R, E, I, ?, MB, C>,
+	C extends ClientLeInv<IE, BD, R, E, I, ?, MB, MR>
+> extends MixCIE<BD, R, E, I, MB, MR, C>
 {
 	public MixCIArisu(C c)
 	{

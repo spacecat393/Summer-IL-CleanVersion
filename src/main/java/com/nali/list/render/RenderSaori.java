@@ -1,6 +1,7 @@
 package com.nali.list.render;
 
 import com.nali.list.da.BothDaSaori;
+import com.nali.render.RenderS;
 import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
@@ -10,6 +11,7 @@ import com.nali.small.entity.memo.client.ClientLeInv;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
+import com.nali.small.render.IRenderS;
 import com.nali.summer.render.SummerRenderSe;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -19,16 +21,18 @@ public class RenderSaori
 <
 	IE extends InvLe,
 	E extends EntityLe,
-	I extends IMixE<BothDaSaori, E> & IMixES & IMixESInv,
-	MC extends MixCIE<BothDaSaori, ?, E, I, MB, MR, C>,
-	MB extends MixBoxSleInv<BothDaSaori, ?, E, I, MC, MR, C>,
-	MR extends MixRenderSe<BothDaSaori, ?, E, I, MC, MB, C>,
-	C extends ClientLeInv<IE, BothDaSaori, ?, E, I, MC, MB, MR>
-> extends SummerRenderSe<E, I, MC, MB, MR, C, BothDaSaori>
+	I extends IMixE<BD, E> & IMixES & IMixESInv,
+	MC extends MixCIE<BD, ?, E, I, MB, MR, C>,
+	MB extends MixBoxSleInv<BD, ?, E, I, MC, MR, C>,
+	MR extends MixRenderSe<BD, ?, E, I, MC, MB, C>,
+	C extends ClientLeInv<IE, BD, ?, E, I, MC, MB, MR>,
+	BD extends BothDaSaori,
+	R extends RenderS<BD> & IRenderS<BD, R>
+> extends SummerRenderSe<E, I, MC, MB, MR, C, BD, R>
 {
 	public RenderSaori()
 	{
-		super(BothDaSaori.IDA);
+		super((BD)BothDaSaori.IDA);
 //		this.texture_index_int_array[0] = 70;
 //		this.texture_index_int_array[1] = 71;
 //		this.texture_index_int_array[2] = 71;

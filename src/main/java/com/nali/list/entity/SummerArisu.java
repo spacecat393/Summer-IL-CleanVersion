@@ -5,6 +5,7 @@ import com.nali.list.da.BothDaArisu;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
+import com.nali.list.render.RenderArisu;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
 import com.nali.small.entity.EntityLeInv;
@@ -23,7 +24,6 @@ import com.nali.summer.entity.memo.client.arisu.MixCIArisu;
 import com.nali.summer.entity.memo.client.arisu.MixRenderArisu;
 import com.nali.summer.entity.memo.server.arisu.MixSIArisu;
 import com.nali.summer.entity.memo.server.arisu.ServerArisu;
-import com.nali.summer.render.entity.RenderArisu;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -138,15 +138,15 @@ public class SummerArisu extends EntityLeInv implements IMixES, IMixESInv
 		};
 	}
 
-	@SideOnly(Side.CLIENT)
-	public static ClientArisu getC()
-	{
-		RenderArisu r = new RenderArisu();
-		ClientArisu c = new ClientArisu(r);
-		r.c = c;
-		c.mr = new MixRenderArisu(c);
-		return c;
-	}
+//	@SideOnly(Side.CLIENT)
+//	public static ClientArisu getC()
+//	{
+//		RenderArisu r = new RenderArisu();
+//		ClientArisu c = new ClientArisu(r);
+//		r.c = c;
+//		c.mr = new MixRenderArisu(c);
+//		return c;
+//	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
 //	public void updateClient()

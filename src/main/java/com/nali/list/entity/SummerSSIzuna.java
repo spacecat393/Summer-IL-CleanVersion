@@ -5,6 +5,7 @@ import com.nali.list.da.BothDaSSIzuna;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
+import com.nali.list.render.RenderSSIzuna;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
 import com.nali.small.entity.EntityLeInv;
@@ -23,7 +24,6 @@ import com.nali.summer.entity.memo.client.ssizuna.MixCISSIzuna;
 import com.nali.summer.entity.memo.client.ssizuna.MixRenderSSIzuna;
 import com.nali.summer.entity.memo.server.ssizuna.MixSISSIzuna;
 import com.nali.summer.entity.memo.server.ssizuna.ServerSSIzuna;
-import com.nali.summer.render.entity.RenderSSIzuna;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -137,15 +137,15 @@ public class SummerSSIzuna extends EntityLeInv implements IMixES, IMixESInv
 		};
 	}
 
-	@SideOnly(Side.CLIENT)
-	public static ClientSSIzuna getC()
-	{
-		RenderSSIzuna r = new RenderSSIzuna();
-		ClientSSIzuna c = new ClientSSIzuna(r);
-		r.c = c;
-		c.mr = new MixRenderSSIzuna(c);
-		return c;
-	}
+//	@SideOnly(Side.CLIENT)
+//	public static ClientSSIzuna getC()
+//	{
+//		RenderSSIzuna r = new RenderSSIzuna();
+//		ClientSSIzuna c = new ClientSSIzuna(r);
+//		r.c = c;
+//		c.mr = new MixRenderSSIzuna(c);
+//		return c;
+//	}
 //	@Override
 //	public AxisAlignedBB getMouthAxisAlignedBB()
 //	{

@@ -1,10 +1,13 @@
 package com.nali.list.entity;
 
 import com.nali.da.IBothDaE;
+import com.nali.gui.key.KeySelect;
+import com.nali.gui.page.Page;
 import com.nali.list.da.BothDaSSHifumi;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.entity.si.*;
+import com.nali.list.render.RenderSSHifumi;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
 import com.nali.small.entity.EntityLeInv;
@@ -17,13 +20,14 @@ import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.server.si.SILeLook;
 import com.nali.small.entity.memo.server.si.path.SILeFindMove;
 import com.nali.small.entity.memo.server.si.path.SILeMineTo;
+import com.nali.small.gui.page.entity.me.PageSI;
+import com.nali.small.gui.page.entity.si.PageSIEArea;
 import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.sshifumi.ClientSSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.MixCISSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.MixRenderSSHifumi;
 import com.nali.summer.entity.memo.server.sshifumi.MixSISSHifumi;
 import com.nali.summer.entity.memo.server.sshifumi.ServerSSHifumi;
-import com.nali.summer.render.entity.RenderSSHifumi;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -139,14 +143,23 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 		};
 	}
 
+//	@SideOnly(Side.CLIENT)
+//	public static ClientSSHifumi getC()
+//	{
+//		RenderSSHifumi r = new RenderSSHifumi();
+//		ClientSSHifumi c = new ClientSSHifumi(r);
+//		r.c = c;
+//		c.mr = new MixRenderSSHifumi(c);
+//		return c;
+//	}
+
 	@SideOnly(Side.CLIENT)
-	public static ClientSSHifumi getC()
+	public static void setGI()
 	{
-		RenderSSHifumi r = new RenderSSHifumi();
-		ClientSSHifumi c = new ClientSSHifumi(r);
-		r.c = c;
-		c.mr = new MixRenderSSHifumi(c);
-		return c;
+		if (PageSI.GI == SIEArea.ID)
+		{
+			Page.PAGE.set(new PageSIEArea(), new KeySelect());
+		}
 	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
