@@ -334,9 +334,9 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 	@Override
 	public void mulFrame(float[] skinning_float_array, short[] key_short_array, float partial_ticks)
 	{
-		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prev_rotation_yaw_head, this.rotation_yaw_head, partial_ticks));
+		float body_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prev_rotation_yaw_head, this.rotation_yaw_head, partial_ticks));
 		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
-		float body_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
 		float net_head_yaw = head_rot - body_rot;
 
 		if (head_pitch > 1.04719755119659774615F)

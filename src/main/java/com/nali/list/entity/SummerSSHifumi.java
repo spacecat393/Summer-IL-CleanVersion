@@ -22,6 +22,7 @@ import com.nali.small.entity.memo.server.si.path.SILeFindMove;
 import com.nali.small.entity.memo.server.si.path.SILeMineTo;
 import com.nali.small.gui.page.entity.me.PageSI;
 import com.nali.small.gui.page.entity.si.PageSIEArea;
+import com.nali.small.gui.page.entity.si.PageSIEOwner;
 import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.sshifumi.ClientSSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.MixCISSHifumi;
@@ -160,6 +161,10 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 		{
 			Page.PAGE.set(new PageSIEArea(), new KeySelect());
 		}
+		else if (PageSI.GI == SIEOwner.ID)
+		{
+			Page.PAGE.set(new PageSIEOwner(), new KeySelect());
+		}
 	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
@@ -290,10 +295,12 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 	@Override
 	public void mulFrame(float[] skinning_float_array, short[] key_short_array, float partial_ticks)
 	{
-		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prev_rotation_yaw_head, this.rotation_yaw_head, partial_ticks));
+		float body_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prev_rotation_yaw_head, this.rotation_yaw_head, partial_ticks));
 		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
-		float body_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+//		float body_rot = head_rot;
 		float net_head_yaw = head_rot - body_rot;
+//		float net_head_yaw = head_rot;
 
 		if (head_pitch > 1.04719755119659774615F)
 		{
