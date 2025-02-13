@@ -71,7 +71,7 @@ public class MixSIArisu
 		sileattack.max_magic_point = 2;
 		sileattack.minimum_distance = 48.0F;
 
-		SIESound<BD, E, I, S, ?> siesound = (SIESound<BD, E, I, S, ?>)this.s.ms.si_map.get(SIESound.ID);
-		siesound.state |= 1;
+//		SIESound<BD, E, I, S, ?> siesound = (SIESound<BD, E, I, S, ?>)this.s.ms.si_map.get(SIESound.ID);
+//		siesound.state |= 1;
 	}
 }

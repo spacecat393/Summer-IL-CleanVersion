@@ -1,6 +1,9 @@
 package com.nali.list.entity;
 
 import com.nali.da.IBothDaE;
+import com.nali.extra.gui.page.entity.me.PageSI;
+import com.nali.extra.gui.page.entity.si.PageSIEArea;
+import com.nali.extra.gui.page.entity.si.PageSIEOwner;
 import com.nali.gui.key.KeySelect;
 import com.nali.gui.page.Page;
 import com.nali.list.da.BothDaSSHifumi;
@@ -10,6 +13,7 @@ import com.nali.list.entity.si.*;
 import com.nali.list.render.RenderSSHifumi;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
+import com.nali.small.SmallConfig;
 import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.EntityMath;
 import com.nali.small.entity.IMixES;
@@ -20,9 +24,6 @@ import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.server.si.SILeLook;
 import com.nali.small.entity.memo.server.si.path.SILeFindMove;
 import com.nali.small.entity.memo.server.si.path.SILeMineTo;
-import com.nali.small.gui.page.entity.me.PageSI;
-import com.nali.small.gui.page.entity.si.PageSIEArea;
-import com.nali.small.gui.page.entity.si.PageSIEOwner;
 import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.sshifumi.ClientSSHifumi;
 import com.nali.summer.entity.memo.client.sshifumi.MixCISSHifumi;
@@ -157,13 +158,16 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 	@SideOnly(Side.CLIENT)
 	public static void setGI()
 	{
-		if (PageSI.GI == SIEArea.ID)
+		if (SmallConfig.NEED_EXTRA)
 		{
-			Page.PAGE.set(new PageSIEArea(), new KeySelect());
-		}
-		else if (PageSI.GI == SIEOwner.ID)
-		{
-			Page.PAGE.set(new PageSIEOwner(), new KeySelect());
+			if (PageSI.GI == SIEArea.ID)
+			{
+				Page.PAGE.set(new PageSIEArea(), new KeySelect());
+			}
+			else if (PageSI.GI == SIEOwner.ID)
+			{
+				Page.PAGE.set(new PageSIEOwner(), new KeySelect());
+			}
 		}
 	}
 //	@Override
