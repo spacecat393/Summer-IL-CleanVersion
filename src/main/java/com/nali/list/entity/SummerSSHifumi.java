@@ -2,8 +2,8 @@ package com.nali.list.entity;
 
 import com.nali.da.IBothDaE;
 import com.nali.extra.gui.page.entity.me.PageSI;
-import com.nali.extra.gui.page.entity.si.PageSIEArea;
-import com.nali.extra.gui.page.entity.si.PageSIEOwner;
+import com.nali.extra.gui.page.entity.si.*;
+import com.nali.gui.key.KeyEdit;
 import com.nali.gui.key.KeySelect;
 import com.nali.gui.page.Page;
 import com.nali.list.da.BothDaSSHifumi;
@@ -167,6 +167,54 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 			else if (PageSI.GI == SIEOwner.ID)
 			{
 				Page.PAGE.set(new PageSIEOwner(), new KeySelect());
+			}
+			else if (PageSI.GI == SILeAttack.ID)
+			{
+				Page.PAGE.set(new PageSILeAttack(), new KeySelect());
+			}
+			else if (PageSI.GI == SIEFollow.ID)
+			{
+				Page.PAGE.set(new PageSIEFollow(), new KeySelect());
+			}
+			else if (PageSI.GI == SIEWalkTo.ID)
+			{
+				Page.PAGE.set(new PageSIEWalkTo(), new KeySelect());
+			}
+			else if (PageSI.GI == SIERandomWalk.ID)
+			{
+				Page.PAGE.set(new PageSIERandomWalk(), new KeySelect());
+			}
+			else if (PageSI.GI == SIELook.ID)
+			{
+				Page.PAGE.set(new PageSILeLook(), new KeyEdit());
+			}
+			else if (PageSI.GI == SIELookTo.ID)
+			{
+				Page.PAGE.set(new PageSIELookTo(), new KeySelect());
+			}
+			else if (PageSI.GI == SIERandomLook.ID)
+			{
+				Page.PAGE.set(new PageSIERandomLook(), new KeySelect());
+			}
+			else if (PageSI.GI == SIESit.ID)
+			{
+				Page.PAGE.set(new PageSIESit(), new KeySelect());
+			}
+			else if (PageSI.GI == SIECareOwner.ID)
+			{
+				Page.PAGE.set(new PageSIECareOwner(), new KeySelect());
+			}
+			else if (PageSI.GI == SIEUseTo.ID)
+			{
+				Page.PAGE.set(new PageSIEUseTo(), new KeySelect());
+			}
+			else if (PageSI.GI == SIESound.ID)
+			{
+				Page.PAGE.set(new PageSIESound(), new KeySelect());
+			}
+			else
+			{
+				Page.PAGE.set(new PageSIN(), new KeySelect());
 			}
 		}
 	}
