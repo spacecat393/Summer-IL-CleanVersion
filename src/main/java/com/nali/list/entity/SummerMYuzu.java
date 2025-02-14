@@ -111,7 +111,7 @@ public class SummerMYuzu extends EntityLeInv implements IMixES, IMixESInv
 
 			SIEPat.ID,
 
-			SIEInvLockInv.ID,
+			SIELock.ID,
 			SILeLockDMG.ID,
 			SILeMineTo.ID,
 			SIEUseTo.ID,

@@ -12,7 +12,7 @@
 //	E extends EntityE,
 //	I extends IMixE<BD, E>,
 //	S extends ServerE<BD, E, I, ?>
-//> extends MixSIEInv<BD, E, I, S>
+//> extends MixSIELock<BD, E, I, S>
 //{
 //	public MixSIE22Locker(S s)
 //	{

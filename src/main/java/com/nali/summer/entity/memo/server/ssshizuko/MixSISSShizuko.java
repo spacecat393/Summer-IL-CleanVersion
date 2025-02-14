@@ -17,7 +17,7 @@
 //	E extends EntityLeInv,
 //	I extends IMixE<BD, E> & IMixESoundDa<SD>,
 //	S extends ServerLeInv<IE, SD, BD, E, I, ?>
-//> extends MixSIEInv<BD, E, I, S>
+//> extends MixSIELock<BD, E, I, S>
 //{
 //	public MixSISSShizuko(S s)
 //	{

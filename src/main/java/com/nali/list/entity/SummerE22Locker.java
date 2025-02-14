@@ -15,7 +15,7 @@ import com.nali.small.entity.inv.InvE;
 import com.nali.small.entity.memo.IBothE;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSeRSe;
 import com.nali.small.entity.memo.client.ci.MixCIE;
-import com.nali.small.entity.memo.server.si.MixSIEInv;
+import com.nali.small.entity.memo.server.si.MixSIELock;
 import com.nali.small.entity.memo.server.si.SI;
 import com.nali.summer.entity.memo.client.e22locker.ClientE22Locker;
 import com.nali.summer.entity.memo.client.e22locker.MixRenderE22Locker;
@@ -101,7 +101,7 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 			SIEArea.ID,
 			SIEOwner.ID,
 
-			SIEInvLockInv.ID,
+			SIELock.ID,
 
 //			SIEMineTo.ID,
 //			SIESit.ID,
@@ -239,12 +239,12 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 	{
 		ServerE22Locker s = new ServerE22Locker(this);
 //		MixSIE22Locker ms = new MixSIE22Locker(s);
-		MixSIEInv ms = new MixSIEInv(s, new SI[]
+		MixSIELock ms = new MixSIELock(s, new SI[]
 		{
 			new SIEArea(s),
 			new SIEOwner(s),
 
-			new SIEInvLockInv(s),
+			new SIELock(s),
 
 			new SIEPlayWithRSe(s),
 

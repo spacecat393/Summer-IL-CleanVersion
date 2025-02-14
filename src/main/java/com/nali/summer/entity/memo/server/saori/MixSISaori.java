@@ -6,7 +6,7 @@ import com.nali.small.entity.EntityLeInv;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.ServerLeInv;
-import com.nali.small.entity.memo.server.si.MixSIEInv;
+import com.nali.small.entity.memo.server.si.MixSIELock;
 import com.nali.small.entity.memo.server.si.SI;
 import com.nali.small.entity.memo.server.si.SILeLook;
 import com.nali.small.entity.memo.server.si.path.SILeFindMove;
@@ -19,7 +19,7 @@ public class MixSISaori
 	E extends EntityLeInv,
 	I extends IMixE<BD, E>,
 	S extends ServerLeInv<IE, BD, E, I, ?>
-> extends MixSIEInv<BD, E, I, S>
+> extends MixSIELock<BD, E, I, S>
 {
 	public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
 	{
@@ -43,7 +43,7 @@ public class MixSISaori
 
 			new SIEPat(s),
 
-			new SIEInvLockInv(s),
+			new SIELock(s),
 			new SILeLockDMG(s),
 			new SILeMineTo(s),
 			new SIEUseTo(s),

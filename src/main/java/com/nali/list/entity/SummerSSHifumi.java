@@ -109,7 +109,7 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 
 			SIEPat.ID,
 
-			SIEInvLockInv.ID,
+			SIELock.ID,
 			SILeLockDMG.ID,
 			SILeMineTo.ID,
 			SIEUseTo.ID,
@@ -167,6 +167,10 @@ public class SummerSSHifumi extends EntityLeInv implements IMixES, IMixESInv
 			else if (PageSI.GI == SIEOwner.ID)
 			{
 				Page.PAGE.set(new PageSIEOwner(), new KeySelect());
+			}
+			else if (PageSI.GI == SIELock.ID)
+			{
+				Page.PAGE.set(new PageSIELock(), new KeySelect());
 			}
 			else if (PageSI.GI == SILeAttack.ID)
 			{
