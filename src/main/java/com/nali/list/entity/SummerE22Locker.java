@@ -105,7 +105,7 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 
 //			SIEMineTo.ID,
 //			SIESit.ID,
-//			SIESetLocation.ID,
+//			SIELocation.ID,
 
 			SIEPlayWithRSe.ID,//Play-1
 
