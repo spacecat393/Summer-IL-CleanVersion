@@ -18,6 +18,7 @@ import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.server.si.MixSIELock;
 import com.nali.small.entity.memo.server.si.SI;
+import com.nali.small.entity.memo.server.si.SILeInvGet;
 import com.nali.small.entity.memo.server.si.SILeLook;
 import com.nali.small.entity.memo.server.si.path.SILeFindMove;
 import com.nali.small.entity.memo.server.si.path.SILeMineTo;
@@ -263,7 +264,7 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 			new SIECareOwner(s),
 			new SILeAttack(s),
 			new SILeInvManageItem(s),
-			new SIEInvGet(s),
+			new SILeInvGet(s),
 			new SIERandomWalk(s),
 			new SIELookTo(s),
 			new SIERandomLook(s),
