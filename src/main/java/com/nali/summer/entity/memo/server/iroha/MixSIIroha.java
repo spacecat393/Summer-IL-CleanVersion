@@ -2,24 +2,22 @@ package com.nali.summer.entity.memo.server.iroha;
 
 import com.nali.da.IBothDaE;
 import com.nali.list.entity.si.*;
-import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
-import com.nali.small.entity.inv.InvLe;
-import com.nali.small.entity.memo.server.ServerLeInv;
+import com.nali.small.entity.memo.server.ServerLe;
 import com.nali.small.entity.memo.server.si.MixSIELock;
 import com.nali.small.entity.memo.server.si.SI;
-import com.nali.small.entity.memo.server.si.SILeInvGet;
+import com.nali.small.entity.memo.server.si.SILeInv;
 import com.nali.small.entity.memo.server.si.SILeLook;
 import com.nali.small.entity.memo.server.si.path.SILeFindMove;
 import com.nali.small.entity.memo.server.si.path.SILeMineTo;
 
 public class MixSIIroha
 <
-	IE extends InvLe,
 	BD extends IBothDaE,
-	E extends EntityLeInv,
+	E extends EntityLe,
 	I extends IMixE<BD, E>,
-	S extends ServerLeInv<IE, BD, E, I, ?>
+	S extends ServerLe<BD, E, I, ?>
 > extends MixSIELock<BD, E, I, S>
 {
 	public static int[] ATTACK_FRAME_INT_ARRAY = new int[]
@@ -51,8 +49,8 @@ public class MixSIIroha
 			new SIEPlayWithRSe(s),
 			new SIECareOwner(s),
 			new SILeAttack(s),
-			new SILeInvManageItem(s),
-			new SILeInvGet(s),
+			new SIEManageItem(s),
+			new SILeInv(s),
 			new SIERandomWalk(s),
 			new SIELookTo(s),
 			new SIERandomLook(s),

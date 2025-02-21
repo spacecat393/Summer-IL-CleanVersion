@@ -8,18 +8,16 @@ import com.nali.list.render.RenderE22Locker;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
 import com.nali.small.entity.EntityE;
-import com.nali.small.entity.EntityMath;
 import com.nali.small.entity.IMixES;
-import com.nali.small.entity.IMixESInv;
-import com.nali.small.entity.inv.InvE;
 import com.nali.small.entity.memo.IBothE;
+import com.nali.small.entity.memo.client.ClientE;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSeRSe;
 import com.nali.small.entity.memo.client.ci.MixCIE;
+import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
 import com.nali.small.entity.memo.server.si.MixSIELock;
 import com.nali.small.entity.memo.server.si.SI;
-import com.nali.summer.entity.memo.client.e22locker.ClientE22Locker;
-import com.nali.summer.entity.memo.client.e22locker.MixRenderE22Locker;
 import com.nali.summer.entity.memo.server.e22locker.ServerE22Locker;
+import com.nali.system.Time;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -28,9 +26,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.nali.list.data.SummerData.MODEL_STEP;
-
-public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
+public class SummerE22Locker extends EntityE implements IMixES/*, IMixESInv*/
 {
 	public static int eggPrimary = 0x1a69a7;
 	public static int eggSecondary = 0xffffff;
@@ -44,27 +40,27 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 
 	public IBothE ibothe;
 
-	public static int[] IV_INT_ARRAY = new int[]
-	{
-		5+90 + MODEL_STEP, 523,
-		5+90 + MODEL_STEP, 560,
-		5+90 + MODEL_STEP, 12,
-		5+90 + MODEL_STEP, 451,
-		5+90 + MODEL_STEP, 451,
-		4+90 + MODEL_STEP, 99
-	};
-	public static float[] ROTATION_FLOAT_ARRAY = new float[]
-	{
-		0.0F, 0.0F,
-		0.0F, 0.0F
-	};
-	public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
-	{
-		0.0F, -0.65F * 0.5F, 0.0F,
-		0.1F, -1.8F * 0.5F, 0.07F * 0.5F,
-		0.1F, -1.85F * 0.5F, 0.09F * 0.5F,
-		0.1F, -1.8F * 0.5F, 0.09F * 0.5F
-	};
+//	public static int[] IV_INT_ARRAY = new int[]
+//	{
+//		5+90 + MODEL_STEP, 523,
+//		5+90 + MODEL_STEP, 560,
+//		5+90 + MODEL_STEP, 12,
+//		5+90 + MODEL_STEP, 451,
+//		5+90 + MODEL_STEP, 451,
+//		4+90 + MODEL_STEP, 99
+//	};
+//	public static float[] ROTATION_FLOAT_ARRAY = new float[]
+//	{
+//		0.0F, 0.0F,
+//		0.0F, 0.0F
+//	};
+//	public static float[] TRANSFORM_FLOAT_ARRAY = new float[]
+//	{
+//		0.0F, -0.65F * 0.5F, 0.0F,
+//		0.1F, -1.8F * 0.5F, 0.07F * 0.5F,
+//		0.1F, -1.85F * 0.5F, 0.09F * 0.5F,
+//		0.1F, -1.8F * 0.5F, 0.09F * 0.5F
+//	};
 
 	static
 	{
@@ -87,6 +83,11 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 	public SummerE22Locker(World world)
 	{
 		super(world);
+	}
+
+	@Override
+	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
+	{
 	}
 
 	public static void initID()
@@ -223,14 +224,17 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 	public void newC()
 	{
 		RenderE22Locker r = new RenderE22Locker();
-		ClientE22Locker c = new ClientE22Locker(this, r);
+//		ClientE22Locker c = new ClientE22Locker(this, r);
+		ClientE c = new ClientE(this, r);
 		MixCIE mc = new MixCIE(c);
 		c.mc = mc;
-		mc.init();
 		c.mb = new MixBoxSeRSe(c);
-		c.mr = new MixRenderE22Locker(c);
+//		c.mr = new MixRenderE22Locker(c);
+		MixRenderSe mr = new MixRenderSe(c);
+		mr.shadow_opaque = 0.5F;
+		mr.shadow_size = 0.25F;
+		c.mr = mr;
 		r.c = c;
-		c.ie = new InvE();
 		this.ibothe = c;
 	}
 
@@ -255,7 +259,7 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 		s.ms = ms;
 		ms.init();
 		s.initKey();
-		s.ie = new InvE();
+//		((SIEInv)ms.si_map.get(SIEInv.ID)).itemstack_array = new ItemStack[4*9];
 		this.ibothe = s;
 	}
 
@@ -293,28 +297,43 @@ public class SummerE22Locker extends EntityE implements IMixES, IMixESInv
 //		return ClientE22LockerMemory.IV_INT_ARRAY;
 //	}
 
-	@Override
-	public int[] getIVIntArray()
-	{
-		return IV_INT_ARRAY;
-	}
+//	@Override
+//	public int[] getIVIntArray()
+//	{
+//		return IV_INT_ARRAY;
+//	}
+//
+//	@Override
+//	public float[] getRotationFloatArray()
+//	{
+//		return ROTATION_FLOAT_ARRAY;
+//	}
+//
+//	@Override
+//	public float[] getTransformFloatArray()
+//	{
+//		return TRANSFORM_FLOAT_ARRAY;
+//	}
 
 	@Override
-	public float[] getRotationFloatArray()
+	public void mulFrame(float[] skinning_float_array, short[] key_short_array)
 	{
-		return ROTATION_FLOAT_ARRAY;
-	}
+		float
+			head_rot;
+//			head_pitch;
 
-	@Override
-	public float[] getTransformFloatArray()
-	{
-		return TRANSFORM_FLOAT_ARRAY;
-	}
-
-	@Override
-	public void mulFrame(float[] skinning_float_array, short[] key_short_array, float partial_ticks)
-	{
-		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+		if (this.world.isRemote)
+		{
+			this.prev_rotation_yaw += (this.rotationYaw - this.prev_rotation_yaw) * (float)Time.LINE;
+//			this.prev_rotation_pitch += (this.rotationPitch - this.prev_rotation_pitch) * (float)Time.LINE;
+			head_rot = (float)Math.toRadians(this.prev_rotation_yaw);
+//			head_pitch = (float)Math.toRadians(this.prev_rotation_pitch);
+		}
+		else
+		{
+			head_rot = (float)Math.toRadians(this.rotationYaw);
+//			head_pitch = (float)Math.toRadians(this.rotationPitch);
+		}
 
 		V4.q(V4.TV4_FLOAT_ARRAY, 0, 0, head_rot);
 		float[] head_m4x4 = V4.getM4X4(V4.TV4_FLOAT_ARRAY);

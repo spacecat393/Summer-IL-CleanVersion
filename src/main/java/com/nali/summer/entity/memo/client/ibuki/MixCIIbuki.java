@@ -6,24 +6,23 @@ import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
-import com.nali.small.entity.inv.InvLe;
-import com.nali.small.entity.memo.client.ClientLeInv;
+import com.nali.small.entity.memo.client.ClientLe;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
+import com.nali.small.entity.memo.client.render.mix.MixRenderSle;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class MixCIIbuki
 <
-	IE extends InvLe,
 	BD extends BothDaIbuki,
-	R extends RenderIbuki<IE, E, I, ?, MB, MR, C, BD, R>,
+	R extends RenderIbuki<E, I, ?, MB, MR, C, BD, R>,
 	E extends EntityLe,
 	I extends IMixE<BD, E> & IMixES & IMixESInv,
 	MB extends MixBoxSleInv<BD, R, E, I, ?, MR, C>,
-	MR extends MixRenderIbuki<IE, BD, R, E, I, ?, MB, C>,
-	C extends ClientLeInv<IE, BD, R, E, I, ?, MB, MR>
+	MR extends MixRenderSle<BD, R, E, I, ?, MB, C>,
+	C extends ClientLe<BD, R, E, I, ?, MB, MR>
 > extends MixCIE<BD, R, E, I, MB, MR, C>
 {
 	public int eyes_tick;
@@ -82,16 +81,16 @@ public class MixCIIbuki
 //		r.iroharender.frame_int_array[0] = this.i.getE().getDataManager().get(this.i.getIntegerDataParameterArray()[1]);
 //	}
 
-	@Override
-	public void onReadNBT()
-	{
-		R r = this.c.r;
-//		skinningrender.model_byte_array[0 / 8] &= 254;//255 - Math.pow(2, 0 % 8)
-//		skinningrender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
-		r.model_byte_array[0] &= 254 & 253;
-		r.model_byte_array[2 / 8] |= 4;//Math.pow(2, 2 % 8)
-		r.model_byte_array[11 / 8] &= 247;//255 - Math.pow(2, 11 % 8)
-		r.model_byte_array[12 / 8] |= 16;//Math.pow(2, 12 % 8)
-		super.onReadNBT();
-	}
+//	@Override
+//	public void onReadNBT()
+//	{
+//		R r = this.c.r;
+////		skinningrender.model_byte_array[0 / 8] &= 254;//255 - Math.pow(2, 0 % 8)
+////		skinningrender.model_byte_array[1 / 8] &= 253;//255 - Math.pow(2, 1 % 8)
+//		r.model_byte_array[0] &= 254 & 253;
+//		r.model_byte_array[2 / 8] |= 4;//Math.pow(2, 2 % 8)
+//		r.model_byte_array[11 / 8] &= 247;//255 - Math.pow(2, 11 % 8)
+//		r.model_byte_array[12 / 8] |= 16;//Math.pow(2, 12 % 8)
+//		super.onReadNBT();
+//	}
 }

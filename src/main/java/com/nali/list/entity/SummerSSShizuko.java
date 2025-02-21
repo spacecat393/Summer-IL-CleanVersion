@@ -8,24 +8,23 @@ import com.nali.list.entity.si.*;
 import com.nali.list.render.RenderSSShizuko;
 import com.nali.math.M4x4;
 import com.nali.math.V4;
-import com.nali.small.entity.EntityLeInv;
-import com.nali.small.entity.EntityMath;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
-import com.nali.small.entity.inv.InvLe;
-import com.nali.small.entity.memo.IBothLeInv;
+import com.nali.small.entity.memo.IBothLe;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
+import com.nali.small.entity.memo.client.render.mix.MixRenderSle;
 import com.nali.small.entity.memo.server.si.MixSIELock;
 import com.nali.small.entity.memo.server.si.SI;
-import com.nali.small.entity.memo.server.si.SILeInvGet;
+import com.nali.small.entity.memo.server.si.SILeInv;
 import com.nali.small.entity.memo.server.si.SILeLook;
 import com.nali.small.entity.memo.server.si.path.SILeFindMove;
 import com.nali.small.entity.memo.server.si.path.SILeMineTo;
 import com.nali.sound.SoundE;
 import com.nali.summer.entity.memo.client.ssshizuko.ClientSSShizuko;
-import com.nali.summer.entity.memo.client.ssshizuko.MixRenderSSShizuko;
 import com.nali.summer.entity.memo.server.ssshizuko.ServerSSShizuko;
+import com.nali.system.Time;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -36,7 +35,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static com.nali.list.data.SummerData.MODEL_STEP;
 
-public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
+public class SummerSSShizuko extends EntityLe implements IMixES, IMixESInv
 {
 	public static int eggPrimary = 0xfff0e2;
 	public static int eggSecondary = 0x645353;
@@ -48,7 +47,7 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 	public static byte[] CI_BYTE_ARRAY;
 	public static byte[] SI_BYTE_ARRAY;
 
-	public IBothLeInv ibothleinv;
+	public IBothLe ibothle;
 
 	public static int[] IV_INT_ARRAY = new int[]
 	{
@@ -124,8 +123,8 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 			SIEProtect.ID,
 //		SIECareOwner.ID,
 //		SILeAttack.ID,
-			SILeInvManageItem.ID,
-			SIEInvGet.ID,
+			SIEManageItem.ID,
+			SIEInv.ID,
 			SIERandomWalk.ID,
 			SIELookTo.ID,
 			SIERandomLook.ID,
@@ -229,12 +228,14 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 //		MixCISSShizuko mc = new MixCISSShizuko(c);
 		MixCIE mc = new MixCIE(c);
 		c.mc = mc;
-		mc.init();
 		c.mb = new MixBoxSleInv(c);
-		c.mr = new MixRenderSSShizuko(c);
+//		c.mr = new MixRenderSSShizuko(c);
+		MixRenderSle mr = new MixRenderSle(c);
+		mr.shadow_opaque = 0.5F;
+		mr.shadow_size = 0.25F;
+		c.mr = mr;
 		r.c = c;
-		c.ie = new InvLe();
-		this.ibothleinv = c;
+		this.ibothle = c;
 	}
 
 	@Override
@@ -263,8 +264,8 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 			new SIEProtect(s),
 			new SIECareOwner(s),
 			new SILeAttack(s),
-			new SILeInvManageItem(s),
-			new SILeInvGet(s),
+			new SIEManageItem(s),
+			new SILeInv(s),
 			new SIERandomWalk(s),
 			new SIELookTo(s),
 			new SIERandomLook(s),
@@ -278,8 +279,8 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 		s.ms = ms;
 		ms.init();
 		s.initKey();
-		s.ie = new InvLe();
-		this.ibothleinv = s;
+		s.init();
+		this.ibothle = s;
 	}
 
 	@Override
@@ -289,9 +290,9 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 	}
 
 	@Override
-	public IBothLeInv getB()
+	public IBothLe getB()
 	{
-		return this.ibothleinv;
+		return this.ibothle;
 	}
 //	@Override
 //	@SideOnly(Side.CLIENT)
@@ -333,11 +334,29 @@ public class SummerSSShizuko extends EntityLeInv implements IMixES, IMixESInv
 	}
 
 	@Override
-	public void mulFrame(float[] skinning_float_array, short[] key_short_array, float partial_ticks)
+	public void mulFrame(float[] skinning_float_array, short[] key_short_array)
 	{
-		float body_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prev_rotation_yaw_head, this.rotation_yaw_head, partial_ticks));
-		float head_pitch = (float)Math.toRadians(this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partial_ticks);
-		float head_rot = (float)Math.toRadians(EntityMath.interpolateRotation(this.prevRotationYaw, this.rotationYaw, partial_ticks));
+		float
+			body_rot,
+			head_rot,
+			head_pitch;
+
+		if (this.world.isRemote)
+		{
+			this.prev_rotation_yaw_body += (this.rotation_yaw_body - this.prev_rotation_yaw_body) * (float) Time.LINE;
+			this.prev_rotation_yaw += (this.rotationYaw - this.prev_rotation_yaw) * (float)Time.LINE;
+			this.prev_rotation_pitch += (this.rotationPitch - this.prev_rotation_pitch) * (float)Time.LINE;
+			body_rot = (float)Math.toRadians(this.prev_rotation_yaw_body);
+			head_rot = (float)Math.toRadians(this.prev_rotation_yaw);
+			head_pitch = (float)Math.toRadians(this.prev_rotation_pitch);
+		}
+		else
+		{
+			body_rot = (float)Math.toRadians(this.rotation_yaw_body);
+			head_rot = (float)Math.toRadians(this.rotationYaw);
+			head_pitch = (float)Math.toRadians(this.rotationPitch);
+		}
+
 		float net_head_yaw = head_rot - body_rot;
 
 		if (head_pitch > 1.04719755119659774615F)

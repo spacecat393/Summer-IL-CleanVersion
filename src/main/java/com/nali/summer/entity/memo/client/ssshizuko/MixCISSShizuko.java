@@ -21,7 +21,7 @@
 //public class MixCISSShizuko
 //<
 //	IE extends InvLe,
-//	R extends RenderSSShizuko<IE, E, I, ?, MB, MR, C>,
+//	R extends RenderSSShizuko<E, I, ?, MB, MR, C>,
 //	E extends EntityLe,
 //	I extends IMixE<BothDaSSShizuko, E> & IMixES & IMixESInv,
 //	MB extends MixBoxSleInv<BothDaSSShizuko, R, E, I, ?, MR, C>,

@@ -6,24 +6,23 @@ import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
-import com.nali.small.entity.inv.InvLe;
-import com.nali.small.entity.memo.client.ClientLeInv;
+import com.nali.small.entity.memo.client.ClientLe;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
+import com.nali.small.entity.memo.client.render.mix.MixRenderSle;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class MixCIReisa
 <
-	IE extends InvLe,
 	BD extends BothDaReisa,
-	R extends RenderReisa<IE, E, I, ?, MB, MR, C, BD, R>,
+	R extends RenderReisa<E, I, ?, MB, MR, C, BD, R>,
 	E extends EntityLe,
 	I extends IMixE<BD, E> & IMixES & IMixESInv,
 	MB extends MixBoxSleInv<BD, R, E, I, ?, MR, C>,
-	MR extends MixRenderReisa<IE, BD, R, E, I, ?, MB, C>,
-	C extends ClientLeInv<IE, BD, R, E, I, ?, MB, MR>
+	MR extends MixRenderSle<BD, R, E, I, ?, MB, C>,
+	C extends ClientLe<BD, R, E, I, ?, MB, MR>
 > extends MixCIE<BD, R, E, I, MB, MR, C>
 {
 	public int eyes_tick;
@@ -80,13 +79,13 @@ public class MixCIReisa
 //		skinningrender.model_byte_array[3 / 8] &= 255-8;//255 - Math.pow(2, 3 % 8)
 	}
 
-	@Override
-	public void onReadNBT()
-	{
-		R r = this.c.r;
-		r.model_byte_array[0 / 8] &= 255-1;//255 - Math.pow(2, 0 % 8)
-//		skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
-		r.model_byte_array[8 / 8] &= 255-1;//255 - Math.pow(2, 8 % 8)
-		super.onReadNBT();
-	}
+//	@Override
+//	public void onReadNBT()
+//	{
+//		R r = this.c.r;
+//		r.model_byte_array[0 / 8] &= 255-1;//255 - Math.pow(2, 0 % 8)
+////		skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
+//		r.model_byte_array[8 / 8] &= 255-1;//255 - Math.pow(2, 8 % 8)
+//		super.onReadNBT();
+//	}
 }

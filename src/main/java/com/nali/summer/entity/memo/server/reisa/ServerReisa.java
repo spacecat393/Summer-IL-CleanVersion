@@ -5,11 +5,10 @@ import com.nali.da.IBothDaNe;
 import com.nali.list.entity.ci.CIESound;
 import com.nali.list.network.message.ClientMessage;
 import com.nali.network.NetworkRegistry;
-import com.nali.small.entity.EntityLeInv;
+import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
-import com.nali.small.entity.inv.InvLe;
 import com.nali.small.entity.memo.server.IServerS;
-import com.nali.small.entity.memo.server.ServerLeInv;
+import com.nali.small.entity.memo.server.ServerLe;
 import com.nali.small.entity.memo.server.si.MixSIE;
 import com.nali.small.entity.memo.server.si.frame.KeyS;
 import com.nali.small.entity.memo.server.si.frame.floop.KeySleFLoopDie;
@@ -19,16 +18,16 @@ import com.nali.small.entity.memo.server.si.frame.floopoffset.KeySleFLoopOffSetA
 import com.nali.small.entity.memo.server.si.frame.shoot.KeySleShoot;
 import com.nali.small.entity.memo.server.si.frame.tloop.*;
 import com.nali.system.bytes.ByteWriter;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 
 public class ServerReisa
 <
-	IE extends InvLe,
 	BD extends IBothDaE & IBothDaNe,
-	E extends EntityLeInv,
+	E extends EntityLe,
 	I extends IMixE<BD, E>,
 	MS extends MixSIE<BD, E, I, ?>
-> extends ServerLeInv<IE, BD, E, I, MS> implements IServerS
+> extends ServerLe<BD, E, I, MS> implements IServerS
 {
 	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
@@ -64,6 +63,13 @@ public class ServerReisa
 	public ServerReisa(I i)
 	{
 		super(i);
+	}
+
+	@Override
+	public void init()
+	{
+		super.init();
+		this.sileinv.itemstack_array = new ItemStack[4*9];
 	}
 
 	@Override

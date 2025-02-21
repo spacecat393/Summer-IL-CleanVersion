@@ -20,7 +20,7 @@
 //<
 //	IE extends InvLe,
 //	RC extends IClientDaS,
-//	R extends RenderE22Locker<IE, E, I, ?, MB, MR, C, BD, RC>,
+//	R extends RenderE22Locker<E, I, ?, MB, MR, C, BD, RC>,
 //	BD extends IBothDaNe & IBothDaSn,
 //	E extends Entity,
 //	I extends IMixE<BD, E>,

@@ -6,8 +6,7 @@ import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
-import com.nali.small.entity.inv.InvLe;
-import com.nali.small.entity.memo.client.ClientLeInv;
+import com.nali.small.entity.memo.client.ClientLe;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSe;
@@ -19,13 +18,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderMYuzu
 <
-	IE extends InvLe,
 	E extends EntityLe,
 	I extends IMixE<BD, E> & IMixES & IMixESInv,
 	MC extends MixCIE<BD, ?, E, I, MB, MR, C>,
 	MB extends MixBoxSleInv<BD, ?, E, I, MC, MR, C>,
 	MR extends MixRenderSe<BD, ?, E, I, MC, MB, C>,
-	C extends ClientLeInv<IE, BD, ?, E, I, MC, MB, MR>,
+	C extends ClientLe<BD, ?, E, I, MC, MB, MR>,
 	BD extends BothDaMYuzu,
 	R extends RenderS<BD> & IRenderS<BD, R>
 > extends SummerRenderSe<E, I, MC, MB, MR, C, BD, R>

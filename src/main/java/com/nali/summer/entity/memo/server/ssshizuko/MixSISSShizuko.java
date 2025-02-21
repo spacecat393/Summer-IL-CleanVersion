@@ -14,7 +14,7 @@
 //	IE extends InvLe,
 //	SD extends ISoundDaLe,
 //	BD extends BothDaSSShizuko,
-//	E extends EntityLeInv,
+//	E extends EntityLe,
 //	I extends IMixE<BD, E> & IMixESoundDa<SD>,
 //	S extends ServerLeInv<IE, SD, BD, E, I, ?>
 //> extends MixSIELock<BD, E, I, S>

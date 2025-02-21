@@ -3,8 +3,6 @@ package com.nali.summer.entity.memo.server.e22locker;
 import com.nali.da.IBothDaE;
 import com.nali.small.entity.EntityE;
 import com.nali.small.entity.IMixE;
-import com.nali.small.entity.inv.InvE;
-import com.nali.small.entity.memo.IBothEInv;
 import com.nali.small.entity.memo.server.IServerS;
 import com.nali.small.entity.memo.server.ServerE;
 import com.nali.small.entity.memo.server.si.MixSIE;
@@ -16,15 +14,12 @@ import com.nali.small.entity.memo.server.si.frame.tloop.KeySTLoop;
 
 public class ServerE22Locker
 <
-	IE extends InvE,
 	BD extends IBothDaE,
 	E extends EntityE,
 	I extends IMixE<BD, E>,
 	MS extends MixSIE<BD, E, I, ?>
-> extends ServerE<BD, E, I, MS> implements IBothEInv<IE>, IServerS
+> extends ServerE<BD, E, I, MS> implements IServerS
 {
-	public IE ie;
-
 	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
 	{
 		0, 297,//react
@@ -109,11 +104,5 @@ public class ServerE22Locker
 	public short[] getFixKeyShortArray()
 	{
 		return FIX_KEY_SHORT_ARRAY;
-	}
-
-	@Override
-	public IE getIE()
-	{
-		return this.ie;
 	}
 }
