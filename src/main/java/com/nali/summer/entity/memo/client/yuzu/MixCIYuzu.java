@@ -7,7 +7,7 @@ import com.nali.small.entity.IMixE;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.memo.client.ClientLe;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSle;
 import net.minecraftforge.fml.relauncher.Side;
@@ -23,7 +23,7 @@ public class MixCIYuzu
 	R extends RenderYuzu<E, I, ?, MB, MR, C, BD, R>,
 	E extends EntityLe,
 	I extends IMixE<BD, E> & IMixES & IMixESInv,
-	MB extends MixBoxSleInv<BD, R, E, I, ?, MR, C>,
+	MB extends MixBoxSle<BD, R, E, I, ?, MR, C>,
 	MR extends MixRenderSle<BD, R, E, I, ?, MB, C>,
 	C extends ClientLe<BD, R, E, I, ?, MB, MR>
 > extends MixCIE<BD, R, E, I, MB, MR, C>

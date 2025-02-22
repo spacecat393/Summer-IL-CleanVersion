@@ -8,7 +8,7 @@
 //import com.nali.small.entity.IMixESInv;
 //import com.nali.small.entity.inv.InvLe;
 //import com.nali.small.entity.memo.client.ClientLeInv;
-//import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
+//import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 //import com.nali.small.entity.memo.client.ci.MixCIE;
 //import com.nali.system.bytes.ByteReader;
 //import net.minecraft.entity.EntityLivingBase;
@@ -24,7 +24,7 @@
 //	R extends RenderSSShizuko<E, I, ?, MB, MR, C>,
 //	E extends EntityLe,
 //	I extends IMixE<BothDaSSShizuko, E> & IMixES & IMixESInv,
-//	MB extends MixBoxSleInv<BothDaSSShizuko, R, E, I, ?, MR, C>,
+//	MB extends MixBoxSle<BothDaSSShizuko, R, E, I, ?, MR, C>,
 //	MR extends MixRenderSSShizuko<IE, R, E, I, ?, MB, C>,
 //	C extends ClientLeInv<IE, BothDaSSShizuko, R, E, I, ?, MB, MR>
 //> extends MixCIE<BothDaSSShizuko, R, E, I, MB, MR, C>

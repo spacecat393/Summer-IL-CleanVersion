@@ -7,6 +7,8 @@ import com.nali.extra.gui.page.entity.si.*;
 import com.nali.gui.key.KeyEdit;
 import com.nali.gui.key.KeySelect;
 import com.nali.gui.page.Page;
+import com.nali.gui.page.PageEdit;
+import com.nali.gui.page.PageSelect;
 import com.nali.list.da.BothDaSSHifumi;
 import com.nali.list.entity.ci.CIEFrame;
 import com.nali.list.entity.ci.CIESound;
@@ -18,7 +20,7 @@ import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.memo.IBothLe;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSle;
 import com.nali.small.entity.memo.server.si.SILeLook;
 import com.nali.small.entity.memo.server.si.path.SILeFindMove;
@@ -159,73 +161,97 @@ public class SummerSSHifumi extends EntityLe implements IMixES, IMixESInv
 	{
 		if (NaliConfig.NEED_EXTRA)
 		{
+			PageSelect ps;
+			PageEdit pe;
 			if (PageSI.GI == SIEArea.ID)
 			{
-				Page.PAGE.set(new PageSIEArea(), new KeySelect());
+				ps = new PageSIEArea();
+				Page.PAGE.set(ps, new KeySelect(ps));
+			}
+			else if (PageSI.GI == SIEInv.ID)
+			{
+				ps = new PageSIEInv();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIEOwner.ID)
 			{
-				Page.PAGE.set(new PageSIEOwner(), new KeySelect());
+				ps = new PageSIEOwner();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIELock.ID)
 			{
-				Page.PAGE.set(new PageSIELock(), new KeySelect());
+				ps = new PageSIELock();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SILeAttack.ID)
 			{
-				Page.PAGE.set(new PageSILeAttack(), new KeySelect());
+				ps = new PageSILeAttack();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIEFollow.ID)
 			{
-				Page.PAGE.set(new PageSIEFollow(), new KeySelect());
+				ps = new PageSIEFollow();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIEWalkTo.ID)
 			{
-				Page.PAGE.set(new PageSIEWalkTo(), new KeySelect());
+				ps = new PageSIEWalkTo();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIERandomWalk.ID)
 			{
-				Page.PAGE.set(new PageSIERandomWalk(), new KeySelect());
+				ps = new PageSIERandomWalk();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIELook.ID)
 			{
-				Page.PAGE.set(new PageSILeLook(), new KeyEdit());
+				pe = new PageSILeLook();
+				Page.PAGE.set(pe, new KeyEdit(pe));
 			}
 			else if (PageSI.GI == SIELookTo.ID)
 			{
-				Page.PAGE.set(new PageSIELookTo(), new KeySelect());
+				ps = new PageSIELookTo();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIERandomLook.ID)
 			{
-				Page.PAGE.set(new PageSIERandomLook(), new KeySelect());
+				ps = new PageSIERandomLook();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIESit.ID)
 			{
-				Page.PAGE.set(new PageSIESit(), new KeySelect());
+				ps = new PageSIESit();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIECareOwner.ID)
 			{
-				Page.PAGE.set(new PageSIECareOwner(), new KeySelect());
+				ps = new PageSIECareOwner();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SILeLockDMG.ID)
 			{
-				Page.PAGE.set(new PageSILeLockDMG(), new KeySelect());
+				ps = new PageSILeLockDMG();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIELocation.ID)
 			{
-				Page.PAGE.set(new PageSIELocation(), new KeyEdit());
+				pe = new PageSIELocation();
+				Page.PAGE.set(pe, new KeyEdit(pe));
 			}
 			else if (PageSI.GI == SIEUseTo.ID)
 			{
-				Page.PAGE.set(new PageSIEUseTo(), new KeySelect());
+				ps = new PageSIEUseTo();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else if (PageSI.GI == SIESound.ID)
 			{
-				Page.PAGE.set(new PageSIESound(), new KeySelect());
+				ps = new PageSIESound();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 			else
 			{
-				Page.PAGE.set(new PageSIN(), new KeySelect());
+				ps = new PageSIN();
+				Page.PAGE.set(ps, new KeySelect(ps));
 			}
 		}
 	}
@@ -284,7 +310,7 @@ public class SummerSSHifumi extends EntityLe implements IMixES, IMixESInv
 		ClientSSHifumi c = new ClientSSHifumi(this, r, new SoundE());
 		MixCISSHifumi mc = new MixCISSHifumi(c);
 		c.mc = mc;
-		c.mb = new MixBoxSleInv(c);
+		c.mb = new MixBoxSle(c);
 //		c.mr = new MixRenderSSHifumi(c);
 		MixRenderSle mr = new MixRenderSle(c);
 		mr.shadow_opaque = 0.5F;

@@ -12,7 +12,7 @@ import com.nali.small.entity.EntityLe;
 import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.memo.IBothLe;
-import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
+import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSle;
 import com.nali.small.entity.memo.server.si.SILeLook;
 import com.nali.small.entity.memo.server.si.path.SILeFindMove;
@@ -215,7 +215,7 @@ public class SummerSaori extends EntityLe implements IMixES, IMixESInv
 		ClientSaori c = new ClientSaori(this, r, new SoundE());
 		MixCISaori mc = new MixCISaori(c);
 		c.mc = mc;
-		c.mb = new MixBoxSleInv(c);
+		c.mb = new MixBoxSle(c);
 //		c.mr = new MixRenderSaori(c);
 		MixRenderSle mr = new MixRenderSle(c);
 		mr.shadow_opaque = 0.5F;
@@ -298,7 +298,7 @@ public class SummerSaori extends EntityLe implements IMixES, IMixESInv
 
 		if (this.world.isRemote)
 		{
-			this.prev_rotation_yaw_body += (this.rotation_yaw_body - this.prev_rotation_yaw_body) * (float) Time.LINE;
+			this.prev_rotation_yaw_body += (this.rotation_yaw_body - this.prev_rotation_yaw_body) * (float)Time.LINE;
 			this.prev_rotation_yaw += (this.rotationYaw - this.prev_rotation_yaw) * (float)Time.LINE;
 			this.prev_rotation_pitch += (this.rotationPitch - this.prev_rotation_pitch) * (float)Time.LINE;
 			body_rot = (float)Math.toRadians(this.prev_rotation_yaw_body);

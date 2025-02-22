@@ -9,7 +9,7 @@
 //import com.nali.small.entity.IMixES;
 //import com.nali.small.entity.IMixESInv;
 //import com.nali.small.entity.memo.client.ClientLe;
-//import com.nali.small.entity.memo.client.box.mix.MixBoxSleInv;
+//import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 //import com.nali.small.entity.memo.client.ci.MixCIE;
 //import com.nali.small.entity.memo.client.render.mix.MixRenderSle;
 //import com.nali.small.render.IRenderS;
@@ -24,7 +24,7 @@
 //	E extends EntityLe,
 //	I extends IMixE<BD, E> & IMixES & IMixESInv,
 //	MC extends MixCIE<BD, R, E, I, MB, ?, C>,
-//	MB extends MixBoxSleInv<BD, R, E, I, MC, ?, C>,
+//	MB extends MixBoxSle<BD, R, E, I, MC, ?, C>,
 //	C extends ClientLe<BD, R, E, I, MC, MB, ?>
 //> extends MixRenderSle<BD, R, E, I, MC, MB, C>
 //{
