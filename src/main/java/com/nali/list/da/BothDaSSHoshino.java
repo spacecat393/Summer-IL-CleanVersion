@@ -9,6 +9,24 @@ public class BothDaSSHoshino implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe,
 {
 	public static BothDaSSHoshino IDA;
 
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
+	{
+		409, 459,
+		596, 679,
+		715, 729,
+		680, 695,
+		696, 714,
+		313, 408,
+		558, 595,
+		167, 312,
+		507, 557,
+		0, 166,
+		730, 752,
+		753, 761,
+		762, 812,
+		460, 506
+	};
+
 	@Override
 	public float E_Width()
 	{
@@ -34,8 +52,7 @@ public class BothDaSSHoshino implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe,
 		(
 			4 +//scale
 			4 +//rotation_yaw_head
-			1 +//inv
-			this.S_MaxFrame() * 2
+			this.S_MaxFrame() * (4 + 1)
 		);
 	}
 
@@ -64,12 +81,17 @@ public class BothDaSSHoshino implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe,
 	}
 
 	@Override
+	public short[] S_FixKeyShortArray()
+	{
+		return FIX_KEY_SHORT_ARRAY;
+	}
+
+	@Override
 	public byte Se_SyncIndex()
 	{
 		return
 			4 +
-			4 +
-			1;
+			4;
 	}
 
 	@Override

@@ -38,7 +38,7 @@ public class SummerReisa extends EntityLe implements IMixES, IMixESInv
 	public static int eggPrimary = 0x4e466d;
 	public static int eggSecondary = 0xbdb5ff;
 
-	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaReisa.IDA.E_MaxSync()];
+	public static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaReisa.IDA.E_MaxSync()];
 //	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaReisa.IDA.S_MaxFrame()];
 //	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 

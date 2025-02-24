@@ -30,39 +30,40 @@ public class MixCISSIzuna
 		super(c);
 	}
 
-	@Override
-	public void updateBox()
-	{
-		R r = this.c.r;
-		I i = this.c.i;
-
-		short key = r.key_short_array[0];
-
-		if (key < 264 || (key > 562 && key < 612))
-		{
-			r.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
-		}
-		else
-		{
-			r.model_byte_array[8 / 8] &= 254;//255 - Math.pow(2, 8 % 8)
-		}
-
-		float scale = r.scale;
-		E e = i.getE();
-		if (key > 314 && key < 351)
-		{
-			e.width = BothDaSSIzuna.IDA.E_Width() * scale;
-			e.height = 0.65F * scale;
-		}
-		else if (key > 263 && key < 315)
-		{
-			e.width = 1.5F * scale;
-			e.height = 0.2F * scale;
-		}
-		else
-		{
-			e.width = BothDaSSIzuna.IDA.E_Width() * scale;
-			e.height = BothDaSSIzuna.IDA.E_Height() * scale;
-		}
-	}
+	//!frame
+//	@Override
+//	public void updateBox()
+//	{
+//		R r = this.c.r;
+//		I i = this.c.i;
+//
+//		short key = r.key_short_array[0];
+//
+//		if (key < 264 || (key > 562 && key < 612))
+//		{
+//			r.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
+//		}
+//		else
+//		{
+//			r.model_byte_array[8 / 8] &= 254;//255 - Math.pow(2, 8 % 8)
+//		}
+//
+//		float scale = r.scale;
+//		E e = i.getE();
+//		if (key > 314 && key < 351)
+//		{
+//			e.width = BothDaSSIzuna.IDA.E_Width() * scale;
+//			e.height = 0.65F * scale;
+//		}
+//		else if (key > 263 && key < 315)
+//		{
+//			e.width = 1.5F * scale;
+//			e.height = 0.2F * scale;
+//		}
+//		else
+//		{
+//			e.width = BothDaSSIzuna.IDA.E_Width() * scale;
+//			e.height = BothDaSSIzuna.IDA.E_Height() * scale;
+//		}
+//	}
 }

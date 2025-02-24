@@ -38,7 +38,7 @@ public class SummerSaori extends EntityLe implements IMixES, IMixESInv
 	public static int eggPrimary = 0x283756;
 	public static int eggSecondary = 0x4a73bd;
 
-	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSaori.IDA.E_MaxSync()];
+	public static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSaori.IDA.E_MaxSync()];
 //	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSaori.IDA.S_MaxFrame()];
 //	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 

@@ -9,6 +9,28 @@ public class BothDaSSShizuko implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe,
 {
 	public static BothDaSSShizuko IDA;
 
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
+	{
+		0, 222,// 0 cafe idle <- need frame
+		0, 222,// 1 cafe idle
+		381, 481,// 2 cafe walk
+		482, 532,// 3 t-start 50
+		223, 380,// 4 cafe react
+		0, 222, // 5 cafe idle
+		533, 610,// 6 spawn
+		611, 704,// 7 idle
+		705, 725,// 8 act
+		726, 750,// 9 end
+
+		//SeaHouse
+		0, 50, // 10
+		0, 0, // 11
+		51, 128,// 12 spawn
+		129, 222,// 13 idle
+		223, 243,// 14 act
+		244, 269// 15 end
+	};
+
 	@Override
 	public float E_Width()
 	{
@@ -34,8 +56,7 @@ public class BothDaSSShizuko implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe,
 		(
 			4 +//scale
 			4 +//rotation_yaw_head
-			1 +//inv
-			this.S_MaxFrame() * 2
+			this.S_MaxFrame() * (4 + 1)
 		);
 	}
 
@@ -64,12 +85,17 @@ public class BothDaSSShizuko implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe,
 	}
 
 	@Override
+	public short[] S_FixKeyShortArray()
+	{
+		return FIX_KEY_SHORT_ARRAY;
+	}
+
+	@Override
 	public byte Se_SyncIndex()
 	{
 		return
 			4 +
-			4 +
-			1;
+			4;
 	}
 
 	@Override

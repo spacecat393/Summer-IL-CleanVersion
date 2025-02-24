@@ -46,7 +46,7 @@ public class SummerSSHifumi extends EntityLe implements IMixES, IMixESInv
 	public static int eggPrimary = 0xBE9478;
 	public static int eggSecondary = 0xFFF6AE;
 
-	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHifumi.IDA.E_MaxSync()];
+	public static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHifumi.IDA.E_MaxSync()];
 //	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSHifumi.IDA.S_MaxFrame()];
 //	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 

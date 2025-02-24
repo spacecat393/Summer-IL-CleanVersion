@@ -9,6 +9,23 @@ public class BothDaArisu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 {
 	public static BothDaArisu IDA;
 
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
+	{
+		570, 614,//Vital_Death*
+		205, 285,//Formation_Idle*
+		394, 409,//Attack_Start*
+		640, 655,//Move_Ing*
+		656, 706,//Move_End*
+		173, 204,//Cafe_Walk*
+		286, 322,//Callsign*
+		81, 172,//Cafe_Reaction*
+		323, 393,//Normal_Idle*
+		0, 80,//Cafe_Idle*
+		410, 476,//Attack_Ing*
+		477, 518,//Attack_Delay-Attack_End*
+		519, 569//Reload*
+	};
+
 	@Override
 	public float E_Width()
 	{
@@ -34,8 +51,7 @@ public class BothDaArisu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 		(
 			4 +//scale
 			4 +//rotation_yaw_head
-			1 +//inv
-			this.S_MaxFrame() * 2
+			this.S_MaxFrame() * (4 + 1)
 			//can't sync and lerp
 //			this.S_MaxFrame() * 6//frame(byte) time(short) future_frame(byte) future_time(short)
 //			this.S_MaxFrame() * 4//time(short) future_time(short)
@@ -67,12 +83,17 @@ public class BothDaArisu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 	}
 
 	@Override
+	public short[] S_FixKeyShortArray()
+	{
+		return FIX_KEY_SHORT_ARRAY;
+	}
+
+	@Override
 	public byte Se_SyncIndex()
 	{
 		return
 			4 +
-			4 +
-			1;
+			4;
 	}
 
 	@Override

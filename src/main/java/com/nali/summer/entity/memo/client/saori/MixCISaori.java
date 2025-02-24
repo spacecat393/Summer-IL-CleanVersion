@@ -30,25 +30,26 @@ public class MixCISaori
 		super(c);
 	}
 
-	@Override
-	public void updateBox()
-	{
-		R r = this.c.r;
-		I i = this.c.i;
-
-		short key = r.key_short_array[0];
-
-		float scale = r.scale;
-		E e = i.getE();
-		if (key > 889 && key < 943)
-		{
-			e.width = 1.5F * scale;
-			e.height = 0.2F * scale;
-		}
-		else
-		{
-			e.width = BothDaSaori.IDA.E_Width() * scale;
-			e.height = BothDaSaori.IDA.E_Height() * scale;
-		}
-	}
+	//!frame
+//	@Override
+//	public void updateBox()
+//	{
+//		R r = this.c.r;
+//		I i = this.c.i;
+//
+//		short key = r.key_short_array[0];
+//
+//		float scale = r.scale;
+//		E e = i.getE();
+//		if (key > 889 && key < 943)
+//		{
+//			e.width = 1.5F * scale;
+//			e.height = 0.2F * scale;
+//		}
+//		else
+//		{
+//			e.width = BothDaSaori.IDA.E_Width() * scale;
+//			e.height = BothDaSaori.IDA.E_Height() * scale;
+//		}
+//	}
 }

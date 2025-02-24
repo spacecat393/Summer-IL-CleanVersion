@@ -33,4 +33,10 @@ public class BothDaSeaHouse implements IBothDaS, IBothDaO
 	{
 		return FRAME_STEP + 3;
 	}
+
+	@Override
+	public short[] S_FixKeyShortArray()
+	{
+		return null;
+	}
 }

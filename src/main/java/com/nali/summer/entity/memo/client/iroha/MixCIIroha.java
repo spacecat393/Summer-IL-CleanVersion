@@ -30,31 +30,32 @@ public class MixCIIroha
 		super(c);
 	}
 
-	@Override
-	public void updateBox()
-	{
-		R r = this.c.r;
-		I i = this.c.i;
-
-		short key = r.key_short_array[0];
-
-		float scale = r.scale;
-		E e = i.getE();
-		if (key > 257)
-		{
-			e.width = 1.7F * scale;
-			e.height = 1.5F * scale;
-//			skinningrender.model_byte_array[4 / 8] |= 16;//Math.pow(2, 4 % 8)
-//			skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
-			r.model_byte_array[0] |= 16 | 32;
-		}
-		else
-		{
-			e.width = BothDaIroha.IDA.E_Width() * scale;
-			e.height = BothDaIroha.IDA.E_Height() * scale;
-//			skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
-//			skinningrender.model_byte_array[5 / 8] &= 223;//255 - Math.pow(2, 5 % 8)
-			r.model_byte_array[0] &= 239 & 223;
-		}
-	}
+	//!frame
+//	@Override
+//	public void updateBox()
+//	{
+//		R r = this.c.r;
+//		I i = this.c.i;
+//
+//		short key = r.key_short_array[0];
+//
+//		float scale = r.scale;
+//		E e = i.getE();
+//		if (key > 257)
+//		{
+//			e.width = 1.7F * scale;
+//			e.height = 1.5F * scale;
+////			skinningrender.model_byte_array[4 / 8] |= 16;//Math.pow(2, 4 % 8)
+////			skinningrender.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
+//			r.model_byte_array[0] |= 16 | 32;
+//		}
+//		else
+//		{
+//			e.width = BothDaIroha.IDA.E_Width() * scale;
+//			e.height = BothDaIroha.IDA.E_Height() * scale;
+////			skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
+////			skinningrender.model_byte_array[5 / 8] &= 223;//255 - Math.pow(2, 5 % 8)
+//			r.model_byte_array[0] &= 239 & 223;
+//		}
+//	}
 }

@@ -32,52 +32,53 @@ public class MixCIReisa
 		super(c);
 	}
 
-	@Override
-	public void updateBox()
-	{
-		R r = this.c.r;
-		I i = this.c.i;
-
-		short key = r.key_short_array[0];
-
-		E e = i.getE();
-		if (e.ticksExisted % 200 == 0)
-		{
-			r.model_byte_array[0 / 8] &= 255-1;//255 - Math.pow(2, 0 % 8)
-			r.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
-			r.model_byte_array[8 / 8] &= 255-1;//255 - Math.pow(2, 8 % 8)
-			this.eyes_tick = 20;
-		}
-		else if (--this.eyes_tick <= 0)
-		{
-			r.model_byte_array[0 / 8] |= 1;//Math.pow(2, 0 % 8)
-			r.model_byte_array[5 / 8] &= 255-32;//255 - Math.pow(2, 5 % 8)
-			r.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
-		}
-
-		if (key > 125 && key < 227)
-		{
-			r.model_byte_array[6 / 8] |= 64;//Math.pow(2, 6 % 8)
-		}
-		else
-		{
-			r.model_byte_array[6 / 8] &= 255-64;//255 - Math.pow(2, 6 % 8)
-		}
-
-		float scale = r.scale;
-		if (key > 600 && key < 652)
-		{
-			e.width = 1.5F * scale;
-			e.height = 0.2F * scale;
-		}
-		else
-		{
-			e.width = BothDaReisa.IDA.E_Width() * scale;
-			e.height = BothDaReisa.IDA.E_Height() * scale;
-		}
-
-//		skinningrender.model_byte_array[3 / 8] &= 255-8;//255 - Math.pow(2, 3 % 8)
-	}
+	//!frame
+//	@Override
+//	public void updateBox()
+//	{
+//		R r = this.c.r;
+//		I i = this.c.i;
+//
+//		short key = r.key_short_array[0];
+//
+//		E e = i.getE();
+//		if (e.ticksExisted % 200 == 0)
+//		{
+//			r.model_byte_array[0 / 8] &= 255-1;//255 - Math.pow(2, 0 % 8)
+//			r.model_byte_array[5 / 8] |= 32;//Math.pow(2, 5 % 8)
+//			r.model_byte_array[8 / 8] &= 255-1;//255 - Math.pow(2, 8 % 8)
+//			this.eyes_tick = 20;
+//		}
+//		else if (--this.eyes_tick <= 0)
+//		{
+//			r.model_byte_array[0 / 8] |= 1;//Math.pow(2, 0 % 8)
+//			r.model_byte_array[5 / 8] &= 255-32;//255 - Math.pow(2, 5 % 8)
+//			r.model_byte_array[8 / 8] |= 1;//Math.pow(2, 8 % 8)
+//		}
+//
+//		if (key > 125 && key < 227)
+//		{
+//			r.model_byte_array[6 / 8] |= 64;//Math.pow(2, 6 % 8)
+//		}
+//		else
+//		{
+//			r.model_byte_array[6 / 8] &= 255-64;//255 - Math.pow(2, 6 % 8)
+//		}
+//
+//		float scale = r.scale;
+//		if (key > 600 && key < 652)
+//		{
+//			e.width = 1.5F * scale;
+//			e.height = 0.2F * scale;
+//		}
+//		else
+//		{
+//			e.width = BothDaReisa.IDA.E_Width() * scale;
+//			e.height = BothDaReisa.IDA.E_Height() * scale;
+//		}
+//
+////		skinningrender.model_byte_array[3 / 8] &= 255-8;//255 - Math.pow(2, 3 % 8)
+//	}
 
 //	@Override
 //	public void onReadNBT()

@@ -31,22 +31,6 @@ public class ServerArisu
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLe<BD, E, I, MS> implements IServerS
 {
-	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
-	{
-		570, 614,//Vital_Death*
-		205, 285,//Formation_Idle*
-		394, 409,//Attack_Start*
-		640, 655,//Move_Ing*
-		656, 706,//Move_End*
-		173, 204,//Cafe_Walk*
-		286, 322,//Callsign*
-		81, 172,//Cafe_Reaction*
-		323, 393,//Normal_Idle*
-		0, 80,//Cafe_Idle*
-		410, 476,//Attack_Ing*
-		477, 518,//Attack_Delay-Attack_End*
-		519, 569//Reload*
-	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
 		0, 0*2,
@@ -123,11 +107,11 @@ public class ServerArisu
 		return KEY_DATA_BYTE_ARRAY;
 	}
 
-	@Override
-	public short[] getFixKeyShortArray()
-	{
-		return FIX_KEY_SHORT_ARRAY;
-	}
+//	@Override
+//	public short[] getFixKeyShortArray()
+//	{
+//		return FIX_KEY_SHORT_ARRAY;
+//	}
 
 	@Override
 	public void getHurtSound(DamageSource damagesource)

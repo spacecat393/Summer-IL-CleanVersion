@@ -12,6 +12,13 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe
 {
 	public static BothDaE22Locker IDA;
 
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
+	{
+		0, 297,//react
+		298, 302,//noact
+		303, 386//idle
+	};
+
 	@Override
 	public float E_Width()
 	{
@@ -36,9 +43,7 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe
 		return (byte)
 		(
 			4 +//scale
-//			4 +//rotation_yaw_head
-			1 +//inv
-			this.S_MaxFrame() * 2
+			this.S_MaxFrame() * (4 + 1)
 		);
 	}
 
@@ -67,11 +72,15 @@ public class BothDaE22Locker implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe
 	}
 
 	@Override
+	public short[] S_FixKeyShortArray()
+	{
+		return FIX_KEY_SHORT_ARRAY;
+	}
+
+	@Override
 	public byte Se_SyncIndex()
 	{
 		return
-			4 +
-//			4 +
-			1;
+			4;
 	}
 }

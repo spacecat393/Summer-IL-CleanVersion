@@ -8,6 +8,7 @@ import com.nali.small.entity.IMixES;
 import com.nali.small.entity.IMixESInv;
 import com.nali.small.entity.memo.client.ClientLe;
 import com.nali.small.entity.memo.client.IClientESound;
+import com.nali.small.entity.memo.client.IClientS;
 import com.nali.small.entity.memo.client.box.mix.MixBoxSle;
 import com.nali.small.entity.memo.client.ci.MixCIE;
 import com.nali.small.entity.memo.client.render.mix.MixRenderSle;
@@ -25,8 +26,25 @@ public class ClientArisu
 	MC extends MixCIE<BD, R, E, I, MB, MR, ?>,
 	MB extends MixBoxSle<BD, R, E, I, MC, MR, ?>,
 	MR extends MixRenderSle<BD, R, E, I, MC, MB, ?>
-> extends ClientLe<BD, R, E, I, MC, MB, MR> implements IClientESound
+> extends ClientLe<BD, R, E, I, MC, MB, MR> implements IClientESound, IClientS
 {
+	public static byte[] ACTION_STATE_BYTE_ARRAY = new byte[]
+	{
+		1,//Vital_Death*
+		1,//Formation_Idle*
+		1,//Attack_Start*
+		1,//Move_Ing*
+		1,//Move_End*
+		1,//Cafe_Walk*
+		1,//Callsign*
+		1,//Cafe_Reaction*
+		1,//Normal_Idle*
+		1,//Cafe_Idle*
+		1,//Attack_Ing*
+		1,//Attack_Delay-Attack_End*
+		1//Reload*
+	};
+
 	public SoundE sounde;
 
 	public ClientArisu(I i, R r, SoundE sounde)
@@ -66,5 +84,11 @@ public class ClientArisu
 	public SoundE getSound()
 	{
 		return this.sounde;
+	}
+
+	@Override
+	public byte[] getActionStateByteArray()
+	{
+		return ACTION_STATE_BYTE_ARRAY;
 	}
 }

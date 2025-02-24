@@ -31,24 +31,6 @@ public class ServerSaori
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLe<BD, E, I, MS> implements IServerS
 {
-	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
-	{
-		890, 942,
-		492, 592,
-		688, 704,//2 start attack
-		593, 608,
-		609, 646,
-		358, 491,
-		943, 979,
-		241, 357,
-		647, 687,
-		0, 240,
-		705, 723,//10 loop attack
-		724, 742,//11 end attack
-		743, 788,//12 reload
-		789, 889//13 skill
-	//			{ 980, 1013 }//delay attack
-	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
 		0, 0*2, //0
@@ -151,11 +133,11 @@ public class ServerSaori
 		return KEY_DATA_BYTE_ARRAY;
 	}
 
-	@Override
-	public short[] getFixKeyShortArray()
-	{
-		return FIX_KEY_SHORT_ARRAY;
-	}
+//	@Override
+//	public short[] getFixKeyShortArray()
+//	{
+//		return FIX_KEY_SHORT_ARRAY;
+//	}
 
 	@Override
 	public void getHurtSound(DamageSource damagesource)

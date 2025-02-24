@@ -38,7 +38,7 @@ public class SummerSSIzuna extends EntityLe implements IMixES, IMixESInv
 	public static int eggPrimary = 0x7d4a39;
 	public static int eggSecondary = 0xf4c4d7;
 
-	public final static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSIzuna.IDA.E_MaxSync()];
+	public static DataParameter<Byte>[] BYTE_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSIzuna.IDA.E_MaxSync()];
 //	public final static DataParameter<Integer>[] INTEGER_DATAPARAMETER_ARRAY = new DataParameter[BothDaSSIzuna.IDA.S_MaxFrame()];
 //	public final static DataParameter<Float>[] FLOAT_DATAPARAMETER_ARRAY = new DataParameter[1];
 

@@ -20,12 +20,6 @@ public class ServerE22Locker
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerE<BD, E, I, MS> implements IServerS
 {
-	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
-	{
-		0, 297,//react
-		298, 302,//noact
-		303, 386//idle
-	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
 		0, 0*2,
@@ -100,9 +94,9 @@ public class ServerE22Locker
 		return KEY_DATA_BYTE_ARRAY;
 	}
 
-	@Override
-	public short[] getFixKeyShortArray()
-	{
-		return FIX_KEY_SHORT_ARRAY;
-	}
+//	@Override
+//	public short[] getFixKeyShortArray()
+//	{
+//		return FIX_KEY_SHORT_ARRAY;
+//	}
 }

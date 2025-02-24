@@ -32,23 +32,6 @@ public class ServerNatsu
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLe<BD, E, I, MS> implements IServerS
 {
-	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
-	{
-		537, 592,//Vital_Death
-		225, 307,//Formation_Idle
-		426, 438,//Attack_Start
-		380, 400,//Move_Ing
-		401, 425,//End_Normal
-		184, 224,//Cafe_Walk
-		308, 346,//Callsign
-		67, 183,//Cafe_Reaction
-		347, 379,//Normal_Idle
-		0, 66,//Cafe_Idle
-		439, 487,//Attack_Delay-Attack_Ing
-		488, 498,//Attack_End
-		499, 535,//Normal_Reload
-		593, 638//Public
-	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
 		0, 0*2,
@@ -128,11 +111,11 @@ public class ServerNatsu
 		return KEY_DATA_BYTE_ARRAY;
 	}
 
-	@Override
-	public short[] getFixKeyShortArray()
-	{
-		return FIX_KEY_SHORT_ARRAY;
-	}
+//	@Override
+//	public short[] getFixKeyShortArray()
+//	{
+//		return FIX_KEY_SHORT_ARRAY;
+//	}
 
 	@Override
 	public void getHurtSound(DamageSource damagesource)

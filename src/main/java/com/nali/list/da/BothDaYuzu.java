@@ -10,6 +10,26 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBot
 {
 	public static BothDaYuzu IDA;
 
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
+	{
+		717, 767,
+		526, 592,
+		627, 643,
+		844, 859,
+		860, 893,
+		113, 143,
+		806, 843,
+		34, 112,
+		593, 626,
+		0, 33,
+		644, 664,
+		703, 716,
+		768, 805,
+		665, 702,//delay attack
+		144, 441,//locker react
+		442, 525//locker idle
+	};
+
 	@Override
 	public float E_Width()
 	{
@@ -35,8 +55,7 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBot
 		(
 			4 +//scale
 			4 +//rotation_yaw_head
-			1 +//inv
-			this.S_MaxFrame() * 2
+			this.S_MaxFrame() * (4 + 1)
 		);
 	}
 
@@ -65,12 +84,17 @@ public class BothDaYuzu implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBot
 	}
 
 	@Override
+	public short[] S_FixKeyShortArray()
+	{
+		return FIX_KEY_SHORT_ARRAY;
+	}
+
+	@Override
 	public byte Se_SyncIndex()
 	{
 		return
 			4 +
-			4 +
-			1;
+			4;
 	}
 
 	@Override

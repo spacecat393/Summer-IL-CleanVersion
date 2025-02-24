@@ -31,23 +31,6 @@ public class ServerSSHoshino
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLe<BD, E, I, MS> implements IServerS
 {
-	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
-	{
-		409, 459,
-		596, 679,
-		715, 729,
-		680, 695,
-		696, 714,
-		313, 408,
-		558, 595,
-		167, 312,
-		507, 557,
-		0, 166,
-		730, 752,
-		753, 761,
-		762, 812,
-		460, 506
-	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
 		0, 2, 0*2, 13*2, //0
@@ -147,11 +130,11 @@ public class ServerSSHoshino
 		return KEY_DATA_BYTE_ARRAY;
 	}
 
-	@Override
-	public short[] getFixKeyShortArray()
-	{
-		return FIX_KEY_SHORT_ARRAY;
-	}
+//	@Override
+//	public short[] getFixKeyShortArray()
+//	{
+//		return FIX_KEY_SHORT_ARRAY;
+//	}
 
 	@Override
 	public void getHurtSound(DamageSource damagesource)

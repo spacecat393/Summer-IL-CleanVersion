@@ -31,22 +31,6 @@ public class ServerReisa
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLe<BD, E, I, MS> implements IServerS
 {
-	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
-	{
-		601, 651,
-		500, 600,
-		350, 394,
-		261, 277,
-		278, 298,
-		227, 260,
-		458, 499,
-		126, 226,
-		299, 349,
-		0, 125,
-		364, 394,
-		395, 405,
-		406, 457
-	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
 		0, 0*2,
@@ -123,11 +107,11 @@ public class ServerReisa
 		return KEY_DATA_BYTE_ARRAY;
 	}
 
-	@Override
-	public short[] getFixKeyShortArray()
-	{
-		return FIX_KEY_SHORT_ARRAY;
-	}
+//	@Override
+//	public short[] getFixKeyShortArray()
+//	{
+//		return FIX_KEY_SHORT_ARRAY;
+//	}
 
 	@Override
 	public void getHurtSound(DamageSource damagesource)

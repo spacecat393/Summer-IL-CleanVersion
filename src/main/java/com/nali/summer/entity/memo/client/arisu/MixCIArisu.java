@@ -30,44 +30,45 @@ public class MixCIArisu
 		super(c);
 	}
 
-	@Override
-	public void updateBox()
-	{
-		R r = this.c.r;
-		I i = this.c.i;
-
-		short key = r.key_short_array[0];
-
-		if (key < 205)
-		{
-//			skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
-//			skinningrender.model_byte_array[6 / 8] &= 191;//255 - Math.pow(2, 6 % 8)
-			r.model_byte_array[0] &= 239 & 191;
-		}
-		else
-		{
-//			skinningrender.model_byte_array[4 / 8] |= 16;//Math.pow(2, 4 % 8)
-//			skinningrender.model_byte_array[6 / 8] |= 64;//Math.pow(2, 6 % 8)
-			r.model_byte_array[0] |= 16 | 64;
-		}
-
-		float scale = r.scale;
-		E e = i.getE();
-		if (key > 583 && key < 615)
-		{
-//			e.width = BothDaArisu.IDA.E_Width() * scale;
-			e.height = 0.65F * scale;
-		}
-//		else if (key > 737 && key < 784)
+	//!frame
+//	@Override
+//	public void updateBox()
+//	{
+//		R r = this.c.r;
+//		I i = this.c.i;
+//
+//		short key = r.key_short_array[0];
+//
+//		if (key < 205)
 //		{
-//			e.width = 1.5F * scale;
-//			e.height = 0.2F * scale;
+////			skinningrender.model_byte_array[4 / 8] &= 239;//255 - Math.pow(2, 4 % 8)
+////			skinningrender.model_byte_array[6 / 8] &= 191;//255 - Math.pow(2, 6 % 8)
+//			r.model_byte_array[0] &= 239 & 191;
 //		}
-		else
-		{
-//			e.width = BothDaArisu.IDA.E_Width() * scale;
-			e.height = BothDaArisu.IDA.E_Height() * scale;
-		}
-		e.width = BothDaArisu.IDA.E_Width() * scale;
-	}
+//		else
+//		{
+////			skinningrender.model_byte_array[4 / 8] |= 16;//Math.pow(2, 4 % 8)
+////			skinningrender.model_byte_array[6 / 8] |= 64;//Math.pow(2, 6 % 8)
+//			r.model_byte_array[0] |= 16 | 64;
+//		}
+//
+//		float scale = r.scale;
+//		E e = i.getE();
+//		if (key > 583 && key < 615)
+//		{
+////			e.width = BothDaArisu.IDA.E_Width() * scale;
+//			e.height = 0.65F * scale;
+//		}
+////		else if (key > 737 && key < 784)
+////		{
+////			e.width = 1.5F * scale;
+////			e.height = 0.2F * scale;
+////		}
+//		else
+//		{
+////			e.width = BothDaArisu.IDA.E_Width() * scale;
+//			e.height = BothDaArisu.IDA.E_Height() * scale;
+//		}
+//		e.width = BothDaArisu.IDA.E_Width() * scale;
+//	}
 }

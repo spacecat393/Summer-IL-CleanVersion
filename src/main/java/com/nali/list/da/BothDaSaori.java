@@ -9,6 +9,25 @@ public class BothDaSaori implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 {
 	public static BothDaSaori IDA;
 
+	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
+	{
+		890, 942,
+		492, 592,
+		688, 704,//2 start attack
+		593, 608,
+		609, 646,
+		358, 491,
+		943, 979,
+		241, 357,
+		647, 687,
+		0, 240,
+		705, 723,//10 loop attack
+		724, 742,//11 end attack
+		743, 788,//12 reload
+		789, 889//13 skill
+		//			{ 980, 1013 }//delay attack
+	};
+
 	@Override
 	public float E_Width()
 	{
@@ -34,8 +53,7 @@ public class BothDaSaori implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 		(
 			4 +//scale
 			4 +//rotation_yaw_head
-			1 +//inv
-			this.S_MaxFrame() * 2
+			this.S_MaxFrame() * (4 + 1)
 		);
 	}
 
@@ -64,12 +82,17 @@ public class BothDaSaori implements IBothDaE, IBothDaO, IBothDaS, IBothDaSe, IBo
 	}
 
 	@Override
+	public short[] S_FixKeyShortArray()
+	{
+		return FIX_KEY_SHORT_ARRAY;
+	}
+
+	@Override
 	public byte Se_SyncIndex()
 	{
 		return
 			4 +
-			4 +
-			1;
+			4;
 	}
 
 	@Override

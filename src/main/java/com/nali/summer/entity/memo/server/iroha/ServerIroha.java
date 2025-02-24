@@ -38,33 +38,6 @@ public class ServerIroha
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLe<BD, E, I, MS> implements IServerS
 {
-	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
-	{
-		321, 371,
-		635, 685,
-		516, 532,//start attack
-		423, 473,//loop move
-		474, 515,//end move
-		143, 206,//cafe walk
-		51, 142,
-		258, 320,
-		207, 257,
-		372, 422,// 9 n-idle
-		0, 50,
-		533, 566,
-		567, 583,
-		584, 634,
-		686, 719,// 14 start ride
-		720, 770,// 15 loop ride
-		1034, 1084,// 16 loop ride-move
-		941, 982,// 17 end ride-move
-		983, 1033,// 18 ride-panic
-		890, 940,// 19 ride-destroy
-		771, 787,// 20 start ride-attack
-		788, 821,// 21 loop ride-attack
-		822, 838,// 22 end ride-attack
-		839, 889// 23 ride-reload
-	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
 		0, 14*2, //0
@@ -259,11 +232,11 @@ public class ServerIroha
 		return KEY_DATA_BYTE_ARRAY;
 	}
 
-	@Override
-	public short[] getFixKeyShortArray()
-	{
-		return FIX_KEY_SHORT_ARRAY;
-	}
+//	@Override
+//	public short[] getFixKeyShortArray()
+//	{
+//		return FIX_KEY_SHORT_ARRAY;
+//	}
 
 	@Override
 	public void getHurtSound(DamageSource damagesource)

@@ -32,25 +32,6 @@ public class ServerYuzu
 	MS extends MixSIE<BD, E, I, ?>
 > extends ServerLe<BD, E, I, MS> implements IServerS
 {
-	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
-	{
-		717, 767,
-		526, 592,
-		627, 643,
-		844, 859,
-		860, 893,
-		113, 143,
-		806, 843,
-		34, 112,
-		593, 626,
-		0, 33,
-		644, 664,
-		703, 716,
-		768, 805,
-		665, 702,//delay attack
-		144, 441,//locker react
-		442, 525//locker idle
-	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
 		0, 0*2,
@@ -133,11 +114,11 @@ public class ServerYuzu
 		return KEY_DATA_BYTE_ARRAY;
 	}
 
-	@Override
-	public short[] getFixKeyShortArray()
-	{
-		return FIX_KEY_SHORT_ARRAY;
-	}
+//	@Override
+//	public short[] getFixKeyShortArray()
+//	{
+//		return FIX_KEY_SHORT_ARRAY;
+//	}
 
 	@Override
 	public void getHurtSound(DamageSource damagesource)

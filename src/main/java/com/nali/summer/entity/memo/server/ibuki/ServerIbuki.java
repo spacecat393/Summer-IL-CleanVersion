@@ -35,32 +35,6 @@ public class ServerIbuki
 	MS extends MixSIIbuki<BD, E, I, ?>
 > extends ServerLe<BD, E, I, MS> implements IServerS
 {
-	public static short[] FIX_KEY_SHORT_ARRAY = new short[]
-	{
-		297, 347, 347-297+2,
-		348, 431,
-		474, 486,//start attack
-		1265, 1281,//loop move
-		1282, 1312,//end move
-		263, 296,//cafe walk
-		585, 622,
-		101, 262,
-		432, 473,
-		0, 100,
-		487, 517,
-		518, 528,
-		529, 584,
-		623, 656,// 13 start ride
-		1214, 1264,// 14 loop ride
-		657, 707,// 15 loop ride-move
-		878, 919,// 16 end ride-move
-		1163, 1213,// 17 ride-panic
-		827, 877,// 18 ride-destroy
-		708, 724,// 19 start ride-attack
-		725, 758,// 20 loop ride-attack
-		759, 775,// 21 end ride-attack
-		776, 826// 22 ride-reload
-	};
 	public static byte[] KEY_DATA_BYTE_ARRAY = new byte[]
 	{
 		0, 13*2,
@@ -191,11 +165,11 @@ public class ServerIbuki
 		return KEY_DATA_BYTE_ARRAY;
 	}
 
-	@Override
-	public short[] getFixKeyShortArray()
-	{
-		return FIX_KEY_SHORT_ARRAY;
-	}
+//	@Override
+//	public short[] getFixKeyShortArray()
+//	{
+//		return FIX_KEY_SHORT_ARRAY;
+//	}
 
 	@Override
 	public void getHurtSound(DamageSource damagesource)
